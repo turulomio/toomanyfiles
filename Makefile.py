@@ -23,9 +23,9 @@ def makefile_dist_sources():
 
 def makefile_doc():
     #es
-    shell("xgettext -L Python --no-wrap --no-location --from-code='UTF-8' -o po/toomanyfiles.pot *.py")
-    shell("msgmerge -N --no-wrap -U po/es.po po/toomanyfiles.pot")
-    shell("msgfmt -cv -o po/locale/es/LC_MESSAGES/toomanyfiles.mo po/es.po")
+    shell("xgettext -L Python --no-wrap --no-location --from-code='UTF-8' -o locale/toomanyfiles.pot *.py")
+    shell("msgmerge -N --no-wrap -U locale/es.po locale/toomanyfiles.pot")
+    shell("msgfmt -cv -o locale/es/LC_MESSAGES/toomanyfiles.mo locale/es.po")
 
     for language in ["en", "es"]:
         mangenerator(language)
@@ -38,9 +38,9 @@ def makefile_install():
     shell("install -o root -d "+ prefixman+"/es/man1")
 
     shell("install -m 755 -o root toomanyfiles.py "+ prefixbin+"/toomanyfiles")
-    shell("install -m 644 -o root po/locale/es/LC_MESSAGES/toomanyfiles.mo " + mo_es)
-    shell("install -m 644 -o root po/toomanyfiles.en.1 "+ prefixman+"/man1/toomanyfiles.1")
-    shell("install -m 644 -o root po/toomanyfiles.es.1 "+ prefixman+"/es/man1/toomanyfiles.1")
+    shell("install -m 644 -o root locale/es/LC_MESSAGES/toomanyfiles.mo " + mo_es)
+    shell("install -m 644 -o root locale/toomanyfiles.en.1 "+ prefixman+"/man1/toomanyfiles.1")
+    shell("install -m 644 -o root locale/toomanyfiles.es.1 "+ prefixman+"/es/man1/toomanyfiles.1")
 
 def makefile_uninstall():
     shell("rm " + prefixbin + "/toomanyfiles")
@@ -57,23 +57,16 @@ def mangenerator(language):
         import locale 
         locale.setlocale(locale.LC_ALL,'C')
     else:
-        lang1=gettext.translation('toomanyfiles', 'po/locale', languages=[language])
+        lang1=gettext.translation('toomanyfiles', 'locale', languages=[language])
         lang1.install()
     print("DESCRIPTION in {} is {}".format(language, _("DESCRIPTION")))
 
-    man=Man("po/toomanyfiles.{}".format(language))
+    man=Man("locale/toomanyfiles.{}".format(language))
     man.setMetadata("toomanyfiles",  1,   datetime.date.today(), "Mariano Muñoz", _("Recover normal files and delete files from a partition."))
     man.setSynopsis("[--help] [--version] [--nofiles] [ --nodeleted| --partition| --output ]")
 
     man.header(_("DESCRIPTION"), 1)
     man.paragraph(_("This app has the following parameters."), 1)
-    man.paragraph("--nofiles", 2, True)
-    man.paragraph(_("Scans the net of the interface parameter and prints a list of the detected devices."), 3)
-    man.paragraph(_("If a device is not known, it will be showed in red. Devices in green are trusted devices."), 3)
-    man.paragraph("--nodeleted", 2, True)
-    man.paragraph(_("Allows to add a known device from console."), 3)
-    man.paragraph("--partition", 2, True)
-    man.paragraph(_("Allows to remove a known device from console."), 3)
     man.paragraph("--output", 2, True)
     man.paragraph(_("Shows all known devices in database from console."), 3)
     man.save()

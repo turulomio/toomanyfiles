@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: spoken-uptime\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-07-24 14:47+0200\n"
+"POT-Creation-Date: 2018-07-24 14:55+0200\n"
 "PO-Revision-Date: 2015-03-22 18:51+0100\n"
 "Last-Translator: root <turulomio@yahoo.es>\n"
 "Language-Team: Spanish\n"
@@ -26,18 +26,6 @@ msgstr ""
 
 msgid "This app has the following parameters."
 msgstr "Esta applicación tiene los siguientes parámetros."
-
-msgid "Scans the net of the interface parameter and prints a list of the detected devices."
-msgstr ""
-
-msgid "If a device is not known, it will be showed in red. Devices in green are trusted devices."
-msgstr ""
-
-msgid "Allows to add a known device from console."
-msgstr ""
-
-msgid "Allows to remove a known device from console."
-msgstr ""
 
 msgid "Shows all known devices in database from console."
 msgstr ""
