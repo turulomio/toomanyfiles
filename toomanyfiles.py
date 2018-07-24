@@ -4,10 +4,15 @@ import colorama
 import datetime
 import gettext
 import os
+import sys
 
 version="20180724"
 
-# I had a lot of problems with UTF-8. LANG must be es_ES.UTF-8 to work
+def version_date():
+    versio=version.replace("+","")
+    return datetime.date(int(versio[:-4]),  int(versio[4:-2]),  int(versio[6:]))
+
+# I had a lot of problems with UTF-8. LANG must be es_ES.UTF-8 to work. Nuevo sistema2
 gettext.install('toomanyfiles')
 
 
@@ -102,7 +107,8 @@ def datetime_in_filename(filename,pattern):
 
 
 if __name__ == '__main__':
-    parser=argparse.ArgumentParser(prog='toomanyfiles', description=_('Seach datetime patterns to delete innecesary files'), epilog=_("Developed by Mariano Muñoz"), formatter_class=argparse.RawTextHelpFormatter)
+    parser=argparse.ArgumentParser(prog='toomanyfiles', description=_('Seach datetime patterns to delete innecesary files'), epilog=_("Developed by Mariano Muñoz 2018-{}".format(version_date().year)), formatter_class=argparse.RawTextHelpFormatter)
+    parser.add_argument('--version', action='version', version=version)
     parser.add_argument('--pattern', help="Defines a python datetime pattern to search in current directory", action="store",default="%Y%m%d %H%M")
     parser.add_argument('--create_example', help="Create a example files in directory 'example'", action="store_true",default=False)
     parser.add_argument('--remove', help="Removes files permanently. If not selected shows information",action="store_true", default=False)

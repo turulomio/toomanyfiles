@@ -7,7 +7,7 @@ from subprocess import call
 from colorama import Style, Fore
 from multiprocessing import cpu_count
 from libmangenerator import Man
-from toomanyfiles import version
+from toomanyfiles import version_date
 import gettext
 
 # I had a lot of problems with UTF-8. LANG must be es_ES.UTF-8 to work
@@ -32,6 +32,7 @@ def makefile_doc():
 
 def makefile_install():
     shell("install -o root -d "+ prefixbin)
+    shell("install -o root -d "+ prefixlib)
     shell("install -o root -d "+ prefixshare)
     shell("install -o root -d "+ prefixlocale+"/es/LC_MESSAGES/")
     shell("install -o root -d "+ prefixman+"/man1")
@@ -45,9 +46,16 @@ def makefile_install():
 def makefile_uninstall():
     shell("rm " + prefixbin + "/toomanyfiles")
     shell("rm -Rf " + prefixshare)
+    shell("rm -Rf " + prefixlib)
     shell("rm " + mo_es)
     shell("rm " + man_en)
     shell("rm " + man_es)
+
+def doxygen():
+    os.chdir("doc")
+    shell("doxygen Doxyfile")
+    os.chdir("..")
+
 
 def mangenerator(language):
     """
@@ -74,9 +82,10 @@ def mangenerator(language):
 
 if __name__ == '__main__':
     start=datetime.datetime.now()
-    parser=argparse.ArgumentParser(prog='Makefile.py', description='Makefile in python', epilog=_("Developed by Mariano Muñoz"), formatter_class=argparse.RawTextHelpFormatter)
+    parser=argparse.ArgumentParser(prog='Makefile.py', description='Makefile in python', epilog=_("Developed by Mariano Muñoz 2018-{}".format(version_date().year)), formatter_class=argparse.RawTextHelpFormatter)
     group=parser.add_mutually_exclusive_group(required=True)
     group.add_argument('--doc', help=_("Generate docs and i18n"),action="store_true",default=False)
+    group.add_argument('--doxygen', help=_("Generate doxygen api documentation"), action="store_true", default=False)
     group.add_argument('--install', help=_("Directory to install app. / recomended"), action="store", metavar="PATH", default=None)
     group.add_argument('--uninstall', help=_("Uninstall. / recomended") ,action="store", metavar="PATH", default=None)
     group.add_argument('--dist_sources', help=_("Make a sources tar"), action="store_true",default=False)
@@ -93,6 +102,7 @@ if __name__ == '__main__':
         prefixshare=destdir+"/usr/share/toomanyfiles"
         prefixman=destdir+"/usr/share/man"
         prefixlocale=destdir+"/usr/share/locale"
+        prefixlib=destdir+"/usr/lib/toomanyfiles"
         mo_es=prefixlocale+"/es/LC_MESSAGES/toomanyfiles.mo"
         man_en=prefixman+"/man1/toomanyfiles.1"
         man_es=prefixman+"/es/man1/toomanyfiles.1"
@@ -106,6 +116,8 @@ if __name__ == '__main__':
         makefile_doc()
     elif args.dist_sources==True:
         makefile_dist_sources()
+    elif args.doxygen==True:
+        doxygen()
 
     print ("*** Process took {} using {} processors ***".format(datetime.datetime.now()-start , cpu_count()))
 
