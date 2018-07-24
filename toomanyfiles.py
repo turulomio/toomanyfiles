@@ -16,11 +16,23 @@ def version_date():
 gettext.install('toomanyfiles')
 
 
+class RemoveMode:
+    RemainFirstInMonth=1
+    RemainLastInMonth=2
+
+class FilenameStatus:
+    TooYoungToDelete=1
+    OverMaxFiles=2
+    Remain=3
+    Delete=4
+
+
 class FilenameWithDatetime:
     def __init__(self, filename,datetime):
         self.filename=filename
         self.datetime=datetime
-    
+        self.status=FilenameStatus.Delete
+
     def YYYYMM(self):
         return "{}{:02d}".format(self.datetime.year,self.datetime.month)
         
@@ -31,15 +43,15 @@ class FilenameWithDatetime:
 class FilenameWithDatetimeManager:
     def __init__(self, directory):
         self.arr=[]
+        self.mode=RemoveMode.RemainFirstInMonth
+        self.too_young_to_delete=30
+        self.max_files_to_store=60
         for filename in os.listdir(directory):
             filename= directory + os.sep + filename
             if os.path.isdir(filename)==False:
                 dt=datetime_in_filename(filename,args.pattern)
                 if dt!=None:
                     self.append(FilenameWithDatetime(filename,dt))
-
-
-
 
     def append(self,o):
         self.arr.append(o)
@@ -51,31 +63,53 @@ class FilenameWithDatetimeManager:
         for o in self.arr:
             print (o.filename, ">>>", o.datetime)
 
-    def list_remain(self):
+    def set_status(self):
         aux=[]#Strings contining YYYYMM
         r=[]
-        self.sort_by_datetime()
-        for o in self.arr:
-            if o.YYYYMM() not in aux:
-                aux.append(o.YYYYMM())
-                r.append(o)
-        return r
+        if self.mode==RemoveMode.RemainFirstInMonth:
+            self.sort_by_datetime() ## From older to younger
+
+            #Set status too_young
+            if self.length()>=self.too_young_to_delete:
+                for o in self.arr[self.length()-self.too_young_to_delete:self.length()]:
+                    o.status=FilenameStatus.TooYoungToDelete
+            else:
+                for o in self.arr:
+                    o.status=FilenameStatus.TooYoungToDelete
+
+            #Leaving first in month
+            if self.length()>=self.too_young_to_delete:
+                for o in self.arr[0:self.length()-self.too_young_to_delete]:
+                    if o.YYYYMM() not in aux:
+                        o.status=FilenameStatus.Remain
+                        r.append(o)
+                        aux.append(o.YYYYMM())
+
+            print(r)
+            #r is a list of remaiun filename, so I can change status bigger to_store
+            for i,o in enumerate(reversed(r)):
+                if i>self.max_files_to_store-self.too_young_to_delete:
+                    o.status=FilenameStatus.OverMaxFiles
 
     def sort_by_datetime(self):
         self.arr=sorted(self.arr, key=lambda a: a.datetime  ,  reverse=False)
 
+
+    #This function must be called after set status
     def pretend(self):
-        remain=self.list_remain()
         for o in self.arr:
-            if o in remain:
-                 print(colorama.Fore.GREEN + str(o))
-            else:
-                 print(colorama.Fore.RED + str(o))
+            if o.status==FilenameStatus.Remain:
+                 print(o.filename + " >>> " + colorama.Fore.GREEN + _("Remains") )
+            elif o.status==FilenameStatus.Delete:
+                 print(o.filename + " >>> " + colorama.Fore.RED + _("To delete"))
+            elif o.status==FilenameStatus.TooYoungToDelete:
+                 print(o.filename + " >>> " + colorama.Fore.GREEN + colorama.Style.BRIGHT + _("Too young to delete"))
+            elif o.status==FilenameStatus.OverMaxFiles:
+                 print(o.filename + " >>> " + colorama.Fore.RED + colorama.Style.BRIGHT +  _("Over max number of files"))
 
     def remove(self):
-        remain=self.list_remain()
         for o in self.arr:
-            if o not in remain:
+            if o.status in [FilenameStatus.OverMaxFiles, FilenameStatus.Delete]:
                  os.remove(o.filename)
 
 
@@ -112,24 +146,31 @@ if __name__ == '__main__':
     parser.add_argument('--pattern', help="Defines a python datetime pattern to search in current directory", action="store",default="%Y%m%d %H%M")
     parser.add_argument('--create_example', help="Create a example files in directory 'example'", action="store_true",default=False)
     parser.add_argument('--remove', help="Removes files permanently. If not selected shows information",action="store_true", default=False)
-    parser.add_argument('--mode', help="Remove mode.", choices=['RemainFirstInMonth','RemainLastInMonth'], default="RemainFirstInMonth")
-    parser.add_argument('--respect', help="Number of days to respect from today", default=30)
-    parser.add_argument('--number_respect', help="Maximum number of files to remain in directory", default=50)
+    parser.add_argument('--mode', help="Remove mode.", choices=['RemainFirstInMonth','RemainLastInMonth'], default='RemainFirstInMonth')
+    parser.add_argument('--too_young_to_delete', help="Number of days to respect from today", default=30)
+    parser.add_argument('--max_files_to_store', help="Maximum number of files to remain in directory", default=60)
     
     args=parser.parse_args()
 
+    colorama.init(autoreset=True)
+
     if args.create_example==True:
         makedirs("example")
-        for i in range (1000):
+        for i in range (10000):
             d=datetime.datetime.now()-datetime.timedelta(days=i)
             filename="example/{}{:02d}{:02d} {:02d}{:02d} Toomanyfiles example.txt".format(d.year,d.month,d.day,d.hour,d.minute)
             f=open(filename,"w")
             f.close()
-        print (_("Created 1000 files in the directory 'example'"))
+        print (_("Created 10000 files in the directory 'example'"))
         sys.exit(0)
 
 
     manager=FilenameWithDatetimeManager(os.getcwd())
+    manager.too_young_to_delete=int(args.too_young_to_delete)
+    manager.max_files_to_store=int(args.max_files_to_store)
+    manager.set_status()
     manager.pretend()
     if args.remove==True:
          manager.remove()
+
+    print("HOLA·")
