@@ -1,6 +1,6 @@
 from cx_Freeze import setup
-from recovermypartition import version
-name="recovermypartition"
+from toomanyfiles import version
+name="toomanyfiles"
 
 
 setup(name=name,

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: spoken-uptime\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-07-24 14:11+0200\n"
+"POT-Creation-Date: 2018-07-24 14:47+0200\n"
 "PO-Revision-Date: 2015-03-22 18:51+0100\n"
 "Last-Translator: root <turulomio@yahoo.es>\n"
 "Language-Team: Spanish\n"
@@ -25,7 +25,7 @@ msgid "Recover normal files and delete files from a partition."
 msgstr ""
 
 msgid "This app has the following parameters."
-msgstr ""
+msgstr "Esta applicación tiene los siguientes parámetros."
 
 msgid "Scans the net of the interface parameter and prints a list of the detected devices."
 msgstr ""
@@ -47,6 +47,18 @@ msgstr "Desarrollado por Mariano Muñoz"
 
 msgid "Generate docs and i18n"
 msgstr "Generar documentación e internacionalización"
+
+msgid "Directory to install app. / recomended"
+msgstr ""
+
+msgid "Uninstall. / recomended"
+msgstr ""
+
+msgid "Make a sources tar"
+msgstr "Crea un fichero tar con el código fuente"
+
+msgid "Python path"
+msgstr "Ruta a Python"
 
 msgid "Seach datetime patterns to delete innecesary files"
 msgstr "Busca patrones de fecha y hora para borrar ficheros innecesarios"

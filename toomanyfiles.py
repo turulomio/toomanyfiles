@@ -5,6 +5,8 @@ import datetime
 import gettext
 import os
 
+version="20180724"
+
 # I had a lot of problems with UTF-8. LANG must be es_ES.UTF-8 to work
 gettext.install('toomanyfiles')
 
