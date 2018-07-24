@@ -6,8 +6,7 @@ import gettext
 import os
 
 # I had a lot of problems with UTF-8. LANG must be es_ES.UTF-8 to work
-gettext.textdomain('toomanyfiles')
-_=gettext.gettext
+gettext.install('toomanyfiles')
 
 
 class FilenameWithDatetime:
@@ -21,10 +20,19 @@ class FilenameWithDatetime:
     def __repr__(self):
         return("FWD: {}".format(self.filename))
 
-
+## Only extracts files in current directory
 class FilenameWithDatetimeManager:
-    def __init__(self):
+    def __init__(self, directory):
         self.arr=[]
+        for filename in os.listdir(directory):
+            filename= directory + os.sep + filename
+            if os.path.isdir(filename)==False:
+                dt=datetime_in_filename(filename,args.pattern)
+                if dt!=None:
+                    self.append(FilenameWithDatetime(filename,dt))
+
+
+
 
     def append(self,o):
         self.arr.append(o)
@@ -61,7 +69,7 @@ class FilenameWithDatetimeManager:
         remain=self.list_remain()
         for o in self.arr:
             if o not in remain:
-                 os.remove(filename)
+                 os.remove(o.filename)
 
 
 def makedirs(dir):
@@ -92,12 +100,13 @@ def datetime_in_filename(filename,pattern):
 
 
 if __name__ == '__main__':
-    parser=argparse.ArgumentParser(prog='Makefile.py', description=_('TooManyFiles Makefile'), epilog=_("Developed by Mariano Muñoz"), formatter_class=argparse.RawTextHelpFormatter)
-    parser.add_argument('--pattern', help="Definies a python datetime pattern", action="store",default="%Y%m%d %H%M")
-    parser.add_argument('--create_example', help="Create a example of files", action="store_true",default=False)
-    parser.add_argument('--remove', help="Removes files permanently",action="store_true", default=False)
-    parser.add_argument('--mode', help="Remove mode.", choices=['RemainFirstInMonth','RemainLastInMonth'],default="RemainFirstInMonth")
-    parser.add_argument('--respect', help="Number of days to respect",default=30)
+    parser=argparse.ArgumentParser(prog='toomanyfiles', description=_('Seach datetime patterns to delete innecesary files'), epilog=_("Developed by Mariano Muñoz"), formatter_class=argparse.RawTextHelpFormatter)
+    parser.add_argument('--pattern', help="Defines a python datetime pattern to search in current directory", action="store",default="%Y%m%d %H%M")
+    parser.add_argument('--create_example', help="Create a example files in directory 'example'", action="store_true",default=False)
+    parser.add_argument('--remove', help="Removes files permanently. If not selected shows information",action="store_true", default=False)
+    parser.add_argument('--mode', help="Remove mode.", choices=['RemainFirstInMonth','RemainLastInMonth'], default="RemainFirstInMonth")
+    parser.add_argument('--respect', help="Number of days to respect from today", default=30)
+    parser.add_argument('--number_respect', help="Maximum number of files to remain in directory", default=50)
     
     args=parser.parse_args()
 
@@ -112,14 +121,7 @@ if __name__ == '__main__':
         sys.exit(0)
 
 
-    manager=FilenameWithDatetimeManager()
-    for subdir, dirs, files in os.walk(os.getcwd()):
-        for file in files:
-            filename= subdir + os.sep + file
-            dt=datetime_in_filename(filename,args.pattern)
-            if dt!=None:
-                manager.append(FilenameWithDatetime(filename,dt))
-
+    manager=FilenameWithDatetimeManager(os.getcwd())
     manager.pretend()
     if args.remove==True:
          manager.remove()

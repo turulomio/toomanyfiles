@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: spoken-uptime\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-07-24 10:02+0200\n"
+"POT-Creation-Date: 2018-07-24 14:11+0200\n"
 "PO-Revision-Date: 2015-03-22 18:51+0100\n"
 "Last-Translator: root <turulomio@yahoo.es>\n"
 "Language-Team: Spanish\n"
@@ -45,8 +45,17 @@ msgstr ""
 msgid "Developed by Mariano Muñoz"
 msgstr "Desarrollado por Mariano Muñoz"
 
-msgid "Wellcome"
-msgstr "Bienvenido"
+msgid "Generate docs and i18n"
+msgstr "Generar documentación e internacionalización"
+
+msgid "Seach datetime patterns to delete innecesary files"
+msgstr "Busca patrones de fecha y hora para borrar ficheros innecesarios"
+
+msgid "Created 1000 files in the directory 'example'"
+msgstr ""
+
+#~ msgid "Wellcome"
+#~ msgstr "Bienvenido"
 
 #~ msgid "{} days"
 #~ msgstr "{} días"

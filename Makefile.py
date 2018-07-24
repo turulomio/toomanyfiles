@@ -11,8 +11,7 @@ from PyQt5.QtCore import QCoreApplication, QTranslator
 import gettext
 
 # I had a lot of problems with UTF-8. LANG must be es_ES.UTF-8 to work
-gettext.textdomain('toomanyfiles')
-_=gettext.gettext
+gettext.install('toomanyfiles', 'locale/po')
 
 
 def shell(*args):
@@ -26,9 +25,9 @@ def makefile_doc():
     #es
     shell("xgettext -L Python --no-wrap --no-location --from-code='UTF-8' -o po/toomanyfiles.pot *.py")
     shell("msgmerge -N --no-wrap -U po/es.po po/toomanyfiles.pot")
-    shell("msgfmt -cv -o po/es.mo po/es.po")
+    shell("msgfmt -cv -o po/locale/es/LC_MESSAGES/toomanyfiles.mo po/es.po")
 
-    for language in ["en", "es"]:
+    for language in ["C", "es"]:
         mangenerator(language)
 
 def makefile_install():
@@ -39,7 +38,7 @@ def makefile_install():
     shell("install -o root -d "+ prefixman+"/es/man1")
 
     shell("install -m 755 -o root toomanyfiles.py "+ prefixbin+"/toomanyfiles")
-    shell("install -m 644 -o root po/es.mo " + mo_es)
+    shell("install -m 644 -o root po/locale/es/LC_MESSAGES/toomanyfiles.mo " + mo_es)
     shell("install -m 644 -o root po/toomanyfiles.en.1 "+ prefixman+"/man1/toomanyfiles.1")
     shell("install -m 644 -o root po/toomanyfiles.es.1 "+ prefixman+"/es/man1/toomanyfiles.1")
 
@@ -54,9 +53,13 @@ def mangenerator(language):
     """
         Create man pages for parameter language
     """
-    import locale
-    if language=="es":
-        locale.setlocale(locale.LC_ALL, 'es_ES.UTF-8')
+    if language=="C":
+        import locale 
+        locale.setlocale(locale.LC_ALL,'C')
+        language="en"
+    else:
+        lang1=gettext.translation('toomanyfiles', 'po/locale', languages=[language])
+        lang1.install()
     print("DESCRIPTION in {} is {}".format(language, _("DESCRIPTION")))
 
     man=Man("po/toomanyfiles.{}".format(language))
@@ -81,7 +84,7 @@ if __name__ == '__main__':
     start=datetime.datetime.now()
     parser=argparse.ArgumentParser(prog='Makefile.py', description='Makefile in python', epilog=_("Developed by Mariano Muñoz"), formatter_class=argparse.RawTextHelpFormatter)
     group=parser.add_mutually_exclusive_group(required=True)
-    group.add_argument('--doc', help="Generate docs and i18n",action="store_true",default=False)
+    group.add_argument('--doc', help=_("Generate docs and i18n"),action="store_true",default=False)
     group.add_argument('--install', help="Directory to install app. / recomended",action="store", metavar="PATH", default=None)
     group.add_argument('--uninstall', help="Uninstall. / recomended",action="store", metavar="PATH", default=None)
     group.add_argument('--dist_sources', help="Make a sources tar", action="store_true",default=False)
