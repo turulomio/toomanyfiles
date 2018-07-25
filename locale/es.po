@@ -6,9 +6,9 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: spoken-uptime\n"
+"Project-Id-Version: TooManyFiles\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-07-25 06:32+0200\n"
+"POT-Creation-Date: 2018-07-25 11:11+0200\n"
 "PO-Revision-Date: 2015-03-22 18:51+0100\n"
 "Last-Translator: root <turulomio@yahoo.es>\n"
 "Language-Team: Spanish\n"
@@ -40,16 +40,22 @@ msgid "Generate doxygen api documentation"
 msgstr "Generar la documentación de la api con Doxygen"
 
 msgid "Directory to install app. / recomended"
-msgstr ""
+msgstr "Directorio en el el que instalar la applicación. Se recomienda en /"
 
 msgid "Uninstall. / recomended"
-msgstr ""
+msgstr "Desinstalar. Se recomienda en /"
 
 msgid "Make a sources tar"
 msgstr "Crea un fichero tar con el código fuente"
 
 msgid "Python path"
 msgstr "Ruta a Python"
+
+msgid "Not developed yet"
+msgstr "No desarrollado todavía"
+
+msgid "TooManyFiles was executed at {}"
+msgstr "TooManyFiles fue ejecutado a las {}"
 
 msgid "Remains"
 msgstr "Permanece"
@@ -63,32 +69,59 @@ msgstr "Muy joven para borrar"
 msgid "Over max number of files"
 msgstr "Supera el número de ficheros a guardar"
 
+msgid "R"
+msgstr ""
+
+msgid "D"
+msgstr ""
+
+msgid "Y"
+msgstr ""
+
+msgid "O"
+msgstr ""
+
+msgid "File results:"
+msgstr "Resultado de los ficheros:"
+
+msgid "Over max files"
+msgstr ""
+
+msgid "Created {} files in the directory 'example'"
+msgstr "Creados {} ficheros en el directorio 'example'"
+
 msgid "Seach datetime patterns to delete innecesary files"
 msgstr "Busca patrones de fecha y hora para borrar ficheros innecesarios"
 
-msgid "Defines a python datetime pattern to search in current directory"
-msgstr ""
-
 msgid "Create a example files in directory 'example'"
+msgstr "Crea ficheros de ejemplo en el directorio 'example'"
+
+msgid "Removes files permanently"
+msgstr "Borra los ficheros permanentemente"
+
+msgid "Makes a simulation and doesn't remove files"
 msgstr ""
 
-msgid "Removes files permanently. If not selected shows information"
-msgstr ""
+msgid "Defines a python datetime pattern to search in current directory"
+msgstr "Define un patrón de fecha y hora de python para buscar en el directorio actual"
 
-msgid "Appends information in currrent directory log"
-msgstr ""
+msgid "Disable log generation"
+msgstr "Desabilita la generación del registro"
 
 msgid "Remove mode"
-msgstr ""
+msgstr "Modo de borrado"
 
 msgid "Number of days to respect from today"
-msgstr ""
+msgstr "Número de días a respetar desde hoy"
 
 msgid "Maximum number of files to remain in directory"
 msgstr ""
 
-msgid "Created 10000 files in the directory 'example'"
-msgstr ""
+msgid "Error passing parameters"
+msgstr "Error al pasar los parámetros"
+
+#~ msgid "Removes files permanently. If not selected shows information"
+#~ msgstr "Borra los ficheros permanentemente. Si no se selecciona muestra la información"
 
 #~ msgid "Developed by Mariano Muñoz"
 #~ msgstr "Desarrollado por Mariano Muñoz"
