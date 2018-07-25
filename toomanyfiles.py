@@ -66,7 +66,7 @@ class FilenameWithDatetimeManager:
         self.arr=[]
         self.mode=RemoveMode.RemainFirstInMonth
         self.__too_young_to_delete=30
-        self.__max_files_to_store=60
+        self.__max_files_to_store=100000000# Infinity
         self.__logging=True
         self.__remove_mode=RemoveMode.RemainFirstInMonth
         self.pattern=pattern
@@ -292,7 +292,7 @@ if __name__ == '__main__':
     parser.add_argument('--disable_log', help=_("Disable log generation"),action="store_true", default=False)
     parser.add_argument('--remove_mode', help=_("Remove mode"), choices=['RemainFirstInMonth','RemainLastInMonth'], default='RemainFirstInMonth')
     parser.add_argument('--too_young_to_delete', help=_("Number of days to respect from today"), default=30)
-    parser.add_argument('--max_files_to_store', help=_("Maximum number of files to remain in directory"), default=60)
+    parser.add_argument('--max_files_to_store', help=_("Maximum number of files to remain in directory"), default=100000000)
     args=parser.parse_args()
     
     colorama.init(autoreset=True)
