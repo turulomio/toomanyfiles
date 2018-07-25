@@ -46,6 +46,16 @@ class FilenameWithDatetime:
         
     def __repr__(self):
         return("FWD: {}".format(self.filename))
+        
+        
+    ## Function that returns the filename without pattern
+    def filename_without_pattern(self, pattern):
+        dt=datetime_in_filename(self.filename, pattern)
+        if dt!=None:
+            return  self.filename.replace(dt.strftime(pattern), "")
+        return None
+            
+        
 
 ## Only extracts files in current directory
 ## This object has two itineraries 
@@ -59,6 +69,7 @@ class FilenameWithDatetimeManager:
         self.__max_files_to_store=60
         self.__logging=True
         self.__remove_mode=RemoveMode.RemainFirstInMonth
+        self.pattern=pattern
         for filename in os.listdir(directory):
             filename= directory + os.sep + filename
             if os.path.isdir(filename)==False:
@@ -86,14 +97,14 @@ class FilenameWithDatetimeManager:
     def remove_mode(self,value):
         self.__remove_mode=value
         
+    ## @property toomanyfiles::FilenameWithDatetimeManager::too_young_to_delete
     ## Property that returns the number of more modern files that are not going to be deleted
-    ## @return Int
     @property
     def too_young_to_delete(self):
         return self.__too_young_to_delete
         
     ## Property that sets the number of more modern files that are not going to be deleted
-    ## @param Int
+    ## @param value Integer
     @too_young_to_delete.setter
     def too_young_to_delete(self, value):
         self.__too_young_to_delete=value
@@ -117,6 +128,13 @@ class FilenameWithDatetimeManager:
         return len(self.arr)
 
     def __set_filename_status(self):
+        # =========== SECURITY
+        if self.__several_root_filenames()==True:
+            print(_("There are files with datetime patterns with different roots"))
+            print(_("Exiting..."))
+            sys.exit(3)        
+        
+        #========== CODE
         aux=[]#Strings contining YYYYMM
         r=[]
         if self.mode==RemoveMode.RemainFirstInMonth:
@@ -149,6 +167,17 @@ class FilenameWithDatetimeManager:
 
     def __sort_by_datetime(self):
         self.arr=sorted(self.arr, key=lambda a: a.datetime  ,  reverse=False)
+        
+    ## Function that returns a boolean if there are differente filenames withourt pattern in the array
+    def __several_root_filenames(self):
+        aux=[]
+        for o in self. arr:
+            root=o.filename_without_pattern(self.pattern)
+            if root not in aux:
+                aux.append(root)
+        if len(aux)>1:
+            return True
+        return False
 
     #This function must be called after set status
     def __write_log(self):
@@ -217,6 +246,8 @@ def makedirs(dir):
        os.mkdir(dir)
     except:
        pass
+
+
 
 ## Function that retturn the length of the string
 def len_pattern(pattern):
