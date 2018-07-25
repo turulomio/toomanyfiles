@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: spoken-uptime\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-07-24 14:55+0200\n"
+"POT-Creation-Date: 2018-07-25 06:32+0200\n"
 "PO-Revision-Date: 2015-03-22 18:51+0100\n"
 "Last-Translator: root <turulomio@yahoo.es>\n"
 "Language-Team: Spanish\n"
@@ -30,11 +30,14 @@ msgstr "Esta applicación tiene los siguientes parámetros."
 msgid "Shows all known devices in database from console."
 msgstr ""
 
-msgid "Developed by Mariano Muñoz"
-msgstr "Desarrollado por Mariano Muñoz"
+msgid "Developed by Mariano Muñoz 2018-{}"
+msgstr "Desarrollado por Mariano Muñoz 2018-{}"
 
 msgid "Generate docs and i18n"
 msgstr "Generar documentación e internacionalización"
+
+msgid "Generate doxygen api documentation"
+msgstr "Generar la documentación de la api con Doxygen"
 
 msgid "Directory to install app. / recomended"
 msgstr ""
@@ -48,11 +51,47 @@ msgstr "Crea un fichero tar con el código fuente"
 msgid "Python path"
 msgstr "Ruta a Python"
 
+msgid "Remains"
+msgstr "Permanece"
+
+msgid "Delete"
+msgstr "Borrado"
+
+msgid "Too young to delete"
+msgstr "Muy joven para borrar"
+
+msgid "Over max number of files"
+msgstr "Supera el número de ficheros a guardar"
+
 msgid "Seach datetime patterns to delete innecesary files"
 msgstr "Busca patrones de fecha y hora para borrar ficheros innecesarios"
 
-msgid "Created 1000 files in the directory 'example'"
+msgid "Defines a python datetime pattern to search in current directory"
 msgstr ""
+
+msgid "Create a example files in directory 'example'"
+msgstr ""
+
+msgid "Removes files permanently. If not selected shows information"
+msgstr ""
+
+msgid "Appends information in currrent directory log"
+msgstr ""
+
+msgid "Remove mode"
+msgstr ""
+
+msgid "Number of days to respect from today"
+msgstr ""
+
+msgid "Maximum number of files to remain in directory"
+msgstr ""
+
+msgid "Created 10000 files in the directory 'example'"
+msgstr ""
+
+#~ msgid "Developed by Mariano Muñoz"
+#~ msgstr "Desarrollado por Mariano Muñoz"
 
 #~ msgid "Wellcome"
 #~ msgstr "Bienvenido"

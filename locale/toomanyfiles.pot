@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-07-24 14:55+0200\n"
+"POT-Creation-Date: 2018-07-25 06:34+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -29,10 +29,13 @@ msgstr ""
 msgid "Shows all known devices in database from console."
 msgstr ""
 
-msgid "Developed by Mariano Muñoz"
+msgid "Developed by Mariano Muñoz 2018-{}"
 msgstr ""
 
 msgid "Generate docs and i18n"
+msgstr ""
+
+msgid "Generate doxygen api documentation"
 msgstr ""
 
 msgid "Directory to install app. / recomended"
@@ -47,8 +50,41 @@ msgstr ""
 msgid "Python path"
 msgstr ""
 
+msgid "Remains"
+msgstr ""
+
+msgid "Delete"
+msgstr ""
+
+msgid "Too young to delete"
+msgstr ""
+
+msgid "Over max number of files"
+msgstr ""
+
 msgid "Seach datetime patterns to delete innecesary files"
 msgstr ""
 
-msgid "Created 1000 files in the directory 'example'"
+msgid "Defines a python datetime pattern to search in current directory"
+msgstr ""
+
+msgid "Create a example files in directory 'example'"
+msgstr ""
+
+msgid "Removes files permanently. If not selected shows information"
+msgstr ""
+
+msgid "Appends information in currrent directory log"
+msgstr ""
+
+msgid "Remove mode"
+msgstr ""
+
+msgid "Number of days to respect from today"
+msgstr ""
+
+msgid "Maximum number of files to remain in directory"
+msgstr ""
+
+msgid "Created 10000 files in the directory 'example'"
 msgstr ""
