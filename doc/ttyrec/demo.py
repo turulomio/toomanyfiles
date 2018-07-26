@@ -36,7 +36,7 @@ def command_pipe(c1,c2):
     time.sleep(6)
 
 comment("# This is a tutorial of toomanyfiles")
-comment("# We are going to create an example directory to learn to use it")
+comment("# We are going to create an example directory to learn how to use it")
 command("toomanyfiles --create_example")
 
 comment("# We are going to see the 10 last files of this directory")
