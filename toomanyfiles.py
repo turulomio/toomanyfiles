@@ -6,7 +6,7 @@ import gettext
 import os
 import sys
 
-version="20180724"
+version="20180726"
 
 def version_date():
     versio=version.replace("+","")
