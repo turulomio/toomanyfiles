@@ -177,7 +177,7 @@ class FilenameWithDatetimeManager:
 
     #This function must be called after set status
     def __write_log(self):
-        s=_("TooManyFiles was executed at {}".format(datetime.datetime.now())) + "\n"
+        self.__header_string() + "\n"
         for o in self.arr:
             if o.status==FileStatus.Remain:
                  s=s+"{} >>> {}\n".format(o.filename,  _("Remains"))
@@ -201,7 +201,7 @@ class FilenameWithDatetimeManager:
 
     #This function must be called after set status
     def __console_output(self):
-        print("TooManyFiles was executed at {}".format(datetime.datetime.now()))
+        self.__header_string()
         s=""
         for o in self.arr:
             if o.status==FileStatus.Remain:
@@ -218,6 +218,13 @@ class FilenameWithDatetimeManager:
         print ("  * {} [{}]: {}".format(_("Delete"), colorama.Fore.RED + _("D") + colorama.Style.RESET_ALL, self.__number_files_with_status(FileStatus.Delete)))
         print ("  * {} [{}]: {}".format(_("Too young to delete"), colorama.Fore.MAGENTA + _("Y") + colorama.Style.RESET_ALL, self.__number_files_with_status(FileStatus.TooYoungToDelete)))
         print ("  * {} [{}]: {}".format(_("Over max files"), colorama.Fore.YELLOW + _("O") + colorama.Style.RESET_ALL, self.__number_files_with_status(FileStatus.OverMaxFiles)))
+
+
+    ## Function that generates the header used in console output and in log
+    ## @return string
+    def __header_string(self):
+        print(_("TooManyFiles was executed at {}".format(datetime.datetime.now())))
+
 
     ## Shows information in console
     def pretend(self):
@@ -275,22 +282,23 @@ def create_example():
     print (_("Created {} files in the directory 'example'".format(number)))
 
 
+parser=argparse.ArgumentParser(prog='toomanyfiles', description=_('Seach datetime patterns to delete innecesary files'), epilog=_("Developed by Mariano Muñoz 2018-{}".format(version_date().year)), formatter_class=argparse.RawTextHelpFormatter)
+parser.add_argument('--version', action='version', version=version)
+
+group= parser.add_mutually_exclusive_group(required=True)
+group.add_argument('--create_example', help=_("Create a example files in directory 'example'"), action="store_true",default=False)
+group.add_argument('--remove', help=_("Removes files permanently"),action="store_true", default=False)
+group.add_argument('--pretend', help=_("Makes a simulation and doesn't remove files"),action="store_true", default=False)
+
+modifiers=parser.add_argument_group(title=_("Modifiers to use with --remove and --pretend"), description=None)
+modifiers.add_argument('--pattern', help=_("Defines a python datetime pattern to search in current directory. The default pattern is '%(default)s'."), action="store",default="%Y%m%d %H%M")
+modifiers.add_argument('--disable_log', help=_("Disable log generation. The default value is '%(default)s'."),action="store_true", default=False)
+modifiers.add_argument('--remove_mode', help=_("Remove mode. The default value is '%(default)s'."), choices=['RemainFirstInMonth','RemainLastInMonth'], default='RemainFirstInMonth')
+modifiers.add_argument('--too_young_to_delete', help=_("Number of days to respect from today. The default value is '%(default)s'."), default=30)
+modifiers.add_argument('--max_files_to_store', help=_("Maximum number of files to remain in directory. The default value is '%(default)s'."), default=100000000)
 if __name__ == '__main__':
-    parser=argparse.ArgumentParser(prog='toomanyfiles', description=_('Seach datetime patterns to delete innecesary files'), epilog=_("Developed by Mariano Muñoz 2018-{}".format(version_date().year)), formatter_class=argparse.RawTextHelpFormatter)
-    parser.add_argument('--version', action='version', version=version)
-    
-    group= parser.add_mutually_exclusive_group(required=True)
-    group.add_argument('--create_example', help=_("Create a example files in directory 'example'"), action="store_true",default=False)
-    group.add_argument('--remove', help=_("Removes files permanently"),action="store_true", default=False)
-    group.add_argument('--pretend', help=_("Makes a simulation and doesn't remove files"),action="store_true", default=False)
-    modifiers=parser.add_argument_group(title=_("Modifiers to use with --remove and --pretend"), description=None)
-    modifiers.add_argument('--pattern', help=_("Defines a python datetime pattern to search in current directory. The default pattern is '%(default)s'."), action="store",default="%Y%m%d %H%M")
-    modifiers.add_argument('--disable_log', help=_("Disable log generation. The default value is '%(default)s'."),action="store_true", default=False)
-    modifiers.add_argument('--remove_mode', help=_("Remove mode. The default value is '%(default)s'."), choices=['RemainFirstInMonth','RemainLastInMonth'], default='RemainFirstInMonth')
-    modifiers.add_argument('--too_young_to_delete', help=_("Number of days to respect from today. The default value is '%(default)s'."), default=30)
-    modifiers.add_argument('--max_files_to_store', help=_("Maximum number of files to remain in directory. The default value is '%(default)s'."), default=100000000)
     args=parser.parse_args()
-    
+
     colorama.init(autoreset=True)
 
     if args.create_example==True:
@@ -308,9 +316,10 @@ if __name__ == '__main__':
         print(_("Error passing parameters"))
         parser.print_help()
         sys.exit(1)
-    
+
     if args.remove==True:
         manager.remove()
-    
+
     if args.pretend==True:
         manager.pretend()
+11

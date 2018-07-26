@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-07-25 11:13+0200\n"
+"POT-Creation-Date: 2018-07-26 07:38+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -20,13 +20,25 @@ msgstr ""
 msgid "DESCRIPTION"
 msgstr ""
 
-msgid "Recover normal files and delete files from a partition."
+msgid "Remove innecesary files with a date and time pattern in the current subdirectory."
 msgstr ""
 
-msgid "This app has the following parameters."
+msgid "This app has the following mandatory parameters:"
 msgstr ""
 
-msgid "Shows all known devices in database from console."
+msgid "Create a directory called 'example' in the current working directory and fill it with example files with datetime pattern."
+msgstr ""
+
+msgid "Makes a simulation selecting which files will be deleted when --remove parameter is used."
+msgstr ""
+
+msgid "Deletes files. Be careful, This functión can't be unmade. Use --pretend before."
+msgstr ""
+
+msgid "With --pretend and --remove you can use this parameters:"
+msgstr ""
+
+msgid "Sets the date and time pattern to search in the current directory filenames. It users python strftime function format."
 msgstr ""
 
 msgid "Developed by Mariano Muñoz 2018-{}"
@@ -50,10 +62,13 @@ msgstr ""
 msgid "Python path"
 msgstr ""
 
-msgid "Not developed yet"
+msgid "There are files with datetime patterns with different roots"
 msgstr ""
 
-msgid "TooManyFiles was executed at {}"
+msgid "Exiting..."
+msgstr ""
+
+msgid "Not developed yet"
 msgstr ""
 
 msgid "Remains"
@@ -86,6 +101,9 @@ msgstr ""
 msgid "Over max files"
 msgstr ""
 
+msgid "TooManyFiles was executed at {}"
+msgstr ""
+
 msgid "Created {} files in the directory 'example'"
 msgstr ""
 
@@ -101,19 +119,27 @@ msgstr ""
 msgid "Makes a simulation and doesn't remove files"
 msgstr ""
 
-msgid "Defines a python datetime pattern to search in current directory"
+msgid "Modifiers to use with --remove and --pretend"
 msgstr ""
 
-msgid "Disable log generation"
+#, python-format
+msgid "Defines a python datetime pattern to search in current directory. The default pattern is '%(default)s'."
 msgstr ""
 
-msgid "Remove mode"
+#, python-format
+msgid "Disable log generation. The default value is '%(default)s'."
 msgstr ""
 
-msgid "Number of days to respect from today"
+#, python-format
+msgid "Remove mode. The default value is '%(default)s'."
 msgstr ""
 
-msgid "Maximum number of files to remain in directory"
+#, python-format
+msgid "Number of days to respect from today. The default value is '%(default)s'."
+msgstr ""
+
+#, python-format
+msgid "Maximum number of files to remain in directory. The default value is '%(default)s'."
 msgstr ""
 
 msgid "Error passing parameters"
