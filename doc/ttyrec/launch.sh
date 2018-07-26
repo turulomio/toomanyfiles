@@ -1,0 +1,1 @@
+ttyrec -e 'bash demo.sh'

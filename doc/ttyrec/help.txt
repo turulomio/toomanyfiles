@@ -1,0 +1,29 @@
+# This is a tutorial of toomanyfiles
+# We are going to create an example subdirectory to learn it's use
+toomanyfiles --create_example
+
+# We are going to see the 10 last files, for example
+ls -la example| tail -n 10
+
+# We can see files with the temporal pattern YYYYmmdd HHMM
+# We use to find this files in automatic backups, logs, ...
+# Our hard disk it's almost full, so we want to keep some of them
+# We want to keep the last 5 files because they are too recent
+# We want to keep the first file of each month from the rest of the files
+# until a max number the files of 15.
+
+# We enter in the example directory
+cd example
+
+# We make a simulation
+toomanyfiles --too_young_to_delete 5 --max_files_to_store 15 --pattern "%Y%m%d %H%M" --pretend
+
+#We can analyze the result with the output
+# We ike the result, so we can delete the files
+
+toomanyfiles --too_young_to_delete 5 --max_files_to_store 15 --pattern "%Y%m%d %H%M" --remove
+
+# We list the files remaining
+ls -la example
+
+# That's all
