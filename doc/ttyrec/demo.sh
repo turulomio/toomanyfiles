@@ -1,20 +1,23 @@
-SLEEP_ECHO=3
-SLEEP_COMMAND=5
-
+SLEEP_ECHO=2
+SLEEP_COMMAND=4
+SLEEP_END=20
 echo "# This is a tutorial of toomanyfiles"
 sleep $SLEEP_ECHO
 echo "# We are going to create an example subdirectory to learn it's use"
 sleep $SLEEP_ECHO
+echo
 echo "toomanyfiles --create_example"
 toomanyfiles --create_example
 sleep $SLEEP_COMMAND
 
+echo 
 echo "# We are going to see the 10 last files, for example"
 sleep $SLEEP_ECHO
 echo "ls -la example| tail -n 10"
 ls -la example| tail -n 10
 sleep $SLEEP_COMMAND
 
+echo
 echo "# We can see files with the temporal pattern YYYYmmdd HHMM"
 sleep $SLEEP_ECHO
 echo "# We use to find this files in automatic backups, logs, ..."
@@ -55,3 +58,5 @@ sleep $SLEEP_COMMAND
 
 echo "# That's all"
 sleep $SLEEP_ECHO
+
+sleep $SLEEP_END
