@@ -177,7 +177,7 @@ class FilenameWithDatetimeManager:
 
     #This function must be called after set status
     def __write_log(self):
-        self.__header_string() + "\n"
+        s=self.__header_string() + "\n"
         for o in self.arr:
             if o.status==FileStatus.Remain:
                  s=s+"{} >>> {}\n".format(o.filename,  _("Remains"))
@@ -201,8 +201,7 @@ class FilenameWithDatetimeManager:
 
     #This function must be called after set status
     def __console_output(self):
-        self.__header_string()
-        s=""
+        s=self.__header_string() +"\n"
         for o in self.arr:
             if o.status==FileStatus.Remain:
                  s=s+"{}".format( colorama.Fore.GREEN + _("R") + colorama.Fore.RESET)
@@ -223,7 +222,7 @@ class FilenameWithDatetimeManager:
     ## Function that generates the header used in console output and in log
     ## @return string
     def __header_string(self):
-        print(_("TooManyFiles was executed at {}".format(datetime.datetime.now())))
+        return _("TooManyFiles was executed at {}".format(datetime.datetime.now()))
 
 
     ## Shows information in console
