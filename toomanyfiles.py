@@ -20,7 +20,7 @@ _=gettext.gettext
 class RemoveMode:
     RemainFirstInMonth=1
     RemainLastInMonth=2
-    
+
     @staticmethod
     def from_string(s):
         if s=="RemainFirstInMonth":
@@ -46,16 +46,13 @@ class FilenameWithDatetime:
         
     def __repr__(self):
         return("FWD: {}".format(self.filename))
-        
-        
+
     ## Function that returns the filename without pattern
     def filename_without_pattern(self, pattern):
         dt=datetime_in_filename(self.filename, pattern)
         if dt!=None:
             return  self.filename.replace(dt.strftime(pattern), "")
         return None
-            
-        
 
 ## Only extracts files in current directory
 ## This object has two itineraries 
@@ -64,7 +61,6 @@ class FilenameWithDatetime:
 class FilenameWithDatetimeManager:
     def __init__(self, directory,  pattern):
         self.arr=[]
-        self.mode=RemoveMode.RemainFirstInMonth
         self.__too_young_to_delete=30
         self.__max_files_to_store=100000000# Infinity
         self.__logging=True
@@ -96,8 +92,7 @@ class FilenameWithDatetimeManager:
     @remove_mode.setter
     def remove_mode(self,value):
         self.__remove_mode=value
-        
-    ## @property toomanyfiles::FilenameWithDatetimeManager::too_young_to_delete
+
     ## Property that returns the number of more modern files that are not going to be deleted
     @property
     def too_young_to_delete(self):
@@ -108,7 +103,7 @@ class FilenameWithDatetimeManager:
     @too_young_to_delete.setter
     def too_young_to_delete(self, value):
         self.__too_young_to_delete=value
-    
+
     ## Property that returns the max number of selected files  that are going to be remained. 
     ## @return Int
     @property
@@ -127,6 +122,7 @@ class FilenameWithDatetimeManager:
     def length(self):
         return len(self.arr)
 
+    ## Changes the status of the FilenameWithDatetime objects in the array
     def __set_filename_status(self):
         # =========== SECURITY
         if self.__several_root_filenames()==True:
@@ -137,7 +133,7 @@ class FilenameWithDatetimeManager:
         #========== CODE
         aux=[]#Strings contining YYYYMM
         r=[]
-        if self.mode==RemoveMode.RemainFirstInMonth:
+        if self.remove_mode==RemoveMode.RemainFirstInMonth:
             self.__sort_by_datetime() ## From older to younger
 
             #Set status too_young
@@ -160,8 +156,8 @@ class FilenameWithDatetimeManager:
             for i,o in enumerate(reversed(r)):
                 if i>=self.max_files_to_store-self.too_young_to_delete:
                     o.status=FileStatus.OverMaxFiles
-                    
-        elif self.mode==RemoveMode.RemainLastInMonth:
+
+        elif self.remove_mode==RemoveMode.RemainLastInMonth:
             print(_("Not developed yet"))
             sys.exit(2)
 
@@ -287,12 +283,12 @@ if __name__ == '__main__':
     group.add_argument('--create_example', help=_("Create a example files in directory 'example'"), action="store_true",default=False)
     group.add_argument('--remove', help=_("Removes files permanently"),action="store_true", default=False)
     group.add_argument('--pretend', help=_("Makes a simulation and doesn't remove files"),action="store_true", default=False)
-    
-    parser.add_argument('--pattern', help=_("Defines a python datetime pattern to search in current directory"), action="store",default="%Y%m%d %H%M")
-    parser.add_argument('--disable_log', help=_("Disable log generation"),action="store_true", default=False)
-    parser.add_argument('--remove_mode', help=_("Remove mode"), choices=['RemainFirstInMonth','RemainLastInMonth'], default='RemainFirstInMonth')
-    parser.add_argument('--too_young_to_delete', help=_("Number of days to respect from today"), default=30)
-    parser.add_argument('--max_files_to_store', help=_("Maximum number of files to remain in directory"), default=100000000)
+    modifiers=parser.add_argument_group(title=_("Modifiers to use with --remove and --pretend"), description=None)
+    modifiers.add_argument('--pattern', help=_("Defines a python datetime pattern to search in current directory. The default pattern is '%(default)s'."), action="store",default="%Y%m%d %H%M")
+    modifiers.add_argument('--disable_log', help=_("Disable log generation. The default value is '%(default)s'."),action="store_true", default=False)
+    modifiers.add_argument('--remove_mode', help=_("Remove mode. The default value is '%(default)s'."), choices=['RemainFirstInMonth','RemainLastInMonth'], default='RemainFirstInMonth')
+    modifiers.add_argument('--too_young_to_delete', help=_("Number of days to respect from today. The default value is '%(default)s'."), default=30)
+    modifiers.add_argument('--max_files_to_store', help=_("Maximum number of files to remain in directory. The default value is '%(default)s'."), default=100000000)
     args=parser.parse_args()
     
     colorama.init(autoreset=True)
