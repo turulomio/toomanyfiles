@@ -1,1 +1,1 @@
-ttyrec -e 'bash demo.sh'
+xterm -hold -e "ttyrec -e 'bash demo.sh'; echo MAKING_GIF;ttygif ttyrecord"
