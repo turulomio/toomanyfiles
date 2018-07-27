@@ -37,6 +37,7 @@ def makefile_install():
     shell("install -o root -d "+ prefixman+"/es/man1")
 
     shell("install -m 755 -o root toomanyfiles.py "+ prefixbin+"/toomanyfiles")
+    shell("install -m 644 -o root doc/ttyrec/tty.gif " +  prefixshare + "/demo.gif")
     shell("install -m 644 -o root locale/es/LC_MESSAGES/toomanyfiles.mo " + mo_es)
     shell("install -m 644 -o root locale/toomanyfiles.en.1 "+ prefixman+"/man1/toomanyfiles.1")
     shell("install -m 644 -o root locale/toomanyfiles.es.1 "+ prefixman+"/es/man1/toomanyfiles.1")
