@@ -6,7 +6,7 @@ import gettext
 import os
 import sys
 
-version="20180726"
+version="20180727"
 
 def version_date():
     versio=version.replace("+","")
@@ -14,8 +14,6 @@ def version_date():
 
 # I had a lot of problems with UTF-8. LANG must be es_ES.UTF-8 to work. Nuevo sistema2
 gettext.install('toomanyfiles')
-_=gettext.gettext
-
 
 class RemoveMode:
     RemainFirstInMonth=1
@@ -223,8 +221,8 @@ class FilenameWithDatetimeManager:
             print (_("File status pretending:"))
             result=_("So, {} files will be deleted and {} will be kept when you use --remove parameter.".format(colorama.Fore.YELLOW + str(n_delete+n_over) + colorama.Style.RESET_ALL, colorama.Fore.YELLOW + str(n_remain+n_young) +colorama.Style.RESET_ALL))
         elif self.__pretending==0:
-            print (_("File results removing:"))
-            result=_("So, {} files will have beeen deleted and {} files have been kept.".format(colorama.Fore.YELLOW + str(n_delete+n_over) + colorama.Style.RESET_ALL, colorama.Fore.YELLOW + str(n_remain+n_young) +colorama.Style.RESET_ALL))
+            print (_("File status removing:"))
+            result=_("So, {} files have been deleted and {} files have been kept.".format(colorama.Fore.YELLOW + str(n_delete+n_over) + colorama.Style.RESET_ALL, colorama.Fore.YELLOW + str(n_remain+n_young) +colorama.Style.RESET_ALL))
         print ("  * {} [{}]: {}".format(_("Remains"), colorama.Fore.GREEN + _("R") + colorama.Style.RESET_ALL, n_remain))
         print ("  * {} [{}]: {}".format(_("Delete"), colorama.Fore.RED + _("D") + colorama.Style.RESET_ALL, n_delete))
         print ("  * {} [{}]: {}".format(_("Too young to delete"), colorama.Fore.MAGENTA + _("Y") + colorama.Style.RESET_ALL, n_young))

@@ -1,8 +1,12 @@
 Nueva release
 =============
-1) Cambiar la versión en recovermypartition.py
+1) Cambiar la versión en toomanyfiles.py
 2) Modificar fichero CHANGELOG
-3) python3 Makefile --doc, varias veces
+3) python3 Makefile --doc. 
+ ) lokalice es.po
+ ) python3 Makefile --doc
+4) Si cambia la salida del programa, acutalizar el gif con bash launch.sh. 
+ ) Actualizar el gif en myweb
 5) python3 Makefile --dist_sources y subirlo a sourceforge
 6) Subir versión al subversion
 6) Crear un nuevo ebuild con la nueva versión

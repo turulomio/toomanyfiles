@@ -1,0 +1,11 @@
+20180727
+========
+- Stable version
+
+20180726
+========
+- First version, full functional.
+
+20180724
+========
+- Creating infrastructure

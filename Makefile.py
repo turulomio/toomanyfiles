@@ -2,9 +2,7 @@
 import argparse
 import datetime
 import os
-import sys
 from subprocess import call
-from colorama import Style, Fore
 from multiprocessing import cpu_count
 from libmangenerator import Man
 from toomanyfiles import version_date
@@ -83,11 +81,11 @@ def mangenerator(language):
     man.paragraph("--pretend", 2, True)
     man.paragraph(_("Makes a simulation selecting which files will be deleted when --remove parameter is used."), 3)
     man.paragraph("--remove", 2, True)
-    man.paragraph(_("Deletes files. Be careful, This functión can't be unmade. Use --pretend before."), 3)
+    man.paragraph(_("Deletes files. Be careful, This can't be unmade. Use --pretend before."), 3)
     
     man.paragraph(_("With --pretend and --remove you can use this parameters:"), 1)
     man.paragraph("--pattern", 2, True)
-    man.paragraph(_("Sets the date and time pattern to search in the current directory filenames. It users python strftime function format."), 3)
+    man.paragraph(_("Sets the date and time pattern to search in the current directory filenames. It uses python strftime function format."), 3)
     man.paragraph("--disable_log", 2, True)
     man.paragraph("--remove_mode", 2, True)
     man.paragraph("--too_young_to_delete", 2, True)

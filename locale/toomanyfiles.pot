@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-07-26 07:38+0200\n"
+"POT-Creation-Date: 2018-07-27 09:46+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -32,13 +32,13 @@ msgstr ""
 msgid "Makes a simulation selecting which files will be deleted when --remove parameter is used."
 msgstr ""
 
-msgid "Deletes files. Be careful, This functión can't be unmade. Use --pretend before."
+msgid "Deletes files. Be careful, This can't be unmade. Use --pretend before."
 msgstr ""
 
 msgid "With --pretend and --remove you can use this parameters:"
 msgstr ""
 
-msgid "Sets the date and time pattern to search in the current directory filenames. It users python strftime function format."
+msgid "Sets the date and time pattern to search in the current directory filenames. It uses python strftime function format."
 msgstr ""
 
 msgid "Developed by Mariano Muñoz 2018-{}"
@@ -95,7 +95,16 @@ msgstr ""
 msgid "O"
 msgstr ""
 
-msgid "File results:"
+msgid "File status pretending:"
+msgstr ""
+
+msgid "So, {} files will be deleted and {} will be kept when you use --remove parameter."
+msgstr ""
+
+msgid "File status removing:"
+msgstr ""
+
+msgid "So, {} files have been deleted and {} files have been kept."
 msgstr ""
 
 msgid "Over max files"
@@ -143,4 +152,7 @@ msgid "Maximum number of files to remain in directory. The default value is '%(d
 msgstr ""
 
 msgid "Error passing parameters"
+msgstr ""
+
+msgid "The number of files too young to delete can't be bigger than the maximum number of files to store"
 msgstr ""

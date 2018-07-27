@@ -35,7 +35,7 @@ def command_pipe(c1,c2):
     print (output.decode('utf-8'))
     time.sleep(6)
 
-comment("# This is a tutorial of toomanyfiles")
+comment("# This is a video to show how to use 'toomanyfiles' command")
 comment("# We are going to create an example directory to learn how to use it")
 command("toomanyfiles --create_example")
 

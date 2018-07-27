@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: TooManyFiles\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-07-26 07:35+0200\n"
+"POT-Creation-Date: 2018-07-27 09:38+0200\n"
 "PO-Revision-Date: 2015-03-22 18:51+0100\n"
 "Last-Translator: root <turulomio@yahoo.es>\n"
 "Language-Team: Spanish\n"
@@ -22,25 +22,25 @@ msgid "DESCRIPTION"
 msgstr "DESCRIPCIÓN"
 
 msgid "Remove innecesary files with a date and time pattern in the current subdirectory."
-msgstr ""
+msgstr "Borra ficheros no necesarios que tengan un patrón de fecha y hora en el subdirectorio actual."
 
 msgid "This app has the following mandatory parameters:"
 msgstr "Esta aplicación tiene los siguientes parámetros obligatorios"
 
 msgid "Create a directory called 'example' in the current working directory and fill it with example files with datetime pattern."
-msgstr ""
+msgstr "Crea un directorio llamado 'example' en el el directorio actual y lo llena con ficheros de ejemplo con un patrón de fecha y hora."
 
 msgid "Makes a simulation selecting which files will be deleted when --remove parameter is used."
-msgstr ""
+msgstr "Realiza una simulación seleccionando que ficheros serán borrados cuando se use el parámetro --remove."
 
-msgid "Deletes files. Be careful, This functión can't be unmade. Use --pretend before."
-msgstr ""
+msgid "Deletes files. Be careful, This can't be unmade. Use --pretend before."
+msgstr "Borra los ficheros. Ten cuidado, esto no puede deshacerse. Usa antes --pretend."
 
 msgid "With --pretend and --remove you can use this parameters:"
 msgstr "Con --pretend y --remove puedes usar estos parámetros"
 
-msgid "Sets the date and time pattern to search in the current directory filenames. It users python strftime function format."
-msgstr ""
+msgid "Sets the date and time pattern to search in the current directory filenames. It uses python strftime function format."
+msgstr "Establece el patrón de fecha y hora para buscar en los nombres del directorio actual. Usa el formato de python de la funciónde strftime"
 
 msgid "Developed by Mariano Muñoz 2018-{}"
 msgstr "Desarrollado por Mariano Muñoz 2018-{}"
@@ -64,7 +64,7 @@ msgid "Python path"
 msgstr "Ruta a Python"
 
 msgid "There are files with datetime patterns with different roots"
-msgstr ""
+msgstr "Hay ficheros con patrón de fecha y hora y diferentes nombres"
 
 msgid "Exiting..."
 msgstr "Saliendo"
@@ -96,8 +96,17 @@ msgstr "J"
 msgid "O"
 msgstr "S"
 
-msgid "File results:"
-msgstr "Resultado de los ficheros:"
+msgid "File status pretending:"
+msgstr "Estado de los ficheros simulando:"
+
+msgid "So, {} files will be deleted and {} will be kept when you use --remove parameter."
+msgstr "De esta manera, {} ficheros serán borrados y {} serán guardados cuando uses el parámetro --remove."
+
+msgid "File status removing:"
+msgstr "Estado de los ficheros para borrar:"
+
+msgid "So, {} files have been deleted and {} files have been kept."
+msgstr "De esta manera, {} ficheros se han borrado y {} ficheros se han guardado."
 
 msgid "Over max files"
 msgstr "Supera el número de ficheros a guardar"
@@ -125,26 +134,35 @@ msgstr "Parámetros a usar con --remove y --pretend"
 
 #, python-format
 msgid "Defines a python datetime pattern to search in current directory. The default pattern is '%(default)s'."
-msgstr ""
+msgstr "Define un patrón de fecha y hora a buscar en el directorio actual. El patrón por defecto es '%(default)s'."
 
 #, python-format
 msgid "Disable log generation. The default value is '%(default)s'."
-msgstr ""
+msgstr "Desabilita la generación del registro. El valor por defecto es '%(default)s'."
 
 #, python-format
 msgid "Remove mode. The default value is '%(default)s'."
-msgstr ""
+msgstr "Modo de borrado. El valor por defecto es '%(default)s'."
 
 #, python-format
 msgid "Number of days to respect from today. The default value is '%(default)s'."
-msgstr ""
+msgstr "Número de días que se respetan desde hoy sin borrar. El valor por defecto es '%(default)s'."
 
 #, python-format
 msgid "Maximum number of files to remain in directory. The default value is '%(default)s'."
-msgstr ""
+msgstr "Máximo número de ficheros que quedarán en el directorio. El valor por defecto es '%(default)s'."
 
 msgid "Error passing parameters"
 msgstr "Error al pasar los parámetros"
+
+msgid "The number of files too young to delete can't be bigger than the maximum number of files to store"
+msgstr "El número de ficheros demasiado recientes para ser borrados no puede ser mayor que el máximo número de ficheros a guardar"
+
+#~ msgid "Deletes files. Be careful, This functión can't be unmade. Use --pretend before."
+#~ msgstr "Borra los ficheros. Ten cuidado, Est"
+
+#~ msgid "File results:"
+#~ msgstr "Resultado de los ficheros:"
 
 #~ msgid "This app has the following parameters."
 #~ msgstr "Esta applicación tiene los siguientes parámetros."
