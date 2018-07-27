@@ -316,9 +316,13 @@ if __name__ == '__main__':
         parser.print_help()
         sys.exit(1)
 
+    #Validations
+    if manager.too_young_to_delete>manager.max_files_to_store:
+        print(colorama.Fore.RED + _("The number of files too young to delete can't be bigger than the maximum number of files to store") + colorama.Style.RESET_ALL)
+        sys.exit(54)
+
     if args.remove==True:
         manager.remove()
 
     if args.pretend==True:
         manager.pretend()
-11
