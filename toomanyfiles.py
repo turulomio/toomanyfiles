@@ -65,6 +65,8 @@ class FilenameWithDatetimeManager:
         self.__max_files_to_store=100000000# Infinity
         self.__logging=True
         self.__remove_mode=RemoveMode.RemainFirstInMonth
+        self.__pretending=1# Tag to set if we are using pretending or not. Can take None: Nor remove nor pretend, 0 Remove, 1 Pretend
+        
         self.pattern=pattern
         for filename in os.listdir(directory):
             filename= directory + os.sep + filename
@@ -212,11 +214,22 @@ class FilenameWithDatetimeManager:
             elif o.status==FileStatus.OverMaxFiles:
                  s=s+"{}".format( colorama.Fore.YELLOW + _("O")+ colorama.Style.RESET_ALL)
         print (s)
-        print (_("File results:"))
-        print ("  * {} [{}]: {}".format(_("Remains"), colorama.Fore.GREEN + _("R") + colorama.Style.RESET_ALL, self.__number_files_with_status(FileStatus.Remain)))
-        print ("  * {} [{}]: {}".format(_("Delete"), colorama.Fore.RED + _("D") + colorama.Style.RESET_ALL, self.__number_files_with_status(FileStatus.Delete)))
-        print ("  * {} [{}]: {}".format(_("Too young to delete"), colorama.Fore.MAGENTA + _("Y") + colorama.Style.RESET_ALL, self.__number_files_with_status(FileStatus.TooYoungToDelete)))
-        print ("  * {} [{}]: {}".format(_("Over max files"), colorama.Fore.YELLOW + _("O") + colorama.Style.RESET_ALL, self.__number_files_with_status(FileStatus.OverMaxFiles)))
+        
+        n_remain=self.__number_files_with_status(FileStatus.Remain)
+        n_delete=self.__number_files_with_status(FileStatus.Delete)
+        n_young=self.__number_files_with_status(FileStatus.TooYoungToDelete)
+        n_over=self.__number_files_with_status(FileStatus.OverMaxFiles)
+        if self.__pretending==1:
+            print (_("File status pretending:"))
+            result=_("So, {} files will be deleted and {} will be kept when you use --remove parameter.".format(colorama.Fore.YELLOW + str(n_delete+n_over) + colorama.Style.RESET_ALL, colorama.Fore.YELLOW + str(n_remain+n_young) +colorama.Style.RESET_ALL))
+        elif self.__pretending==0:
+            print (_("File results removing:"))
+            result=_("So, {} files will have beeen deleted and {} files have been kept.".format(colorama.Fore.YELLOW + str(n_delete+n_over) + colorama.Style.RESET_ALL, colorama.Fore.YELLOW + str(n_remain+n_young) +colorama.Style.RESET_ALL))
+        print ("  * {} [{}]: {}".format(_("Remains"), colorama.Fore.GREEN + _("R") + colorama.Style.RESET_ALL, n_remain))
+        print ("  * {} [{}]: {}".format(_("Delete"), colorama.Fore.RED + _("D") + colorama.Style.RESET_ALL, n_delete))
+        print ("  * {} [{}]: {}".format(_("Too young to delete"), colorama.Fore.MAGENTA + _("Y") + colorama.Style.RESET_ALL, n_young))
+        print ("  * {} [{}]: {}".format(_("Over max files"), colorama.Fore.YELLOW + _("O") + colorama.Style.RESET_ALL, n_over))
+        print(result)
 
 
     ## Function that generates the header used in console output and in log
@@ -227,6 +240,7 @@ class FilenameWithDatetimeManager:
 
     ## Shows information in console
     def pretend(self):
+        self.__pretending=1
         self.__set_filename_status()
         self.__console_output()
 
@@ -234,6 +248,7 @@ class FilenameWithDatetimeManager:
     ## Write log
     ## Delete Files
     def remove(self):
+        self.__pretending=0
         self.__set_filename_status()
         self.__console_output()
         if self.logging==True:
