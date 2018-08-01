@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: TooManyFiles\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-07-27 09:38+0200\n"
+"POT-Creation-Date: 2018-08-01 11:48+0200\n"
 "PO-Revision-Date: 2015-03-22 18:51+0100\n"
 "Last-Translator: root <turulomio@yahoo.es>\n"
 "Language-Team: Spanish\n"
@@ -21,14 +21,14 @@ msgstr ""
 msgid "DESCRIPTION"
 msgstr "DESCRIPCIÓN"
 
-msgid "Remove innecesary files with a date and time pattern in the current subdirectory."
-msgstr "Borra ficheros no necesarios que tengan un patrón de fecha y hora en el subdirectorio actual."
+msgid "Remove innecesary files or directories with a date and time pattern in the current directory."
+msgstr ""
 
 msgid "This app has the following mandatory parameters:"
 msgstr "Esta aplicación tiene los siguientes parámetros obligatorios"
 
-msgid "Create a directory called 'example' in the current working directory and fill it with example files with datetime pattern."
-msgstr "Crea un directorio llamado 'example' en el el directorio actual y lo llena con ficheros de ejemplo con un patrón de fecha y hora."
+msgid "Create two directories called 'example' and 'example_directories' in the current working directory and fill it with example files with date and time patterns."
+msgstr ""
 
 msgid "Makes a simulation selecting which files will be deleted when --remove parameter is used."
 msgstr "Realiza una simulación seleccionando que ficheros serán borrados cuando se use el parámetro --remove."
@@ -66,8 +66,14 @@ msgstr "Ruta a Python"
 msgid "There are files with datetime patterns with different roots"
 msgstr "Hay ficheros con patrón de fecha y hora y diferentes nombres"
 
+msgid "You have to correct it"
+msgstr "Debes corregirlo"
+
 msgid "Exiting..."
 msgstr "Saliendo"
+
+msgid "There are files and directories with date and time patterns in the current path"
+msgstr "Hay ficheros y directorios con patrónes de fecha y hora en la ruta actual"
 
 msgid "Not developed yet"
 msgstr "No desarrollado todavía"
@@ -96,11 +102,17 @@ msgstr "J"
 msgid "O"
 msgstr "S"
 
+msgid "Directories status pretending:"
+msgstr "Estado de los directorios en la simulación:"
+
 msgid "File status pretending:"
 msgstr "Estado de los ficheros simulando:"
 
 msgid "So, {} files will be deleted and {} will be kept when you use --remove parameter."
 msgstr "De esta manera, {} ficheros serán borrados y {} serán guardados cuando uses el parámetro --remove."
+
+msgid "Directories status removing:"
+msgstr "Estado de los directorios en el borrado:"
 
 msgid "File status removing:"
 msgstr "Estado de los ficheros para borrar:"
@@ -117,11 +129,14 @@ msgstr "TooManyFiles fue ejecutado a las {}"
 msgid "Created {} files in the directory 'example'"
 msgstr "Creados {} ficheros en el directorio 'example'"
 
-msgid "Seach datetime patterns to delete innecesary files"
-msgstr "Busca patrones de fecha y hora para borrar ficheros innecesarios"
+msgid "Created {} directories and files in the directory 'example_directories'"
+msgstr "Creados {} directorios y ficheros en el directorio 'example_directories'"
 
-msgid "Create a example files in directory 'example'"
-msgstr "Crea ficheros de ejemplo en el directorio 'example'"
+msgid "Search date and time patterns to delete innecesary files or directories"
+msgstr "Busca patrónes de fecha y hora para borrar ficheros o directorios innecesarios"
+
+msgid "Create two example directores named 'example' and 'example_directories'"
+msgstr "Crea dos directorios de ejemplo con el nombre 'example' y 'example_directories'"
 
 msgid "Removes files permanently"
 msgstr "Borra los ficheros permanentemente"
@@ -157,6 +172,18 @@ msgstr "Error al pasar los parámetros"
 
 msgid "The number of files too young to delete can't be bigger than the maximum number of files to store"
 msgstr "El número de ficheros demasiado recientes para ser borrados no puede ser mayor que el máximo número de ficheros a guardar"
+
+#~ msgid "Remove innecesary files with a date and time pattern in the current subdirectory."
+#~ msgstr "Borra ficheros no necesarios que tengan un patrón de fecha y hora en el subdirectorio actual."
+
+#~ msgid "Create a directory called 'example' in the current working directory and fill it with example files with datetime pattern."
+#~ msgstr "Crea un directorio llamado 'example' en el el directorio actual y lo llena con ficheros de ejemplo con un patrón de fecha y hora."
+
+#~ msgid "Seach datetime patterns to delete innecesary files"
+#~ msgstr "Busca patrones de fecha y hora para borrar ficheros innecesarios"
+
+#~ msgid "Create a example files in directory 'example'"
+#~ msgstr "Crea ficheros de ejemplo en el directorio 'example'"
 
 #~ msgid "Deletes files. Be careful, This functión can't be unmade. Use --pretend before."
 #~ msgstr "Borra los ficheros. Ten cuidado, Est"

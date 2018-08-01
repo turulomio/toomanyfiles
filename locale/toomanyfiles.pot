@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-07-27 09:46+0200\n"
+"POT-Creation-Date: 2018-08-01 11:52+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -20,13 +20,13 @@ msgstr ""
 msgid "DESCRIPTION"
 msgstr ""
 
-msgid "Remove innecesary files with a date and time pattern in the current subdirectory."
+msgid "Remove innecesary files or directories with a date and time pattern in the current directory."
 msgstr ""
 
 msgid "This app has the following mandatory parameters:"
 msgstr ""
 
-msgid "Create a directory called 'example' in the current working directory and fill it with example files with datetime pattern."
+msgid "Create two directories called 'example' and 'example_directories' in the current working directory and fill it with example files with date and time patterns."
 msgstr ""
 
 msgid "Makes a simulation selecting which files will be deleted when --remove parameter is used."
@@ -65,7 +65,13 @@ msgstr ""
 msgid "There are files with datetime patterns with different roots"
 msgstr ""
 
+msgid "You have to correct it"
+msgstr ""
+
 msgid "Exiting..."
+msgstr ""
+
+msgid "There are files and directories with date and time patterns in the current path"
 msgstr ""
 
 msgid "Not developed yet"
@@ -95,10 +101,16 @@ msgstr ""
 msgid "O"
 msgstr ""
 
+msgid "Directories status pretending:"
+msgstr ""
+
 msgid "File status pretending:"
 msgstr ""
 
 msgid "So, {} files will be deleted and {} will be kept when you use --remove parameter."
+msgstr ""
+
+msgid "Directories status removing:"
 msgstr ""
 
 msgid "File status removing:"
@@ -116,10 +128,13 @@ msgstr ""
 msgid "Created {} files in the directory 'example'"
 msgstr ""
 
-msgid "Seach datetime patterns to delete innecesary files"
+msgid "Created {} directories and files in the directory 'example_directories'"
 msgstr ""
 
-msgid "Create a example files in directory 'example'"
+msgid "Search date and time patterns to delete innecesary files or directories"
+msgstr ""
+
+msgid "Create two example directores named 'example' and 'example_directories'"
 msgstr ""
 
 msgid "Removes files permanently"
