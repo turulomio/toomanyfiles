@@ -1,53 +1,36 @@
 #!/usr/bin/python3
+import argparse
 import time
 import colorama
+import datetime
+import gettext
 import os
 import subprocess
-
-class RecSession:
-    def __init__(self):
-        self.__hostname="MyLinux"
-        self.__cwd="/home/ttyrec/"
-        
-    def path(self):
-        return "{} {}".format(colorama.Fore.RED + "sg" + colorama.Style.RESET_ALL, colorama.Fore.BLUE + "/ttyrec/ # " + colorama.Style.RESET_ALL)
-
-    ## # must be added to s
-    def comment(self, s, sleep=4):
-        print(self.path()+ colorama.Fore.YELLOW + s + colorama.Style.RESET_ALL)
-        time.sleep(sleep)
-
-    def command(self, s, sleep=6):
-        print()
-        print(self.path() + colorama.Fore.GREEN + s + colorama.Style.RESET_ALL)
-        print(subprocess.check_output(s,shell=True).decode('utf-8'))
-        time.sleep(sleep)
-
-    def chdir(self, dir, sleep=6):
-        print()
-        print(self.path() + colorama.Fore.GREEN + "cd " + dir + colorama.Style.RESET_ALL)
-        os.chdir(dir)
-        print()
-        time.sleep(sleep)
+#from toomanyfiles import version, version_date
 
 
-    def command_pipe(self, c1,c2, sleep=6):
-        cmd = "{}|{}".format(c1,c2)
-        print()
-        print(self.path() + colorama.Fore.GREEN + cmd + colorama.Style.RESET_ALL)
-        ps = subprocess.Popen(cmd,shell=True,stdout=subprocess.PIPE,stderr=subprocess.STDOUT)
-        output = ps.communicate()[0]
-        print (output.decode('utf-8'))
-        time.sleep(6)
+version="20180727"
 
-    def run(self):
-        os.system("""xterm -hold -bg black -geometry 140x400  -fa monaco -fs 18 -fg white -e "ttyrec -e 'python3 demo.py'; ttygif ttyrecord" """)
+def version_date():
+    versio=version.replace("+","")
+    return datetime.date(int(versio[:-4]),  int(versio[4:-2]),  int(versio[6:]))
+
+
+
+
+# I had a lot of problems with UTF-8. LANG must be es_ES.UTF-8 to work. Nuevo sistema2
+gettext.install('toomanyfiles')
+
 
 if __name__ == "__main__":
-    session=RecSession()
-    
-    session.comment("# This is a video to show how to use 'toomanyfiles' command")
-    session.comment("# We are going to create an example directory to learn how to use it")
-    session.command("toomanyfiles --create_example")
-    session.run
+    parser=argparse.ArgumentParser(prog='ttyrecgenerator', description=_('Create an animated gif/video from the output of the program passed as parameter'), epilog=_("Developed by Mariano Muñoz 2018-{}".format(version_date().year)), formatter_class=argparse.RawTextHelpFormatter)
+    parser.add_argument('--version', action='version', version=version)
+    parser.add_argument('program',  help=_("Path to program"))
+    parser.add_argument('--output', help=_("Ttyrec output path"), action="store", default="ttyrecord")
+    parser.add_argument('--video', help=_("Makes a simulation and doesn't remove files"), action="store_true", default=False)
+    args=parser.parse_args()
+
+    subprocess.run(["xterm", "-hold", "-bg", "black", "-geometry", "140x400", "-fa", "monaco", "-fs", "18", "-fg", "white", "-e", "ttyrec -e {}; ttygif {}.gif".format(args.program,args.output)])
+    if args.video==True:
+        subprocess.run(["ffmpeg", "-i", "{}.gif", "-c:v", "libx264", "-pix_fmt", "yuv420p", "-movflags", "+faststart", "{}.mp4".format(args.program)])
 

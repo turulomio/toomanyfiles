@@ -37,6 +37,8 @@ def makefile_install():
     shell("install -o root -d "+ prefixman+"/es/man1")
 
     shell("install -m 755 -o root toomanyfiles.py "+ prefixbin+"/toomanyfiles")
+    shell("install -m 755 -o root ttyrecgenerator.py "+ prefixbin+"/ttyrecgenerator")
+    shell("install -m 755 -o root libttyrecgenerator.py "+ prefixlib+"/libttyrecgenerator.py")
     shell("install -m 644 -o root doc/ttyrec/tty.gif " +  prefixshare + "/demo.gif")
     shell("install -m 644 -o root locale/es/LC_MESSAGES/toomanyfiles.mo " + mo_es)
     shell("install -m 644 -o root locale/toomanyfiles.en.1 "+ prefixman+"/man1/toomanyfiles.1")
@@ -44,6 +46,7 @@ def makefile_install():
 
 def makefile_uninstall():
     shell("rm " + prefixbin + "/toomanyfiles")
+    shell("rm " + prefixbin + "/ttyrecgenerator")
     shell("rm -Rf " + prefixshare)
     shell("rm -Rf " + prefixlib)
     shell("rm " + mo_es)
