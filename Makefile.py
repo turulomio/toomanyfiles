@@ -69,7 +69,7 @@ def mangenerator(language):
     print("  - DESCRIPTION in {} is {}".format(language, _("DESCRIPTION")))
 
     man=Man("locale/toomanyfiles.{}".format(language))
-    man.setMetadata("toomanyfiles",  1,   datetime.date.today(), "Mariano Muñoz", _("Remove innecesary files with a date and time pattern in the current subdirectory."))
+    man.setMetadata("toomanyfiles",  1,   datetime.date.today(), "Mariano Muñoz", _("Remove innecesary files or directories with a date and time pattern in the current directory."))
     man.setSynopsis("""[-h] [--version] (--create_example | --remove | --pretend)
                     [--pattern PATTERN] [--disable_log]
                     [--remove_mode {RemainFirstInMonth,RemainLastInMonth}]
@@ -78,7 +78,7 @@ def mangenerator(language):
     man.header(_("DESCRIPTION"), 1)
     man.paragraph(_("This app has the following mandatory parameters:"), 1)
     man.paragraph("--create_example", 2, True)
-    man.paragraph(_("Create a directory called 'example' in the current working directory and fill it with example files with datetime pattern."), 3)
+    man.paragraph(_("Create two directories called 'example' and 'example_directories' in the current working directory and fill it with example files with date and time patterns."), 3)
     man.paragraph("--pretend", 2, True)
     man.paragraph(_("Makes a simulation selecting which files will be deleted when --remove parameter is used."), 3)
     man.paragraph("--remove", 2, True)

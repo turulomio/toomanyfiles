@@ -4,6 +4,7 @@ import colorama
 import datetime
 import gettext
 import os
+import shutil
 import sys
 
 version="20180727"
@@ -68,10 +69,9 @@ class FilenameWithDatetimeManager:
         self.pattern=pattern
         for filename in os.listdir(directory):
             filename= directory + os.sep + filename
-            if os.path.isdir(filename)==False:
-                dt=datetime_in_filename(filename,pattern)
-                if dt!=None:
-                    self.append(FilenameWithDatetime(filename,dt))
+            dt=datetime_in_filename(filename,pattern)
+            if dt!=None:
+                self.append(FilenameWithDatetime(filename,dt))
 
     ## Property that returns if log must be done when remove is selected
     ## @return Int
@@ -125,10 +125,19 @@ class FilenameWithDatetimeManager:
     ## Changes the status of the FilenameWithDatetime objects in the array
     def __set_filename_status(self):
         # =========== SECURITY
+        alldir=self.__all_filenames_are_directories()
+        allfiles=self.__all_filenames_are_regular_files()
         if self.__several_root_filenames()==True:
             print(_("There are files with datetime patterns with different roots"))
+            print(_("You have to correct it"))
             print(_("Exiting..."))
-            sys.exit(3)        
+            sys.exit(3)
+            
+        if alldir==False and allfiles==False:
+            print(_("There are files and directories with date and time patterns in the current path"))
+            print(_("You have to correct it"))
+            print(_("Exiting..."))
+            sys.exit(4)
         
         #========== CODE
         aux=[]#Strings contining YYYYMM
@@ -198,6 +207,22 @@ class FilenameWithDatetimeManager:
             if o.status==filestatus:
                 r=r+1
         return r
+        
+    ## Functions that detects if all FilenameWithDatetime are directories
+    ## @return Bool
+    def __all_filenames_are_directories(self):
+        for o in self.arr:
+            if os.path.isdir(o.filename)==False:
+                return False
+        return True
+        
+    ## Functions that detects if all FilenameWithDatetime are regular files
+    ## @return Bool
+    def __all_filenames_are_regular_files(self):
+        for o in self.arr:
+            if os.path.isfile(o.filename)==False:
+                return False
+        return True
 
     #This function must be called after set status
     def __console_output(self):
@@ -218,10 +243,16 @@ class FilenameWithDatetimeManager:
         n_young=self.__number_files_with_status(FileStatus.TooYoungToDelete)
         n_over=self.__number_files_with_status(FileStatus.OverMaxFiles)
         if self.__pretending==1:
-            print (_("File status pretending:"))
+            if self.__all_filenames_are_directories():
+                print (_("Directories status pretending:"))
+            elif self.__all_filenames_are_regular_files():
+                print (_("File status pretending:"))
             result=_("So, {} files will be deleted and {} will be kept when you use --remove parameter.".format(colorama.Fore.YELLOW + str(n_delete+n_over) + colorama.Style.RESET_ALL, colorama.Fore.YELLOW + str(n_remain+n_young) +colorama.Style.RESET_ALL))
         elif self.__pretending==0:
-            print (_("File status removing:"))
+            if self.__all_filenames_are_directories():
+                print (_("Directories status removing:"))
+            elif self.__all_filenames_are_regular_files():
+                print (_("File status removing:"))
             result=_("So, {} files have been deleted and {} files have been kept.".format(colorama.Fore.YELLOW + str(n_delete+n_over) + colorama.Style.RESET_ALL, colorama.Fore.YELLOW + str(n_remain+n_young) +colorama.Style.RESET_ALL))
         print ("  * {} [{}]: {}".format(_("Remains"), colorama.Fore.GREEN + _("R") + colorama.Style.RESET_ALL, n_remain))
         print ("  * {} [{}]: {}".format(_("Delete"), colorama.Fore.RED + _("D") + colorama.Style.RESET_ALL, n_delete))
@@ -253,7 +284,10 @@ class FilenameWithDatetimeManager:
             self.__write_log()
         for o in self.arr:
             if o.status in [FileStatus.OverMaxFiles, FileStatus.Delete]:
-                 os.remove(o.filename)
+                if os.path.isfile(o.filename):
+                    os.remove(o.filename)
+                elif os.path.isdir(o.filename):
+                    shutil.rmtree(o.filename)
 
 
 def makedirs(dir):
@@ -292,15 +326,27 @@ def create_example():
         f=open(filename,"w")
         f.close()
     print (_("Created {} files in the directory 'example'".format(number)))
+    
+## Creates an example subdirectory and fills it with datetime pattern directories
+def create_example_with_directories():
+    makedirs("example_directories")
+    number=1000
+    for i in range (number):
+        d=datetime.datetime.now()-datetime.timedelta(days=i)
+        filename="example_directories/{}{:02d}{:02d} {:02d}{:02d} Directory/Toomanyfiles example.txt".format(d.year,d.month,d.day,d.hour,d.minute)
+        makedirs(os.path.dirname(filename))        
+        f=open(filename,"w")
+        f.close()
+    print (_("Created {} directories and files in the directory 'example_directories'".format(number)))
 
 
-parser=argparse.ArgumentParser(prog='toomanyfiles', description=_('Seach datetime patterns to delete innecesary files'), epilog=_("Developed by Mariano Muñoz 2018-{}".format(version_date().year)), formatter_class=argparse.RawTextHelpFormatter)
+parser=argparse.ArgumentParser(prog='toomanyfiles', description=_('Search date and time patterns to delete innecesary files or directories'), epilog=_("Developed by Mariano Muñoz 2018-{}".format(version_date().year)), formatter_class=argparse.RawTextHelpFormatter)
 parser.add_argument('--version', action='version', version=version)
 
 group= parser.add_mutually_exclusive_group(required=True)
-group.add_argument('--create_example', help=_("Create a example files in directory 'example'"), action="store_true",default=False)
-group.add_argument('--remove', help=_("Removes files permanently"),action="store_true", default=False)
-group.add_argument('--pretend', help=_("Makes a simulation and doesn't remove files"),action="store_true", default=False)
+group.add_argument('--create_example', help=_("Create two example directores named 'example' and 'example_directories'"), action="store_true",default=False)
+group.add_argument('--remove', help=_("Removes files permanently"), action="store_true", default=False)
+group.add_argument('--pretend', help=_("Makes a simulation and doesn't remove files"), action="store_true", default=False)
 
 modifiers=parser.add_argument_group(title=_("Modifiers to use with --remove and --pretend"), description=None)
 modifiers.add_argument('--pattern', help=_("Defines a python datetime pattern to search in current directory. The default pattern is '%(default)s'."), action="store",default="%Y%m%d %H%M")
@@ -315,6 +361,7 @@ if __name__ == '__main__':
 
     if args.create_example==True:
         create_example()
+        create_example_with_directories()
         sys.exit(0)
 
     manager=FilenameWithDatetimeManager(os.getcwd(), args.pattern)

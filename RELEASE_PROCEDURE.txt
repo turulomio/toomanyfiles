@@ -1,6 +1,7 @@
 Nueva release
 =============
 1) Cambiar la versión en toomanyfiles.py
+ ) Uncoment _ en toomayfiles y Makefile.py
 2) Modificar fichero CHANGELOG
 3) python3 Makefile --doc. 
  ) lokalice es.po
