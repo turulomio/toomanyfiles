@@ -8,8 +8,9 @@ from libmangenerator import Man
 from toomanyfiles import version_date
 import gettext
 
+
 # I had a lot of problems with UTF-8. LANG must be es_ES.UTF-8 to work
-gettext.install('toomanyfiles', 'locale/po')
+gettext.install('toomanyfiles', 'locale')
 
 
 def shell(*args):
@@ -21,7 +22,7 @@ def makefile_dist_sources():
 
 def makefile_doc():
     #es
-    shell("xgettext -L Python --no-wrap --no-location --from-code='UTF-8' -o locale/toomanyfiles.pot *.py")
+    shell("xgettext -L Python --no-wrap --no-location --from-code='UTF-8' -o locale/toomanyfiles.pot *.py doc/ttyrec/*.py")
     shell("msgmerge -N --no-wrap -U locale/es.po locale/toomanyfiles.pot")
     shell("msgfmt -cv -o locale/es/LC_MESSAGES/toomanyfiles.mo locale/es.po")
 
@@ -58,14 +59,19 @@ def doxygen():
     shell("doxygen Doxyfile")
     os.chdir("..")
 
+def video():
+    os.chdir("doc/ttyrec")
+    shell("ttyrecgenerator --output toomanyfiles_howto_es 'python3 howto.py --language es' --video")
+    shell("ttyrecgenerator --output toomanyfiles_howto_en 'python3 howto.py --language en' --video")
+    os.chdir("../..")
+
 
 def mangenerator(language):
     """
         Create man pages for parameter language
     """
     if language=="en":
-        import locale 
-        locale.setlocale(locale.LC_ALL,'C')
+        gettext.install('toomanyfiles', 'badlocale')
     else:
         lang1=gettext.translation('toomanyfiles', 'locale', languages=[language])
         lang1.install()
@@ -107,6 +113,7 @@ if __name__ == '__main__':
     group.add_argument('--doxygen', help=_("Generate doxygen api documentation"), action="store_true", default=False)
     group.add_argument('--install', help=_("Directory to install app. / recomended"), action="store", metavar="PATH", default=None)
     group.add_argument('--uninstall', help=_("Uninstall. / recomended") ,action="store", metavar="PATH", default=None)
+    group.add_argument('--video', help=_("Make a HOWTO video and gif "), action="store_true",default=False)
     group.add_argument('--dist_sources', help=_("Make a sources tar"), action="store_true",default=False)
     parser.add_argument('--python', help=_("Python path"), action="store",default='/usr/bin/python3')
 
@@ -138,6 +145,7 @@ if __name__ == '__main__':
         makefile_dist_sources()
     elif args.doxygen==True:
         doxygen()
+    elif args.video==True:
+        video()
 
     print ("*** Process took {} using {} processors ***".format(datetime.datetime.now()-start , cpu_count()))
-

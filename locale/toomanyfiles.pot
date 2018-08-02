@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-08-01 11:52+0200\n"
+"POT-Creation-Date: 2018-08-02 10:19+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -54,6 +54,9 @@ msgid "Directory to install app. / recomended"
 msgstr ""
 
 msgid "Uninstall. / recomended"
+msgstr ""
+
+msgid "Make a HOWTO video and gif "
 msgstr ""
 
 msgid "Make a sources tar"
@@ -170,4 +173,58 @@ msgid "Error passing parameters"
 msgstr ""
 
 msgid "The number of files too young to delete can't be bigger than the maximum number of files to store"
+msgstr ""
+
+msgid "Create an animated gif/video from the output of the program passed as parameter"
+msgstr ""
+
+msgid "Path to program"
+msgstr ""
+
+msgid "Ttyrec output path"
+msgstr ""
+
+msgid "Sets output language"
+msgstr ""
+
+msgid "This is a video to show how to use 'toomanyfiles' command"
+msgstr ""
+
+msgid "We are going to create an example directory to learn how to use it"
+msgstr ""
+
+msgid "We are going to see the 10 last files of this directory"
+msgstr ""
+
+msgid "We can see files with temporal pattern 'YYYYmmdd HHMM' with a day variation"
+msgstr ""
+
+msgid "We use to find this kind of files in automatic backups, logs, ..."
+msgstr ""
+
+msgid "If we want to save our disk space and we want to keep some of them, we can use TooManyFiles program"
+msgstr ""
+
+msgid "So, We want to keep the last 5 files because they are too recent."
+msgstr ""
+
+msgid "We want to keep the first file of each month from the rest of the files until a max number the files of 15."
+msgstr ""
+
+msgid "We enter in the example directory."
+msgstr ""
+
+msgid "We make a simulation with --pretend"
+msgstr ""
+
+msgid "We analyze the result with the output.."
+msgstr ""
+
+msgid "We like the result, so we can delete files replacing --pretend by --remove. Selected files will be removed permanently"
+msgstr ""
+
+msgid "We list the files remaining"
+msgstr ""
+
+msgid "That's all"
 msgstr ""

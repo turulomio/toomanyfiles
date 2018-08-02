@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: TooManyFiles\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-08-01 11:48+0200\n"
+"POT-Creation-Date: 2018-08-02 10:11+0200\n"
 "PO-Revision-Date: 2015-03-22 18:51+0100\n"
 "Last-Translator: root <turulomio@yahoo.es>\n"
 "Language-Team: Spanish\n"
@@ -22,13 +22,13 @@ msgid "DESCRIPTION"
 msgstr "DESCRIPCIÓN"
 
 msgid "Remove innecesary files or directories with a date and time pattern in the current directory."
-msgstr ""
+msgstr "Borra ficheros o directorios innecesarios, que tengan un patrón de fecha y hora en el directorio actual."
 
 msgid "This app has the following mandatory parameters:"
 msgstr "Esta aplicación tiene los siguientes parámetros obligatorios"
 
 msgid "Create two directories called 'example' and 'example_directories' in the current working directory and fill it with example files with date and time patterns."
-msgstr ""
+msgstr "Crea dos directorios de nombre 'example' y 'example_directories' en el directorio actual y los llena con ficheros de ejemplo que tengan patrónes de fecha y hora."
 
 msgid "Makes a simulation selecting which files will be deleted when --remove parameter is used."
 msgstr "Realiza una simulación seleccionando que ficheros serán borrados cuando se use el parámetro --remove."
@@ -56,6 +56,9 @@ msgstr "Directorio en el el que instalar la applicación. Se recomienda en /"
 
 msgid "Uninstall. / recomended"
 msgstr "Desinstalar. Se recomienda en /"
+
+msgid "Make a HOWTO video and gif "
+msgstr "Genera un tutorial en un video y en un fichero gif "
 
 msgid "Make a sources tar"
 msgstr "Crea un fichero tar con el código fuente"
@@ -172,6 +175,60 @@ msgstr "Error al pasar los parámetros"
 
 msgid "The number of files too young to delete can't be bigger than the maximum number of files to store"
 msgstr "El número de ficheros demasiado recientes para ser borrados no puede ser mayor que el máximo número de ficheros a guardar"
+
+msgid "Create an animated gif/video from the output of the program passed as parameter"
+msgstr "Crea un gif animado/video de la salida del programa pasado como parámetro"
+
+msgid "Path to program"
+msgstr "Ruta al programa"
+
+msgid "Ttyrec output path"
+msgstr "Ruta de salida de Ttyrec"
+
+msgid "Sets output language"
+msgstr "Establece el lenguaje de salida"
+
+msgid "This is a video to show how to use 'toomanyfiles' command"
+msgstr "Este video muestra como usar el comando 'toomanyfiles'"
+
+msgid "We are going to create an example directory to learn how to use it"
+msgstr "Vamos a crear un directorio de ejemplo para aprender a usarlo"
+
+msgid "We are going to see the 10 last files of this directory"
+msgstr "Vamos a ver los últimos 10 ficheros de este directorio"
+
+msgid "We can see files with temporal pattern 'YYYYmmdd HHMM' with a day variation"
+msgstr "Podemos ver ficheros con el patrón temporal 'YYYYmmdd HHMM' con un día de variación"
+
+msgid "We use to find this kind of files in automatic backups, logs, ..."
+msgstr "Solemos encontrar este tipo de ficheros en copias de seguridad automáticas, logs, ..."
+
+msgid "If we want to save our disk space and we want to keep some of them, we can use TooManyFiles program"
+msgstr "Si queremos ahorrar espacio en disco y queremos conservar algunos de ellos, podemos usar el programa TooManyFiles"
+
+msgid "So, We want to keep the last 5 files because they are too recent."
+msgstr "De esta manera, queremos conservar los 5 últimos ficheros porque son muy recientes."
+
+msgid "We want to keep the first file of each month from the rest of the files until a max number the files of 15."
+msgstr "Del resto de ficheros, queremos conservar el primer fichero de cada mes hasta un máximo de 15 ficheros en total"
+
+msgid "We enter in the example directory."
+msgstr "Entramos en el directorio de ejemplo."
+
+msgid "We make a simulation with --pretend"
+msgstr "Hacemos una simulación con --pretend"
+
+msgid "We analyze the result with the output.."
+msgstr "Analizamos el resultado..."
+
+msgid "We like the result, so we can delete files replacing --pretend by --remove. Selected files will be removed permanently"
+msgstr "Estamos de acuerdo con el resultado, por lo que podemos borrar los ficheros sustituyendo --pretend por --remove. Los ficheros seleccionados se borrarán permanentemente"
+
+msgid "We list the files remaining"
+msgstr "Listamos los ficheros que han quedado"
+
+msgid "That's all"
+msgstr "Eso es todo"
 
 #~ msgid "Remove innecesary files with a date and time pattern in the current subdirectory."
 #~ msgstr "Borra ficheros no necesarios que tengan un patrón de fecha y hora en el subdirectorio actual."

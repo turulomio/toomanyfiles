@@ -26,11 +26,12 @@ if __name__ == "__main__":
     parser=argparse.ArgumentParser(prog='ttyrecgenerator', description=_('Create an animated gif/video from the output of the program passed as parameter'), epilog=_("Developed by Mariano Muñoz 2018-{}".format(version_date().year)), formatter_class=argparse.RawTextHelpFormatter)
     parser.add_argument('--version', action='version', version=version)
     parser.add_argument('program',  help=_("Path to program"))
-    parser.add_argument('--output', help=_("Ttyrec output path"), action="store", default="ttyrecord")
+    parser.add_argument('--output', help=_("Ttyrec output path"), action="store", default="ttyrecord.rec")
     parser.add_argument('--video', help=_("Makes a simulation and doesn't remove files"), action="store_true", default=False)
     args=parser.parse_args()
 
-    subprocess.run(["xterm", "-hold", "-bg", "black", "-geometry", "140x400", "-fa", "monaco", "-fs", "18", "-fg", "white", "-e", "ttyrec -e {}; ttygif {}.gif".format(args.program,args.output)])
+    subprocess.run(["xterm", "-hold", "-bg", "black", "-geometry", "140x400", "-fa", "monaco", "-fs", "18", "-fg", "white", "-e", "ttyrec -e '{0}' {1}; ttygif {1}".format(args.program, args.output)])
+    os.system("mv tty.gif {}.gif".format(args.output))
     if args.video==True:
-        subprocess.run(["ffmpeg", "-i", "{}.gif", "-c:v", "libx264", "-pix_fmt", "yuv420p", "-movflags", "+faststart", "{}.mp4".format(args.program)])
+        subprocess.run(["ffmpeg", "-i", "{}.gif".format(args.output), "-c:v", "libx264", "-pix_fmt", "yuv420p", "-movflags", "+faststart", "{}.mp4".format(args.output)])
 
