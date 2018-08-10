@@ -1,4 +1,9 @@
 #!/usr/bin/python3
+## @package libttyrecgenerator
+## @brief Library to generate gifs and video from console output
+## 
+## This library belongs to too-many-files project and has it's own version number, so you only must edit it in that project
+
 import argparse
 import time
 import colorama
@@ -6,6 +11,10 @@ import datetime
 import gettext
 import os
 import subprocess
+
+
+
+
 #from toomanyfiles import version, version_date
 
 
@@ -17,7 +26,7 @@ t = gettext.translation('toomanyfiles', '/usr/share/locale')
 _ = t.gettext
 
 
-version="20180727"
+version="20180810"
 
 def version_date():
     versio=version.replace("+","")
