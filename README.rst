@@ -21,10 +21,12 @@ Usage
 
 Changelog
 =========
-0.2.2
-  * Improving README
-0.2.0
-  * Solved problems with internacionalization distribution
-0.1.0
-  * Basic funcionality
+20180812
+  * Removed Makefile.py. Now I'm using setuptools
 
+20180727
+  * Stable version
+20180726
+  * First version, full functional.
+20180724
+  * Creating infrastructure
