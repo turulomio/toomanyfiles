@@ -339,22 +339,21 @@ def create_example_with_directories():
         f.close()
     print (_("Created {} directories and files in the directory 'example_directories'".format(number)))
 
+def main():
+    parser=argparse.ArgumentParser(prog='toomanyfiles', description=_('Search date and time patterns to delete innecesary files or directories'), epilog=_("Developed by Mariano Muñoz 2018-{}".format(version_date().year)), formatter_class=argparse.RawTextHelpFormatter)
+    parser.add_argument('--version', action='version', version=version)
 
-parser=argparse.ArgumentParser(prog='toomanyfiles', description=_('Search date and time patterns to delete innecesary files or directories'), epilog=_("Developed by Mariano Muñoz 2018-{}".format(version_date().year)), formatter_class=argparse.RawTextHelpFormatter)
-parser.add_argument('--version', action='version', version=version)
+    group= parser.add_mutually_exclusive_group(required=True)
+    group.add_argument('--create_example', help=_("Create two example directores named 'example' and 'example_directories'"), action="store_true",default=False)
+    group.add_argument('--remove', help=_("Removes files permanently"), action="store_true", default=False)
+    group.add_argument('--pretend', help=_("Makes a simulation and doesn't remove files"), action="store_true", default=False)
 
-group= parser.add_mutually_exclusive_group(required=True)
-group.add_argument('--create_example', help=_("Create two example directores named 'example' and 'example_directories'"), action="store_true",default=False)
-group.add_argument('--remove', help=_("Removes files permanently"), action="store_true", default=False)
-group.add_argument('--pretend', help=_("Makes a simulation and doesn't remove files"), action="store_true", default=False)
-
-modifiers=parser.add_argument_group(title=_("Modifiers to use with --remove and --pretend"), description=None)
-modifiers.add_argument('--pattern', help=_("Defines a python datetime pattern to search in current directory. The default pattern is '%(default)s'."), action="store",default="%Y%m%d %H%M")
-modifiers.add_argument('--disable_log', help=_("Disable log generation. The default value is '%(default)s'."),action="store_true", default=False)
-modifiers.add_argument('--remove_mode', help=_("Remove mode. The default value is '%(default)s'."), choices=['RemainFirstInMonth','RemainLastInMonth'], default='RemainFirstInMonth')
-modifiers.add_argument('--too_young_to_delete', help=_("Number of days to respect from today. The default value is '%(default)s'."), default=30)
-modifiers.add_argument('--max_files_to_store', help=_("Maximum number of files to remain in directory. The default value is '%(default)s'."), default=100000000)
-if __name__ == '__main__':
+    modifiers=parser.add_argument_group(title=_("Modifiers to use with --remove and --pretend"), description=None)
+    modifiers.add_argument('--pattern', help=_("Defines a python datetime pattern to search in current directory. The default pattern is '%(default)s'."), action="store",default="%Y%m%d %H%M")
+    modifiers.add_argument('--disable_log', help=_("Disable log generation. The default value is '%(default)s'."),action="store_true", default=False)
+    modifiers.add_argument('--remove_mode', help=_("Remove mode. The default value is '%(default)s'."), choices=['RemainFirstInMonth','RemainLastInMonth'], default='RemainFirstInMonth')
+    modifiers.add_argument('--too_young_to_delete', help=_("Number of days to respect from today. The default value is '%(default)s'."), default=30)
+    modifiers.add_argument('--max_files_to_store', help=_("Maximum number of files to remain in directory. The default value is '%(default)s'."), default=100000000)
     args=parser.parse_args()
 
     colorama.init(autoreset=True)
@@ -386,3 +385,5 @@ if __name__ == '__main__':
 
     if args.pretend==True:
         manager.pretend()
+if __name__ == '__main__':
+    main()

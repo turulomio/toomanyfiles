@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-08-02 10:19+0200\n"
+"POT-Creation-Date: 2018-08-12 09:40+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -39,30 +39,6 @@ msgid "With --pretend and --remove you can use this parameters:"
 msgstr ""
 
 msgid "Sets the date and time pattern to search in the current directory filenames. It uses python strftime function format."
-msgstr ""
-
-msgid "Developed by Mariano Muñoz 2018-{}"
-msgstr ""
-
-msgid "Generate docs and i18n"
-msgstr ""
-
-msgid "Generate doxygen api documentation"
-msgstr ""
-
-msgid "Directory to install app. / recomended"
-msgstr ""
-
-msgid "Uninstall. / recomended"
-msgstr ""
-
-msgid "Make a HOWTO video and gif "
-msgstr ""
-
-msgid "Make a sources tar"
-msgstr ""
-
-msgid "Python path"
 msgstr ""
 
 msgid "There are files with datetime patterns with different roots"
@@ -137,6 +113,9 @@ msgstr ""
 msgid "Search date and time patterns to delete innecesary files or directories"
 msgstr ""
 
+msgid "Developed by Mariano Muñoz 2018-{}"
+msgstr ""
+
 msgid "Create two example directores named 'example' and 'example_directories'"
 msgstr ""
 
@@ -173,15 +152,6 @@ msgid "Error passing parameters"
 msgstr ""
 
 msgid "The number of files too young to delete can't be bigger than the maximum number of files to store"
-msgstr ""
-
-msgid "Create an animated gif/video from the output of the program passed as parameter"
-msgstr ""
-
-msgid "Path to program"
-msgstr ""
-
-msgid "Ttyrec output path"
 msgstr ""
 
 msgid "Sets output language"

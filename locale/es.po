@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: TooManyFiles\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-08-02 10:11+0200\n"
+"POT-Creation-Date: 2018-08-12 09:38+0200\n"
 "PO-Revision-Date: 2015-03-22 18:51+0100\n"
 "Last-Translator: root <turulomio@yahoo.es>\n"
 "Language-Team: Spanish\n"
@@ -41,30 +41,6 @@ msgstr "Con --pretend y --remove puedes usar estos parámetros"
 
 msgid "Sets the date and time pattern to search in the current directory filenames. It uses python strftime function format."
 msgstr "Establece el patrón de fecha y hora para buscar en los nombres del directorio actual. Usa el formato de python de la funciónde strftime"
-
-msgid "Developed by Mariano Muñoz 2018-{}"
-msgstr "Desarrollado por Mariano Muñoz 2018-{}"
-
-msgid "Generate docs and i18n"
-msgstr "Generar documentación e internacionalización"
-
-msgid "Generate doxygen api documentation"
-msgstr "Generar la documentación de la api con Doxygen"
-
-msgid "Directory to install app. / recomended"
-msgstr "Directorio en el el que instalar la applicación. Se recomienda en /"
-
-msgid "Uninstall. / recomended"
-msgstr "Desinstalar. Se recomienda en /"
-
-msgid "Make a HOWTO video and gif "
-msgstr "Genera un tutorial en un video y en un fichero gif "
-
-msgid "Make a sources tar"
-msgstr "Crea un fichero tar con el código fuente"
-
-msgid "Python path"
-msgstr "Ruta a Python"
 
 msgid "There are files with datetime patterns with different roots"
 msgstr "Hay ficheros con patrón de fecha y hora y diferentes nombres"
@@ -138,6 +114,9 @@ msgstr "Creados {} directorios y ficheros en el directorio 'example_directories'
 msgid "Search date and time patterns to delete innecesary files or directories"
 msgstr "Busca patrónes de fecha y hora para borrar ficheros o directorios innecesarios"
 
+msgid "Developed by Mariano Muñoz 2018-{}"
+msgstr "Desarrollado por Mariano Muñoz 2018-{}"
+
 msgid "Create two example directores named 'example' and 'example_directories'"
 msgstr "Crea dos directorios de ejemplo con el nombre 'example' y 'example_directories'"
 
@@ -175,15 +154,6 @@ msgstr "Error al pasar los parámetros"
 
 msgid "The number of files too young to delete can't be bigger than the maximum number of files to store"
 msgstr "El número de ficheros demasiado recientes para ser borrados no puede ser mayor que el máximo número de ficheros a guardar"
-
-msgid "Create an animated gif/video from the output of the program passed as parameter"
-msgstr "Crea un gif animado/video de la salida del programa pasado como parámetro"
-
-msgid "Path to program"
-msgstr "Ruta al programa"
-
-msgid "Ttyrec output path"
-msgstr "Ruta de salida de Ttyrec"
 
 msgid "Sets output language"
 msgstr "Establece el lenguaje de salida"
@@ -229,6 +199,36 @@ msgstr "Listamos los ficheros que han quedado"
 
 msgid "That's all"
 msgstr "Eso es todo"
+
+#~ msgid "Generate docs and i18n"
+#~ msgstr "Generar documentación e internacionalización"
+
+#~ msgid "Generate doxygen api documentation"
+#~ msgstr "Generar la documentación de la api con Doxygen"
+
+#~ msgid "Directory to install app. / recomended"
+#~ msgstr "Directorio en el el que instalar la applicación. Se recomienda en /"
+
+#~ msgid "Uninstall. / recomended"
+#~ msgstr "Desinstalar. Se recomienda en /"
+
+#~ msgid "Make a HOWTO video and gif "
+#~ msgstr "Genera un tutorial en un video y en un fichero gif "
+
+#~ msgid "Make a sources tar"
+#~ msgstr "Crea un fichero tar con el código fuente"
+
+#~ msgid "Python path"
+#~ msgstr "Ruta a Python"
+
+#~ msgid "Create an animated gif/video from the output of the program passed as parameter"
+#~ msgstr "Crea un gif animado/video de la salida del programa pasado como parámetro"
+
+#~ msgid "Path to program"
+#~ msgstr "Ruta al programa"
+
+#~ msgid "Ttyrec output path"
+#~ msgstr "Ruta de salida de Ttyrec"
 
 #~ msgid "Remove innecesary files with a date and time pattern in the current subdirectory."
 #~ msgstr "Borra ficheros no necesarios que tengan un patrón de fecha y hora en el subdirectorio actual."
