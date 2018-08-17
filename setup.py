@@ -86,7 +86,7 @@ class Doc(Command):
             gettext.install('toomanyfiles', 'badlocale')
             man=Man("man/man1/toomanyfiles")
         else:
-            lang1=gettext.translation('toomanyfiles', 'locale', languages=[language])
+            lang1=gettext.translation('toomanyfiles', 'toomanyfiles/locale', languages=[language])
             lang1.install()
             man=Man("man/es/man1/toomanyfiles")
         print("  - DESCRIPTION in {} is {}".format(language, _("DESCRIPTION")))
