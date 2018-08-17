@@ -1,9 +1,9 @@
-#!/usr/bin/python3
 import argparse
 import colorama
 import datetime
 import gettext
 import os
+import pkg_resources
 import shutil
 import sys
 
@@ -14,7 +14,8 @@ def version_date():
     return datetime.date(int(versio[:-4]),  int(versio[4:-2]),  int(versio[6:]))
 
 # I had a lot of problems with UTF-8. LANG must be es_ES.UTF-8 to work. Nuevo sistema2
-gettext.install('toomanyfiles')
+t=gettext.translation('toomanyfiles',pkg_resources.resource_filename(__name__,"locale"))
+_=t.gettext
 
 class RemoveMode:
     RemainFirstInMonth=1
