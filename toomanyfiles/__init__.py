@@ -1,8 +1,5 @@
 import datetime
 from .toomanyfiles import * 
 
-#language = gettext.translation ('ttyrecgenerator', 'locale' )
-#language.install()
-
-__version__ = '20180817'
-__versiondate__=datetime.date(2018,8,17)
+__version__ = '20180818'
+__versiondate__=datetime.date(2018,8,18)

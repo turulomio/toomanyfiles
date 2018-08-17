@@ -29,8 +29,10 @@ You can see this animated gif to learn how to use it:
 
 Changelog
 =========
-20180816
+20180818
+  * Catching exception in gettext
   * Added catalog translations to package
+  * Added dependencies to setup.py
 20180812
   * Removed Makefile.py. Now I'm using setuptools
 20180727

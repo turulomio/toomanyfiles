@@ -149,6 +149,7 @@ setup(name='toomanyfiles',
      entry_points = {'console_scripts': ['toomanyfiles=toomanyfiles.toomanyfiles:main',
                                         ],
                     },
+     install_requires=['colorama','mangenerator','setuptools','ttyrecgenerator'],
      data_files=data_files,
      cmdclass={
         'doxygen': Doxygen,
