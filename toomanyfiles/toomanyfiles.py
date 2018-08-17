@@ -7,15 +7,14 @@ import pkg_resources
 import shutil
 import sys
 
-version="20180727"
-
-def version_date():
-    versio=version.replace("+","")
-    return datetime.date(int(versio[:-4]),  int(versio[4:-2]),  int(versio[6:]))
 
 # I had a lot of problems with UTF-8. LANG must be es_ES.UTF-8 to work. Nuevo sistema2
-t=gettext.translation('toomanyfiles',pkg_resources.resource_filename(__name__,"locale"))
-_=t.gettext
+try:
+    t=gettext.translation('toomanyfiles',pkg_resources.resource_filename(__name__,"locale"))
+    _=t.gettext
+except:
+    print("Problem with translation catalog")
+    _=str
 
 class RemoveMode:
     RemainFirstInMonth=1

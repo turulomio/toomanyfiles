@@ -53,11 +53,13 @@ class Uninstall(Command):
         pass
 
     def run(self):
-        os.system("rm -Rf {}/toomanyfiles*".format(site.getsitepackages()[0]))
-        os.system("rm /usr/bin/toomanyfiles")
-        os.system("rm /usr/share/locale/es/LC_MESSAGES/toomanyfiles.mo")
-        os.system("rm /usr/share/man/man1/toomanyfiles.1")
-        os.system("rm /usr/share/man/es/man1/toomanyfiles.1")
+        if platform.system()=="Linux":
+            os.system("rm -Rf {}/toomanyfiles*".format(site.getsitepackages()[0]))
+            os.system("rm /usr/bin/toomanyfiles")
+            os.system("rm /usr/share/man/man1/toomanyfiles.1")
+            os.system("rm /usr/share/man/es/man1/toomanyfiles.1")
+        else:
+            print(_("Uninstall command only works in Linux"))
 
 class Doc(Command):
     description = "Update man pages and translations"
