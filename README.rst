@@ -29,6 +29,8 @@ You can see this animated gif to learn how to use it:
 
 Changelog
 =========
+0.1.1
+  * Corrected image link in README.rst
 0.1.0
   * Catching exception in gettext
   * Added catalog translations to package
