@@ -12,8 +12,10 @@ GPL-3
 
 Dependencies
 ============
-
-None, other than Python. Tested on Python 3 
+  * https://www.python.org/, as the main programming language.
+  * https://pypi.org/project/colorama/, to give console colors.
+  * https://pypi.org/project/mangenerator/, to generate man files.
+  * https://pypi.org/project/ttyrecgenerator/, to generate animated gifs.
 
 Usage
 =====
@@ -25,19 +27,13 @@ You can see this animated gif to learn how to use it:
    :scale: 100 %
    :align: center
 
-
-
 Changelog
 =========
-20180818
+0.1.0
   * Catching exception in gettext
   * Added catalog translations to package
   * Added dependencies to setup.py
-20180812
   * Removed Makefile.py. Now I'm using setuptools
-20180727
   * Stable version
-20180726
   * First version, full functional.
-20180724
   * Creating infrastructure
