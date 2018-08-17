@@ -6,6 +6,7 @@ import os
 import pkg_resources
 import shutil
 import sys
+from .__init__ import __version__, __versiondate__
 
 
 # I had a lot of problems with UTF-8. LANG must be es_ES.UTF-8 to work. Nuevo sistema2
@@ -340,8 +341,8 @@ def create_example_with_directories():
     print (_("Created {} directories and files in the directory 'example_directories'".format(number)))
 
 def main():
-    parser=argparse.ArgumentParser(prog='toomanyfiles', description=_('Search date and time patterns to delete innecesary files or directories'), epilog=_("Developed by Mariano Muñoz 2018-{}".format(version_date().year)), formatter_class=argparse.RawTextHelpFormatter)
-    parser.add_argument('--version', action='version', version=version)
+    parser=argparse.ArgumentParser(prog='toomanyfiles', description=_('Search date and time patterns to delete innecesary files or directories'), epilog=_("Developed by Mariano Muñoz 2018-{}".format(__versiondate__.year)), formatter_class=argparse.RawTextHelpFormatter)
+    parser.add_argument('--version', action='version', version=__version__)
 
     group= parser.add_mutually_exclusive_group(required=True)
     group.add_argument('--create_example', help=_("Create two example directores named 'example' and 'example_directories'"), action="store_true",default=False)
