@@ -19,7 +19,7 @@ Usage
 =====
 You can see this animated gif to learn how to use it:
 
-.. image:: https://sourceforge.net/p/too-many-files/code/HEAD/tree/doc/ttyrec/toomanyfiles_howto_en.gif
+.. image:: https://sourceforge.net/p/too-many-files/code/HEAD/tree/doc/ttyrec/toomanyfiles_howto_en.gif?format=raw
    :height: 800px
    :width: 600px
    :scale: 100 %
