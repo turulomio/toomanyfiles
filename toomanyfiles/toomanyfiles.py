@@ -326,7 +326,7 @@ def create_example():
         filename="example/{}{:02d}{:02d} {:02d}{:02d} Toomanyfiles example.txt".format(d.year,d.month,d.day,d.hour,d.minute)
         f=open(filename,"w")
         f.close()
-    print (colorama.Fore.GREEN + _("Created {} files in the directory 'example'").format(number))
+    print (colorama.Style.BRIGHT + _("Created {} files in the directory 'example'").format(number))
     
 ## Creates an example subdirectory and fills it with datetime pattern directories
 def create_example_with_directories():
@@ -338,7 +338,7 @@ def create_example_with_directories():
         makedirs(os.path.dirname(filename))        
         f=open(filename,"w")
         f.close()
-    print (colorama.Fore.GREEN + _("Created {} directories and files in the directory 'example_directories'").format(number))
+    print (colorama.Style.BRIGHT + _("Created {} directories and files in the directory 'example_directories'").format(number))
 
 def main():
     parser=argparse.ArgumentParser(prog='toomanyfiles', description=_('Search date and time patterns to delete innecesary files or directories'), epilog=_("Developed by Mariano Muñoz 2018-{}".format(__versiondate__.year)), formatter_class=argparse.RawTextHelpFormatter)
