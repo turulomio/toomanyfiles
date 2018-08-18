@@ -19,7 +19,7 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 msgid "Uninstall command only works in Linux"
-msgstr ""
+msgstr "El comando 'uninstall' solo funciona en Linux"
 
 msgid "DESCRIPTION"
 msgstr "DESCRIPCIÓN"
