@@ -5,7 +5,9 @@ Introduction
 
 TooManyFiles is an admin script. Used to delete innecesary files finding date and time patterns in filename
 
-The main web page is located <a src="https://too-many-files.sourceforge.io/">here</a>
+The main web page is located in <a href="https://too-many-files.sourceforge.io/">https://too-many-files.sourceforge.io/</a>
+
+The Pypi web page is located in <a href="https://pypi.org/project/toomanyfiles/">https://pypi.org/project/toomanyfiles/</a>
 
 Development
 ===========
@@ -27,7 +29,7 @@ TooManyFiles depends on the following software:
 - <a target="_blank" href="https://pypi.org/project/colorama/">Colorama</a>, to give color to console output.
 
 
-\page Howto "Howto"
+\page Howto Howto
 
 TooManyFiles Use
 ================

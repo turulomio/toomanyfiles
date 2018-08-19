@@ -2,9 +2,14 @@ Source code & Development:
     https://sourceforge.net/projects/too-many-files/
 Doxygen documentation:
     http://turulomio.users.sourceforge.net/doxygen/too-many-files/
+Main developer web page:
+    http://turulomio.users.sourceforge.net/en/proyectos.html
+Gentoo ebuild
+    You can find a Gentoo ebuild in https://sourceforge.net/p/xulpymoney/code/HEAD/tree/myportage/app-admin/toomanyfiles/
 
 Description
 ===========
+Removes files which name has date and time patterns
 
 License
 =======
