@@ -40,8 +40,8 @@ class Video(Command):
 
     def run(self):
         os.chdir("doc/ttyrec")
-        os.system("ttyrecgenerator --output ttyrecgenerator_howto_es 'python3 howto.py --language es' --video")
-        os.system("ttyrecgenerator --output ttyrecgenerator_howto_en 'python3 howto.py --language en' --video")
+        os.system("ttyrecgenerator --output toomanyfiles_howto_es 'python3 howto.py' --lc_all es_ES.UTF-8")
+        os.system("ttyrecgenerator --output toomanyfiles_howto_en 'python3 howto.py' --lc_all C")
         os.chdir("../..")
 
 

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: TooManyFiles\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-08-17 11:11+0200\n"
+"POT-Creation-Date: 2018-08-19 09:51+0200\n"
 "PO-Revision-Date: 2015-03-22 18:51+0100\n"
 "Last-Translator: root <turulomio@yahoo.es>\n"
 "Language-Team: Spanish\n"
@@ -158,9 +158,6 @@ msgstr "Error al pasar los parámetros"
 msgid "The number of files too young to delete can't be bigger than the maximum number of files to store"
 msgstr "El número de ficheros demasiado recientes para ser borrados no puede ser mayor que el máximo número de ficheros a guardar"
 
-msgid "Sets output language"
-msgstr "Establece el lenguaje de salida"
-
 msgid "This is a video to show how to use 'toomanyfiles' command"
 msgstr "Este video muestra como usar el comando 'toomanyfiles'"
 
@@ -202,6 +199,9 @@ msgstr "Listamos los ficheros que han quedado"
 
 msgid "That's all"
 msgstr "Eso es todo"
+
+#~ msgid "Sets output language"
+#~ msgstr "Establece el lenguaje de salida"
 
 #~ msgid "Generate docs and i18n"
 #~ msgstr "Generar documentación e internacionalización"

@@ -12,10 +12,10 @@ GPL-3
 
 Dependencies
 ============
-  * https://www.python.org/, as the main programming language.
-  * https://pypi.org/project/colorama/, to give console colors.
-  * https://pypi.org/project/mangenerator/, to generate man files.
-  * https://pypi.org/project/ttyrecgenerator/, to generate animated gifs.
+* https://www.python.org/, as the main programming language.
+* https://pypi.org/project/colorama/, to give console colors.
+* https://pypi.org/project/mangenerator/, to generate man files.
+* https://pypi.org/project/ttyrecgenerator/, to generate animated gifs.
 
 Usage
 =====
@@ -29,6 +29,8 @@ You can see this animated gif to learn how to use it:
 
 Changelog
 =========
+0.2.0
+  * Code adapted to ttyrecgenerator-0.6.0
 0.1.1
   * Corrected image link in README.rst
 0.1.0

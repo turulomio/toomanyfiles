@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-08-18 08:43+0200\n"
+"POT-Creation-Date: 2018-08-19 10:29+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -155,9 +155,6 @@ msgid "Error passing parameters"
 msgstr ""
 
 msgid "The number of files too young to delete can't be bigger than the maximum number of files to store"
-msgstr ""
-
-msgid "Sets output language"
 msgstr ""
 
 msgid "This is a video to show how to use 'toomanyfiles' command"
