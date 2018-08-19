@@ -39,6 +39,7 @@ time.sleep(1)
 r.comment("# " + _("We list the files remaining"))
 r.command("ls -la")
 
+os.chdir("..")
 os.system("rm -Rf example")
 os.system("rm -Rf example_directories")
 r.comment("# " + _("That's all"))
