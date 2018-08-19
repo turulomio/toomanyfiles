@@ -3,7 +3,7 @@
 Introduction
 ============
 
-TooManyFiles is an admin script. Used to delete innecesary files finding a datetime pattern in filename
+TooManyFiles is an admin script. Used to delete innecesary files finding date and time patterns in filename
 
 The main web page is located <a src="https://too-many-files.sourceforge.io/">here</a>
 
