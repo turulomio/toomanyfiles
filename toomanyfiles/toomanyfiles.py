@@ -11,10 +11,10 @@ from .__init__ import __version__, __versiondate__
 
 # I had a lot of problems with UTF-8. LANG must be es_ES.UTF-8 to work. Nuevo sistema2
 try:
-    t=gettext.translation('toomanyfiles',pkg_resources.resource_filename(__name__,"locale"))
+    t=gettext.translation('toomanyfiles',pkg_resources.resource_filename("toomanyfiles","locale"))
     _=t.gettext
 except:
-    print("Problem with translation catalog")
+    #print("Problem with translation catalog")
     _=str
 
 class RemoveMode:

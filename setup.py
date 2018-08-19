@@ -20,6 +20,8 @@ class Doxygen(Command):
 
     def run(self):
         print("Creating Doxygen Documentation")
+        os.system("""sed -i -e "41d" doc/Doxyfile""")#Delete line 41
+        os.system("""sed -i -e "41iPROJECT_NUMBER         = {}" doc/Doxyfile""".format(__version__))
         os.chdir("doc")
         os.system("doxygen Doxyfile")
         os.system("rsync -avzP -e 'ssh -l turulomio' html/ frs.sourceforge.net:/home/users/t/tu/turulomio/userweb/htdocs/doxygen/too-many-files/ --delete-after")

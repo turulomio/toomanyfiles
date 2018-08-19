@@ -1,4 +1,4 @@
-include GPL-3.txt CHANGELOG.txt *.py
+include LICENSE.txt *.py
 recursive-include locale *.po 
 recursive-include toomanyfiles *.mo
 recursive-include locale *.1
