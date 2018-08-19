@@ -27,7 +27,14 @@ TooManyFiles depends on the following software:
 - <a target="_blank" href="https://pypi.org/project/colorama/">Colorama</a>, to give color to console output.
 
 
+\page Howto
 
+TooManyFiles Use
+================
+
+This is an animated gif HOWTO:
+
+@image html toomanyfiles_howto_en.gif "TooManyFiles howto" width=70%
 
 
 */

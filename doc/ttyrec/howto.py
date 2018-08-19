@@ -5,12 +5,9 @@ import colorama
 import os
 import subprocess
 import gettext
-import sys
-sys.path.append("/usr/lib/toomanyfiles")
-
-from libttyrecgenerator import RecSession
-# I had a lot of problems with UTF-8. LANG must be es_ES.UTF-8 to work
-gettext.install('toomanyfiles', '/usr/share/locale')
+from ttyrecgenerator import RecSession
+import pkg_resources
+gettext.install('toomanyfiles', pkg_resources.resource_filename('toomanyfiles', 'locale'))
 
 parser=argparse.ArgumentParser(description='HOWTO to save with ttyrec', formatter_class=argparse.RawTextHelpFormatter)
 parser.add_argument('--language', help=_("Sets output language"), action="store",default='en')
@@ -52,4 +49,3 @@ os.system("rm -Rf ../example")
 os.system("rm -Rf ../example_directories")
 r.comment("# " + _("That's all"))
 time.sleep(20)
-sys.exit(0)
