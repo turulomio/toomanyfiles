@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: TooManyFiles\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-08-20 10:27+0200\n"
+"POT-Creation-Date: 2018-08-20 17:44+0200\n"
 "PO-Revision-Date: 2015-03-22 18:51+0100\n"
 "Last-Translator: root <turulomio@yahoo.es>\n"
 "Language-Team: Spanish\n"
@@ -45,17 +45,11 @@ msgstr "Con --pretend y --remove puedes usar estos parámetros"
 msgid "Sets the date and time pattern to search in the current directory filenames. It uses python strftime function format."
 msgstr "Establece el patrón de fecha y hora para buscar en los nombres del directorio actual. Usa el formato de python de la funciónde strftime"
 
-msgid "There are files with datetime patterns with different roots"
-msgstr "Hay ficheros con patrón de fecha y hora y diferentes nombres"
+msgid "I can't continue, there are different filename roots with date and time patterns:"
+msgstr "No puedo continuar, hay raices de nombres de ficheros distintas con patrones de fecha y hora:"
 
-msgid "You have to correct it"
-msgstr "Debes corregirlo"
-
-msgid "Exiting..."
-msgstr "Saliendo"
-
-msgid "There are files and directories with date and time patterns in the current path"
-msgstr "Hay ficheros y directorios con patrónes de fecha y hora en la ruta actual"
+msgid "I can't continue, there are files and directories with date and time patterns in the current path"
+msgstr "No puedo continuar, hay ficheros y directorios con patrones de fecha y hora en el directorio actual"
 
 msgid "Not developed yet"
 msgstr "No desarrollado todavía"
@@ -65,18 +59,6 @@ msgstr "Borrado"
 
 msgid "Over max number of files"
 msgstr "Supera el número de ficheros a guardar"
-
-msgid "R"
-msgstr "P"
-
-msgid "D"
-msgstr "B"
-
-msgid "Y"
-msgstr "J"
-
-msgid "O"
-msgstr "S"
 
 msgid "Directories status pretending:"
 msgstr "Estado de los directorios en la simulación:"
@@ -99,20 +81,35 @@ msgstr "De esta manera, {} ficheros se han borrado y {} ficheros se han guardado
 msgid "Remains"
 msgstr "Permanece"
 
+msgid "R"
+msgstr "P"
+
+msgid "D"
+msgstr "B"
+
 msgid "Too young to delete"
 msgstr "Muy joven para borrar"
+
+msgid "Y"
+msgstr "J"
 
 msgid "Over max files"
 msgstr "Supera el número de ficheros a guardar"
 
+msgid "O"
+msgstr "S"
+
 msgid "{} TooManyFiles in {} detected {} files with pattern {}"
 msgstr "{} TooManyFiles en {} detectó {} ficheros con el patrón {}"
 
-msgid "Created {} files in the directory 'example'"
-msgstr "Creados {} ficheros en el directorio 'example'"
+msgid "Different examples have been created in the directory 'toomanyfiles_examples'"
+msgstr "Se han creado varios ejemplos en el directorio 'toomanyfiles_examples'"
 
-msgid "Created {} directories and files in the directory 'example_directories'"
-msgstr "Creados {} directorios y ficheros en el directorio 'example_directories'"
+msgid "'toomanyfiles_examples' directory removed"
+msgstr "El directorio 'toomanyfiles_examples' ha sido borrado"
+
+msgid "I can't remove 'toomanyfiles_examples' directory"
+msgstr "No puedo borrar el directorio 'toomanyfiles_examples'"
 
 msgid "Search date and time patterns to delete innecesary files or directories"
 msgstr "Busca patrónes de fecha y hora para borrar ficheros o directorios innecesarios"
@@ -120,8 +117,11 @@ msgstr "Busca patrónes de fecha y hora para borrar ficheros o directorios innec
 msgid "Developed by Mariano Muñoz 2018-{}"
 msgstr "Desarrollado por Mariano Muñoz 2018-{}"
 
-msgid "Create two example directores named 'example' and 'example_directories'"
-msgstr "Crea dos directorios de ejemplo con el nombre 'example' y 'example_directories'"
+msgid "Create example directories"
+msgstr "Crear directorios de ejemplo"
+
+msgid "Remove example directories'"
+msgstr "Borrar directorios de ejemplo"
 
 msgid "Removes files permanently"
 msgstr "Borra los ficheros permanentemente"
@@ -164,8 +164,8 @@ msgstr "Este video muestra como usar el comando 'toomanyfiles'"
 msgid "We are going to create an example directory to learn how to use it"
 msgstr "Vamos a crear un directorio de ejemplo para aprender a usarlo"
 
-msgid "We are going to see the 10 last files of this directory"
-msgstr "Vamos a ver los últimos 10 ficheros de este directorio"
+msgid "We are going to see the 10 last files of directory 'toomanyfiles_examples/files'"
+msgstr "Vamos a ver los 10 últimos ficheros del directorio 'toomanyfiles_examples/files'"
 
 msgid "We can see files with temporal pattern 'YYYYmmdd HHMM' with a day variation"
 msgstr "Podemos ver ficheros con el patrón temporal 'YYYYmmdd HHMM' con un día de variación"
@@ -182,9 +182,6 @@ msgstr "De esta manera, queremos conservar los 5 últimos ficheros porque son mu
 msgid "We want to keep the first file of each month from the rest of the files until a max number the files of 15."
 msgstr "Del resto de ficheros, queremos conservar el primer fichero de cada mes hasta un máximo de 15 ficheros en total"
 
-msgid "We enter in the example directory."
-msgstr "Entramos en el directorio de ejemplo."
-
 msgid "We make a simulation with --pretend"
 msgstr "Hacemos una simulación con --pretend"
 
@@ -199,6 +196,33 @@ msgstr "Listamos los ficheros que han quedado"
 
 msgid "That's all"
 msgstr "Eso es todo"
+
+#~ msgid "There are files with datetime patterns with different roots"
+#~ msgstr "Hay ficheros con patrón de fecha y hora y diferentes nombres"
+
+#~ msgid "You have to correct it"
+#~ msgstr "Debes corregirlo"
+
+#~ msgid "Exiting..."
+#~ msgstr "Saliendo"
+
+#~ msgid "There are files and directories with date and time patterns in the current path"
+#~ msgstr "Hay ficheros y directorios con patrónes de fecha y hora en la ruta actual"
+
+#~ msgid "Created {} files in the directory 'example'"
+#~ msgstr "Creados {} ficheros en el directorio 'example'"
+
+#~ msgid "Created {} directories and files in the directory 'example_directories'"
+#~ msgstr "Creados {} directorios y ficheros en el directorio 'example_directories'"
+
+#~ msgid "Create two example directores named 'example' and 'example_directories'"
+#~ msgstr "Crea dos directorios de ejemplo con el nombre 'example' y 'example_directories'"
+
+#~ msgid "We are going to see the 10 last files of this directory"
+#~ msgstr "Vamos a ver los últimos 10 ficheros de este directorio"
+
+#~ msgid "We enter in the example directory."
+#~ msgstr "Entramos en el directorio de ejemplo."
 
 #~ msgid "TooManyFiles was executed at {}"
 #~ msgstr "TooManyFiles fue ejecutado a las {}"

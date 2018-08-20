@@ -244,13 +244,13 @@ class FilenameWithDatetimeManager:
                 print (_("Directories status pretending:"))
             elif self.__all_filenames_are_regular_files():
                 print (_("File status pretending:"))
-            result=_("So, {} files will be deleted and {} will be kept when you use --remove parameter.".format(colorama.Fore.YELLOW + str(n_delete+n_over) + colorama.Style.RESET_ALL, colorama.Fore.YELLOW + str(n_remain+n_young) +colorama.Style.RESET_ALL))
+            result=_("So, {} files will be deleted and {} will be kept when you use --remove parameter.").format(colorama.Fore.YELLOW + str(n_delete+n_over) + colorama.Style.RESET_ALL, colorama.Fore.YELLOW + str(n_remain+n_young) +colorama.Style.RESET_ALL)
         elif self.__pretending==0:
             if self.__all_filenames_are_directories():
                 print (_("Directories status removing:"))
             elif self.__all_filenames_are_regular_files():
                 print (_("File status removing:"))
-            result=_("So, {} files have been deleted and {} files have been kept.".format(colorama.Fore.YELLOW + str(n_delete+n_over) + colorama.Style.RESET_ALL, colorama.Fore.YELLOW + str(n_remain+n_young) +colorama.Style.RESET_ALL))
+            result=_("So, {} files have been deleted and {} files have been kept.").format(colorama.Fore.YELLOW + str(n_delete+n_over) + colorama.Style.RESET_ALL, colorama.Fore.YELLOW + str(n_remain+n_young) +colorama.Style.RESET_ALL)
         print ("  * {} [{}]: {}".format(_("Remains"), colorama.Fore.GREEN + _("R") + colorama.Style.RESET_ALL, n_remain))
         print ("  * {} [{}]: {}".format(_("Delete"), colorama.Fore.RED + _("D") + colorama.Style.RESET_ALL, n_delete))
         print ("  * {} [{}]: {}".format(_("Too young to delete"), colorama.Fore.MAGENTA + _("Y") + colorama.Style.RESET_ALL, n_young))
@@ -338,49 +338,40 @@ def datetime_in_filename(filename,pattern):
 
 ## Creates an example subdirectory and fills it with datetime pattern filenames
 def create_examples():
-    makedirs("toomanyfiles_example/files")
+    makedirs("toomanyfiles_examples/files")
     number=1000
     for i in range (number):
         d=datetime.datetime.now()-datetime.timedelta(days=i)
-        filename="toomanyfiles_example/files/{}{:02d}{:02d} {:02d}{:02d} Toomanyfiles example.txt".format(d.year,d.month,d.day,d.hour,d.minute)
+        filename="toomanyfiles_examples/files/{}{:02d}{:02d} {:02d}{:02d} Toomanyfiles example.txt".format(d.year,d.month,d.day,d.hour,d.minute)
         f=open(filename,"w")
         f.close()
 
-    makedirs("toomanyfiles_example/directories")
+    makedirs("toomanyfiles_examples/directories")
     number=1000
     for i in range (number):
         d=datetime.datetime.now()-datetime.timedelta(days=i)
-        filename="toomanyfiles_example/directories/{}{:02d}{:02d} {:02d}{:02d} Directory/Toomanyfiles example.txt".format(d.year,d.month,d.day,d.hour,d.minute)
+        filename="toomanyfiles_examples/directories/{}{:02d}{:02d} {:02d}{:02d} Directory/Toomanyfiles example.txt".format(d.year,d.month,d.day,d.hour,d.minute)
         makedirs(os.path.dirname(filename))        
         f=open(filename,"w")
         f.close()
-        
-    makedirs("toomanyfiles_example/directories_just_pattern")
-    number=1000
+
+    makedirs("toomanyfiles_examples/files_with_different_roots")
+    number=5
     for i in range (number):
         d=datetime.datetime.now()-datetime.timedelta(days=i)
-        filename="toomanyfiles_example/directories_just_pattern/{}{:02d}{:02d} {:02d}{:02d}/Toomanyfiles example.txt".format(d.year,d.month,d.day,d.hour,d.minute)
-        makedirs(os.path.dirname(filename))        
+        filename="toomanyfiles_examples/files_with_different_roots/{}{:02d}{:02d} {:02d}{:02d} Toomanyfiles example {}.txt".format(d.year,d.month,d.day,d.hour,d.minute, i)
         f=open(filename,"w")
         f.close()
-        
-        
-    makedirs("toomanyfiles_example/files_just_pattern")
-    number=1000
-    for i in range (number):
-        d=datetime.datetime.now()-datetime.timedelta(days=i)
-        filename="toomanyfiles_example/files_just_pattern/{}{:02d}{:02d} {:02d}{:02d}".format(d.year,d.month,d.day,d.hour,d.minute)
-        f=open(filename,"w")
-        f.close()
-        
-    print (colorama.Style.BRIGHT + _("Different examples have been created in the directory 'toomanyfiles_example'"))
+
+
+    print (colorama.Style.BRIGHT + _("Different examples have been created in the directory 'toomanyfiles_examples'"))
 
 def remove_examples():
-    if os.path.exists('toomanyfiles_example'):
-        shutil.rmtree('toomanyfiles_example')
-        print (_("'toomanyfiles_example' directory removed"))
+    if os.path.exists('toomanyfiles_examples'):
+        shutil.rmtree('toomanyfiles_examples')
+        print (_("'toomanyfiles_examples' directory removed"))
     else:
-        print (_("I can't remove 'toomanyfiles_example' directory"))
+        print (_("I can't remove 'toomanyfiles_examples' directory"))
 
 
 ## TooManyFiles main script
