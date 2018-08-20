@@ -328,7 +328,7 @@ def datetime_in_filename(filename,pattern):
     length=len_pattern(pattern)
     if len(filename)<len(pattern):
         return None
-    for i in range(len(filename)-length):
+    for i in range(len(filename)-length+1):
         s=filename[i:length+i]
         try:
             return datetime.datetime.strptime(s,pattern)

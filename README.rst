@@ -38,6 +38,7 @@ X.X.X
   * [#11] Print different filename roots in the same directory 
   * [#12] Create static class ExitCodes
   * [#13] Added parameters to main function
+  * [#14] Solved bug with directories named with pattern YYYYMMDD HHMM only
   * [#15] Put colored letter output line in a single function
   * Improved --create_examples
   * Added --remove_examples
