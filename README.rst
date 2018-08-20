@@ -37,6 +37,7 @@ Changelog
 X.X.X
   * [#12] Create static class ExitCodes
   * [#13] Added parameters to main function
+  * [#15] Put colored letter output line in a single function
 0.3.0
   * Improved output
 0.2.0

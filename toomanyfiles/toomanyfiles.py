@@ -232,21 +232,11 @@ class FilenameWithDatetimeManager:
 
     #This function must be called after set status
     def __console_output(self):
-        s=self.__header_string(color=True) +"\n"
+        print(self.__header_string(color=True))
         if self.length()==0:
-            print (s)
             return
 
-        for o in self.arr:
-            if o.status==FileStatus.Remain:
-                 s=s+"{}".format( colorama.Fore.GREEN + _("R") + colorama.Fore.RESET)
-            elif o.status==FileStatus.Delete:
-                 s=s+"{}".format( colorama.Fore.RED + _("D") + colorama.Fore.RESET)
-            elif o.status==FileStatus.TooYoungToDelete:
-                 s=s+"{}".format( colorama.Fore.MAGENTA + _("Y")+ colorama.Style.RESET_ALL)
-            elif o.status==FileStatus.OverMaxFiles:
-                 s=s+"{}".format( colorama.Fore.YELLOW + _("O")+ colorama.Style.RESET_ALL)
-        print (s)
+        print (self.one_line_status())
 
         n_remain=self.__number_files_with_status(FileStatus.Remain)
         n_delete=self.__number_files_with_status(FileStatus.Delete)
@@ -270,6 +260,23 @@ class FilenameWithDatetimeManager:
         print ("  * {} [{}]: {}".format(_("Over max files"), colorama.Fore.YELLOW + _("O") + colorama.Style.RESET_ALL, n_over))
         print(result)
 
+    ## This mehod returns a colored string with the status of the files in the array in just one line
+    ## @code
+    ## PBBBBBPBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBPBBBBBBBBBBBBBBBBBBBBBBBPBBBBBBBBBBBBBBBBBBBBJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJ
+    ## @endcode
+    ## @return string
+    def one_line_status(self):
+        s=""
+        for o in self.arr:
+            if o.status==FileStatus.Remain:
+                 s=s+"{}".format( colorama.Fore.GREEN + _("R") + colorama.Fore.RESET)
+            elif o.status==FileStatus.Delete:
+                 s=s+"{}".format( colorama.Fore.RED + _("D") + colorama.Fore.RESET)
+            elif o.status==FileStatus.TooYoungToDelete:
+                 s=s+"{}".format( colorama.Fore.MAGENTA + _("Y")+ colorama.Style.RESET_ALL)
+            elif o.status==FileStatus.OverMaxFiles:
+                 s=s+"{}".format( colorama.Fore.YELLOW + _("O")+ colorama.Style.RESET_ALL)
+        return s
 
     ## Function that generates the header used in console output and in log
     ## @return string
