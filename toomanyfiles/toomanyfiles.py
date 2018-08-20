@@ -71,10 +71,6 @@ class FilenameWithDatetimeManager:
             if dt!=None:
                 self.append(FilenameWithDatetime(filename,dt))
 
-    ## Number of files with date and time pattern detected
-    def length():
-        return len(self.arr)
-
     ## Property that returns if log must be done when remove is selected
     ## @return Int
     @property
@@ -121,6 +117,7 @@ class FilenameWithDatetimeManager:
     def append(self,o):
         self.arr.append(o)
 
+    ## Number of files with date and time pattern detected
     def length(self):
         return len(self.arr)
 
@@ -347,7 +344,11 @@ def create_example_with_directories():
         f.close()
     print (colorama.Style.BRIGHT + _("Created {} directories and files in the directory 'example_directories'").format(number))
 
-def main():
+## TooManyFiles main script
+## If arguments is None, launches with sys.argc parameters. Entry point is toomanyfiles:main
+## You can call with main(['--pretend']). It's equivalento to os.system('toomanyfiles --pretend')
+## @param arguments is an array with parser arguments. For example: ['--max_files_to_store','9']. 
+def main(arguments=None):
     parser=argparse.ArgumentParser(prog='toomanyfiles', description=_('Search date and time patterns to delete innecesary files or directories'), epilog=_("Developed by Mariano Muñoz 2018-{}".format(__versiondate__.year)), formatter_class=argparse.RawTextHelpFormatter)
     parser.add_argument('--version', action='version', version=__version__)
 
@@ -362,7 +363,8 @@ def main():
     modifiers.add_argument('--remove_mode', help=_("Remove mode. The default value is '%(default)s'."), choices=['RemainFirstInMonth','RemainLastInMonth'], default='RemainFirstInMonth')
     modifiers.add_argument('--too_young_to_delete', help=_("Number of days to respect from today. The default value is '%(default)s'."), default=30)
     modifiers.add_argument('--max_files_to_store', help=_("Maximum number of files to remain in directory. The default value is '%(default)s'."), default=100000000)
-    args=parser.parse_args()
+
+    args=parser.parse_args(arguments)
 
     colorama.init(autoreset=True)
 
@@ -393,5 +395,4 @@ def main():
 
     if args.pretend==True:
         manager.pretend()
-if __name__ == '__main__':
-    main()
+

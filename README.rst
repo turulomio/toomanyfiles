@@ -34,6 +34,8 @@ You can see this animated gif to learn how to use it:
 
 Changelog
 =========
+X.X.X
+  * [#13] Added parameters to main function.
 0.3.0
   * Improved output
 0.2.0
