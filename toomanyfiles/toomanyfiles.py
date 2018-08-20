@@ -137,16 +137,15 @@ class FilenameWithDatetimeManager:
         # =========== SECURITY
         alldir=self.__all_filenames_are_directories()
         allfiles=self.__all_filenames_are_regular_files()
-        if self.__several_root_filenames()==True:
-            print(_("There are files with datetime patterns with different roots"))
-            print(_("You have to correct it"))
-            print(_("Exiting..."))
+        roots=self.root_filenames()
+        if len(roots)>1:
+            print(_("I can't continue, there are different filename roots with date and time patterns:"))
+            for root in roots:
+                print ("  {} {}".format(colorama.Fore.GREEN + colorama.Style.BRIGHT + "*" + colorama.Style.RESET_ALL, root))
             sys.exit(ExitCodes.MixedRoots)
             
         if alldir==False and allfiles==False:
-            print(_("There are files and directories with date and time patterns in the current path"))
-            print(_("You have to correct it"))
-            print(_("Exiting..."))
+            print(_("I can't continue, there are files and directories with date and time patterns in the current path"))
             sys.exit(ExitCodes.MixedFilesDirectories)
         
         #========== CODE
@@ -183,16 +182,14 @@ class FilenameWithDatetimeManager:
     def __sort_by_datetime(self):
         self.arr=sorted(self.arr, key=lambda a: a.datetime  ,  reverse=False)
         
-    ## Function that returns a boolean if there are differente filenames withourt pattern in the array
-    def __several_root_filenames(self):
+    ## Function that returns a list with the different filename roots in the currrenty directory
+    def root_filenames(self):
         aux=[]
         for o in self. arr:
             root=o.filename_without_pattern(self.pattern)
             if root not in aux:
                 aux.append(root)
-        if len(aux)>1:
-            return True
-        return False
+        return aux
 
     #This function must be called after set status
     def __write_log(self, ):
@@ -315,7 +312,7 @@ class FilenameWithDatetimeManager:
 
 def makedirs(dir):
     try:
-       os.mkdir(dir)
+       os.makedirs(dir)
     except:
        pass
 
@@ -340,27 +337,51 @@ def datetime_in_filename(filename,pattern):
     return None
 
 ## Creates an example subdirectory and fills it with datetime pattern filenames
-def create_example():
-    makedirs("example")
+def create_examples():
+    makedirs("toomanyfiles_example/files")
     number=1000
     for i in range (number):
         d=datetime.datetime.now()-datetime.timedelta(days=i)
-        filename="example/{}{:02d}{:02d} {:02d}{:02d} Toomanyfiles example.txt".format(d.year,d.month,d.day,d.hour,d.minute)
+        filename="toomanyfiles_example/files/{}{:02d}{:02d} {:02d}{:02d} Toomanyfiles example.txt".format(d.year,d.month,d.day,d.hour,d.minute)
         f=open(filename,"w")
         f.close()
-    print (colorama.Style.BRIGHT + _("Created {} files in the directory 'example'").format(number))
-    
-## Creates an example subdirectory and fills it with datetime pattern directories
-def create_example_with_directories():
-    makedirs("example_directories")
+
+    makedirs("toomanyfiles_example/directories")
     number=1000
     for i in range (number):
         d=datetime.datetime.now()-datetime.timedelta(days=i)
-        filename="example_directories/{}{:02d}{:02d} {:02d}{:02d} Directory/Toomanyfiles example.txt".format(d.year,d.month,d.day,d.hour,d.minute)
+        filename="toomanyfiles_example/directories/{}{:02d}{:02d} {:02d}{:02d} Directory/Toomanyfiles example.txt".format(d.year,d.month,d.day,d.hour,d.minute)
         makedirs(os.path.dirname(filename))        
         f=open(filename,"w")
         f.close()
-    print (colorama.Style.BRIGHT + _("Created {} directories and files in the directory 'example_directories'").format(number))
+        
+    makedirs("toomanyfiles_example/directories_just_pattern")
+    number=1000
+    for i in range (number):
+        d=datetime.datetime.now()-datetime.timedelta(days=i)
+        filename="toomanyfiles_example/directories_just_pattern/{}{:02d}{:02d} {:02d}{:02d}/Toomanyfiles example.txt".format(d.year,d.month,d.day,d.hour,d.minute)
+        makedirs(os.path.dirname(filename))        
+        f=open(filename,"w")
+        f.close()
+        
+        
+    makedirs("toomanyfiles_example/files_just_pattern")
+    number=1000
+    for i in range (number):
+        d=datetime.datetime.now()-datetime.timedelta(days=i)
+        filename="toomanyfiles_example/files_just_pattern/{}{:02d}{:02d} {:02d}{:02d}".format(d.year,d.month,d.day,d.hour,d.minute)
+        f=open(filename,"w")
+        f.close()
+        
+    print (colorama.Style.BRIGHT + _("Different examples have been created in the directory 'toomanyfiles_example'"))
+
+def remove_examples():
+    if os.path.exists('toomanyfiles_example'):
+        shutil.rmtree('toomanyfiles_example')
+        print (_("'toomanyfiles_example' directory removed"))
+    else:
+        print (_("I can't remove 'toomanyfiles_example' directory"))
+
 
 ## TooManyFiles main script
 ## If arguments is None, launches with sys.argc parameters. Entry point is toomanyfiles:main
@@ -371,7 +392,8 @@ def main(arguments=None):
     parser.add_argument('--version', action='version', version=__version__)
 
     group= parser.add_mutually_exclusive_group(required=True)
-    group.add_argument('--create_example', help=_("Create two example directores named 'example' and 'example_directories'"), action="store_true",default=False)
+    group.add_argument('--create_examples', help=_("Create example directories"), action="store_true",default=False)
+    group.add_argument('--remove_examples', help=_("Remove example directories'"), action="store_true",default=False)
     group.add_argument('--remove', help=_("Removes files permanently"), action="store_true", default=False)
     group.add_argument('--pretend', help=_("Makes a simulation and doesn't remove files"), action="store_true", default=False)
 
@@ -386,9 +408,11 @@ def main(arguments=None):
 
     colorama.init(autoreset=True)
 
-    if args.create_example==True:
-        create_example()
-        create_example_with_directories()
+    if args.create_examples==True:
+        create_examples()
+        sys.exit(ExitCodes.Success)
+    if args.remove_examples==True:
+        remove_examples()
         sys.exit(ExitCodes.Success)
 
     manager=FilenameWithDatetimeManager(os.getcwd(), args.pattern)

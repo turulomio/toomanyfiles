@@ -35,9 +35,12 @@ You can see this animated gif to learn how to use it:
 Changelog
 =========
 X.X.X
+  * [#11] Print different filename roots in the same directory 
   * [#12] Create static class ExitCodes
   * [#13] Added parameters to main function
   * [#15] Put colored letter output line in a single function
+  * Improved --create_examples
+  * Added --remove_examples
 0.3.0
   * Improved output
 0.2.0
