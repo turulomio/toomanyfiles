@@ -14,6 +14,17 @@ try:
 except:
     _=str
 
+
+class ExitCodes:
+    Success=0
+    MixedRoots=1
+    MixedFilesDirectories=2
+    NotDeveloped=3
+    ArgumentError=4
+    
+    ##Younger files parameter bigger than max number of files
+    YoungGTMax=5
+
 class RemoveMode:
     RemainFirstInMonth=1
     RemainLastInMonth=2
@@ -130,13 +141,13 @@ class FilenameWithDatetimeManager:
             print(_("There are files with datetime patterns with different roots"))
             print(_("You have to correct it"))
             print(_("Exiting..."))
-            sys.exit(3)
+            sys.exit(ExitCodes.MixedRoots)
             
         if alldir==False and allfiles==False:
             print(_("There are files and directories with date and time patterns in the current path"))
             print(_("You have to correct it"))
             print(_("Exiting..."))
-            sys.exit(4)
+            sys.exit(ExitCodes.MixedFilesDirectories)
         
         #========== CODE
         aux=[]#Strings contining YYYYMM
@@ -167,7 +178,7 @@ class FilenameWithDatetimeManager:
 
         elif self.remove_mode==RemoveMode.RemainLastInMonth:
             print(_("Not developed yet"))
-            sys.exit(2)
+            sys.exit(ExitCodes.NotDeveloped)
 
     def __sort_by_datetime(self):
         self.arr=sorted(self.arr, key=lambda a: a.datetime  ,  reverse=False)
@@ -371,7 +382,7 @@ def main(arguments=None):
     if args.create_example==True:
         create_example()
         create_example_with_directories()
-        sys.exit(0)
+        sys.exit(ExitCodes.Success)
 
     manager=FilenameWithDatetimeManager(os.getcwd(), args.pattern)
     #setting properties to manager
@@ -383,12 +394,12 @@ def main(arguments=None):
     except:
         print(_("Error passing parameters"))
         parser.print_help()
-        sys.exit(1)
+        sys.exit(ExitCodes.ArgumentError)
 
     #Validations
     if manager.too_young_to_delete>manager.max_files_to_store:
         print(colorama.Fore.RED + _("The number of files too young to delete can't be bigger than the maximum number of files to store") + colorama.Style.RESET_ALL)
-        sys.exit(54)
+        sys.exit(ExitCodes.YoungGTMax)
 
     if args.remove==True:
         manager.remove()
