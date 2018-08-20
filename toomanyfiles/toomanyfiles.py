@@ -71,6 +71,10 @@ class FilenameWithDatetimeManager:
             if dt!=None:
                 self.append(FilenameWithDatetime(filename,dt))
 
+    ## Number of files with date and time pattern detected
+    def length():
+        return len(self.arr)
+
     ## Property that returns if log must be done when remove is selected
     ## @return Int
     @property
@@ -183,15 +187,11 @@ class FilenameWithDatetimeManager:
         return False
 
     #This function must be called after set status
-    def __write_log(self):
+    def __write_log(self, ):
         s=self.__header_string() + "\n"
         for o in self.arr:
-            if o.status==FileStatus.Remain:
-                 s=s+"{} >>> {}\n".format(o.filename,  _("Remains"))
-            elif o.status==FileStatus.Delete:
+            if o.status==FileStatus.Delete:
                  s=s+"{} >>> {}\n".format(o.filename, _("Delete"))
-            elif o.status==FileStatus.TooYoungToDelete:
-                 s=s+"{} >>> {}\n".format(o.filename, _("Too young to delete"))
             elif o.status==FileStatus.OverMaxFiles:
                  s=s+"{} >>> {}\n".format(o.filename, _("Over max number of files"))
         f=open("TooManyFiles.log","a")
@@ -205,7 +205,7 @@ class FilenameWithDatetimeManager:
             if o.status==filestatus:
                 r=r+1
         return r
-        
+
     ## Functions that detects if all FilenameWithDatetime are directories
     ## @return Bool
     def __all_filenames_are_directories(self):
@@ -224,7 +224,11 @@ class FilenameWithDatetimeManager:
 
     #This function must be called after set status
     def __console_output(self):
-        s=self.__header_string() +"\n"
+        s=self.__header_string(color=True) +"\n"
+        if self.length()==0:
+            print (s)
+            return
+
         for o in self.arr:
             if o.status==FileStatus.Remain:
                  s=s+"{}".format( colorama.Fore.GREEN + _("R") + colorama.Fore.RESET)
@@ -235,7 +239,7 @@ class FilenameWithDatetimeManager:
             elif o.status==FileStatus.OverMaxFiles:
                  s=s+"{}".format( colorama.Fore.YELLOW + _("O")+ colorama.Style.RESET_ALL)
         print (s)
-        
+
         n_remain=self.__number_files_with_status(FileStatus.Remain)
         n_delete=self.__number_files_with_status(FileStatus.Delete)
         n_young=self.__number_files_with_status(FileStatus.TooYoungToDelete)
@@ -261,8 +265,14 @@ class FilenameWithDatetimeManager:
 
     ## Function that generates the header used in console output and in log
     ## @return string
-    def __header_string(self):
-        return _("TooManyFiles was executed at {}".format(datetime.datetime.now()))
+    def __header_string(self,color=False):
+        if color==True:
+            return _("{} TooManyFiles in {} detected {} files with pattern {}").format(colorama.Style.BRIGHT + str(datetime.datetime.now()) + colorama.Style.RESET_ALL,
+                                                                                       colorama.Style.BRIGHT + colorama.Fore.YELLOW + os.getcwd() + colorama.Style.RESET_ALL,
+                                                                                       colorama.Style.BRIGHT + colorama.Fore.GREEN + str(self.length()) + colorama.Style.RESET_ALL,
+                                                                                       colorama.Fore.YELLOW + self.pattern + colorama.Style.RESET_ALL)
+        else:
+            return _("{} TooManyFiles in {} detected {} files with pattern {}").format(datetime.datetime.now(), os.getcwd(), self.length(), self.pattern)
 
 
     ## Shows information in console

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-08-19 10:29+0200\n"
+"POT-Creation-Date: 2018-08-20 10:29+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -59,13 +59,7 @@ msgstr ""
 msgid "Not developed yet"
 msgstr ""
 
-msgid "Remains"
-msgstr ""
-
 msgid "Delete"
-msgstr ""
-
-msgid "Too young to delete"
 msgstr ""
 
 msgid "Over max number of files"
@@ -101,10 +95,16 @@ msgstr ""
 msgid "So, {} files have been deleted and {} files have been kept."
 msgstr ""
 
+msgid "Remains"
+msgstr ""
+
+msgid "Too young to delete"
+msgstr ""
+
 msgid "Over max files"
 msgstr ""
 
-msgid "TooManyFiles was executed at {}"
+msgid "{} TooManyFiles in {} detected {} files with pattern {}"
 msgstr ""
 
 msgid "Created {} files in the directory 'example'"

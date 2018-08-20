@@ -34,6 +34,8 @@ You can see this animated gif to learn how to use it:
 
 Changelog
 =========
+0.3.0
+  * Improved output
 0.2.0
   * Code adapted to ttyrecgenerator-0.6.0
 0.1.1
