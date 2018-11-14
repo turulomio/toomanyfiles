@@ -1,7 +1,4 @@
-from toomanyfiles import __version__
 from setuptools import setup, Command
-from mangenerator import Man
-
 import datetime
 import gettext
 import os
@@ -22,6 +19,7 @@ class Doxygen(Command):
         print("Creating Doxygen Documentation")
         os.system("""sed -i -e "41d" doc/Doxyfile""")#Delete line 41
         os.system("""sed -i -e "41iPROJECT_NUMBER         = {}" doc/Doxyfile""".format(__version__))#Insert line 41
+        os.system("rm -Rf build")
         os.chdir("doc")
         os.system("doxygen Doxyfile")
         os.system("cp ttyrec/toomanyfiles_howto_en.gif html")#Copies images
@@ -87,6 +85,7 @@ class Doc(Command):
         """
             Create man pages for parameter language
         """
+        from mangenerator import Man
         if language=="en":
             gettext.install('toomanyfiles', 'badlocale')
             man=Man("man/man1/toomanyfiles")
@@ -122,6 +121,13 @@ class Doc(Command):
 
     ########################################################################
 
+## Version of modele captured from version to avoid problems with package dependencies
+__version__= None
+with open('toomanyfiles/version.py', encoding='utf-8') as f:
+    for line in f.readlines():
+        if line.find("__version__ =")!=-1:
+            __version__=line.split("'")[1]
+
 with open('README.rst', encoding='utf-8') as f:
     long_description = f.read()
 
@@ -152,7 +158,7 @@ setup(name='toomanyfiles',
     entry_points = {'console_scripts': ['toomanyfiles=toomanyfiles.toomanyfiles:main',
                                     ],
                 },
-    install_requires=['colorama','mangenerator','setuptools','ttyrecgenerator'],
+    install_requires=['colorama','setuptools'],
     data_files=data_files,
     cmdclass={
     'doxygen': Doxygen,

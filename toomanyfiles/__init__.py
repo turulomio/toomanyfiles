@@ -1,5 +1,2 @@
-import datetime
 from .toomanyfiles import * 
-
-__version__ = '0.4.0'
-__versiondate__=datetime.date(2018,8,20)
+from toomanyfiles.version import __version__, __versiondate__
