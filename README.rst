@@ -1,5 +1,5 @@
 Source code & Development:
-    https://sourceforge.net/projects/too-many-files/
+    https://github.com/Turulomio/toomanyfiles
 Doxygen documentation:
     http://turulomio.users.sourceforge.net/doxygen/too-many-files/
 Main developer web page:
