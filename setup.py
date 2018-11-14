@@ -5,6 +5,10 @@ import os
 import platform
 import site
 
+
+gettext.install('toomanyfiles', 'toomanyfiles/locale')
+
+
 class Doxygen(Command):
     description = "Create/update doxygen documentation in doc/html"
     user_options = []
@@ -25,6 +29,34 @@ class Doxygen(Command):
         os.system("cp ttyrec/toomanyfiles_howto_en.gif html")#Copies images
         os.system("rsync -avzP -e 'ssh -l turulomio' html/ frs.sourceforge.net:/home/users/t/tu/turulomio/userweb/htdocs/doxygen/too-many-files/ --delete-after")
         os.chdir("..")
+
+class Procedure(Command):
+    description = "Create/update doxygen documentation in doc/html"
+    user_options = []
+
+    def initialize_options(self):
+        pass
+
+    def finalize_options(self):
+        pass
+
+    def run(self):
+        print(_("New Release:"))
+        print(_("  * Change version and date in version.py"))
+        print(_("  * Edit Changelog in README"))
+        print("  * python setup.py doc")
+        print("  * mcedit locale/es.po")
+        print("  * python setup.py doc")
+        print("  * python setup.py install")
+        print("  * python setup.py doxygen")
+        print("  * mcedit doc/ttyrec/howto.py")
+        print("  * python setup.py video" + ". " + _("If changed restart from first python setup.py doc"))
+        print("  * git commit -a -m 'Comment'")
+        print("  * git push")
+        print(_("  * Make a new tag in github"))
+        print("  * python setup.py sdist upload -r pypi")
+        print(_("  * Create a new gentoo ebuild with the new version"))
+        print(_("  * Upload to portage repository")) 
 
 class Video(Command):
     description = "Create video/GIF from console ouput"
@@ -165,6 +197,7 @@ setup(name='toomanyfiles',
     'doc': Doc,
     'uninstall':Uninstall, 
     'video': Video, 
+    'procedure': Procedure,
          },
     zip_safe=False,
     include_package_data=True

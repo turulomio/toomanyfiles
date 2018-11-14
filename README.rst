@@ -34,6 +34,10 @@ You can see this animated gif to learn how to use it:
 
 Changelog
 =========
+0.5.0
+  * Migrated repository from Sourceforge to Github
+  * Removed innecesary dependencies in setup.py
+
 0.4.0
   * [#11] Print different filename roots in the same directory 
   * [#12] Create static class ExitCodes
@@ -42,12 +46,16 @@ Changelog
   * [#15] Put colored letter output line in a single function
   * Improved --create_examples
   * Added --remove_examples
+
 0.3.0
   * Improved output
+
 0.2.0
   * Code adapted to ttyrecgenerator-0.6.0
+
 0.1.1
   * Corrected image link in README.rst
+
 0.1.0
   * Catching exception in gettext
   * Added catalog translations to package
