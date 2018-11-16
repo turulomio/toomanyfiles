@@ -26,7 +26,11 @@ Usage
 =====
 You can see this animated gif to learn how to use it:
 
-![English howto](https://raw.githubusercontent.com/Turulomio/toomanyfiles/master/doc/ttyrec/toomanyfiles_howto_en.gif)
+.. image:: https://raw.githubusercontent.com/Turulomio/toomanyfiles/master/doc/ttyrec/toomanyfiles_howto_en.gif
+   :height: 800px
+   :width: 600px
+   :scale: 100 %
+   :align: center
 
 
 Changelog
