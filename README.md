@@ -1,5 +1,5 @@
-Links
-=====
+# TooManyFiles
+##Links
 
 Source code & Development:
     https://github.com/Turulomio/toomanyfiles
@@ -8,23 +8,17 @@ Doxygen documentation:
 Gentoo ebuild
     If you use Gentoo you can find a ebuild in https://github.com/Turulomio/myportage/tree/master/app-admin/toomanyfiles
 
-Description
-===========
+## Description
 Removes files which name has date and time patterns
 
-License
-=======
-GPL-3
 
-Dependencies
-============
+## Dependencies
 * https://www.python.org/, as the main programming language.
 * https://pypi.org/project/colorama/, to give console colors.
 * https://pypi.org/project/mangenerator/, to generate man files.
 * https://pypi.org/project/ttyrecgenerator/, to generate animated gifs.
 
-Usage
-=====
+## Usage
 You can see this animated gif to learn how to use it:
 
 .. image:: https://raw.githubusercontent.com/Turulomio/toomanyfiles/master/doc/ttyrec/toomanyfiles_howto_en.gif
@@ -34,13 +28,12 @@ You can see this animated gif to learn how to use it:
    :align: center
 
 
-Changelog
-=========
-0.5.0
+## Changelog
+### 0.5.0
   * Migrated repository from Sourceforge to Github
   * Removed innecesary dependencies in setup.py
 
-0.4.0
+### 0.4.0
   * [#11] Print different filename roots in the same directory 
   * [#12] Create static class ExitCodes
   * [#13] Added parameters to main function
@@ -49,16 +42,16 @@ Changelog
   * Improved --create_examples
   * Added --remove_examples
 
-0.3.0
+### 0.3.0
   * Improved output
 
-0.2.0
+### 0.2.0
   * Code adapted to ttyrecgenerator-0.6.0
 
-0.1.1
+### 0.1.1
   * Corrected image link in README.rst
 
-0.1.0
+### 0.1.0
   * Catching exception in gettext
   * Added catalog translations to package
   * Added dependencies to setup.py

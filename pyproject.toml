@@ -1,0 +1,19 @@
+[tool.poetry]
+name = "toomanyfiles"
+version = "0.5.0"
+description = "Remove files and directories with date and time patterns"
+authors = ["turulomio <turulomio@yahoo.es>"]
+license = "GPL-3"
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.11"
+colorama = "^0.4.6"
+
+[tool.poetry.group.dev.dependencies]
+poethepoet = "^0.24.2"
+pytest = "^7.4.3"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
