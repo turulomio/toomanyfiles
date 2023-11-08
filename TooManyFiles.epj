@@ -2,7 +2,7 @@
   "header": {
     "comment": "eric project file for project TooManyFiles",
     "copyright": "Copyright (C) 2023 , ",
-    "saved": "2023-11-08, 21:46:05"
+    "saved": "2023-11-08, 22:20:29"
   },
   "project": {
     "AUTHOR": "",
@@ -49,7 +49,7 @@
     "OTHERS": [
       ".gitignore",
       "LICENSE.txt",
-      "README.rst"
+      "README.md"
     ],
     "OTHERTOOLSPARMS": {},
     "PACKAGERSPARMS": {},
@@ -66,7 +66,9 @@
     "SOURCES": [
       "setup.py",
       "toomanyfiles/__init__.py",
-      "toomanyfiles/toomanyfiles.py"
+      "toomanyfiles/poethepoet.py",
+      "toomanyfiles/toomanyfiles.py",
+      "toomanyfiles/version.py"
     ],
     "SOURCESDIR": "",
     "SPELLEXCLUDES": "",
