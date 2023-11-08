@@ -1,19 +1,19 @@
-.TH TOOMANYFILES 1 2018\-11\-14
+.TH TOOMANYFILES 1 2023\-11\-08
 .SH NAME
 
 .B toomanyfiles:
-Remove innecesary files or directories with a date and time pattern in the current directory.
+Borra ficheros o directorios innecesarios, que tengan un patr\('on de fecha y hora en el directorio actual.
 .SH SYNOPSIS
 
 toomanyfiles [\-h] [\-\-version] (\-\-create_example | \-\-remove | \-\-pretend)
-                        [\-\-pattern PATTERN] [\-\-disable_log]
-                        [\-\-remove_mode {RemainFirstInMonth,RemainLastInMonth}]
-                        [\-\-too_young_to_delete TOO_YOUNG_TO_DELETE]
-                        [\-\-max_files_to_store MAX_FILES_TO_STORE]
-.SH DESCRIPTION
+                    [\-\-pattern PATTERN] [\-\-disable_log]
+                    [\-\-remove_mode {RemainFirstInMonth,RemainLastInMonth}]
+                    [\-\-too_young_to_delete TOO_YOUNG_TO_DELETE]
+                    [\-\-max_files_to_store MAX_FILES_TO_STORE]
+.SH DESCRIPCI\('ON
 
 .PP
-This app has the following mandatory parameters:
+Esta aplicaci\('on tiene los siguientes par\('ametros obligatorios
 .PP
 .RS
 .B \-\-create_example
@@ -21,7 +21,7 @@ This app has the following mandatory parameters:
 .PP
 .RS
 .RS
-Create two directories called 'example' and 'example_directories' in the current working directory and fill it with example files with date and time patterns.
+Crea dos directorios de nombre 'example' y 'example_directories' en el directorio actual y los llena con ficheros de ejemplo que tengan patr\('ones de fecha y hora.
 .RE
 .RE
 .PP
@@ -31,7 +31,7 @@ Create two directories called 'example' and 'example_directories' in the current
 .PP
 .RS
 .RS
-Makes a simulation selecting which files will be deleted when \-\-remove parameter is used.
+Realiza una simulaci\('on seleccionando que ficheros ser\('an borrados cuando se use el par\('ametro \-\-remove.
 .RE
 .RE
 .PP
@@ -41,11 +41,11 @@ Makes a simulation selecting which files will be deleted when \-\-remove paramet
 .PP
 .RS
 .RS
-Deletes files. Be careful, This can't be unmade. Use \-\-pretend before.
+Borra los ficheros. Ten cuidado, esto no puede deshacerse. Usa antes \-\-pretend.
 .RE
 .RE
 .PP
-With \-\-pretend and \-\-remove you can use this parameters:
+Con \-\-pretend y \-\-remove puedes usar estos par\('ametros
 .PP
 .RS
 .B \-\-pattern
@@ -53,7 +53,7 @@ With \-\-pretend and \-\-remove you can use this parameters:
 .PP
 .RS
 .RS
-Sets the date and time pattern to search in the current directory filenames. It uses python strftime function format.
+Establece el patr\('on de fecha y hora para buscar en los nombres del directorio actual. Usa el formato de python de la funci\('onde strftime
 .RE
 .RE
 .PP

@@ -13,7 +13,21 @@ colorama = "^0.4.6"
 [tool.poetry.group.dev.dependencies]
 poethepoet = "^0.24.2"
 pytest = "^7.4.3"
+mangenerator = "^0.4.0"
 
 [build-system]
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
+
+[tool.poe.tasks]
+coverage = { script = "toomanyfiles.poethepoet:coverage" }
+video = { script = "toomanyfiles.poethepoet:video" }
+man = { script = "toomanyfiles.poethepoet:man" }
+pytest = { script = "toomanyfiles.poethepoet:pytest" }
+release = { script = "toomanyfiles.poethepoet:release" }
+translate = { script = "toomanyfiles.poethepoet:translate" }
+
+[project.urls]
+homepage = "https://github.com/turulomio/toomanyfiles/"
+repository = "https://github.com/turulomio/toomanyfiles/"
+changelog = "https://github.com/turulomio/toomanyfiles#changelog"

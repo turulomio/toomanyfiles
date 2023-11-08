@@ -23,6 +23,16 @@ files = [
 ]
 
 [[package]]
+name = "mangenerator"
+version = "0.4.0"
+description = "Python module to generate man documentation"
+optional = false
+python-versions = "*"
+files = [
+    {file = "mangenerator-0.4.0.tar.gz", hash = "sha256:7a3413d1b3a4cd3e8d04de6145ac0d9011b54023a9a49a9ed2e5f55cdbd51dc9"},
+]
+
+[[package]]
 name = "packaging"
 version = "23.2"
 description = "Core utilities for Python packages"
@@ -111,4 +121,4 @@ files = [
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.11"
-content-hash = "f5af324197894b4561b0ed774edeab3be476e4ff5d564139a96860f2f3806678"
+content-hash = "8f5f94917adcc6918943de6c3111bf1f34bed4705a3f04e264ae6675b44573e8"
