@@ -1,11 +1,12 @@
+Links
+=====
+
 Source code & Development:
     https://github.com/Turulomio/toomanyfiles
 Doxygen documentation:
     http://turulomio.users.sourceforge.net/doxygen/too-many-files/
-Main developer web page:
-    http://turulomio.users.sourceforge.net/en/proyectos.html
 Gentoo ebuild
-    You can find a Gentoo ebuild in https://sourceforge.net/p/xulpymoney/code/HEAD/tree/myportage/app-admin/toomanyfiles/
+    If you use Gentoo you can find a ebuild in https://github.com/Turulomio/myportage/tree/master/app-admin/toomanyfiles
 
 Description
 ===========
