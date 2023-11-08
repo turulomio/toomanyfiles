@@ -19,6 +19,9 @@ mangenerator = "^0.4.0"
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
 
+[tool.poetry.scripts]
+toomanyfiles='toomanyfiles.toomanyfiles:main'
+
 [tool.poe.tasks]
 coverage = { script = "toomanyfiles.poethepoet:coverage" }
 video = { script = "toomanyfiles.poethepoet:video" }
