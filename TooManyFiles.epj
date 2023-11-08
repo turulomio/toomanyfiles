@@ -1,0 +1,130 @@
+{
+  "header": {
+    "comment": "eric project file for project TooManyFiles",
+    "copyright": "Copyright (C) 2023 , ",
+    "saved": "2023-11-08, 21:46:05"
+  },
+  "project": {
+    "AUTHOR": "",
+    "CHECKERSPARMS": {},
+    "DESCRIPTION": "",
+    "DOCSTRING": "",
+    "DOCUMENTATIONPARMS": {},
+    "EMAIL": "",
+    "EMBEDDED_VENV": false,
+    "EOL": 0,
+    "FILETYPES": {
+      "*.e4p": "OTHERS",
+      "*.idl": "INTERFACES",
+      "*.md": "OTHERS",
+      "*.proto": "PROTOCOLS",
+      "*.py": "SOURCES",
+      "*.py3": "SOURCES",
+      "*.pyw": "SOURCES",
+      "*.pyw3": "SOURCES",
+      "*.rst": "OTHERS",
+      "*.txt": "OTHERS",
+      "README": "OTHERS",
+      "README.*": "OTHERS"
+    },
+    "FORMS": [],
+    "HASH": "16790436fade8444ca6eb119bd5caf335cc79a95",
+    "IDLPARAMS": {
+      "DefinedNames": [],
+      "IncludeDirs": [],
+      "UndefinedNames": []
+    },
+    "LEXERASSOCS": {},
+    "LICENSE": "",
+    "MAINSCRIPT": "",
+    "MAKEPARAMS": {
+      "MakeEnabled": false,
+      "MakeExecutable": "",
+      "MakeFile": "",
+      "MakeParameters": "",
+      "MakeTarget": "",
+      "MakeTestOnly": true
+    },
+    "MIXEDLANGUAGE": 0,
+    "OTHERS": [
+      ".gitignore",
+      "LICENSE.txt",
+      "README.rst"
+    ],
+    "OTHERTOOLSPARMS": {},
+    "PACKAGERSPARMS": {},
+    "PROGLANGUAGE": "Python3",
+    "PROJECTTYPE": "Console",
+    "PROJECTTYPESPECIFICDATA": {},
+    "RCCPARAMS": {
+      "CompressLevel": 0,
+      "CompressionDisable": false,
+      "CompressionThreshold": 70,
+      "PathPrefix": ""
+    },
+    "RESOURCES": [],
+    "SOURCES": [
+      "setup.py",
+      "toomanyfiles/__init__.py",
+      "toomanyfiles/toomanyfiles.py"
+    ],
+    "SOURCESDIR": "",
+    "SPELLEXCLUDES": "",
+    "SPELLLANGUAGE": "en_US",
+    "SPELLWORDS": "",
+    "TESTING_FRAMEWORK": "",
+    "TRANSLATIONEXCEPTIONS": [],
+    "TRANSLATIONPATTERN": "",
+    "TRANSLATIONS": [],
+    "TRANSLATIONSBINPATH": "",
+    "TRANSLATIONSOURCESTARTPATH": "",
+    "UICPARAMS": {
+      "Package": "",
+      "PackagesRoot": "",
+      "RcSuffix": ""
+    },
+    "VCS": "Git",
+    "VCSOPTIONS": {
+      "add": [
+        ""
+      ],
+      "checkout": [
+        ""
+      ],
+      "commit": [
+        ""
+      ],
+      "diff": [
+        ""
+      ],
+      "export": [
+        ""
+      ],
+      "global": [
+        ""
+      ],
+      "history": [
+        ""
+      ],
+      "log": [
+        ""
+      ],
+      "remove": [
+        ""
+      ],
+      "status": [
+        ""
+      ],
+      "tag": [
+        ""
+      ],
+      "update": [
+        ""
+      ]
+    },
+    "VCSOTHERDATA": {
+      "standardLayout": true
+    },
+    "VERSION": "0.1"
+  }
+}
