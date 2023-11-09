@@ -1,15 +1,16 @@
-import argparse
-import colorama
-import datetime
-import gettext
-import os
-import pkg_resources
-import shutil
-import sys
+from argparse import ArgumentParser, RawTextHelpFormatter
+from colorama import init, Fore, Style
+from datetime import datetime
+from gettext import translation
+from importlib.resources import files
+from os import getcwd, listdir, sep, path, remove, makedirs
+from shutil import rmtree
+from sys import exit
+
 from .__init__ import __version__, __versiondate__
 
 try:
-    t=gettext.translation('toomanyfiles',pkg_resources.resource_filename("toomanyfiles","locale"))
+    t=translation('toomanyfiles', files("toomanyfiles/") / 'locale')
     _=t.gettext
 except:
     _=str
@@ -76,8 +77,8 @@ class FilenameWithDatetimeManager:
         self.__pretending=1# Tag to set if we are using pretending or not. Can take None: Nor remove nor pretend, 0 Remove, 1 Pretend
         
         self.pattern=pattern
-        for filename in os.listdir(directory):
-            filename= directory + os.sep + filename
+        for filename in listdir(directory):
+            filename= directory + sep + filename
             dt=datetime_in_filename(filename,pattern)
             if dt!=None:
                 self.append(FilenameWithDatetime(filename,dt))
@@ -141,12 +142,12 @@ class FilenameWithDatetimeManager:
         if len(roots)>1:
             print(_("I can't continue, there are different filename roots with date and time patterns:"))
             for root in roots:
-                print ("  {} {}".format(colorama.Fore.GREEN + colorama.Style.BRIGHT + "*" + colorama.Style.RESET_ALL, root))
-            sys.exit(ExitCodes.MixedRoots)
+                print ("  {} {}".format(Fore.GREEN + Style.BRIGHT + "*" + Style.RESET_ALL, root))
+            exit(ExitCodes.MixedRoots)
             
         if alldir==False and allfiles==False:
             print(_("I can't continue, there are files and directories with date and time patterns in the current path"))
-            sys.exit(ExitCodes.MixedFilesDirectories)
+            exit(ExitCodes.MixedFilesDirectories)
         
         #========== CODE
         aux=[]#Strings contining YYYYMM
@@ -177,7 +178,7 @@ class FilenameWithDatetimeManager:
 
         elif self.remove_mode==RemoveMode.RemainLastInMonth:
             print(_("Not developed yet"))
-            sys.exit(ExitCodes.NotDeveloped)
+            exit(ExitCodes.NotDeveloped)
 
     def __sort_by_datetime(self):
         self.arr=sorted(self.arr, key=lambda a: a.datetime  ,  reverse=False)
@@ -215,7 +216,7 @@ class FilenameWithDatetimeManager:
     ## @return Bool
     def __all_filenames_are_directories(self):
         for o in self.arr:
-            if os.path.isdir(o.filename)==False:
+            if path.isdir(o.filename)==False:
                 return False
         return True
         
@@ -223,7 +224,7 @@ class FilenameWithDatetimeManager:
     ## @return Bool
     def __all_filenames_are_regular_files(self):
         for o in self.arr:
-            if os.path.isfile(o.filename)==False:
+            if path.isfile(o.filename)==False:
                 return False
         return True
 
@@ -244,17 +245,17 @@ class FilenameWithDatetimeManager:
                 print (_("Directories status pretending:"))
             elif self.__all_filenames_are_regular_files():
                 print (_("File status pretending:"))
-            result=_("So, {} files will be deleted and {} will be kept when you use --remove parameter.").format(colorama.Fore.YELLOW + str(n_delete+n_over) + colorama.Style.RESET_ALL, colorama.Fore.YELLOW + str(n_remain+n_young) +colorama.Style.RESET_ALL)
+            result=_("So, {} files will be deleted and {} will be kept when you use --remove parameter.").format(Fore.YELLOW + str(n_delete+n_over) + Style.RESET_ALL, Fore.YELLOW + str(n_remain+n_young) +Style.RESET_ALL)
         elif self.__pretending==0:
             if self.__all_filenames_are_directories():
                 print (_("Directories status removing:"))
             elif self.__all_filenames_are_regular_files():
                 print (_("File status removing:"))
-            result=_("So, {} files have been deleted and {} files have been kept.").format(colorama.Fore.YELLOW + str(n_delete+n_over) + colorama.Style.RESET_ALL, colorama.Fore.YELLOW + str(n_remain+n_young) +colorama.Style.RESET_ALL)
-        print ("  * {} [{}]: {}".format(_("Remains"), colorama.Fore.GREEN + _("R") + colorama.Style.RESET_ALL, n_remain))
-        print ("  * {} [{}]: {}".format(_("Delete"), colorama.Fore.RED + _("D") + colorama.Style.RESET_ALL, n_delete))
-        print ("  * {} [{}]: {}".format(_("Too young to delete"), colorama.Fore.MAGENTA + _("Y") + colorama.Style.RESET_ALL, n_young))
-        print ("  * {} [{}]: {}".format(_("Over max files"), colorama.Fore.YELLOW + _("O") + colorama.Style.RESET_ALL, n_over))
+            result=_("So, {} files have been deleted and {} files have been kept.").format(Fore.YELLOW + str(n_delete+n_over) + Style.RESET_ALL, Fore.YELLOW + str(n_remain+n_young) +Style.RESET_ALL)
+        print ("  * {} [{}]: {}".format(_("Remains"), Fore.GREEN + _("R") + Style.RESET_ALL, n_remain))
+        print ("  * {} [{}]: {}".format(_("Delete"), Fore.RED + _("D") + Style.RESET_ALL, n_delete))
+        print ("  * {} [{}]: {}".format(_("Too young to delete"), Fore.MAGENTA + _("Y") + Style.RESET_ALL, n_young))
+        print ("  * {} [{}]: {}".format(_("Over max files"), Fore.YELLOW + _("O") + Style.RESET_ALL, n_over))
         print(result)
 
     ## This mehod returns a colored string with the status of the files in the array in just one line
@@ -266,25 +267,25 @@ class FilenameWithDatetimeManager:
         s=""
         for o in self.arr:
             if o.status==FileStatus.Remain:
-                 s=s+"{}".format( colorama.Fore.GREEN + _("R") + colorama.Fore.RESET)
+                 s=s+"{}".format( Fore.GREEN + _("R") + Fore.RESET)
             elif o.status==FileStatus.Delete:
-                 s=s+"{}".format( colorama.Fore.RED + _("D") + colorama.Fore.RESET)
+                 s=s+"{}".format( Fore.RED + _("D") + Fore.RESET)
             elif o.status==FileStatus.TooYoungToDelete:
-                 s=s+"{}".format( colorama.Fore.MAGENTA + _("Y")+ colorama.Style.RESET_ALL)
+                 s=s+"{}".format( Fore.MAGENTA + _("Y")+ Style.RESET_ALL)
             elif o.status==FileStatus.OverMaxFiles:
-                 s=s+"{}".format( colorama.Fore.YELLOW + _("O")+ colorama.Style.RESET_ALL)
+                 s=s+"{}".format( Fore.YELLOW + _("O")+ Style.RESET_ALL)
         return s
 
     ## Function that generates the header used in console output and in log
     ## @return string
     def __header_string(self,color=False):
         if color==True:
-            return _("{} TooManyFiles in {} detected {} files with pattern {}").format(colorama.Style.BRIGHT + str(datetime.datetime.now()) + colorama.Style.RESET_ALL,
-                                                                                       colorama.Style.BRIGHT + colorama.Fore.YELLOW + os.getcwd() + colorama.Style.RESET_ALL,
-                                                                                       colorama.Style.BRIGHT + colorama.Fore.GREEN + str(self.length()) + colorama.Style.RESET_ALL,
-                                                                                       colorama.Fore.YELLOW + self.pattern + colorama.Style.RESET_ALL)
+            return _("{} TooManyFiles in {} detected {} files with pattern {}").format(Style.BRIGHT + str(datetime.datetime.now()) + Style.RESET_ALL,
+                                                                                       Style.BRIGHT + Fore.YELLOW + getcwd() + Style.RESET_ALL,
+                                                                                       Style.BRIGHT + Fore.GREEN + str(self.length()) + Style.RESET_ALL,
+                                                                                       Fore.YELLOW + self.pattern + Style.RESET_ALL)
         else:
-            return _("{} TooManyFiles in {} detected {} files with pattern {}").format(datetime.datetime.now(), os.getcwd(), self.length(), self.pattern)
+            return _("{} TooManyFiles in {} detected {} files with pattern {}").format(datetime.datetime.now(), getcwd(), self.length(), self.pattern)
 
 
     ## Shows information in console
@@ -304,18 +305,10 @@ class FilenameWithDatetimeManager:
             self.__write_log()
         for o in self.arr:
             if o.status in [FileStatus.OverMaxFiles, FileStatus.Delete]:
-                if os.path.isfile(o.filename):
-                    os.remove(o.filename)
-                elif os.path.isdir(o.filename):
-                    shutil.rmtree(o.filename)
-
-
-def makedirs(dir):
-    try:
-       os.makedirs(dir)
-    except:
-       pass
-
+                if path.isfile(o.filename):
+                    remove(o.filename)
+                elif path.isdir(o.filename):
+                    rmtree(o.filename)
 
 
 ## Function that retturn the length of the string
@@ -338,7 +331,7 @@ def datetime_in_filename(filename,pattern):
 
 ## Creates an example subdirectory and fills it with datetime pattern filenames
 def create_examples():
-    makedirs("toomanyfiles_examples/files")
+    makedirs("toomanyfiles_examples/files", exist_ok=True)
     number=1000
     for i in range (number):
         d=datetime.datetime.now()-datetime.timedelta(days=i)
@@ -346,16 +339,16 @@ def create_examples():
         f=open(filename,"w")
         f.close()
 
-    makedirs("toomanyfiles_examples/directories")
+    makedirs("toomanyfiles_examples/directories", exist_ok=True)
     number=1000
     for i in range (number):
         d=datetime.datetime.now()-datetime.timedelta(days=i)
         filename="toomanyfiles_examples/directories/{}{:02d}{:02d} {:02d}{:02d} Directory/Toomanyfiles example.txt".format(d.year,d.month,d.day,d.hour,d.minute)
-        makedirs(os.path.dirname(filename))        
+        makedirs(path.dirname(filename), exist_ok=True)        
         f=open(filename,"w")
         f.close()
 
-    makedirs("toomanyfiles_examples/files_with_different_roots")
+    makedirs("toomanyfiles_examples/files_with_different_roots", exist_ok=True)
     number=5
     for i in range (number):
         d=datetime.datetime.now()-datetime.timedelta(days=i)
@@ -364,22 +357,44 @@ def create_examples():
         f.close()
 
 
-    print (colorama.Style.BRIGHT + _("Different examples have been created in the directory 'toomanyfiles_examples'"))
+    print (Style.BRIGHT + _("Different examples have been created in the directory 'toomanyfiles_examples'"))
 
 def remove_examples():
-    if os.path.exists('toomanyfiles_examples'):
-        shutil.rmtree('toomanyfiles_examples')
+    if path.exists('toomanyfiles_examples'):
+        rmtree('toomanyfiles_examples')
         print (_("'toomanyfiles_examples' directory removed"))
     else:
         print (_("I can't remove 'toomanyfiles_examples' directory"))
 
 
+def toomanyfiles(remove, pattern="%Y%m%d %H%M", too_young_to_delete=30, max_files_to_store=100000000, remove_mode="RemainFirstInMonth", disable_log=False):
+    """
+        Main function to call toomanyfiles programmatically
+    
+        @param remove Boolean. If True removes files that matches parameters. False only pretends
+    """
+    manager=FilenameWithDatetimeManager(getcwd(), pattern)
+    
+    manager.logging=not disable_log
+    manager.remove_mode=RemoveMode.from_string(remove_mode)
+
+    #Validations
+    if manager.too_young_to_delete>manager.max_files_to_store:
+        print(Fore.RED + _("The number of files too young to delete can't be bigger than the maximum number of files to store") + Style.RESET_ALL)
+        exit(ExitCodes.YoungGTMax)
+
+    if remove is True:
+        manager.remove()
+    else:
+        manager.pretend()
+
+
 ## TooManyFiles main script
-## If arguments is None, launches with sys.argc parameters. Entry point is toomanyfiles:main
-## You can call with main(['--pretend']). It's equivalento to os.system('toomanyfiles --pretend')
+## If arguments is None, launches with argc parameters. Entry point is toomanyfiles:main
+## You can call with main(['--pretend']). It's equivalento to system('toomanyfiles --pretend')
 ## @param arguments is an array with parser arguments. For example: ['--max_files_to_store','9']. 
 def main(arguments=None):
-    parser=argparse.ArgumentParser(prog='toomanyfiles', description=_('Search date and time patterns to delete innecesary files or directories'), epilog=_("Developed by Mariano Muñoz 2018-{}".format(__versiondate__.year)), formatter_class=argparse.RawTextHelpFormatter)
+    parser=ArgumentParser(prog='toomanyfiles', description=_('Search date and time patterns to delete innecesary files or directories'), epilog=_("Developed by Mariano Muñoz 2018-{}".format(__versiondate__.year)), formatter_class=RawTextHelpFormatter)
     parser.add_argument('--version', action='version', version=__version__)
 
     group= parser.add_mutually_exclusive_group(required=True)
@@ -392,40 +407,26 @@ def main(arguments=None):
     modifiers.add_argument('--pattern', help=_("Defines a python datetime pattern to search in current directory. The default pattern is '%(default)s'."), action="store",default="%Y%m%d %H%M")
     modifiers.add_argument('--disable_log', help=_("Disable log generation. The default value is '%(default)s'."),action="store_true", default=False)
     modifiers.add_argument('--remove_mode', help=_("Remove mode. The default value is '%(default)s'."), choices=['RemainFirstInMonth','RemainLastInMonth'], default='RemainFirstInMonth')
-    modifiers.add_argument('--too_young_to_delete', help=_("Number of days to respect from today. The default value is '%(default)s'."), default=30)
-    modifiers.add_argument('--max_files_to_store', help=_("Maximum number of files to remain in directory. The default value is '%(default)s'."), default=100000000)
+    modifiers.add_argument('--too_young_to_delete', help=_("Number of days to respect from today. The default value is '%(default)s'."), default=30, type=int)
+    modifiers.add_argument('--max_files_to_store', help=_("Maximum number of files to remain in directory. The default value is '%(default)s'."), default=100000000, type=int)
 
     args=parser.parse_args(arguments)
 
-    colorama.init(autoreset=True)
+    init(autoreset=True)
+    
+    
 
     if args.create_examples==True:
         create_examples()
-        sys.exit(ExitCodes.Success)
+        exit(ExitCodes.Success)
     if args.remove_examples==True:
         remove_examples()
-        sys.exit(ExitCodes.Success)
+        exit(ExitCodes.Success)
 
-    manager=FilenameWithDatetimeManager(os.getcwd(), args.pattern)
-    #setting properties to manager
-    try:
-        manager.too_young_to_delete=int(args.too_young_to_delete)
-        manager.max_files_to_store=int(args.max_files_to_store)
-        manager.logging=not args.disable_log
-        manager.remove_mode=RemoveMode.from_string(args.remove_mode)
-    except:
-        print(_("Error passing parameters"))
-        parser.print_help()
-        sys.exit(ExitCodes.ArgumentError)
 
-    #Validations
-    if manager.too_young_to_delete>manager.max_files_to_store:
-        print(colorama.Fore.RED + _("The number of files too young to delete can't be bigger than the maximum number of files to store") + colorama.Style.RESET_ALL)
-        sys.exit(ExitCodes.YoungGTMax)
-
-    if args.remove==True:
-        manager.remove()
-
-    if args.pretend==True:
-        manager.pretend()
-
+    if args.remove:
+        remove=True
+    if args.pretend:
+        remove=False
+    
+    toomanyfiles(remove, args.pattern,  args.too_young_to_delete, args.max_files_to_store, args.remove_mode, args.disable_log)
