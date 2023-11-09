@@ -24,6 +24,7 @@ build-backend = "poetry.core.masonry.api"
 toomanyfiles='toomanyfiles.toomanyfiles:main'
 
 [tool.poe.tasks]
+module_content = { script = "toomanyfiles.poethepoet:module_content" }
 coverage = { script = "toomanyfiles.poethepoet:coverage" }
 video = { script = "toomanyfiles.poethepoet:video" }
 man = { script = "toomanyfiles.poethepoet:man" }

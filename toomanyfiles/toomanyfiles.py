@@ -1,13 +1,11 @@
 from argparse import ArgumentParser, RawTextHelpFormatter
 from colorama import init, Fore, Style
-from datetime import datetime
+from datetime import datetime, timedelta
 from gettext import translation
 from importlib.resources import files
 from os import getcwd, listdir, sep, path, remove, makedirs
 from shutil import rmtree
 from sys import exit
-
-from .__init__ import __version__, __versiondate__
 
 try:
     t=translation('toomanyfiles', files("toomanyfiles/") / 'locale')
@@ -280,12 +278,12 @@ class FilenameWithDatetimeManager:
     ## @return string
     def __header_string(self,color=False):
         if color==True:
-            return _("{} TooManyFiles in {} detected {} files with pattern {}").format(Style.BRIGHT + str(datetime.datetime.now()) + Style.RESET_ALL,
+            return _("{} TooManyFiles in {} detected {} files with pattern {}").format(Style.BRIGHT + str(datetime.now()) + Style.RESET_ALL,
                                                                                        Style.BRIGHT + Fore.YELLOW + getcwd() + Style.RESET_ALL,
                                                                                        Style.BRIGHT + Fore.GREEN + str(self.length()) + Style.RESET_ALL,
                                                                                        Fore.YELLOW + self.pattern + Style.RESET_ALL)
         else:
-            return _("{} TooManyFiles in {} detected {} files with pattern {}").format(datetime.datetime.now(), getcwd(), self.length(), self.pattern)
+            return _("{} TooManyFiles in {} detected {} files with pattern {}").format(datetime.now(), getcwd(), self.length(), self.pattern)
 
 
     ## Shows information in console
@@ -313,7 +311,7 @@ class FilenameWithDatetimeManager:
 
 ## Function that retturn the length of the string
 def len_pattern(pattern):
-    return len(datetime.datetime.now().strftime(pattern))
+    return len(datetime.now().strftime(pattern))
 
 
 ## Finds the pattern in the filename and returns a datetime
@@ -324,7 +322,7 @@ def datetime_in_filename(filename,pattern):
     for i in range(len(filename)-length+1):
         s=filename[i:length+i]
         try:
-            return datetime.datetime.strptime(s,pattern)
+            return datetime.strptime(s,pattern)
         except:
             pass
     return None
@@ -334,7 +332,7 @@ def create_examples():
     makedirs("toomanyfiles_examples/files", exist_ok=True)
     number=1000
     for i in range (number):
-        d=datetime.datetime.now()-datetime.timedelta(days=i)
+        d=datetime.now()-timedelta(days=i)
         filename="toomanyfiles_examples/files/{}{:02d}{:02d} {:02d}{:02d} Toomanyfiles example.txt".format(d.year,d.month,d.day,d.hour,d.minute)
         f=open(filename,"w")
         f.close()
@@ -342,7 +340,7 @@ def create_examples():
     makedirs("toomanyfiles_examples/directories", exist_ok=True)
     number=1000
     for i in range (number):
-        d=datetime.datetime.now()-datetime.timedelta(days=i)
+        d=datetime.now()-timedelta(days=i)
         filename="toomanyfiles_examples/directories/{}{:02d}{:02d} {:02d}{:02d} Directory/Toomanyfiles example.txt".format(d.year,d.month,d.day,d.hour,d.minute)
         makedirs(path.dirname(filename), exist_ok=True)        
         f=open(filename,"w")
@@ -351,7 +349,7 @@ def create_examples():
     makedirs("toomanyfiles_examples/files_with_different_roots", exist_ok=True)
     number=5
     for i in range (number):
-        d=datetime.datetime.now()-datetime.timedelta(days=i)
+        d=datetime.now()-timedelta(days=i)
         filename="toomanyfiles_examples/files_with_different_roots/{}{:02d}{:02d} {:02d}{:02d} Toomanyfiles example {}.txt".format(d.year,d.month,d.day,d.hour,d.minute, i)
         f=open(filename,"w")
         f.close()
@@ -394,6 +392,8 @@ def toomanyfiles(remove, pattern="%Y%m%d %H%M", too_young_to_delete=30, max_file
 ## You can call with main(['--pretend']). It's equivalento to system('toomanyfiles --pretend')
 ## @param arguments is an array with parser arguments. For example: ['--max_files_to_store','9']. 
 def main(arguments=None):
+    from .__init__ import __version__, __versiondate__
+    
     parser=ArgumentParser(prog='toomanyfiles', description=_('Search date and time patterns to delete innecesary files or directories'), epilog=_("Developed by Mariano Muñoz 2018-{}".format(__versiondate__.year)), formatter_class=RawTextHelpFormatter)
     parser.add_argument('--version', action='version', version=__version__)
 

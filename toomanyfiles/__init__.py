@@ -1,4 +1,5 @@
-from toomanyfiles import *
+from toomanyfiles import toomanyfiles
+
 from datetime import datetime
 __version__ = '0.5.0'
 __versiondatetime__=datetime(2018,11,14, 0, 0)

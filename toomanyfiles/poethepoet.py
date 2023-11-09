@@ -3,6 +3,7 @@ from toomanyfiles import __version__
 from os import system, chdir
 from gettext import translation, install
 from importlib.resources import files
+from sys import modules
         
 try:
     t=translation('toomanyfiles', files("toomanyfiles") / 'locale')
@@ -10,6 +11,9 @@ try:
 except:
     _=str
 
+
+def module_content():
+    print(dir(modules["toomanyfiles"]))
 
 def pytest():
     system("pytest")
