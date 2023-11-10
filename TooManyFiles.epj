@@ -2,7 +2,7 @@
   "header": {
     "comment": "eric project file for project TooManyFiles",
     "copyright": "Copyright (C) 2023 , ",
-    "saved": "2023-11-09, 06:33:48"
+    "saved": "2023-11-09, 10:46:54"
   },
   "project": {
     "AUTHOR": "",
@@ -68,8 +68,7 @@
       "toomanyfiles/poethepoet.py",
       "toomanyfiles/tests/test_poethepoet.py",
       "toomanyfiles/tests/test_toomanyfiles.py",
-      "toomanyfiles/toomanyfiles.py",
-      "toomanyfiles/version.py"
+      "toomanyfiles/toomanyfiles.py"
     ],
     "SOURCESDIR": "",
     "SPELLEXCLUDES": "",
