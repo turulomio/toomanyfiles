@@ -2,7 +2,7 @@
   "header": {
     "comment": "eric project file for project TooManyFiles",
     "copyright": "Copyright (C) 2023 , ",
-    "saved": "2023-11-09, 10:46:54"
+    "saved": "2023-12-30, 12:33:46"
   },
   "project": {
     "AUTHOR": "",
@@ -64,6 +64,7 @@
     },
     "RESOURCES": [],
     "SOURCES": [
+      "doc/ttyrec/howto.py",
       "toomanyfiles/__init__.py",
       "toomanyfiles/poethepoet.py",
       "toomanyfiles/tests/test_poethepoet.py",
