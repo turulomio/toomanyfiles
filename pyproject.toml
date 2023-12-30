@@ -9,6 +9,7 @@ readme = "README.md"
 [tool.poetry.dependencies]
 python = "^3.11"
 colorama = "^0.4.6"
+asciinema = "^2.4.0"
 
 [tool.poetry.group.dev.dependencies]
 poethepoet = "^0.24.2"
