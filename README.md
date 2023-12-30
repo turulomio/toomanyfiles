@@ -1,5 +1,6 @@
 # TooManyFiles
-##Links
+
+## Links
 
 Source code & Development:
     https://github.com/Turulomio/toomanyfiles
@@ -21,11 +22,8 @@ Removes files which name has date and time patterns
 ## Usage
 You can see this animated gif to learn how to use it:
 
-.. image:: https://raw.githubusercontent.com/Turulomio/toomanyfiles/master/doc/ttyrec/toomanyfiles_howto_en.gif
-   :height: 800px
-   :width: 600px
-   :scale: 100 %
-   :align: center
+<img src="https://raw.githubusercontent.com/Turulomio/toomanyfiles/master/doc/ttyrec/toomanyfiles_howto_en.gif?raw=true" width="100%"></img>
+
 
 
 ## Changelog
