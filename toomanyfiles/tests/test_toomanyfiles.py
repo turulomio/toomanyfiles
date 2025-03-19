@@ -1,9 +1,19 @@
 from os import chdir
 from toomanyfiles import toomanyfiles
-from pytest import raises
+from pytest import raises ,  fixture
+
+
+@fixture(autouse=True)
+def run_around_tests():
+    """Setup and teardown before and after each test."""
+    print("\n-- Creating examples before test --")
+    toomanyfiles.create_examples()
+    yield  # this is where the testing happens
+    print("\n-- Removing examples --")
+    toomanyfiles.remove_examples()
+
 
 def test_create_examples():
-    toomanyfiles.create_examples()
     chdir("toomanyfiles_examples/directories/")
     toomanyfiles.toomanyfiles(remove=False)
     toomanyfiles.toomanyfiles(remove=True)
@@ -23,7 +33,6 @@ def test_create_examples():
     assert e.type == SystemExit
     assert e.value.code == 1
     chdir("../..")
-    toomanyfiles.remove_examples()
     
 def test_main():
     toomanyfiles.main(["--pretend"])

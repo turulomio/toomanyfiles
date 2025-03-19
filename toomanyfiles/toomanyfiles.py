@@ -66,7 +66,7 @@ class FilenameWithDatetime:
 ## 1. Pretend. Show information in console
 ## 2. Write. Show information in console. Writes log. Delete innecesary files.
 class FilenameWithDatetimeManager:
-    def __init__(self, directory,  pattern):
+    def __init__(self, directory,  time_pattern,  file_patterns):
         self.arr=[]
         self.__too_young_to_delete=30
         self.__max_files_to_store=100000000# Infinity
@@ -74,12 +74,22 @@ class FilenameWithDatetimeManager:
         self.__remove_mode=RemoveMode.RemainFirstInMonth
         self.__pretending=1# Tag to set if we are using pretending or not. Can take None: Nor remove nor pretend, 0 Remove, 1 Pretend
         
-        self.pattern=pattern
+        self.time_pattern=time_pattern
+        self.file_patterns=file_patterns
         for filename in listdir(directory):
             filename= directory + sep + filename
-            dt=datetime_in_filename(filename,pattern)
-            if dt!=None:
-                self.append(FilenameWithDatetime(filename,dt))
+            dt=datetime_in_filename(filename, time_pattern)
+            if dt is not None:
+                #Selects if matches all file_patterns
+                found_file_patterns=True
+                if len(self.file_patterns)>0:
+                    for fp in self.file_patterns:
+                        if not fp in filename:
+                            found_file_patterns=False
+                            break
+                            
+                if found_file_patterns:
+                    self.append(FilenameWithDatetime(filename,dt))
 
     ## Property that returns if log must be done when remove is selected
     ## @return Int
@@ -185,7 +195,7 @@ class FilenameWithDatetimeManager:
     def root_filenames(self):
         aux=[]
         for o in self. arr:
-            root=o.filename_without_pattern(self.pattern)
+            root=o.filename_without_pattern(self.time_pattern)
             if root not in aux:
                 aux.append(root)
         return aux
@@ -278,12 +288,14 @@ class FilenameWithDatetimeManager:
     ## @return string
     def __header_string(self,color=False):
         if color==True:
-            return _("{} TooManyFiles in {} detected {} files with pattern {}").format(Style.BRIGHT + str(datetime.now()) + Style.RESET_ALL,
+            return _("{} TooManyFiles in {} detected {} files with time pattern {} and filename patterns {}").format(Style.BRIGHT + str(datetime.now()) + Style.RESET_ALL,
                                                                                        Style.BRIGHT + Fore.YELLOW + getcwd() + Style.RESET_ALL,
                                                                                        Style.BRIGHT + Fore.GREEN + str(self.length()) + Style.RESET_ALL,
-                                                                                       Fore.YELLOW + self.pattern + Style.RESET_ALL)
+                                                                                       Fore.YELLOW + self.time_pattern + Style.RESET_ALL, 
+                                                                                       Fore.YELLOW + str(self.file_patterns)+ Style.RESET_ALL, 
+                                                                                       )
         else:
-            return _("{} TooManyFiles in {} detected {} files with pattern {}").format(datetime.now(), getcwd(), self.length(), self.pattern)
+            return _("{} TooManyFiles in {} detected {} files with time pattern {} and filename patterns {}").format(datetime.now(), getcwd(), self.length(), self.time_pattern, str(self.file_patterns))
 
 
     ## Shows information in console
@@ -365,13 +377,13 @@ def remove_examples():
         print (_("I can't remove 'toomanyfiles_examples' directory"))
 
 
-def toomanyfiles(remove, pattern="%Y%m%d %H%M", too_young_to_delete=30, max_files_to_store=100000000, remove_mode="RemainFirstInMonth", disable_log=False):
+def toomanyfiles(remove, time_pattern="%Y%m%d %H%M", file_patterns="",  too_young_to_delete=30, max_files_to_store=100000000, remove_mode="RemainFirstInMonth", disable_log=False):
     """
         Main function to call toomanyfiles programmatically
     
         @param remove Boolean. If True removes files that matches parameters. False only pretends
     """
-    manager=FilenameWithDatetimeManager(getcwd(), pattern)
+    manager=FilenameWithDatetimeManager(getcwd(), time_pattern,  file_patterns)
     
     manager.logging=not disable_log
     manager.remove_mode=RemoveMode.from_string(remove_mode)
@@ -404,8 +416,9 @@ def main(arguments=None):
     group.add_argument('--pretend', help=_("Makes a simulation and doesn't remove files"), action="store_true", default=False)
 
     modifiers=parser.add_argument_group(title=_("Modifiers to use with --remove and --pretend"), description=None)
-    modifiers.add_argument('--pattern', help=_("Defines a python datetime pattern to search in current directory. The default pattern is '%(default)s'."), action="store",default="%Y%m%d %H%M")
-    modifiers.add_argument('--disable_log', help=_("Disable log generation. The default value is '%(default)s'."),action="store_true", default=False)
+    modifiers.add_argument('--time_pattern', help=_("Defines a python datetime pattern to search in current directory. The default pattern is '%(default)s'."), action="store",default="%Y%m%d %H%M")    
+    modifiers.add_argument('--file_patterns', help=_("Defines one or several string patterns to search in path with matches time pattern. Patterns are case sensitive and filename must have all to be selected. The default pattern is '%(default)s'."), action="append", default=[])    
+    modifiers.add_argument('--disable_log', help=_("Disable log generation. The default value is '%(default)s'."),action="store_true", default="")
     modifiers.add_argument('--remove_mode', help=_("Remove mode. The default value is '%(default)s'."), choices=['RemainFirstInMonth','RemainLastInMonth'], default='RemainFirstInMonth')
     modifiers.add_argument('--too_young_to_delete', help=_("Number of days to respect from today. The default value is '%(default)s'."), default=30, type=int)
     modifiers.add_argument('--max_files_to_store', help=_("Maximum number of files to remain in directory. The default value is '%(default)s'."), default=100000000, type=int)
@@ -429,4 +442,4 @@ def main(arguments=None):
     if args.pretend:
         remove=False
     
-    toomanyfiles(remove, args.pattern,  args.too_young_to_delete, args.max_files_to_store, args.remove_mode, args.disable_log)
+    toomanyfiles(remove, args.time_pattern, args.file_patterns,   args.too_young_to_delete, args.max_files_to_store, args.remove_mode, args.disable_log)
