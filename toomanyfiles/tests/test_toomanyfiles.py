@@ -1,38 +1,38 @@
-from os import chdir
+from os import path
+from tempfile import TemporaryDirectory
 from toomanyfiles import toomanyfiles
-from pytest import raises ,  fixture
 
-
-@fixture(autouse=True)
-def run_around_tests():
-    """Setup and teardown before and after each test."""
-    print("\n-- Creating examples before test --")
+def test_examples():
     toomanyfiles.create_examples()
-    yield  # this is where the testing happens
-    print("\n-- Removing examples --")
+    dir="toomanyfiles_examples/directories/"
+    toomanyfiles.toomanyfiles(dir,  remove=False)
+    toomanyfiles.toomanyfiles(dir,  remove=True)
+
+    dir="toomanyfiles_examples/files/"
+    toomanyfiles.toomanyfiles(dir,  remove=False)
+    toomanyfiles.toomanyfiles(dir,  remove=True)
+    
+    dir="toomanyfiles_examples/files_with_different_roots/"
+    toomanyfiles.toomanyfiles(dir,  remove=False)
+    toomanyfiles.toomanyfiles(dir,  remove=True)
     toomanyfiles.remove_examples()
 
+def test_date_pattern():
+    with TemporaryDirectory() as tempdir:
+        toomanyfiles.create_file(f"{tempdir}/20250101 Hola.xlsx")
+        toomanyfiles.create_file(f"{tempdir}/20250102 Hola.doc")
+        toomanyfiles.create_file(f"{tempdir}/20250201 Hola.xlsx")
+        toomanyfiles.create_file(f"{tempdir}/20250202 Hola.xlsx")
+       
+        toomanyfiles.toomanyfiles(tempdir,  remove=True, time_pattern="%Y%m%d",  too_young_to_delete=0)
 
-def test_create_examples():
-    chdir("toomanyfiles_examples/directories/")
-    toomanyfiles.toomanyfiles(remove=False)
-    toomanyfiles.toomanyfiles(remove=True)
-    chdir("../../toomanyfiles_examples/files/")
-    toomanyfiles.toomanyfiles(remove=False)
-    toomanyfiles.toomanyfiles(remove=True)
-    
-    chdir("../../toomanyfiles_examples/files_with_different_roots/")
-    # This command will have exit code 2
-    with raises(SystemExit) as e:
-        toomanyfiles.toomanyfiles(remove=True)
-    assert e.type == SystemExit
-    assert e.value.code == 1    
-    # This command will have exit code 2
-    with raises(SystemExit) as e:
-        toomanyfiles.toomanyfiles(remove=False)
-    assert e.type == SystemExit
-    assert e.value.code == 1
-    chdir("../..")
-    
+        assert path.exists(f"{tempdir}/20250101 Hola.xlsx")
+        assert path.exists(f"{tempdir}/20250102 Hola.doc")
+        assert path.exists(f"{tempdir}/20250201 Hola.xlsx")
+        assert path.exists(f"{tempdir}/20250202 Hola.xlsx")
+        
+#    
+#def toomanyfiles(remove, time_pattern="%Y%m%d %H%M", file_patterns="",  too_young_to_delete=30, max_files_to_store=100000000, remove_mode="RemainFirstInMonth", disable_log=False):
+#    """
 def test_main():
     toomanyfiles.main(["--pretend"])

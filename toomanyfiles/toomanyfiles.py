@@ -6,6 +6,7 @@ from importlib.resources import files
 from os import getcwd, listdir, sep, path, remove, makedirs
 from shutil import rmtree
 from sys import exit
+from toomanyfiles import types
 
 try:
     t=translation('toomanyfiles', files("toomanyfiles/") / 'locale')
@@ -14,39 +15,11 @@ except:
     _=str
 
 
-class ExitCodes:
-    Success=0
-    MixedRoots=1
-    MixedFilesDirectories=2
-    NotDeveloped=3
-    ArgumentError=4
-    
-    ##Younger files parameter bigger than max number of files
-    YoungGTMax=5
-
-class RemoveMode:
-    RemainFirstInMonth=1
-    RemainLastInMonth=2
-
-    @staticmethod
-    def from_string(s):
-        if s=="RemainFirstInMonth":
-            return RemoveMode.RemainFirstInMonth
-        elif s=="RemainLastInMonth":
-            return RemoveMode.RemainLastInMonth
-
-class FileStatus:
-    TooYoungToDelete=1
-    OverMaxFiles=2
-    Remain=3
-    Delete=4
-
-
 class FilenameWithDatetime:
     def __init__(self, filename,datetime):
         self.filename=filename
         self.datetime=datetime
-        self.status=FileStatus.Delete
+        self.status=types.FileStatus.Delete
 
     def YYYYMM(self):
         return "{}{:02d}".format(self.datetime.year,self.datetime.month)
@@ -71,7 +44,7 @@ class FilenameWithDatetimeManager:
         self.__too_young_to_delete=30
         self.__max_files_to_store=100000000# Infinity
         self.__logging=True
-        self.__remove_mode=RemoveMode.RemainFirstInMonth
+        self.__remove_mode=types.RemoveMode.RemainFirstInMonth
         self.__pretending=1# Tag to set if we are using pretending or not. Can take None: Nor remove nor pretend, 0 Remove, 1 Pretend
         
         self.time_pattern=time_pattern
@@ -143,70 +116,46 @@ class FilenameWithDatetimeManager:
 
     ## Changes the status of the FilenameWithDatetime objects in the array
     def __set_filename_status(self):
-        # =========== SECURITY
-        alldir=self.__all_filenames_are_directories()
-        allfiles=self.__all_filenames_are_regular_files()
-        roots=self.root_filenames()
-        if len(roots)>1:
-            print(_("I can't continue, there are different filename roots with date and time patterns:"))
-            for root in roots:
-                print ("  {} {}".format(Fore.GREEN + Style.BRIGHT + "*" + Style.RESET_ALL, root))
-            exit(ExitCodes.MixedRoots)
-            
-        if alldir==False and allfiles==False:
-            print(_("I can't continue, there are files and directories with date and time patterns in the current path"))
-            exit(ExitCodes.MixedFilesDirectories)
-        
-        #========== CODE
         aux=[]#Strings contining YYYYMM
         r=[]
-        if self.remove_mode==RemoveMode.RemainFirstInMonth:
+        if self.remove_mode==types.RemoveMode.RemainFirstInMonth:
             self.__sort_by_datetime() ## From older to younger
 
             #Set status too_young
             if self.length()>=self.too_young_to_delete:
                 for o in self.arr[self.length()-self.too_young_to_delete:self.length()]:
-                    o.status=FileStatus.TooYoungToDelete
+                    o.status=types.FileStatus.TooYoungToDelete
             else:
                 for o in self.arr:
-                    o.status=FileStatus.TooYoungToDelete
+                    o.status=types.FileStatus.TooYoungToDelete
 
             #Leaving first in month
             if self.length()>=self.too_young_to_delete:
                 for o in self.arr[0:self.length()-self.too_young_to_delete]:
                     if o.YYYYMM() not in aux:
-                        o.status=FileStatus.Remain
+                        o.status=types.FileStatus.Remain
                         r.append(o)
                         aux.append(o.YYYYMM())
 
             #r is a list of remaiun filename, so I can change status bigger to_store
             for i,o in enumerate(reversed(r)):
                 if i>=self.max_files_to_store-self.too_young_to_delete:
-                    o.status=FileStatus.OverMaxFiles
+                    o.status=types.FileStatus.OverMaxFiles
 
-        elif self.remove_mode==RemoveMode.RemainLastInMonth:
+        elif self.remove_mode==types.RemoveMode.RemainLastInMonth:
             print(_("Not developed yet"))
-            exit(ExitCodes.NotDeveloped)
+            exit(types.ExitCodes.NotDeveloped)
 
     def __sort_by_datetime(self):
         self.arr=sorted(self.arr, key=lambda a: a.datetime  ,  reverse=False)
-        
-    ## Function that returns a list with the different filename roots in the currrenty directory
-    def root_filenames(self):
-        aux=[]
-        for o in self. arr:
-            root=o.filename_without_pattern(self.time_pattern)
-            if root not in aux:
-                aux.append(root)
-        return aux
 
     #This function must be called after set status
     def __write_log(self, ):
         s=self.__header_string() + "\n"
         for o in self.arr:
-            if o.status==FileStatus.Delete:
+            if o.status==types.FileStatus.Delete:
                  s=s+"{} >>> {}\n".format(o.filename, _("Delete"))
-            elif o.status==FileStatus.OverMaxFiles:
+            elif o.status==types.FileStatus.OverMaxFiles:
                  s=s+"{} >>> {}\n".format(o.filename, _("Over max number of files"))
         f=open("TooManyFiles.log","a")
         f.write(s)
@@ -220,22 +169,6 @@ class FilenameWithDatetimeManager:
                 r=r+1
         return r
 
-    ## Functions that detects if all FilenameWithDatetime are directories
-    ## @return Bool
-    def __all_filenames_are_directories(self):
-        for o in self.arr:
-            if path.isdir(o.filename)==False:
-                return False
-        return True
-        
-    ## Functions that detects if all FilenameWithDatetime are regular files
-    ## @return Bool
-    def __all_filenames_are_regular_files(self):
-        for o in self.arr:
-            if path.isfile(o.filename)==False:
-                return False
-        return True
-
     #This function must be called after set status
     def __console_output(self):
         print(self.__header_string(color=True))
@@ -244,21 +177,15 @@ class FilenameWithDatetimeManager:
 
         print (self.one_line_status())
 
-        n_remain=self.__number_files_with_status(FileStatus.Remain)
-        n_delete=self.__number_files_with_status(FileStatus.Delete)
-        n_young=self.__number_files_with_status(FileStatus.TooYoungToDelete)
-        n_over=self.__number_files_with_status(FileStatus.OverMaxFiles)
+        n_remain=self.__number_files_with_status(types.FileStatus.Remain)
+        n_delete=self.__number_files_with_status(types.FileStatus.Delete)
+        n_young=self.__number_files_with_status(types.FileStatus.TooYoungToDelete)
+        n_over=self.__number_files_with_status(types.FileStatus.OverMaxFiles)
         if self.__pretending==1:
-            if self.__all_filenames_are_directories():
-                print (_("Directories status pretending:"))
-            elif self.__all_filenames_are_regular_files():
-                print (_("File status pretending:"))
+            print (_("Files status pretending:"))
             result=_("So, {} files will be deleted and {} will be kept when you use --remove parameter.").format(Fore.YELLOW + str(n_delete+n_over) + Style.RESET_ALL, Fore.YELLOW + str(n_remain+n_young) +Style.RESET_ALL)
         elif self.__pretending==0:
-            if self.__all_filenames_are_directories():
-                print (_("Directories status removing:"))
-            elif self.__all_filenames_are_regular_files():
-                print (_("File status removing:"))
+            print (_("File status removing:"))
             result=_("So, {} files have been deleted and {} files have been kept.").format(Fore.YELLOW + str(n_delete+n_over) + Style.RESET_ALL, Fore.YELLOW + str(n_remain+n_young) +Style.RESET_ALL)
         print ("  * {} [{}]: {}".format(_("Remains"), Fore.GREEN + _("R") + Style.RESET_ALL, n_remain))
         print ("  * {} [{}]: {}".format(_("Delete"), Fore.RED + _("D") + Style.RESET_ALL, n_delete))
@@ -274,13 +201,13 @@ class FilenameWithDatetimeManager:
     def one_line_status(self):
         s=""
         for o in self.arr:
-            if o.status==FileStatus.Remain:
+            if o.status==types.FileStatus.Remain:
                  s=s+"{}".format( Fore.GREEN + _("R") + Fore.RESET)
-            elif o.status==FileStatus.Delete:
+            elif o.status==types.FileStatus.Delete:
                  s=s+"{}".format( Fore.RED + _("D") + Fore.RESET)
-            elif o.status==FileStatus.TooYoungToDelete:
+            elif o.status==types.FileStatus.TooYoungToDelete:
                  s=s+"{}".format( Fore.MAGENTA + _("Y")+ Style.RESET_ALL)
-            elif o.status==FileStatus.OverMaxFiles:
+            elif o.status==types.FileStatus.OverMaxFiles:
                  s=s+"{}".format( Fore.YELLOW + _("O")+ Style.RESET_ALL)
         return s
 
@@ -314,7 +241,7 @@ class FilenameWithDatetimeManager:
         if self.logging==True:
             self.__write_log()
         for o in self.arr:
-            if o.status in [FileStatus.OverMaxFiles, FileStatus.Delete]:
+            if o.status in [types.FileStatus.OverMaxFiles, types.FileStatus.Delete]:
                 if path.isfile(o.filename):
                     remove(o.filename)
                 elif path.isdir(o.filename):
@@ -339,33 +266,37 @@ def datetime_in_filename(filename,pattern):
             pass
     return None
 
+
+def create_file(filename):        
+    makedirs(path.dirname(filename), exist_ok=True)
+    with open(filename,"w"):
+        pass
+
 ## Creates an example subdirectory and fills it with datetime pattern filenames
 def create_examples():
+    if path.exists('toomanyfiles_examples'):
+        rmtree('toomanyfiles_examples')
     makedirs("toomanyfiles_examples/files", exist_ok=True)
-    number=1000
+    number=100
     for i in range (number):
         d=datetime.now()-timedelta(days=i)
         filename="toomanyfiles_examples/files/{}{:02d}{:02d} {:02d}{:02d} Toomanyfiles example.txt".format(d.year,d.month,d.day,d.hour,d.minute)
-        f=open(filename,"w")
-        f.close()
+        create_file(filename)
 
     makedirs("toomanyfiles_examples/directories", exist_ok=True)
-    number=1000
+    number=100
     for i in range (number):
         d=datetime.now()-timedelta(days=i)
         filename="toomanyfiles_examples/directories/{}{:02d}{:02d} {:02d}{:02d} Directory/Toomanyfiles example.txt".format(d.year,d.month,d.day,d.hour,d.minute)
         makedirs(path.dirname(filename), exist_ok=True)        
-        f=open(filename,"w")
-        f.close()
+        create_file(filename)
 
     makedirs("toomanyfiles_examples/files_with_different_roots", exist_ok=True)
     number=5
     for i in range (number):
         d=datetime.now()-timedelta(days=i)
         filename="toomanyfiles_examples/files_with_different_roots/{}{:02d}{:02d} {:02d}{:02d} Toomanyfiles example {}.txt".format(d.year,d.month,d.day,d.hour,d.minute, i)
-        f=open(filename,"w")
-        f.close()
-
+        create_file(filename)
 
     print (Style.BRIGHT + _("Different examples have been created in the directory 'toomanyfiles_examples'"))
 
@@ -377,21 +308,21 @@ def remove_examples():
         print (_("I can't remove 'toomanyfiles_examples' directory"))
 
 
-def toomanyfiles(remove, time_pattern="%Y%m%d %H%M", file_patterns="",  too_young_to_delete=30, max_files_to_store=100000000, remove_mode="RemainFirstInMonth", disable_log=False):
+def toomanyfiles(directory,  remove, time_pattern="%Y%m%d %H%M", file_patterns=[],  too_young_to_delete=30, max_files_to_store=100000000, remove_mode="RemainFirstInMonth", disable_log=False):
     """
         Main function to call toomanyfiles programmatically
     
         @param remove Boolean. If True removes files that matches parameters. False only pretends
     """
-    manager=FilenameWithDatetimeManager(getcwd(), time_pattern,  file_patterns)
+    manager=FilenameWithDatetimeManager(directory, time_pattern,  file_patterns)
     
     manager.logging=not disable_log
-    manager.remove_mode=RemoveMode.from_string(remove_mode)
+    manager.remove_mode=types.RemoveMode.from_string(remove_mode)
 
     #Validations
     if manager.too_young_to_delete>manager.max_files_to_store:
         print(Fore.RED + _("The number of files too young to delete can't be bigger than the maximum number of files to store") + Style.RESET_ALL)
-        exit(ExitCodes.YoungGTMax)
+        exit(types.ExitCodes.YoungGTMax)
 
     if remove is True:
         manager.remove()
@@ -431,10 +362,10 @@ def main(arguments=None):
 
     if args.create_examples==True:
         create_examples()
-        exit(ExitCodes.Success)
+        exit(types.ExitCodes.Success)
     if args.remove_examples==True:
         remove_examples()
-        exit(ExitCodes.Success)
+        exit(types.ExitCodes.Success)
 
 
     if args.remove:
@@ -442,4 +373,4 @@ def main(arguments=None):
     if args.pretend:
         remove=False
     
-    toomanyfiles(remove, args.time_pattern, args.file_patterns,   args.too_young_to_delete, args.max_files_to_store, args.remove_mode, args.disable_log)
+    toomanyfiles(getcwd(), remove, args.time_pattern, args.file_patterns,   args.too_young_to_delete, args.max_files_to_store, args.remove_mode, args.disable_log)
