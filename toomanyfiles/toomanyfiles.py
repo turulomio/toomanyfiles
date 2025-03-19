@@ -4,6 +4,7 @@ from datetime import datetime, timedelta
 from gettext import translation
 from importlib.resources import files
 from os import getcwd, listdir, sep, path, remove, makedirs
+from pydicts import lod
 from shutil import rmtree
 from sys import exit
 from toomanyfiles import types
@@ -304,26 +305,94 @@ def remove_examples():
         print (_("I can't remove 'toomanyfiles_examples' directory"))
 
 
-def toomanyfiles(directory,  remove, time_pattern="%Y%m%d %H%M", file_patterns=[],  too_young_to_delete=30, max_files_to_store=100000000, remove_mode="RemainFirstInMonth", disable_log=False):
+
+def lod_read_directory(directory, time_pattern, file_patterns):
+    r=[]
+    for filename in listdir(directory):
+        filename= directory + sep + filename
+        dt=datetime_in_filename(filename, time_pattern)
+        if dt is not None:
+            #Selects if matches all file_patterns
+            found_file_patterns=True
+            for fp in file_patterns:
+                if not fp in filename:
+                    found_file_patterns=False
+                    break
+                        
+            if found_file_patterns:
+                r.append({
+                    "filename":filename, 
+                    "dt":dt, 
+                    "status":None, 
+                })
+                
+    lod.lod_order_by(r, "dt")
+    return r
+    
+def lod_process_directory(lod_,  remove_mode,  too_young_to_delete,  max_files_to_store):
+            
+    # Process lod
+    aux=[]#Strings contining YYYYMM
+    if remove_mode==types.RemoveMode.RemainFirstInMonth:
+        #Set status too_young
+        if len(lod_)>=too_young_to_delete:
+            for o in lod_[len(lod_)-too_young_to_delete:len(lod_)]:
+                o["status"]=types.FileStatus.TooYoungToDelete
+        else:
+            for o in lod_:
+                o["status"]=types.FileStatus.TooYoungToDelete
+
+        #Leaving first in month
+        if len(lod_)>=too_young_to_delete:
+            for o in lod_[0:len(lod_)-too_young_to_delete]:
+                tuple_ym=(o["dt"].year, o["dt"].month)
+                if tuple_ym not in aux:
+                    o["status"]=types.FileStatus.Remain
+                    aux.append(tuple_ym)
+                else:
+                    o["status"]=types.FileStatus.Delete
+
+        #r is a list of remaiun filename, so I can change status bigger to_store
+        for i,o in enumerate(reversed(lod_)):
+            if i>=max_files_to_store-too_young_to_delete:
+                o["status"]=types.FileStatus.OverMaxFiles
+
+    elif remove_mode==types.RemoveMode.RemainLastInMonth:
+        print(_("Not developed yet"))
+        exit(types.ExitCodes.NotDeveloped)
+
+    return lod_
+    
+
+
+def toomanyfiles(directory,  remove, time_pattern="%Y%m%d %H%M", file_patterns=[],  too_young_to_delete=30, max_files_to_store=100000000, remove_mode=types.RemoveMode.RemainFirstInMonth, disable_log=False):
     """
         Main function to call toomanyfiles programmatically
     
         @param remove Boolean. If True removes files that matches parameters. False only pretends
     """
-    manager=FilenameWithDatetimeManager(directory, time_pattern,  file_patterns,  too_young_to_delete,  max_files_to_store)
     
-    manager.logging=not disable_log
-    manager.remove_mode=types.RemoveMode.from_string(remove_mode)
-
-    #Validations
-    if manager.too_young_to_delete>manager.max_files_to_store:
-        print(Fore.RED + _("The number of files too young to delete can't be bigger than the maximum number of files to store") + Style.RESET_ALL)
-        exit(types.ExitCodes.YoungGTMax)
-
-    if remove is True:
-        manager.remove()
-    else:
-        manager.pretend()
+    
+    lodfiles=lod_read_directory(directory,  time_pattern,  file_patterns)
+    lodfiles=lod_process_directory(lodfiles,  remove_mode,  too_young_to_delete,  max_files_to_store)
+    
+    lod.lod_print(lodfiles)
+#    
+#    
+#    manager=FilenameWithDatetimeManager(directory, time_pattern,  file_patterns,  too_young_to_delete,  max_files_to_store)
+#    
+#    manager.logging=not disable_log
+#    manager.remove_mode=types.RemoveMode.from_string(remove_mode)
+#
+#    #Validations
+#    if manager.too_young_to_delete>manager.max_files_to_store:
+#        print(Fore.RED + _("The number of files too young to delete can't be bigger than the maximum number of files to store") + Style.RESET_ALL)
+#        exit(types.ExitCodes.YoungGTMax)
+#
+#    if remove is True:
+#        manager.remove()
+#    else:
+#        manager.pretend()
 
 
 ## TooManyFiles main script
@@ -351,6 +420,7 @@ def main(arguments=None):
     modifiers.add_argument('--max_files_to_store', help=_("Maximum number of files to remain in directory. The default value is '%(default)s'."), default=100000000, type=int)
 
     args=parser.parse_args(arguments)
+    
 
     init(autoreset=True)
     
@@ -369,4 +439,4 @@ def main(arguments=None):
     if args.pretend:
         remove=False
     
-    toomanyfiles(getcwd(), remove, args.time_pattern, args.file_patterns,   args.too_young_to_delete, args.max_files_to_store, args.remove_mode, args.disable_log)
+    toomanyfiles(getcwd(), remove, args.time_pattern, args.file_patterns,   args.too_young_to_delete, args.max_files_to_store, types.RemoveMode.from_string(args.remove_mode), args.disable_log)
