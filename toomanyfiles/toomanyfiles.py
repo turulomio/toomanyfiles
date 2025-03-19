@@ -27,25 +27,18 @@ class FilenameWithDatetime:
     def __repr__(self):
         return("FWD: {}".format(self.filename))
 
-    ## Function that returns the filename without pattern
-    def filename_without_pattern(self, pattern):
-        dt=datetime_in_filename(self.filename, pattern)
-        if dt!=None:
-            return  self.filename.replace(dt.strftime(pattern), "")
-        return None
-
 ## Only extracts files in current directory
 ## This object has two itineraries 
 ## 1. Pretend. Show information in console
 ## 2. Write. Show information in console. Writes log. Delete innecesary files.
 class FilenameWithDatetimeManager:
-    def __init__(self, directory,  time_pattern,  file_patterns):
+    def __init__(self, directory,  time_pattern,  file_patterns,  too_young_to_delete=30,  max_files_to_store=100000000):
         self.arr=[]
-        self.__too_young_to_delete=30
-        self.__max_files_to_store=100000000# Infinity
+        self.__too_young_to_delete=too_young_to_delete
+        self.__max_files_to_store=max_files_to_store# Infinity
         self.__logging=True
         self.__remove_mode=types.RemoveMode.RemainFirstInMonth
-        self.__pretending=1# Tag to set if we are using pretending or not. Can take None: Nor remove nor pretend, 0 Remove, 1 Pretend
+        self.__pretending=True# Tag to set if we are using pretending or not. Can take None: Nor remove nor pretend, 0 Remove, 1 Pretend
         
         self.time_pattern=time_pattern
         self.file_patterns=file_patterns
@@ -174,6 +167,8 @@ class FilenameWithDatetimeManager:
         print(self.__header_string(color=True))
         if self.length()==0:
             return
+        print("   Parameters: Too yound to delete:",  self.__too_young_to_delete,  "Max files to store",  self.__max_files_to_store)
+
 
         print (self.one_line_status())
 
@@ -181,10 +176,10 @@ class FilenameWithDatetimeManager:
         n_delete=self.__number_files_with_status(types.FileStatus.Delete)
         n_young=self.__number_files_with_status(types.FileStatus.TooYoungToDelete)
         n_over=self.__number_files_with_status(types.FileStatus.OverMaxFiles)
-        if self.__pretending==1:
+        if self.__pretending==True:
             print (_("Files status pretending:"))
             result=_("So, {} files will be deleted and {} will be kept when you use --remove parameter.").format(Fore.YELLOW + str(n_delete+n_over) + Style.RESET_ALL, Fore.YELLOW + str(n_remain+n_young) +Style.RESET_ALL)
-        elif self.__pretending==0:
+        else:
             print (_("File status removing:"))
             result=_("So, {} files have been deleted and {} files have been kept.").format(Fore.YELLOW + str(n_delete+n_over) + Style.RESET_ALL, Fore.YELLOW + str(n_remain+n_young) +Style.RESET_ALL)
         print ("  * {} [{}]: {}".format(_("Remains"), Fore.GREEN + _("R") + Style.RESET_ALL, n_remain))
@@ -227,7 +222,7 @@ class FilenameWithDatetimeManager:
 
     ## Shows information in console
     def pretend(self):
-        self.__pretending=1
+        self.__pretending=True
         self.__set_filename_status()
         self.__console_output()
 
@@ -235,7 +230,7 @@ class FilenameWithDatetimeManager:
     ## Write log
     ## Delete Files
     def remove(self):
-        self.__pretending=0
+        self.__pretending=False
         self.__set_filename_status()
         self.__console_output()
         if self.logging==True:
@@ -261,7 +256,8 @@ def datetime_in_filename(filename,pattern):
     for i in range(len(filename)-length+1):
         s=filename[i:length+i]
         try:
-            return datetime.strptime(s,pattern)
+            dt=datetime.strptime(s,pattern)
+            return dt
         except:
             pass
     return None
@@ -314,7 +310,7 @@ def toomanyfiles(directory,  remove, time_pattern="%Y%m%d %H%M", file_patterns=[
     
         @param remove Boolean. If True removes files that matches parameters. False only pretends
     """
-    manager=FilenameWithDatetimeManager(directory, time_pattern,  file_patterns)
+    manager=FilenameWithDatetimeManager(directory, time_pattern,  file_patterns,  too_young_to_delete,  max_files_to_store)
     
     manager.logging=not disable_log
     manager.remove_mode=types.RemoveMode.from_string(remove_mode)
