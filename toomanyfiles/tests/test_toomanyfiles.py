@@ -93,7 +93,7 @@ def test_date_pattern_with_filter():
         toomanyfiles.create_file(f"{tempdir}/20250102 Hola.doc")
         toomanyfiles.create_file(f"{tempdir}/20250201 Hola.xlsx")
         toomanyfiles.create_file(f"{tempdir}/20250202 Hola.xlsx")
-       
+      
         toomanyfiles.toomanyfiles(tempdir,  remove=True, time_pattern="%Y%m%d",  too_young_to_delete=0,  file_patterns=["xlsx", "2025"])
 
         assert path.exists(f"{tempdir}/20250101 Hola.xlsx")
