@@ -25,7 +25,7 @@ def datetime_in_filename(filename,pattern):
     if len(basename)<len(pattern):
         return None
     for i in range(len(basename)-length+1):
-        s=filename[i:length+i]
+        s=basename[i:length+i]
         try:
             dt=datetime.strptime(s,pattern)
             return dt
@@ -223,7 +223,6 @@ def toomanyfiles(directory,  remove, time_pattern="%Y%m%d %H%M", file_patterns=[
                     os_remove(o["filename"])
                 elif path.isdir(o["filename"]):
                     rmtree(o["filename"])
-    print(lodfiles)
     return lodfiles
 
 ## TooManyFiles main script
