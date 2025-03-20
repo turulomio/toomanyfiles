@@ -15,13 +15,12 @@ try:
 except:
     _=str
 
-def datetime_in_filename(filename,pattern):
+def datetime_in_basename(basename,pattern):
     """
         Finds the pattern in the basename of the filename and returns a datetime iterating alll characters
     """
     length=len(datetime.now().strftime(pattern))#Len of the value of the pattern
 
-    basename=path.basename(filename)
     if len(basename)<len(pattern):
         return None
     for i in range(len(basename)-length+1):
@@ -132,9 +131,9 @@ def remove_examples():
 
 def lod_read_directory(directory, time_pattern, file_patterns):
     r=[]
-    for filename in listdir(directory):
-        filename= directory + sep + filename
-        dt=datetime_in_filename(filename, time_pattern)
+    for basename in listdir(directory):
+        filename= directory + sep + basename
+        dt=datetime_in_basename(filename, time_pattern)
         if dt is not None:
             #Selects if matches all file_patterns
             found_file_patterns=True
@@ -150,7 +149,7 @@ def lod_read_directory(directory, time_pattern, file_patterns):
                     "status":None, 
                 })
                 
-    lod.lod_order_by(r, "dt")
+    r=lod.lod_order_by(r, "dt")
     return r
     
 def lod_process_directory(lod_,  remove_mode,  too_young_to_delete,  max_files_to_store):
@@ -176,10 +175,14 @@ def lod_process_directory(lod_,  remove_mode,  too_young_to_delete,  max_files_t
                 else:
                     o["status"]=types.FileStatus.Delete
 
-        #r is a list of remaiun filename, so I can change status bigger to_store
-        for i,o in enumerate(reversed(lod_)):
-            if i>=max_files_to_store-too_young_to_delete:
-                o["status"]=types.FileStatus.OverMaxFiles
+        #Changes remaining filtes to overmaxfiles
+        remaining=0
+        for o in reversed(lod_):
+            if o["status"]==types.FileStatus.Remain:
+               if remaining>=max_files_to_store-too_young_to_delete:
+                    o["status"]=types.FileStatus.OverMaxFiles
+               else:
+                   remaining+=1
 
     elif remove_mode==types.RemoveMode.RemainLastInMonth:
         print(_("Not developed yet"))
