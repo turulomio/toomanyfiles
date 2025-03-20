@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-11-08 22:12+0100\n"
+"POT-Creation-Date: 2025-03-20 14:05+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -65,31 +65,25 @@ msgstr ""
 msgid "  * Upload to portage repository"
 msgstr ""
 
-msgid "I can't continue, there are different filename roots with date and time patterns:"
+msgid "{} TooManyFiles in {} detected {} files with time pattern {} and filename patterns {}"
 msgstr ""
 
-msgid "I can't continue, there are files and directories with date and time patterns in the current path"
+msgid "R"
 msgstr ""
 
-msgid "Not developed yet"
+msgid "D"
 msgstr ""
 
-msgid "Delete"
+msgid "Y"
 msgstr ""
 
-msgid "Over max number of files"
+msgid "O"
 msgstr ""
 
-msgid "Directories status pretending:"
-msgstr ""
-
-msgid "File status pretending:"
+msgid "Files status pretending:"
 msgstr ""
 
 msgid "So, {} files will be deleted and {} will be kept when you use --remove parameter."
-msgstr ""
-
-msgid "Directories status removing:"
 msgstr ""
 
 msgid "File status removing:"
@@ -101,25 +95,13 @@ msgstr ""
 msgid "Remains"
 msgstr ""
 
-msgid "R"
-msgstr ""
-
-msgid "D"
+msgid "Delete"
 msgstr ""
 
 msgid "Too young to delete"
 msgstr ""
 
-msgid "Y"
-msgstr ""
-
 msgid "Over max files"
-msgstr ""
-
-msgid "O"
-msgstr ""
-
-msgid "{} TooManyFiles in {} detected {} files with pattern {}"
 msgstr ""
 
 msgid "Different examples have been created in the directory 'toomanyfiles_examples'"
@@ -129,6 +111,27 @@ msgid "'toomanyfiles_examples' directory removed"
 msgstr ""
 
 msgid "I can't remove 'toomanyfiles_examples' directory"
+msgstr ""
+
+msgid "Directory"
+msgstr ""
+
+msgid "File"
+msgstr ""
+
+msgid "File patterns weren't found"
+msgstr ""
+
+msgid "Time pattern wasn't found"
+msgstr ""
+
+msgid "The number of files too young to delete can't be bigger than the maximum number of files to store"
+msgstr ""
+
+msgid "Not developed yet"
+msgstr ""
+
+msgid "Over max number of files"
 msgstr ""
 
 msgid "Search date and time patterns to delete innecesary files or directories"
@@ -149,11 +152,18 @@ msgstr ""
 msgid "Makes a simulation and doesn't remove files"
 msgstr ""
 
+msgid "List files included and excluded"
+msgstr ""
+
 msgid "Modifiers to use with --remove and --pretend"
 msgstr ""
 
 #, python-format
 msgid "Defines a python datetime pattern to search in current directory. The default pattern is '%(default)s'."
+msgstr ""
+
+#, python-format
+msgid "Defines one or several string patterns to search in path with matches time pattern. Patterns are case sensitive and filename must have all to be selected. The default pattern is '%(default)s'."
 msgstr ""
 
 #, python-format
@@ -172,8 +182,14 @@ msgstr ""
 msgid "Maximum number of files to remain in directory. The default value is '%(default)s'."
 msgstr ""
 
-msgid "Error passing parameters"
+msgid "FILES TO PROCESS"
 msgstr ""
 
-msgid "The number of files too young to delete can't be bigger than the maximum number of files to store"
+msgid "FILES IGNORED"
+msgstr ""
+
+msgid "DIRECTORY"
+msgstr ""
+
+msgid "FILE"
 msgstr ""

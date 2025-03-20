@@ -27,6 +27,13 @@ You can see this animated gif to learn how to use it:
 
 
 ## Changelog
+### 1.0.0
+  * Project migrated to poetry>2.0.0
+  * Added quality tests
+  * Replaced roots by filename patterns. Several patterns can be added.
+  * Migrated to pydicts
+  * Added --list paramter to see procesed and ignored files, before removing
+
 ### 0.5.0
   * Migrated repository from Sourceforge to Github
   * Removed innecesary dependencies in setup.py
