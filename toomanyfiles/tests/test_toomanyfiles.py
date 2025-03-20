@@ -93,8 +93,16 @@ def test_date_pattern_with_filter():
         toomanyfiles.create_file(f"{tempdir}/20250102 Hola.doc")
         toomanyfiles.create_file(f"{tempdir}/20250201 Hola.xlsx")
         toomanyfiles.create_file(f"{tempdir}/20250202 Hola.xlsx")
+        from os import system
+        system(f"cd {tempdir} && ls -la")
        
-        toomanyfiles.toomanyfiles(tempdir,  remove=True, time_pattern="%Y%m%d",  too_young_to_delete=0,  file_patterns=["xlsx", "2025"])
+        filedicts=toomanyfiles.toomanyfiles(tempdir,  remove=True, time_pattern="%Y%m%d",  too_young_to_delete=0,  file_patterns=["xlsx", "2025"])
+        from pydicts import lod
+        lod.lod_print(filedicts)
+        
+        system(f"cd {tempdir} && ls -la")
+        
+        print(filedicts)
 
         assert path.exists(f"{tempdir}/20250101 Hola.xlsx")
         assert path.exists(f"{tempdir}/20250102 Hola.doc") #Not selected due to file_patterns
