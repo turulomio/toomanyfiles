@@ -4,7 +4,7 @@ from datetime import datetime, timedelta
 from gettext import translation
 from importlib.resources import files
 from os import getcwd, listdir, sep, path, remove as os_remove, makedirs
-from pydicts import lod
+from pydicts import lod, colors
 from shutil import rmtree
 from sys import exit
 from toomanyfiles import types
@@ -130,9 +130,12 @@ def remove_examples():
         print (_("I can't remove 'toomanyfiles_examples' directory"))
 
 def lod_read_directory(directory, time_pattern, file_patterns):
-    r=[]
+    files_to_process=[]
+    files_to_ignore=[]
     for basename in listdir(directory):
         filename= directory + sep + basename
+        isdir=path.isdir(filename)
+        type=_("Directory") if isdir else _("File")
         dt=datetime_in_basename(filename, time_pattern)
         if dt is not None:
             #Selects if matches all file_patterns
@@ -143,17 +146,32 @@ def lod_read_directory(directory, time_pattern, file_patterns):
                     break
                         
             if found_file_patterns:
-                r.append({
+                files_to_process.append({
                     "filename":filename, 
                     "dt":dt, 
                     "status":None, 
+                    "type": type
                 })
+            else:
+                files_to_ignore.append({
+                    "filename": filename, 
+                    "reason": _("File patterns weren't found"), 
+                    "type": type
+                })
+        else:
+            files_to_ignore.append({
+                "filename": filename, 
+                "reason": _("Time pattern wasn't found"), 
+                "type": type
+            })
                 
-    r=lod.lod_order_by(r, "dt")
-    return r
+    files_to_process=lod.lod_order_by(files_to_process, "dt")
+    return files_to_process, files_to_ignore
     
 def lod_process_directory(lod_,  remove_mode,  too_young_to_delete,  max_files_to_store):
-            
+    if too_young_to_delete>max_files_to_store:
+        print(Fore.RED + _("The number of files too young to delete can't be bigger than the maximum number of files to store") + Style.RESET_ALL)
+        exit(types.ExitCodes.YoungGTMax)
     # Process lod
     aux=[]#Strings contining YYYYMM
     if remove_mode==types.RemoveMode.RemainFirstInMonth:
@@ -209,24 +227,22 @@ def toomanyfiles(directory,  remove, time_pattern="%Y%m%d %H%M", file_patterns=[
         
         @return list of dictionaries
     """
-    if too_young_to_delete>max_files_to_store:
-        print(Fore.RED + _("The number of files too young to delete can't be bigger than the maximum number of files to store") + Style.RESET_ALL)
-        exit(types.ExitCodes.YoungGTMax)
+
     
-    lodfiles=lod_read_directory(directory,  time_pattern,  file_patterns)
-    lodfiles=lod_process_directory(lodfiles,  remove_mode,  too_young_to_delete,  max_files_to_store)
-    console_output(lodfiles, directory, remove, time_pattern, file_patterns, too_young_to_delete, max_files_to_store)
+    files_to_process, files_to_ignore=lod_read_directory(directory,  time_pattern,  file_patterns)
+    processed=lod_process_directory(files_to_process,  remove_mode,  too_young_to_delete,  max_files_to_store)
+    console_output(processed, directory, remove, time_pattern, file_patterns, too_young_to_delete, max_files_to_store)
     
     if remove is True:
         if disable_log is False:
-            write_log(lodfiles, directory,  time_pattern,  file_patterns)
-        for o in lodfiles:
+            write_log(processed, directory,  time_pattern,  file_patterns)
+        for o in processed:
             if o["status"] in [types.FileStatus.OverMaxFiles, types.FileStatus.Delete]:
                 if path.isfile(o["filename"]):
                     os_remove(o["filename"])
                 elif path.isdir(o["filename"]):
                     rmtree(o["filename"])
-    return lodfiles
+    return processed, files_to_ignore
 
 ## TooManyFiles main script
 ## If arguments is None, launches with argc parameters. Entry point is toomanyfiles:main
@@ -243,6 +259,7 @@ def main(arguments=None):
     group.add_argument('--remove_examples', help=_("Remove example directories'"), action="store_true",default=False)
     group.add_argument('--remove', help=_("Removes files permanently"), action="store_true", default=False)
     group.add_argument('--pretend', help=_("Makes a simulation and doesn't remove files"), action="store_true", default=False)
+    group.add_argument('--list', help=_("List files included and excluded"), action="store_true", default=False)
 
     modifiers=parser.add_argument_group(title=_("Modifiers to use with --remove and --pretend"), description=None)
     modifiers.add_argument('--time_pattern', help=_("Defines a python datetime pattern to search in current directory. The default pattern is '%(default)s'."), action="store",default="%Y%m%d %H%M")    
@@ -267,6 +284,29 @@ def main(arguments=None):
         toomanyfiles(getcwd(), True, args.time_pattern, args.file_patterns,   args.too_young_to_delete, args.max_files_to_store, types.RemoveMode.from_string(args.remove_mode), args.disable_log)
     if args.pretend:    
         toomanyfiles(getcwd(), False, args.time_pattern, args.file_patterns,   args.too_young_to_delete, args.max_files_to_store, types.RemoveMode.from_string(args.remove_mode), args.disable_log)
+    if args.list:    
+        
+        
+        files_to_process, files_to_ignore=lod_read_directory(getcwd(),  args.time_pattern,  args.file_patterns)
+        processed=lod_process_directory(files_to_process,  types.RemoveMode.from_string(args.remove_mode),  args.too_young_to_delete,  args.max_files_to_store)
+        
+        processed=lod.lod_order_by(processed,  "filename")
+        files_to_ignore=lod.lod_order_by(files_to_ignore,  "filename")
 
+        print(colors.magenta("=== " + _("FILES TO PROCESS") + " ==="))
+        print_with_type(processed)
+        print()
+        print(colors.magenta("=== " + _("FILES IGNORED") + " ==="))
+        print_with_type(files_to_ignore)
+        
+
+def print_with_type(lod_):
+    for o in lod_:
+        print(
+            "  * ",  
+            colors.yellow(_("DIRECTORY")) if  o["type"]==_("Directory") else colors.white(_("FILE")) ,  
+            path.basename(o["filename"]), 
+            colors.red(o["reason"]) if "reason" in o else ""
+        )
         
     
