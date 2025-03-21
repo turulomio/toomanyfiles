@@ -1,30 +1,15 @@
 # TooManyFiles
 
 ## Links
-
-Source code & Development:
-    https://github.com/Turulomio/toomanyfiles
-Doxygen documentation:
-    http://turulomio.users.sourceforge.net/doxygen/too-many-files/
-Gentoo ebuild
-    If you use Gentoo you can find a ebuild in https://github.com/Turulomio/myportage/tree/master/app-admin/toomanyfiles
+    * Source code & Development: https://github.com/Turulomio/toomanyfiles
+    * If you use Gentoo you can find a ebuild in https://github.com/Turulomio/myportage/tree/master/app-admin/toomanyfiles
 
 ## Description
-Removes files which name has date and time patterns
-
-
-## Dependencies
-* https://www.python.org/, as the main programming language.
-* https://pypi.org/project/colorama/, to give console colors.
-* https://pypi.org/project/mangenerator/, to generate man files.
-* https://pypi.org/project/ttyrecgenerator/, to generate animated gifs.
+This command Removes files which names have date and time patterns. You can filter by patterns
 
 ## Usage
 You can see this animated gif to learn how to use it:
-
 <img src="https://raw.githubusercontent.com/Turulomio/toomanyfiles/master/doc/ttyrec/toomanyfiles_howto_en.gif?raw=true" width="100%"></img>
-
-
 
 ## Changelog
 ### 1.0.0
