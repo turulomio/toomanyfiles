@@ -8,6 +8,8 @@ class ExitCodes:
     
     ##Younger files parameter bigger than max number of files
     YoungGTMax=5
+    
+    ConfigFileNotFound=6
 
 class RemoveMode:
     RemainFirstInMonth=1

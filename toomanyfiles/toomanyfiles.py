@@ -7,7 +7,7 @@ from os import getcwd, listdir, sep, path, remove as os_remove, makedirs
 from pydicts import lod, colors
 from shutil import rmtree
 from sys import exit
-from toomanyfiles import types
+from toomanyfiles import types,  json as toomanyfiles_json
 
 try:
     t=translation('toomanyfiles', files("toomanyfiles/") / 'locale')
@@ -257,17 +257,10 @@ def main(arguments=None):
     group= parser.add_mutually_exclusive_group(required=True)
     group.add_argument('--create_examples', help=_("Create example directories"), action="store_true",default=False)
     group.add_argument('--remove_examples', help=_("Remove example directories'"), action="store_true",default=False)
-    group.add_argument('--remove', help=_("Removes files permanently"), action="store_true", default=False)
-    group.add_argument('--pretend', help=_("Makes a simulation and doesn't remove files"), action="store_true", default=False)
-    group.add_argument('--list', help=_("List files included and excluded"), action="store_true", default=False)
-
-    modifiers=parser.add_argument_group(title=_("Modifiers to use with --remove and --pretend"), description=None)
-    modifiers.add_argument('--time_pattern', help=_("Defines a python datetime pattern to search in current directory. The default pattern is '%(default)s'."), action="store",default="%Y%m%d %H%M")    
-    modifiers.add_argument('--file_patterns', help=_("Defines one or several string patterns to search in path with matches time pattern. Patterns are case sensitive and filename must have all to be selected. The default pattern is '%(default)s'."), action="append", default=[])    
-    modifiers.add_argument('--disable_log', help=_("Disable log generation. The default value is '%(default)s'."),action="store_true", default="")
-    modifiers.add_argument('--remove_mode', help=_("Remove mode. The default value is '%(default)s'."), choices=['RemainFirstInMonth','RemainLastInMonth'], default='RemainFirstInMonth')
-    modifiers.add_argument('--too_young_to_delete', help=_("Number of days to respect from today. The default value is '%(default)s'."), default=30, type=int)
-    modifiers.add_argument('--max_files_to_store', help=_("Maximum number of files to remain in directory. The default value is '%(default)s'."), default=100000000, type=int)
+    group.add_argument('--init', help=_("Creates a .toomanyfiles.json file with directory configuration"), action="store_true", default=False)
+    group.add_argument('--remove', help=_("Removes files permanently in current directory"), action="store_true", default=False)
+    group.add_argument('--pretend', help=_("Makes a simulation in current directory"), action="store_true", default=False)
+    group.add_argument('--list', help=_("List files that will be included or excluded in current directory"), action="store_true", default=False)
 
     args=parser.parse_args(arguments)
     
@@ -280,24 +273,37 @@ def main(arguments=None):
         remove_examples()
         exit(types.ExitCodes.Success)
 
-    if args.remove:   
-        toomanyfiles(getcwd(), True, args.time_pattern, args.file_patterns,   args.too_young_to_delete, args.max_files_to_store, types.RemoveMode.from_string(args.remove_mode), args.disable_log)
-    if args.pretend:    
-        toomanyfiles(getcwd(), False, args.time_pattern, args.file_patterns,   args.too_young_to_delete, args.max_files_to_store, types.RemoveMode.from_string(args.remove_mode), args.disable_log)
-    if args.list:    
-        
-        
-        files_to_process, files_to_ignore=lod_read_directory(getcwd(),  args.time_pattern,  args.file_patterns)
-        processed=lod_process_directory(files_to_process,  types.RemoveMode.from_string(args.remove_mode),  args.too_young_to_delete,  args.max_files_to_store)
-        
-        processed=lod.lod_order_by(processed,  "filename")
-        files_to_ignore=lod.lod_order_by(files_to_ignore,  "filename")
+    if args.init:
+        if path.exists(toomanyfiles_json.filename):
+            print(_("Config file '{0}' is already created. You can now run toomanyfiles with --list, --pretend or --remove parameters.").format(toomanyfiles_json.filename))
+        else:
+            toomanyfiles_json.create()
+            print(_("Config file '{0}' has been created. Please check it to set your settings.").format(toomanyfiles_json.filename))
 
-        print(colors.magenta("=== " + _("FILES TO PROCESS") + " ==="))
-        print_with_type(processed)
-        print()
-        print(colors.magenta("=== " + _("FILES IGNORED") + " ==="))
-        print_with_type(files_to_ignore)
+    if not path.exists(toomanyfiles_json.filename):
+        print(_("You must create config file. Please execute 'toomanyfiles --init'."))
+        exit(types.ExitCodes.ConfigFileNotFound)
+
+    json_data=toomanyfiles_json.load()
+    if args.remove:
+        for d in json_data:
+            toomanyfiles(getcwd(), True, d["time_pattern"],  d["file_regex_pattern"],   d["too_young_to_delete"], d["max_files_to_store"], types.RemoveMode.from_string(d["remove_mode"]), d["disable_log"])
+    if args.pretend:    
+        for d in json_data:
+            toomanyfiles(getcwd(), False, d["time_pattern"],  d["file_regex_pattern"],   d["too_young_to_delete"], d["max_files_to_store"], types.RemoveMode.from_string(d["remove_mode"]), d["disable_log"])
+    if args.list:
+        for d in json_data:
+            files_to_process, files_to_ignore=lod_read_directory(getcwd(),  d["time_pattern"],  d["file_regex_pattern"])
+            processed=lod_process_directory(files_to_process,  types.RemoveMode.from_string(d["remove_mode"]),  d["too_young_to_delete"],  d["max_files_to_store"])
+            
+            processed=lod.lod_order_by(processed,  "filename")
+            files_to_ignore=lod.lod_order_by(files_to_ignore,  "filename")
+
+            print(colors.magenta("=== " + _("FILES TO PROCESS") + " ==="))
+            print_with_type(processed)
+            print()
+            print(colors.magenta("=== " + _("FILES IGNORED") + " ==="))
+            print_with_type(files_to_ignore)
         
 
 def print_with_type(lod_):
