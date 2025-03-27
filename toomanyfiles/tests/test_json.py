@@ -5,7 +5,7 @@ from toomanyfiles import json
 def test_json():    
     with TemporaryDirectory() as tempdir:
         chdir(tempdir)
-        json.create()
+        json.create(tempdir)
         r=json.load()
         assert len(r)==1,  "Json length incorrect"
         

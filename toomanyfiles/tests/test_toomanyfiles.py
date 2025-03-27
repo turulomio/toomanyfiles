@@ -1,9 +1,10 @@
-from os import path
+from os import path, chdir
 from tempfile import TemporaryDirectory
 from toomanyfiles import toomanyfiles
 
-def test_examples():
-    toomanyfiles.create_examples()
+def test_examples(tmp_path):
+    chdir(tmp_path)
+    toomanyfiles.create_examples(tmp_path)
     dir="toomanyfiles_examples/directories/"
     toomanyfiles.toomanyfiles(dir,  remove=False)
     toomanyfiles.toomanyfiles(dir,  remove=True)
@@ -115,5 +116,7 @@ def test_date_pattern_with_filter():
         assert path.exists(f"{tempdir}/20250201 Hola.xlsx")
         assert path.exists(f"{tempdir}/20250202 Hola.xlsx")
 
-def test_main():
+def test_main(tmp_path):
+    chdir(tmp_path)
+    toomanyfiles.main(["--init"])
     toomanyfiles.main(["--pretend"])

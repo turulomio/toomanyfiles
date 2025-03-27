@@ -10,7 +10,7 @@ except:
 filename=".toomanyfiles.json"
 
 
-def create():
+def create(directory):
     r=[]
     r.append({
         "remove_mode": "RemainFirstInMonth", 
@@ -20,8 +20,8 @@ def create():
         "max_files_to_store": 1000000, 
         "disable_log": False, 
     })
-    with open(filename,  "w") as f:
-        f.write(dumps(r))
+    with open(directory +"/" +filename,  "w") as f:
+        f.write(dumps(r,  indent=4,  sort_keys=True))
     
     
 def load():

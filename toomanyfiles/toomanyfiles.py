@@ -95,10 +95,10 @@ def create_file(filename):
         pass
 
 ## Creates an example subdirectory and fills it with datetime pattern filenames
-def create_examples():
-    if path.exists('toomanyfiles_examples'):
-        rmtree('toomanyfiles_examples')
-    makedirs("toomanyfiles_examples/files", exist_ok=True)
+def create_examples(directory):
+    if path.exists(f'{directory}/toomanyfiles_examples'):
+        rmtree(f'{directory}/toomanyfiles_examples')
+    makedirs(f"{directory}/toomanyfiles_examples/files/", exist_ok=True)
     number=100
     for i in range (number):
         d=datetime.now()-timedelta(days=i)
@@ -216,7 +216,7 @@ def write_log(lod_, directory,  time_pattern, file_patterns):
              s=s+"{} >>> {}\n".format(o["filename"], _("Delete"))
         elif o["status"]==types.FileStatus.OverMaxFiles:
              s=s+"{} >>> {}\n".format(o["filename"], _("Over max number of files"))
-    with open("TooManyFiles.log","a") as f:
+    with open(directory + "/TooManyFiles.log","a") as f:
         f.write(s)
 
 def toomanyfiles(directory,  remove, time_pattern="%Y%m%d %H%M", file_patterns=[],  too_young_to_delete=30, max_files_to_store=100000000, remove_mode=types.RemoveMode.RemainFirstInMonth, disable_log=False):
@@ -277,7 +277,7 @@ def main(arguments=None):
         if path.exists(toomanyfiles_json.filename):
             print(_("Config file '{0}' is already created. You can now run toomanyfiles with --list, --pretend or --remove parameters.").format(toomanyfiles_json.filename))
         else:
-            toomanyfiles_json.create()
+            toomanyfiles_json.create(getcwd())
             print(_("Config file '{0}' has been created. Please check it to set your settings.").format(toomanyfiles_json.filename))
 
     if not path.exists(toomanyfiles_json.filename):
