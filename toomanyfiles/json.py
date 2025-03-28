@@ -15,7 +15,7 @@ def create(directory):
     r.append({
         "remove_mode": "RemainFirstInMonth", 
         "time_pattern":"%Y%m%d %H%M", 
-        "file_regex_pattern": "", 
+        "file_regex_pattern": ".*", 
         "too_young_to_delete": 30, 
         "max_files_to_store": 1000000, 
         "disable_log": False, 

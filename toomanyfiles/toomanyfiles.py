@@ -5,6 +5,7 @@ from gettext import translation
 from importlib.resources import files
 from os import getcwd, listdir, sep, path, remove as os_remove, makedirs
 from pydicts import lod, colors
+from re import match
 from shutil import rmtree
 from sys import exit
 from toomanyfiles import types,  json as toomanyfiles_json
@@ -32,18 +33,18 @@ def datetime_in_basename(basename,pattern):
             pass
     return None
 
-def header_string(lod_, directory,  time_pattern,  file_patterns, color=False):
+def header_string(lod_, directory,  time_pattern,  file_regex_pattern, color=False):
     if color==True:
         return _("{} TooManyFiles in {} detected {} files with time pattern {} and filename patterns {}").format(Style.BRIGHT + str(datetime.now()) + Style.RESET_ALL,
                                                                                    Style.BRIGHT + Fore.YELLOW + directory + Style.RESET_ALL,
                                                                                    Style.BRIGHT + Fore.GREEN + str(len(lod_)) + Style.RESET_ALL,
                                                                                    Fore.YELLOW + time_pattern + Style.RESET_ALL, 
-                                                                                   Fore.YELLOW + str(file_patterns)+ Style.RESET_ALL, 
+                                                                                   Fore.YELLOW + str(file_regex_pattern)+ Style.RESET_ALL, 
                                                                                    )
     else:
-        return _("{} TooManyFiles in {} detected {} files with time pattern {} and filename patterns {}").format(datetime.now(), directory, len(lod_), time_pattern, str(file_patterns))
+        return _("{} TooManyFiles in {} detected {} files with time pattern {} and filename patterns {}").format(datetime.now(), directory, len(lod_), time_pattern, str(file_regex_pattern))
 
-def console_output(lod_, directory,  remove,  time_pattern,  file_patterns, too_young_to_delete, max_files_to_store):
+def console_output(lod_, directory,  remove,  time_pattern,  file_regex_pattern, too_young_to_delete, max_files_to_store):
     ## Function that generates the header used in console output and in log
     ## @return string
 
@@ -65,7 +66,7 @@ def console_output(lod_, directory,  remove,  time_pattern,  file_patterns, too_
                  s=s+"{}".format( Fore.YELLOW + _("O")+ Style.RESET_ALL)
         return s
     
-    print(header_string(lod_, directory,  time_pattern, file_patterns,  color=True))
+    print(header_string(lod_, directory,  time_pattern, file_regex_pattern,  color=True))
     if len(lod_)==0:
         return
     print("   Parameters: Too yound to delete:",  too_young_to_delete,  "Max files to store",  max_files_to_store)
@@ -129,7 +130,7 @@ def remove_examples():
     else:
         print (_("I can't remove 'toomanyfiles_examples' directory"))
 
-def lod_read_directory(directory, time_pattern, file_patterns):
+def lod_read_directory(directory, time_pattern, file_regex_pattern):
     files_to_process=[]
     files_to_ignore=[]
     for basename in listdir(directory):
@@ -138,14 +139,8 @@ def lod_read_directory(directory, time_pattern, file_patterns):
         type=_("Directory") if isdir else _("File")
         dt=datetime_in_basename(filename, time_pattern)
         if dt is not None:
-            #Selects if matches all file_patterns
-            found_file_patterns=True
-            for fp in file_patterns:
-                if not fp in filename:
-                    found_file_patterns=False
-                    break
-                        
-            if found_file_patterns:
+            print(file_regex_pattern,  basename,  match(file_regex_pattern, basename) is not None,  dir(match(file_regex_pattern, basename)))
+            if match(file_regex_pattern, basename):
                 files_to_process.append({
                     "filename":filename, 
                     "dt":dt, 
@@ -209,8 +204,8 @@ def lod_process_directory(lod_,  remove_mode,  too_young_to_delete,  max_files_t
     return lod_
     
 #This function must be called after set status
-def write_log(lod_, directory,  time_pattern, file_patterns):
-    s=header_string(lod_, directory,  time_pattern, file_patterns, color=False) + "\n"
+def write_log(lod_, directory,  time_pattern, file_regex_pattern):
+    s=header_string(lod_, directory,  time_pattern, file_regex_pattern, color=False) + "\n"
     for o in lod_:
         if o["status"]==types.FileStatus.Delete:
              s=s+"{} >>> {}\n".format(o["filename"], _("Delete"))
@@ -219,7 +214,7 @@ def write_log(lod_, directory,  time_pattern, file_patterns):
     with open(directory + "/TooManyFiles.log","a") as f:
         f.write(s)
 
-def toomanyfiles(directory,  remove, time_pattern="%Y%m%d %H%M", file_patterns=[],  too_young_to_delete=30, max_files_to_store=100000000, remove_mode=types.RemoveMode.RemainFirstInMonth, disable_log=False):
+def toomanyfiles(directory,  remove, time_pattern="%Y%m%d %H%M", file_regex_pattern=[],  too_young_to_delete=30, max_files_to_store=100000000, remove_mode=types.RemoveMode.RemainFirstInMonth, disable_log=False):
     """
         Main function to call toomanyfiles programmatically
     
@@ -229,13 +224,13 @@ def toomanyfiles(directory,  remove, time_pattern="%Y%m%d %H%M", file_patterns=[
     """
 
     
-    files_to_process, files_to_ignore=lod_read_directory(directory,  time_pattern,  file_patterns)
+    files_to_process, files_to_ignore=lod_read_directory(directory,  time_pattern,  file_regex_pattern)
     processed=lod_process_directory(files_to_process,  remove_mode,  too_young_to_delete,  max_files_to_store)
-    console_output(processed, directory, remove, time_pattern, file_patterns, too_young_to_delete, max_files_to_store)
+    console_output(processed, directory, remove, time_pattern, file_regex_pattern, too_young_to_delete, max_files_to_store)
     
     if remove is True:
         if disable_log is False:
-            write_log(processed, directory,  time_pattern,  file_patterns)
+            write_log(processed, directory,  time_pattern,  file_regex_pattern)
         for o in processed:
             if o["status"] in [types.FileStatus.OverMaxFiles, types.FileStatus.Delete]:
                 if path.isfile(o["filename"]):
