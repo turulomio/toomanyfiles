@@ -34,47 +34,6 @@ def translate():
         system("msgfmt -cv -o toomanyfiles/locale/es/LC_MESSAGES/toomanyfiles.mo toomanyfiles/locale/es.po")
        # system("msgfmt -cv -o toomanyfiles/locale/en/LC_MESSAGES/toomanyfiles.mo toomanyfiles/locale/en.po")
 
-def man():
-    for language in ('es', 'en'):
-        mangenerator(language)
-
-def mangenerator( language):
-    """
-        Create man pages for parameter language
-    """
-    from mangenerator import Man
-    if language=="en":
-        install('toomanyfiles', 'badlocale')
-        man=Man("man/man1/toomanyfiles")
-    else:
-        lang1=translation('toomanyfiles', 'toomanyfiles/locale', languages=[language])
-        lang1.install()
-        man=Man("man/es/man1/toomanyfiles")
-    print("  - DESCRIPTION in {} is {}".format(language, _("DESCRIPTION")))
-
-    man.setMetadata("toomanyfiles",  1,   date.today(), "Mariano Muñoz", _("Remove innecesary files or directories with a date and time pattern in the current directory."))
-    man.setSynopsis("""[-h] [--version] (--create_example | --remove | --pretend)
-                    [--pattern PATTERN] [--disable_log]
-                    [--remove_mode {RemainFirstInMonth,RemainLastInMonth}]
-                    [--too_young_to_delete TOO_YOUNG_TO_DELETE]
-                    [--max_files_to_store MAX_FILES_TO_STORE]""")
-    man.header(_("DESCRIPTION"), 1)
-    man.paragraph(_("This app has the following mandatory parameters:"), 1)
-    man.paragraph("--create_example", 2, True)
-    man.paragraph(_("Create two directories called 'example' and 'example_directories' in the current working directory and fill it with example files with date and time patterns."), 3)
-    man.paragraph("--pretend", 2, True)
-    man.paragraph(_("Makes a simulation selecting which files will be deleted when --remove parameter is used."), 3)
-    man.paragraph("--remove", 2, True)
-    man.paragraph(_("Deletes files. Be careful, This can't be unmade. Use --pretend before."), 3)
-    
-    man.paragraph(_("With --pretend and --remove you can use this parameters:"), 1)
-    man.paragraph("--pattern", 2, True)
-    man.paragraph(_("Sets the date and time pattern to search in the current directory filenames. It uses python strftime function format."), 3)
-    man.paragraph("--disable_log", 2, True)
-    man.paragraph("--remove_mode", 2, True)
-    man.paragraph("--too_young_to_delete", 2, True)
-    man.paragraph("--max_files_to_store", 2, True)
-    man.save()
 
 def release():
     print(_("New Release:"))

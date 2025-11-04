@@ -18,7 +18,6 @@ dependencies = [
 [tool.poetry.group.dev.dependencies]
 poethepoet = "^0.33.1"
 pytest = "^8.3.5"
-mangenerator = "^0.4.0"
 coverage = "^7.7.0"
 
 [build-system]
@@ -33,7 +32,6 @@ toomanyfiles='toomanyfiles.toomanyfiles:main'
 module_content = { script = "toomanyfiles.poethepoet:module_content" }
 coverage = { script = "toomanyfiles.poethepoet:coverage" }
 video = { script = "toomanyfiles.poethepoet:video" }
-man = { script = "toomanyfiles.poethepoet:man" }
 pytest = { script = "toomanyfiles.poethepoet:pytest" }
 release = { script = "toomanyfiles.poethepoet:release" }
 translate = { script = "toomanyfiles.poethepoet:translate" }
