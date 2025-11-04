@@ -1,6 +1,6 @@
 [project]
 name = "toomanyfiles"
-version = "1.0.0"
+version = "1.1.0"
 description = "Remove files and directories with date and time patterns"
 authors = [
     {name = "y"}
@@ -9,17 +9,16 @@ license = {text = "GPL-3"}
 readme = "README.md"
 requires-python = ">=3.11,<4"
 dependencies = [
-    "colorama (>=0.4.6,<0.5.0)",
-    "pydicts (>=0.17.0,<0.18.0)"
+    "colorama >=0.4.6",
+    "pydicts >=1.1.0"
 ]
 
 [tool.poetry]
 
 [tool.poetry.group.dev.dependencies]
-poethepoet = "^0.33.1"
-pytest = "^8.3.5"
-mangenerator = "^0.4.0"
-coverage = "^7.7.0"
+poethepoet = ">=0.37.0"
+pytest = ">=8.4.2"
+coverage = ">=7.11.0"
 
 [build-system]
 requires = ["poetry-core>=2.0.0,<3.0.0"]
@@ -33,7 +32,6 @@ toomanyfiles='toomanyfiles.toomanyfiles:main'
 module_content = { script = "toomanyfiles.poethepoet:module_content" }
 coverage = { script = "toomanyfiles.poethepoet:coverage" }
 video = { script = "toomanyfiles.poethepoet:video" }
-man = { script = "toomanyfiles.poethepoet:man" }
 pytest = { script = "toomanyfiles.poethepoet:pytest" }
 release = { script = "toomanyfiles.poethepoet:release" }
 translate = { script = "toomanyfiles.poethepoet:translate" }

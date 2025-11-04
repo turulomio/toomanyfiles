@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-03-20 14:05+0100\n"
+"POT-Creation-Date: 2025-11-04 13:33+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,34 +17,10 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-msgid "DESCRIPTION"
-msgstr ""
-
-msgid "Remove innecesary files or directories with a date and time pattern in the current directory."
-msgstr ""
-
-msgid "This app has the following mandatory parameters:"
-msgstr ""
-
-msgid "Create two directories called 'example' and 'example_directories' in the current working directory and fill it with example files with date and time patterns."
-msgstr ""
-
-msgid "Makes a simulation selecting which files will be deleted when --remove parameter is used."
-msgstr ""
-
-msgid "Deletes files. Be careful, This can't be unmade. Use --pretend before."
-msgstr ""
-
-msgid "With --pretend and --remove you can use this parameters:"
-msgstr ""
-
-msgid "Sets the date and time pattern to search in the current directory filenames. It uses python strftime function format."
-msgstr ""
-
 msgid "New Release:"
 msgstr ""
 
-msgid "  * Change version and date in version.py"
+msgid "  * Change version and date in __init__.py"
 msgstr ""
 
 msgid "  * Change version in pyproject.toml"
@@ -104,15 +80,6 @@ msgstr ""
 msgid "Over max files"
 msgstr ""
 
-msgid "Different examples have been created in the directory 'toomanyfiles_examples'"
-msgstr ""
-
-msgid "'toomanyfiles_examples' directory removed"
-msgstr ""
-
-msgid "I can't remove 'toomanyfiles_examples' directory"
-msgstr ""
-
 msgid "Directory"
 msgstr ""
 
@@ -138,12 +105,6 @@ msgid "Search date and time patterns to delete innecesary files or directories"
 msgstr ""
 
 msgid "Developed by Mariano Muñoz 2018-{}"
-msgstr ""
-
-msgid "Create example directories"
-msgstr ""
-
-msgid "Remove example directories'"
 msgstr ""
 
 msgid "Removes files permanently"
@@ -192,4 +153,8 @@ msgid "DIRECTORY"
 msgstr ""
 
 msgid "FILE"
+msgstr ""
+
+#, python-brace-format
+msgid "Time pattern found: ({0})"
 msgstr ""
