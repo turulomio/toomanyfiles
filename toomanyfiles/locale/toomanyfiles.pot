@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-03-20 14:05+0100\n"
+"POT-Creation-Date: 2025-11-04 13:21+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -104,15 +104,6 @@ msgstr ""
 msgid "Over max files"
 msgstr ""
 
-msgid "Different examples have been created in the directory 'toomanyfiles_examples'"
-msgstr ""
-
-msgid "'toomanyfiles_examples' directory removed"
-msgstr ""
-
-msgid "I can't remove 'toomanyfiles_examples' directory"
-msgstr ""
-
 msgid "Directory"
 msgstr ""
 
@@ -138,12 +129,6 @@ msgid "Search date and time patterns to delete innecesary files or directories"
 msgstr ""
 
 msgid "Developed by Mariano Muñoz 2018-{}"
-msgstr ""
-
-msgid "Create example directories"
-msgstr ""
-
-msgid "Remove example directories'"
 msgstr ""
 
 msgid "Removes files permanently"
@@ -192,4 +177,8 @@ msgid "DIRECTORY"
 msgstr ""
 
 msgid "FILE"
+msgstr ""
+
+#, python-brace-format
+msgid "Time pattern found: ({0})"
 msgstr ""

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: TooManyFiles\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-03-20 14:02+0100\n"
+"POT-Creation-Date: 2025-11-04 13:20+0100\n"
 "PO-Revision-Date: 2015-03-22 18:51+0100\n"
 "Last-Translator: root <turulomio@yahoo.es>\n"
 "Language-Team: Spanish\n"
@@ -46,28 +46,28 @@ msgid "New Release:"
 msgstr "Nueva versión:"
 
 msgid "  * Change version and date in version.py"
-msgstr ""
+msgstr "  * Cambiar la versión y la fecha en version.py"
 
 msgid "  * Change version in pyproject.toml"
-msgstr ""
+msgstr "  * Cambiar la versión en pyproject.toml"
 
 msgid "  * Edit Changelog in README.md"
-msgstr ""
+msgstr "  * Editar el Changelog en README.md"
 
 msgid "If changed restart from first python setup.py doc"
-msgstr ""
+msgstr "Si ha cambiado, reiniciar desde el primer 'python setup.py doc'"
 
 msgid "  * Make a new tag in github"
-msgstr ""
+msgstr "  * Crear una nueva etiqueta en github"
 
 msgid "  * Create a new gentoo ebuild with the new version"
-msgstr ""
+msgstr "  * Crear un nuevo ebuild de gentoo con la nueva versión"
 
 msgid "  * Upload to portage repository"
-msgstr ""
+msgstr "  * Subir al repositorio de portage"
 
 msgid "{} TooManyFiles in {} detected {} files with time pattern {} and filename patterns {}"
-msgstr ""
+msgstr "{} TooManyFiles en {} ha detectado {} ficheros con el patrón de tiempo {} y los patrones de nombre {}"
 
 msgid "R"
 msgstr "P"
@@ -82,7 +82,7 @@ msgid "O"
 msgstr "S"
 
 msgid "Files status pretending:"
-msgstr ""
+msgstr "Estado de los ficheros en la simulación:"
 
 msgid "So, {} files will be deleted and {} will be kept when you use --remove parameter."
 msgstr "De esta manera, {} ficheros serán borrados y {} serán guardados cuando uses el parámetro --remove."
@@ -104,15 +104,6 @@ msgstr "Muy joven para borrar"
 
 msgid "Over max files"
 msgstr "Supera el número de ficheros a guardar"
-
-msgid "Different examples have been created in the directory 'toomanyfiles_examples'"
-msgstr "Se han creado varios ejemplos en el directorio 'toomanyfiles_examples'"
-
-msgid "'toomanyfiles_examples' directory removed"
-msgstr "El directorio 'toomanyfiles_examples' ha sido borrado"
-
-msgid "I can't remove 'toomanyfiles_examples' directory"
-msgstr "No puedo borrar el directorio 'toomanyfiles_examples'"
 
 msgid "Directory"
 msgstr "Directorio"
@@ -141,12 +132,6 @@ msgstr "Busca patrónes de fecha y hora para borrar ficheros o directorios innec
 msgid "Developed by Mariano Muñoz 2018-{}"
 msgstr "Desarrollado por Mariano Muñoz 2018-{}"
 
-msgid "Create example directories"
-msgstr "Crear directorios de ejemplo"
-
-msgid "Remove example directories'"
-msgstr "Borrar directorios de ejemplo"
-
 msgid "Removes files permanently"
 msgstr "Borra los ficheros permanentemente"
 
@@ -165,7 +150,7 @@ msgstr "Define un patrón de fecha y hora a buscar en el directorio actual. El p
 
 #, python-format
 msgid "Defines one or several string patterns to search in path with matches time pattern. Patterns are case sensitive and filename must have all to be selected. The default pattern is '%(default)s'."
-msgstr ""
+msgstr "Define uno o varios patrones de texto a buscar en la ruta que coincida con el patrón de tiempo. Los patrones distinguen mayúsculas y minúsculas y el nombre del fichero debe tener todos para ser seleccionado. El patrón por defecto es '%(default)s'."
 
 #, python-format
 msgid "Disable log generation. The default value is '%(default)s'."
@@ -195,3 +180,6 @@ msgstr "DIRECTORIO"
 msgid "FILE"
 msgstr "FICHERO"
 
+#, python-brace-format
+msgid "Time pattern found: ({0})"
+msgstr "Patrón de tiempo encontrado: ({0})"
