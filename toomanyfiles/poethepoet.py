@@ -37,13 +37,12 @@ def translate():
 
 def release():
     print(_("New Release:"))
-    print(_("  * Change version and date in version.py"))
+    print(_("  * Change version and date in __init__.py"))
     print(_("  * Change version in pyproject.toml"))
     print(_("  * Edit Changelog in README.md"))
     print("  * poe translate")
     print("  * mcedit locale/es.po")
     print("  * poe translate")
-    print("  * poe man")
     print("  * mcedit doc/ttyrec/howto.py")
     print("  * python setup.py video" + ". " + _("If changed restart from first python setup.py doc"))
     print("  * git commit -a -m 'toomanyfiles-{0}'".format(__version__))
