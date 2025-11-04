@@ -94,6 +94,9 @@ def create_file(filename):
     with open(filename,"w"):
         pass
 
+def create_directory(directory):
+    makedirs(directory, exist_ok=True)
+
 ## Creates an example subdirectory and fills it with datetime pattern filenames
 def create_examples():
     if path.exists('toomanyfiles_examples'):
@@ -136,7 +139,7 @@ def lod_read_directory(directory, time_pattern, file_patterns):
         filename= directory + sep + basename
         isdir=path.isdir(filename)
         type=_("Directory") if isdir else _("File")
-        dt=datetime_in_basename(filename, time_pattern)
+        dt=datetime_in_basename(basename, time_pattern)
         if dt is not None:
             #Selects if matches all file_patterns
             found_file_patterns=True
@@ -285,8 +288,6 @@ def main(arguments=None):
     if args.pretend:    
         toomanyfiles(getcwd(), False, args.time_pattern, args.file_patterns,   args.too_young_to_delete, args.max_files_to_store, types.RemoveMode.from_string(args.remove_mode), args.disable_log)
     if args.list:    
-        
-        
         files_to_process, files_to_ignore=lod_read_directory(getcwd(),  args.time_pattern,  args.file_patterns)
         processed=lod_process_directory(files_to_process,  types.RemoveMode.from_string(args.remove_mode),  args.too_young_to_delete,  args.max_files_to_store)
         
@@ -303,10 +304,11 @@ def main(arguments=None):
 def print_with_type(lod_):
     for o in lod_:
         print(
-            "  * ",  
+            "  * ",
             colors.yellow(_("DIRECTORY")) if  o["type"]==_("Directory") else colors.white(_("FILE")) ,  
             path.basename(o["filename"]), 
-            colors.red(o["reason"]) if "reason" in o else ""
+            colors.red(o["reason"]) if "reason" in o else "",
+            _('Time pattern found: ({0})').format(o["dt"]) if "dt" in o else "" 
         )
         
     
