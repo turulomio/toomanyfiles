@@ -3,21 +3,6 @@ from os import path
 from tempfile import TemporaryDirectory
 from toomanyfiles import toomanyfiles
 
-def test_examples():
-    toomanyfiles.create_examples()
-    dir="toomanyfiles_examples/directories/"
-    toomanyfiles.toomanyfiles(dir,  remove=False)
-    toomanyfiles.toomanyfiles(dir,  remove=True)
-
-    dir="toomanyfiles_examples/files/"
-    toomanyfiles.toomanyfiles(dir,  remove=False)
-    toomanyfiles.toomanyfiles(dir,  remove=True)
-    
-    dir="toomanyfiles_examples/files_with_different_roots/"
-    toomanyfiles.toomanyfiles(dir,  remove=False)
-    toomanyfiles.toomanyfiles(dir,  remove=True)
-    toomanyfiles.remove_examples()
-
 def test_date_pattern():
     
     with TemporaryDirectory() as tempdir:

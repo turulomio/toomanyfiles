@@ -97,41 +97,6 @@ def create_file(filename):
 def create_directory(directory):
     makedirs(directory, exist_ok=True)
 
-## Creates an example subdirectory and fills it with datetime pattern filenames
-def create_examples():
-    if path.exists('toomanyfiles_examples'):
-        rmtree('toomanyfiles_examples')
-    makedirs("toomanyfiles_examples/files", exist_ok=True)
-    number=100
-    for i in range (number):
-        d=datetime.now()-timedelta(days=i)
-        filename="toomanyfiles_examples/files/{}{:02d}{:02d} {:02d}{:02d} Toomanyfiles example.txt".format(d.year,d.month,d.day,d.hour,d.minute)
-        create_file(filename)
-
-    makedirs("toomanyfiles_examples/directories", exist_ok=True)
-    number=100
-    for i in range (number):
-        d=datetime.now()-timedelta(days=i)
-        filename="toomanyfiles_examples/directories/{}{:02d}{:02d} {:02d}{:02d} Directory/Toomanyfiles example.txt".format(d.year,d.month,d.day,d.hour,d.minute)
-        makedirs(path.dirname(filename), exist_ok=True)        
-        create_file(filename)
-
-    makedirs("toomanyfiles_examples/files_with_different_roots", exist_ok=True)
-    number=5
-    for i in range (number):
-        d=datetime.now()-timedelta(days=i)
-        filename="toomanyfiles_examples/files_with_different_roots/{}{:02d}{:02d} {:02d}{:02d} Toomanyfiles example {}.txt".format(d.year,d.month,d.day,d.hour,d.minute, i)
-        create_file(filename)
-
-    print (Style.BRIGHT + _("Different examples have been created in the directory 'toomanyfiles_examples'"))
-
-def remove_examples():
-    if path.exists('toomanyfiles_examples'):
-        rmtree('toomanyfiles_examples')
-        print (_("'toomanyfiles_examples' directory removed"))
-    else:
-        print (_("I can't remove 'toomanyfiles_examples' directory"))
-
 def lod_read_directory(directory, time_pattern, file_patterns):
     files_to_process=[]
     files_to_ignore=[]
@@ -258,8 +223,6 @@ def main(arguments=None):
     parser.add_argument('--version', action='version', version=__version__)
 
     group= parser.add_mutually_exclusive_group(required=True)
-    group.add_argument('--create_examples', help=_("Create example directories"), action="store_true",default=False)
-    group.add_argument('--remove_examples', help=_("Remove example directories'"), action="store_true",default=False)
     group.add_argument('--remove', help=_("Removes files permanently"), action="store_true", default=False)
     group.add_argument('--pretend', help=_("Makes a simulation and doesn't remove files"), action="store_true", default=False)
     group.add_argument('--list', help=_("List files included and excluded"), action="store_true", default=False)
@@ -267,7 +230,7 @@ def main(arguments=None):
     modifiers=parser.add_argument_group(title=_("Modifiers to use with --remove and --pretend"), description=None)
     modifiers.add_argument('--time_pattern', help=_("Defines a python datetime pattern to search in current directory. The default pattern is '%(default)s'."), action="store",default="%Y%m%d %H%M")    
     modifiers.add_argument('--file_patterns', help=_("Defines one or several string patterns to search in path with matches time pattern. Patterns are case sensitive and filename must have all to be selected. The default pattern is '%(default)s'."), action="append", default=[])    
-    modifiers.add_argument('--disable_log', help=_("Disable log generation. The default value is '%(default)s'."),action="store_true", default="")
+    modifiers.add_argument('--disable_log', help=_("Disable log generation. The default value is '%(default)s'."),action="store_true", default=False)
     modifiers.add_argument('--remove_mode', help=_("Remove mode. The default value is '%(default)s'."), choices=['RemainFirstInMonth','RemainLastInMonth'], default='RemainFirstInMonth')
     modifiers.add_argument('--too_young_to_delete', help=_("Number of days to respect from today. The default value is '%(default)s'."), default=30, type=int)
     modifiers.add_argument('--max_files_to_store', help=_("Maximum number of files to remain in directory. The default value is '%(default)s'."), default=100000000, type=int)
@@ -275,14 +238,6 @@ def main(arguments=None):
     args=parser.parse_args(arguments)
     
     init(autoreset=True)
-
-    if args.create_examples==True:
-        create_examples()
-        exit(types.ExitCodes.Success)
-    if args.remove_examples==True:
-        remove_examples()
-        exit(types.ExitCodes.Success)
-
     if args.remove:   
         toomanyfiles(getcwd(), True, args.time_pattern, args.file_patterns,   args.too_young_to_delete, args.max_files_to_store, types.RemoveMode.from_string(args.remove_mode), args.disable_log)
     if args.pretend:    
