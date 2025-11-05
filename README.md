@@ -15,6 +15,6 @@ usage: toomanyfiles [-h] [--version] (--remove | --pretend | --list) [--time_pat
 
 
 You can see this animated gif to learn how to use it:
-<img src="https://raw.githubusercontent.com/Turulomio/toomanyfiles/master/doc/ttyrec/toomanyfiles_howto_en.gif?raw=true" width="100%"></img>
+<img src="https://raw.githubusercontent.com/Turulomio/toomanyfiles/master/doc/howto.gif?raw=true" width="100%"></img>
 
 

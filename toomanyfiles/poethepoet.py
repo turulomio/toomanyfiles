@@ -33,11 +33,11 @@ def video():
         exit(1)
 
     create_examples()
-    chdir("toomanyfiles_examples")
-    system(f"{vhs} ../doc/howto.tape")
-    #remove_examples()
-    move("howto.gif", "../doc/howto.gif")
-    chdir("..")
+    chdir("toomanyfiles_examples/files")
+    system(f"{vhs} ../../doc/howto.tape")
+    move("howto.gif", "../../doc/howto.gif")
+    chdir("../..")
+    remove_examples()
 
 
 def translate():

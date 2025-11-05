@@ -60,10 +60,25 @@ Output howto.gif
 Require echo
 
 Set Shell "bash"
-Set FontSize 32
+Set FontSize 14
 Set Width 1200
-Set Height 600
+Set Height 800
+Set WindowBar Colorful
 
-Type "echo 'Welcome to VHS!'" Sleep 500ms  Enter
-
+# Espera un segundo para que la terminal aparezca
+Sleep 1s
+Type "# This is a video to show how to use 'toomanyfiles' command" Sleep 1s Enter
+Type "# We have a directory with 100 files that have a time pattern '%Y%m%d %H%M' with a day variation" Sleep 1s Enter
+Type "# We are going to see the 10 last files of this directory" Sleep 1s Enter
+Type "ls -la | tail -n 10" Sleep 1s Enter
+Type "# We use to find this kind of files in automatic backups, logs, ..." Sleep 1s Enter
+Type "# If we want to save our disk space and we want to keep some of them, we can use TooManyFiles program" Sleep 1s Enter
+Type "# So, We want to keep the last 5 files because they are too recent." Sleep 1s Enter
+Type "# We want to keep the first file of each month from the rest of the files until a max number the files of 15." Sleep 1s Enter
+Type "toomanyfiles --too_young_to_delete 5 --max_files_to_store 15 --time_pattern '%Y%m%d %H%M' --remove" Sleep 1s Enter
 Sleep 5s
+Type "ls -la | tail -n 10" Sleep 1s Enter
+Type "You can use other parameters like --list or --pretend before --remove to check files to delete" Sleep 3s Enter
+
+
+
