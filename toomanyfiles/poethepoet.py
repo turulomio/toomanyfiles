@@ -1,12 +1,12 @@
 from datetime import date
-from toomanyfiles import __version__, create_file
+from toomanyfiles import __version__, toomanyfiles
 from os import system, chdir, path, makedirs
-from shutil import rmtree
+from shutil import rmtree, which
 from datetime import datetime, timedelta
 from colorama import Style
 from gettext import translation
 from importlib.resources import files
-from sys import modules
+from sys import modules, exit
         
 try:
     t=translation('toomanyfiles', files("toomanyfiles") / 'locale')
@@ -26,10 +26,17 @@ def coverage():
 
 
 def video():
-    chdir("doc/ttyrec")
-    system("ttyrecgenerator --output toomanyfiles_howto_es 'python3 howto.py' --lc_all es_ES.UTF-8")
-    system("ttyrecgenerator --output toomanyfiles_howto_en 'python3 howto.py' --lc_all C")
-    chdir("../..")
+    # Comprobaciones
+    vhs=which("vhs")
+    if vhs is None: 
+        print(_("vhs tool is needed. Look at https://github.com/charmbracelet/vhs"))
+        exit(1)
+
+    create_examples()
+    chdir("toomanyfiles_examples")
+    #remove_examples()
+    chdir("..")
+
 
 def translate():
         system("xgettext -L Python --no-wrap --no-location --from-code='UTF-8' -o toomanyfiles/locale/toomanyfiles.pot toomanyfiles/*.py")
@@ -65,7 +72,7 @@ def create_examples():
     for i in range (number):
         d=datetime.now()-timedelta(days=i)
         filename="toomanyfiles_examples/files/{}{:02d}{:02d} {:02d}{:02d} Toomanyfiles example.txt".format(d.year,d.month,d.day,d.hour,d.minute)
-        create_file(filename)
+        toomanyfiles.create_file(filename)
 
     makedirs("toomanyfiles_examples/directories", exist_ok=True)
     number=100
@@ -73,14 +80,14 @@ def create_examples():
         d=datetime.now()-timedelta(days=i)
         filename="toomanyfiles_examples/directories/{}{:02d}{:02d} {:02d}{:02d} Directory/Toomanyfiles example.txt".format(d.year,d.month,d.day,d.hour,d.minute)
         makedirs(path.dirname(filename), exist_ok=True)        
-        create_file(filename)
+        toomanyfiles.create_file(filename)
 
     makedirs("toomanyfiles_examples/files_with_different_roots", exist_ok=True)
     number=5
     for i in range (number):
         d=datetime.now()-timedelta(days=i)
         filename="toomanyfiles_examples/files_with_different_roots/{}{:02d}{:02d} {:02d}{:02d} Toomanyfiles example {}.txt".format(d.year,d.month,d.day,d.hour,d.minute, i)
-        create_file(filename)
+        toomanyfiles.create_file(filename)
 
     print (Style.BRIGHT + _("Different examples have been created in the directory 'toomanyfiles_examples'"))
 
