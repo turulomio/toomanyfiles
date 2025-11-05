@@ -1,7 +1,10 @@
 from datetime import date
-from toomanyfiles import __version__
-from os import system, chdir
-from gettext import translation, install
+from toomanyfiles import __version__, create_file
+from os import system, chdir, path, makedirs
+from shutil import rmtree
+from datetime import datetime, timedelta
+from colorama import Style
+from gettext import translation
 from importlib.resources import files
 from sys import modules
         
@@ -53,3 +56,37 @@ def release():
     print(_("  * Upload to portage repository")) 
 
 
+## Creates an example subdirectory and fills it with datetime pattern filenames
+def create_examples():
+    if path.exists('toomanyfiles_examples'):
+        rmtree('toomanyfiles_examples')
+    makedirs("toomanyfiles_examples/files", exist_ok=True)
+    number=100
+    for i in range (number):
+        d=datetime.now()-timedelta(days=i)
+        filename="toomanyfiles_examples/files/{}{:02d}{:02d} {:02d}{:02d} Toomanyfiles example.txt".format(d.year,d.month,d.day,d.hour,d.minute)
+        create_file(filename)
+
+    makedirs("toomanyfiles_examples/directories", exist_ok=True)
+    number=100
+    for i in range (number):
+        d=datetime.now()-timedelta(days=i)
+        filename="toomanyfiles_examples/directories/{}{:02d}{:02d} {:02d}{:02d} Directory/Toomanyfiles example.txt".format(d.year,d.month,d.day,d.hour,d.minute)
+        makedirs(path.dirname(filename), exist_ok=True)        
+        create_file(filename)
+
+    makedirs("toomanyfiles_examples/files_with_different_roots", exist_ok=True)
+    number=5
+    for i in range (number):
+        d=datetime.now()-timedelta(days=i)
+        filename="toomanyfiles_examples/files_with_different_roots/{}{:02d}{:02d} {:02d}{:02d} Toomanyfiles example {}.txt".format(d.year,d.month,d.day,d.hour,d.minute, i)
+        create_file(filename)
+
+    print (Style.BRIGHT + _("Different examples have been created in the directory 'toomanyfiles_examples'"))
+
+def remove_examples():
+    if path.exists('toomanyfiles_examples'):
+        rmtree('toomanyfiles_examples')
+        print (_("'toomanyfiles_examples' directory removed"))
+    else:
+        print (_("I can't remove 'toomanyfiles_examples' directory"))
