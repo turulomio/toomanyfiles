@@ -1,7 +1,7 @@
 from datetime import date
 from toomanyfiles import __version__, toomanyfiles
 from os import system, chdir, path, makedirs
-from shutil import rmtree, which
+from shutil import rmtree, which, move
 from datetime import datetime, timedelta
 from colorama import Style
 from gettext import translation
@@ -34,7 +34,9 @@ def video():
 
     create_examples()
     chdir("toomanyfiles_examples")
+    system(f"{vhs} ../doc/howto.tape")
     #remove_examples()
+    move("howto.gif", "../doc/howto.gif")
     chdir("..")
 
 
