@@ -32,6 +32,10 @@ def video():
         print(_("vhs tool is needed. Look at https://github.com/charmbracelet/vhs"))
         exit(1)
 
+    chdir("doc")
+    system(f"{vhs} command.tape")
+    chdir("..")
+
     create_examples()
     chdir("toomanyfiles_examples/files")
     system(f"{vhs} ../../doc/howto.tape")
@@ -55,8 +59,7 @@ def release():
     print("  * poe translate")
     print("  * mcedit locale/es.po")
     print("  * poe translate")
-    print("  * mcedit doc/ttyrec/howto.py")
-    print("  * python setup.py video" + ". " + _("If changed restart from first python setup.py doc"))
+    print("  * poe video")
     print("  * git commit -a -m 'toomanyfiles-{0}'".format(__version__))
     print("  * git push")
     print(_("  * Make a new tag in github"))
