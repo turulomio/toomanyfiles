@@ -68,7 +68,7 @@ def console_output(lod_, directory,  remove,  time_pattern,  file_patterns, too_
     print(header_string(lod_, directory,  time_pattern, file_patterns,  color=True))
     if len(lod_)==0:
         return
-    print("   Parameters: Too yound to delete:",  too_young_to_delete,  "Max files to store",  max_files_to_store)
+    print(_("   Parameters: Too young to delete:"),  too_young_to_delete,  _("Max files to store:"),  max_files_to_store)
 
 
     print (one_line_status())
