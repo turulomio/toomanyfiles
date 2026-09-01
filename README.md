@@ -93,3 +93,7 @@ To execute deletion across all found configuration files:
 ```bash
 toomanyfiles_tree --remove
 ```
+
+You can see this animated gif to learn how to use `toomanyfiles_tree`:
+
+<img src="https://raw.githubusercontent.com/turulomio/toomanyfiles/master/doc/tree.gif?raw=true" width="100%"></img>
