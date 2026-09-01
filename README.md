@@ -1,5 +1,8 @@
 # TooManyFiles
 
+[![Tests](https://github.com/turulomio/toomanyfiles/actions/workflows/pytest.yml/badge.svg)](https://github.com/turulomio/toomanyfiles/actions/workflows/pytest.yml)
+[![PyPI - Downloads](https://img.shields.io/pypi/dm/toomanyfiles)](https://pypi.org/project/toomanyfiles/)
+
 ## Links
 
 Source code & Development: https://github.com/turulomio/toomanyfiles/
