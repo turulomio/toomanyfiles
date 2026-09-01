@@ -21,19 +21,29 @@ This package provides two commands:
 <img src="https://raw.githubusercontent.com/turulomio/toomanyfiles/master/doc/command.gif?raw=true" width="100%"></img>
 
 ### toomanyfiles_json
+`toomanyfiles_json` allows defining multiple `toomanyfiles` configurations in a single `toomanyfiles.json` file. When executed, each configuration in the list is processed sequentially in order in the current directory.
+
 You can initialize a default configuration file in the current directory:
 ```bash
 toomanyfiles_json --create
 ```
 
-This creates a `toomanyfiles.json` containing a list of configurations:
+This creates a `toomanyfiles.json` containing a list of configurations. You can add as many configurations as needed to execute multiple retention policies in order:
 ```json
 [
     {
         "time_pattern": "%Y%m%d %H%M",
-        "file_patterns": [],
+        "file_patterns": [".tar.gz", "backup"],
         "too_young_to_delete": 30,
         "max_files_to_store": 100000000,
+        "remove_mode": "RemainFirstInMonth",
+        "disable_log": false
+    },
+    {
+        "time_pattern": "%Y%m%d",
+        "file_patterns": [".log"],
+        "too_young_to_delete": 7,
+        "max_files_to_store": 50,
         "remove_mode": "RemainFirstInMonth",
         "disable_log": false
     }
