@@ -55,6 +55,13 @@ def video():
     chdir("../..")
     remove_examples()
 
+    create_examples()
+    chdir("toomanyfiles_examples/files")
+    system(f"{vhs} ../../doc/json.tape")
+    move("json.gif", "../../doc/json.gif")
+    chdir("../..")
+    remove_examples()
+
 
 def translate():
     """Extract translatable strings, update PO catalogs, and compile MO binary files."""

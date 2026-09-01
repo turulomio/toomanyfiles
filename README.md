@@ -19,7 +19,13 @@ This package provides three commands:
 * `toomanyfiles_tree`: Recursively finds and executes all `toomanyfiles.json` configuration files in a directory tree.
 
 ## Usage
+
+### toomanyfiles
 <img src="https://raw.githubusercontent.com/turulomio/toomanyfiles/master/doc/command.gif?raw=true" width="100%"></img>
+
+You can see this animated gif to learn how to use `toomanyfiles`:
+
+<img src="https://raw.githubusercontent.com/turulomio/toomanyfiles/master/doc/howto.gif?raw=true" width="100%"></img>
 
 ### toomanyfiles_json
 `toomanyfiles_json` allows defining multiple `toomanyfiles` configurations in a single `toomanyfiles.json` file. When executed, each configuration in the list is processed sequentially in order in the current directory.
@@ -66,6 +72,10 @@ To execute file deletion:
 toomanyfiles_json --remove
 ```
 
+You can see this animated gif to learn how to use `toomanyfiles_json`:
+
+<img src="https://raw.githubusercontent.com/turulomio/toomanyfiles/master/doc/json.gif?raw=true" width="100%"></img>
+
 ### toomanyfiles_tree
 `toomanyfiles_tree` recursively discovers all `toomanyfiles.json` files within the current directory tree and executes them.
 
@@ -83,7 +93,3 @@ To execute deletion across all found configuration files:
 ```bash
 toomanyfiles_tree --remove
 ```
-
-You can see this animated gif to learn how to use it:
-
-<img src="https://raw.githubusercontent.com/turulomio/toomanyfiles/master/doc/howto.gif?raw=true" width="100%"></img>
