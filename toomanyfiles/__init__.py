@@ -5,6 +5,7 @@ while preserving specific retention policies (e.g., monthly backups, young files
 """
 
 from toomanyfiles import toomanyfiles
+from toomanyfiles import json
 
 from datetime import datetime
 __version__ = '1.2.1'

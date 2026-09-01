@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: TooManyFiles\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-09-01 05:00+0200\n"
+"POT-Creation-Date: 2026-09-01 13:46+0200\n"
 "PO-Revision-Date: 2026-09-01 05:00+0200\n"
 "Last-Translator: Mariano Muñoz <turulomio@yahoo.es>\n"
 "Language-Team: French\n"
@@ -16,6 +16,48 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+msgid "Configuration file '{}' already exists."
+msgstr ""
+
+msgid "Configuration file '{}' created successfully."
+msgstr ""
+
+msgid "Configuration file '{}' not found. Use --create to create one."
+msgstr ""
+
+msgid "Error reading configuration file '{}': {}"
+msgstr ""
+
+msgid "Configuration file '{}' must contain a JSON array/list."
+msgstr ""
+
+msgid "Configuration item #{} is not a JSON object/dict."
+msgstr ""
+
+msgid "CONFIGURATION #{}: FILES TO PROCESS"
+msgstr ""
+
+msgid "CONFIGURATION #{}: FILES IGNORED"
+msgstr ""
+
+msgid "Search date and time patterns to delete unnecessary files or directories using a JSON configuration file"
+msgstr ""
+
+msgid "Developed by Mariano Muñoz 2018-{}"
+msgstr "Développé par Mariano Muñoz 2018-{}"
+
+msgid "Creates a default toomanyfiles.json configuration file in current directory"
+msgstr ""
+
+msgid "Removes files permanently according to toomanyfiles.json"
+msgstr ""
+
+msgid "Makes a simulation and doesn't remove files according to toomanyfiles.json"
+msgstr ""
+
+msgid "List files included and excluded for each configuration in toomanyfiles.json"
+msgstr ""
 
 msgid "vhs tool is needed. Look at https://github.com/charmbracelet/vhs"
 msgstr "L'outil vhs est requis. Consultez https://github.com/charmbracelet/vhs"
@@ -118,9 +160,6 @@ msgstr "Dépasse le nombre maximal de fichiers"
 
 msgid "Search date and time patterns to delete innecesary files or directories"
 msgstr "Rechercher des motifs de date et d'heure pour supprimer les fichiers ou répertoires inutiles"
-
-msgid "Developed by Mariano Muñoz 2018-{}"
-msgstr "Développé par Mariano Muñoz 2018-{}"
 
 msgid "Removes files permanently"
 msgstr "Supprime définitivement les fichiers"
