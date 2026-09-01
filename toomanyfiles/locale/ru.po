@@ -1,0 +1,175 @@
+# Russian translations for TooManyFiles package.
+# Copyright (C) 2018-2026 Mariano Muñoz <turulomio@yahoo.es>
+# This file is distributed under the same license as the TooManyFiles package.
+# Mariano Muñoz <turulomio@yahoo.es>, 2018-2026.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: TooManyFiles\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-09-01 05:00+0200\n"
+"PO-Revision-Date: 2026-09-01 05:00+0200\n"
+"Last-Translator: Mariano Muñoz <turulomio@yahoo.es>\n"
+"Language-Team: Russian\n"
+"Language: ru\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+
+msgid "vhs tool is needed. Look at https://github.com/charmbracelet/vhs"
+msgstr "Требуется утилита vhs. См. https://github.com/charmbracelet/vhs"
+
+msgid "New Release:"
+msgstr "Новый релиз:"
+
+msgid "  * Change version and date in __init__.py"
+msgstr "  * Изменить версию и дату в __init__.py"
+
+msgid "  * Change version in pyproject.toml"
+msgstr "  * Изменить версию в pyproject.toml"
+
+msgid "  * Edit Changelog in README.md"
+msgstr "  * Отредактировать Changelog в README.md"
+
+msgid "  * Make a new tag in github"
+msgstr "  * Создать новый тег на GitHub"
+
+msgid "  * Create a new gentoo ebuild with the new version"
+msgstr "  * Создать новый ebuild для gentoo с новой версией"
+
+msgid "  * Upload to portage repository"
+msgstr "  * Загрузить в репозиторий portage"
+
+msgid "Different examples have been created in the directory 'toomanyfiles_examples'"
+msgstr "Созданы различные примеры в каталоге 'toomanyfiles_examples'"
+
+msgid "'toomanyfiles_examples' directory removed"
+msgstr "Каталог 'toomanyfiles_examples' удалён"
+
+msgid "I can't remove 'toomanyfiles_examples' directory"
+msgstr "Не удалось удалить каталог 'toomanyfiles_examples'"
+
+msgid "{} TooManyFiles in {} detected {} files with time pattern {} and filename patterns {}"
+msgstr "{} TooManyFiles в {} обнаружил {} файлов с шаблоном времени {} и шаблонами имён {}"
+
+msgid "R"
+msgstr "С"
+
+msgid "D"
+msgstr "У"
+
+msgid "Y"
+msgstr "Н"
+
+msgid "O"
+msgstr "П"
+
+msgid "   Parameters: Too young to delete:"
+msgstr "   Параметры: Слишком новые для удаления:"
+
+msgid "Max files to store:"
+msgstr "Макс. файлов для хранения:"
+
+msgid "Files status pretending:"
+msgstr "Статус файлов в режиме симуляции:"
+
+msgid "So, {} files will be deleted and {} will be kept when you use --remove parameter."
+msgstr "Таким образом, {} файлов будет удалено и {} сохранено при использовании параметра --remove."
+
+msgid "File status removing:"
+msgstr "Статус файлов при удалении:"
+
+msgid "So, {} files have been deleted and {} files have been kept."
+msgstr "Таким образом, {} файлов удалено и {} файлов сохранено."
+
+msgid "Remains"
+msgstr "Остаётся"
+
+msgid "Delete"
+msgstr "Удалить"
+
+msgid "Too young to delete"
+msgstr "Слишком новый для удаления"
+
+msgid "Over max files"
+msgstr "Превышение макс. количества файлов"
+
+msgid "Directory"
+msgstr "Каталог"
+
+msgid "File"
+msgstr "Файл"
+
+msgid "File patterns weren't found"
+msgstr "Шаблоны имён файлов не найдены"
+
+msgid "Time pattern wasn't found"
+msgstr "Шаблон времени не найден"
+
+msgid "The number of files too young to delete can't be bigger than the maximum number of files to store"
+msgstr "Количество файлов, слишком новых для удаления, не может быть больше максимального количества файлов для хранения"
+
+msgid "Not developed yet"
+msgstr "Ещё не разработано"
+
+msgid "Over max number of files"
+msgstr "Превышает максимальное количество файлов"
+
+msgid "Search date and time patterns to delete innecesary files or directories"
+msgstr "Поиск шаблонов даты и времени для удаления ненужных файлов или каталогов"
+
+msgid "Developed by Mariano Muñoz 2018-{}"
+msgstr "Разработано Mariano Muñoz 2018-{}"
+
+msgid "Removes files permanently"
+msgstr "Удаляет файлы безвозвратно"
+
+msgid "Makes a simulation and doesn't remove files"
+msgstr "Выполняет симуляцию и не удаляет файлы"
+
+msgid "List files included and excluded"
+msgstr "Список включённых и исключённых файлов"
+
+msgid "Modifiers to use with --remove and --pretend"
+msgstr "Модификаторы для использования с --remove и --pretend"
+
+#, python-format
+msgid "Defines a python datetime pattern to search in current directory. The default pattern is '%(default)s'."
+msgstr "Определяет шаблон даты и времени python для поиска в текущем каталоге. Шаблон по умолчанию: '%(default)s'."
+
+#, python-format
+msgid "Defines one or several string patterns to search in path with matches time pattern. Patterns are case sensitive and filename must have all to be selected. The default pattern is '%(default)s'."
+msgstr "Определяет один или несколько строковых шаблонов для поиска в пути, соответствующем шаблону времени. Шаблоны чувствительны к регистру, и имя файла должно содержать их все для выбора. Шаблон по умолчанию: '%(default)s'."
+
+#, python-format
+msgid "Disable log generation. The default value is '%(default)s'."
+msgstr "Отключить генерацию журнала. Значение по умолчанию: '%(default)s'."
+
+#, python-format
+msgid "Remove mode. The default value is '%(default)s'."
+msgstr "Режим удаления. Значение по умолчанию: '%(default)s'."
+
+#, python-format
+msgid "Number of days to respect from today. The default value is '%(default)s'."
+msgstr "Количество дней от сегодняшней даты, файлы за которые не удаляются. Значение по умолчанию: '%(default)s'."
+
+#, python-format
+msgid "Maximum number of files to remain in directory. The default value is '%(default)s'."
+msgstr "Максимальное количество файлов, остающихся в каталоге. Значение по умолчанию: '%(default)s'."
+
+msgid "FILES TO PROCESS"
+msgstr "ФАЙЛЫ ДЛЯ ОБРАБОТКИ"
+
+msgid "FILES IGNORED"
+msgstr "ПРОПУЩЕННЫЕ ФАЙЛЫ"
+
+msgid "DIRECTORY"
+msgstr "КАТАЛОГ"
+
+msgid "FILE"
+msgstr "ФАЙЛ"
+
+#, python-brace-format
+msgid "Time pattern found: ({0})"
+msgstr "Найден шаблон времени: ({0})"

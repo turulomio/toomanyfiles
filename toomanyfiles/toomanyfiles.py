@@ -219,7 +219,7 @@ def toomanyfiles(directory,  remove, time_pattern="%Y%m%d %H%M", file_patterns=[
 def main(arguments=None):
     from .__init__ import __version__, __versiondate__
     
-    parser=ArgumentParser(prog='toomanyfiles', description=_('Search date and time patterns to delete innecesary files or directories'), epilog=_("Developed by Mariano Muñoz 2018-{}".format(__versiondate__.year)), formatter_class=RawTextHelpFormatter)
+    parser=ArgumentParser(prog='toomanyfiles', description=_('Search date and time patterns to delete innecesary files or directories'), epilog=_("Developed by Mariano Muñoz 2018-{}").format(__versiondate__.year), formatter_class=RawTextHelpFormatter)
     parser.add_argument('--version', action='version', version=__version__)
 
     group= parser.add_mutually_exclusive_group(required=True)

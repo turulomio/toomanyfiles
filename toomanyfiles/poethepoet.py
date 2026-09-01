@@ -45,10 +45,11 @@ def video():
 
 
 def translate():
-        system("xgettext -L Python --no-wrap --no-location --from-code='UTF-8' -o toomanyfiles/locale/toomanyfiles.pot toomanyfiles/*.py")
-        system("msgmerge -N --no-wrap -U toomanyfiles/locale/es.po toomanyfiles/locale/toomanyfiles.pot")
-        system("msgfmt -cv -o toomanyfiles/locale/es/LC_MESSAGES/toomanyfiles.mo toomanyfiles/locale/es.po")
-       # system("msgfmt -cv -o toomanyfiles/locale/en/LC_MESSAGES/toomanyfiles.mo toomanyfiles/locale/en.po")
+    system("xgettext -L Python --no-wrap --no-location --from-code='UTF-8' -o toomanyfiles/locale/toomanyfiles.pot toomanyfiles/*.py")
+    for lang in ["es", "fr", "ro", "ru", "zh", "hi"]:
+        makedirs(f"toomanyfiles/locale/{lang}/LC_MESSAGES", exist_ok=True)
+        system(f"msgmerge -N --no-wrap -U toomanyfiles/locale/{lang}.po toomanyfiles/locale/toomanyfiles.pot")
+        system(f"msgfmt -cv -o toomanyfiles/locale/{lang}/LC_MESSAGES/toomanyfiles.mo toomanyfiles/locale/{lang}.po")
 
 
 def release():

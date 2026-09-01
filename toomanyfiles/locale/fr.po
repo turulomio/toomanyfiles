@@ -1,0 +1,175 @@
+# French translations for TooManyFiles package.
+# Copyright (C) 2018-2026 Mariano Muñoz <turulomio@yahoo.es>
+# This file is distributed under the same license as the TooManyFiles package.
+# Mariano Muñoz <turulomio@yahoo.es>, 2018-2026.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: TooManyFiles\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-09-01 05:00+0200\n"
+"PO-Revision-Date: 2026-09-01 05:00+0200\n"
+"Last-Translator: Mariano Muñoz <turulomio@yahoo.es>\n"
+"Language-Team: French\n"
+"Language: fr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+msgid "vhs tool is needed. Look at https://github.com/charmbracelet/vhs"
+msgstr "L'outil vhs est requis. Consultez https://github.com/charmbracelet/vhs"
+
+msgid "New Release:"
+msgstr "Nouvelle version :"
+
+msgid "  * Change version and date in __init__.py"
+msgstr "  * Modifier la version et la date dans __init__.py"
+
+msgid "  * Change version in pyproject.toml"
+msgstr "  * Modifier la version dans pyproject.toml"
+
+msgid "  * Edit Changelog in README.md"
+msgstr "  * Modifier le Changelog dans README.md"
+
+msgid "  * Make a new tag in github"
+msgstr "  * Créer une nouvelle balise sur GitHub"
+
+msgid "  * Create a new gentoo ebuild with the new version"
+msgstr "  * Créer un nouvel ebuild gentoo avec la nouvelle version"
+
+msgid "  * Upload to portage repository"
+msgstr "  * Téléverser vers le dépôt portage"
+
+msgid "Different examples have been created in the directory 'toomanyfiles_examples'"
+msgstr "Différents exemples ont été créés dans le répertoire 'toomanyfiles_examples'"
+
+msgid "'toomanyfiles_examples' directory removed"
+msgstr "Répertoire 'toomanyfiles_examples' supprimé"
+
+msgid "I can't remove 'toomanyfiles_examples' directory"
+msgstr "Impossible de supprimer le répertoire 'toomanyfiles_examples'"
+
+msgid "{} TooManyFiles in {} detected {} files with time pattern {} and filename patterns {}"
+msgstr "{} TooManyFiles dans {} a détecté {} fichiers avec le motif temporel {} et les motifs de nom {}"
+
+msgid "R"
+msgstr "C"
+
+msgid "D"
+msgstr "S"
+
+msgid "Y"
+msgstr "R"
+
+msgid "O"
+msgstr "D"
+
+msgid "   Parameters: Too young to delete:"
+msgstr "   Paramètres : Trop récents pour être supprimés :"
+
+msgid "Max files to store:"
+msgstr "Nombre max. de fichiers à conserver :"
+
+msgid "Files status pretending:"
+msgstr "État des fichiers en mode simulation :"
+
+msgid "So, {} files will be deleted and {} will be kept when you use --remove parameter."
+msgstr "Ainsi, {} fichiers seront supprimés et {} seront conservés lors de l'utilisation du paramètre --remove."
+
+msgid "File status removing:"
+msgstr "État des fichiers lors de la suppression :"
+
+msgid "So, {} files have been deleted and {} files have been kept."
+msgstr "Ainsi, {} fichiers ont été supprimés et {} fichiers ont été conservés."
+
+msgid "Remains"
+msgstr "Conservé"
+
+msgid "Delete"
+msgstr "Supprimer"
+
+msgid "Too young to delete"
+msgstr "Trop récent pour être supprimé"
+
+msgid "Over max files"
+msgstr "Dépassement du nombre max de fichiers"
+
+msgid "Directory"
+msgstr "Répertoire"
+
+msgid "File"
+msgstr "Fichier"
+
+msgid "File patterns weren't found"
+msgstr "Les motifs de nom de fichier n'ont pas été trouvés"
+
+msgid "Time pattern wasn't found"
+msgstr "Le motif temporel n'a pas été trouvé"
+
+msgid "The number of files too young to delete can't be bigger than the maximum number of files to store"
+msgstr "Le nombre de fichiers trop récents pour être supprimés ne peut pas être supérieur au nombre maximal de fichiers à conserver"
+
+msgid "Not developed yet"
+msgstr "Pas encore développé"
+
+msgid "Over max number of files"
+msgstr "Dépasse le nombre maximal de fichiers"
+
+msgid "Search date and time patterns to delete innecesary files or directories"
+msgstr "Rechercher des motifs de date et d'heure pour supprimer les fichiers ou répertoires inutiles"
+
+msgid "Developed by Mariano Muñoz 2018-{}"
+msgstr "Développé par Mariano Muñoz 2018-{}"
+
+msgid "Removes files permanently"
+msgstr "Supprime définitivement les fichiers"
+
+msgid "Makes a simulation and doesn't remove files"
+msgstr "Effectue une simulation sans supprimer de fichiers"
+
+msgid "List files included and excluded"
+msgstr "Lister les fichiers inclus et exclus"
+
+msgid "Modifiers to use with --remove and --pretend"
+msgstr "Modificateurs à utiliser avec --remove et --pretend"
+
+#, python-format
+msgid "Defines a python datetime pattern to search in current directory. The default pattern is '%(default)s'."
+msgstr "Définit un motif de date/heure python à rechercher dans le répertoire actuel. Le motif par défaut est '%(default)s'."
+
+#, python-format
+msgid "Defines one or several string patterns to search in path with matches time pattern. Patterns are case sensitive and filename must have all to be selected. The default pattern is '%(default)s'."
+msgstr "Définit un ou plusieurs motifs de texte à rechercher dans le chemin correspondant au motif temporel. Les motifs sont sensibles à la casse et le nom de fichier doit tous les contenir pour être sélectionné. Le motif par défaut est '%(default)s'."
+
+#, python-format
+msgid "Disable log generation. The default value is '%(default)s'."
+msgstr "Désactiver la génération du journal. La valeur par défaut est '%(default)s'."
+
+#, python-format
+msgid "Remove mode. The default value is '%(default)s'."
+msgstr "Mode de suppression. La valeur par défaut est '%(default)s'."
+
+#, python-format
+msgid "Number of days to respect from today. The default value is '%(default)s'."
+msgstr "Nombre de jours à préserver depuis aujourd'hui. La valeur par défaut est '%(default)s'."
+
+#, python-format
+msgid "Maximum number of files to remain in directory. The default value is '%(default)s'."
+msgstr "Nombre maximal de fichiers à conserver dans le répertoire. La valeur par défaut est '%(default)s'."
+
+msgid "FILES TO PROCESS"
+msgstr "FICHIERS À TRAITER"
+
+msgid "FILES IGNORED"
+msgstr "FICHIERS IGNORÉS"
+
+msgid "DIRECTORY"
+msgstr "RÉPERTOIRE"
+
+msgid "FILE"
+msgstr "FICHIER"
+
+#, python-brace-format
+msgid "Time pattern found: ({0})"
+msgstr "Motif temporel trouvé : ({0})"

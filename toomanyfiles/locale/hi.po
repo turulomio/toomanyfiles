@@ -1,0 +1,175 @@
+# Hindi translations for TooManyFiles package.
+# Copyright (C) 2018-2026 Mariano Muñoz <turulomio@yahoo.es>
+# This file is distributed under the same license as the TooManyFiles package.
+# Mariano Muñoz <turulomio@yahoo.es>, 2018-2026.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: TooManyFiles\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-09-01 05:00+0200\n"
+"PO-Revision-Date: 2026-09-01 05:00+0200\n"
+"Last-Translator: Mariano Muñoz <turulomio@yahoo.es>\n"
+"Language-Team: Hindi\n"
+"Language: hi\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+msgid "vhs tool is needed. Look at https://github.com/charmbracelet/vhs"
+msgstr "vhs टूल की आवश्यकता है। https://github.com/charmbracelet/vhs देखें"
+
+msgid "New Release:"
+msgstr "नया रिलीज़:"
+
+msgid "  * Change version and date in __init__.py"
+msgstr "  * __init__.py में संस्करण और दिनांक बदलें"
+
+msgid "  * Change version in pyproject.toml"
+msgstr "  * pyproject.toml में संस्करण बदलें"
+
+msgid "  * Edit Changelog in README.md"
+msgstr "  * README.md में परिवर्तन सूची (Changelog) संपादित करें"
+
+msgid "  * Make a new tag in github"
+msgstr "  * GitHub पर एक नया टैग बनाएं"
+
+msgid "  * Create a new gentoo ebuild with the new version"
+msgstr "  * नए संस्करण के साथ एक नया gentoo ebuild बनाएं"
+
+msgid "  * Upload to portage repository"
+msgstr "  * Portage रिपॉजिटरी में अपलोड करें"
+
+msgid "Different examples have been created in the directory 'toomanyfiles_examples'"
+msgstr "'toomanyfiles_examples' निर्देशिका में विभिन्न उदाहरण बनाए गए हैं"
+
+msgid "'toomanyfiles_examples' directory removed"
+msgstr "'toomanyfiles_examples' निर्देशिका हटा दी गई है"
+
+msgid "I can't remove 'toomanyfiles_examples' directory"
+msgstr "'toomanyfiles_examples' निर्देशिका को हटाया नहीं जा सका"
+
+msgid "{} TooManyFiles in {} detected {} files with time pattern {} and filename patterns {}"
+msgstr "{} TooManyFiles ने {} में समय पैटर्न {} और फ़ाइल नाम पैटर्न {} वाली {} फ़ाइलों का पता लगाया"
+
+msgid "R"
+msgstr "र"
+
+msgid "D"
+msgstr "म"
+
+msgid "Y"
+msgstr "न"
+
+msgid "O"
+msgstr "अ"
+
+msgid "   Parameters: Too young to delete:"
+msgstr "   पैरामीटर: हटाने के लिए बहुत नई फ़ाइलें:"
+
+msgid "Max files to store:"
+msgstr "सहेजने के लिए अधिकतम फ़ाइलें:"
+
+msgid "Files status pretending:"
+msgstr "सिमुलेशन में फ़ाइलों की स्थिति:"
+
+msgid "So, {} files will be deleted and {} will be kept when you use --remove parameter."
+msgstr "इस प्रकार, --remove पैरामीटर का उपयोग करने पर {} फ़ाइलें हटाई जाएंगी और {} सुरक्षित रखी जाएंगी।"
+
+msgid "File status removing:"
+msgstr "हटाते समय फ़ाइलों की स्थिति:"
+
+msgid "So, {} files have been deleted and {} files have been kept."
+msgstr "इस प्रकार, {} फ़ाइलें हटा दी गई हैं और {} फ़ाइलें सुरक्षित रखी गई हैं।"
+
+msgid "Remains"
+msgstr "सुरक्षित"
+
+msgid "Delete"
+msgstr "हटाना"
+
+msgid "Too young to delete"
+msgstr "हटाने के लिए बहुत नई"
+
+msgid "Over max files"
+msgstr "अधिकतम फ़ाइल सीमा से अधिक"
+
+msgid "Directory"
+msgstr "निर्देशिका"
+
+msgid "File"
+msgstr "फ़ाइल"
+
+msgid "File patterns weren't found"
+msgstr "फ़ाइल नाम पैटर्न नहीं मिले"
+
+msgid "Time pattern wasn't found"
+msgstr "समय पैटर्न नहीं मिला"
+
+msgid "The number of files too young to delete can't be bigger than the maximum number of files to store"
+msgstr "हटाने के लिए बहुत नई फ़ाइलों की संख्या सहेजने के लिए अधिकतम फ़ाइलों से अधिक नहीं हो सकती"
+
+msgid "Not developed yet"
+msgstr "अभी तक विकसित नहीं किया गया है"
+
+msgid "Over max number of files"
+msgstr "फ़ाइलों की अधिकतम संख्या से अधिक"
+
+msgid "Search date and time patterns to delete innecesary files or directories"
+msgstr "अनावश्यक फ़ाइलों या निर्देशिकाओं को हटाने के लिए दिनांक और समय पैटर्न खोजें"
+
+msgid "Developed by Mariano Muñoz 2018-{}"
+msgstr "Mariano Muñoz द्वारा विकसित 2018-{}"
+
+msgid "Removes files permanently"
+msgstr "फ़ाइलों को स्थायी रूप से हटाता है"
+
+msgid "Makes a simulation and doesn't remove files"
+msgstr "सिमुलेशन करता है और फ़ाइलें नहीं हटाता है"
+
+msgid "List files included and excluded"
+msgstr "शामिल और बहिष्कृत फ़ाइलों की सूची बनाएं"
+
+msgid "Modifiers to use with --remove and --pretend"
+msgstr "--remove और --pretend के साथ उपयोग करने के लिए संशोधक"
+
+#, python-format
+msgid "Defines a python datetime pattern to search in current directory. The default pattern is '%(default)s'."
+msgstr "वर्तमान निर्देशिका में खोजने के लिए एक Python datetime पैटर्न परिभाषित करता है। डिफ़ॉल्ट पैटर्न '%(default)s' है।"
+
+#, python-format
+msgid "Defines one or several string patterns to search in path with matches time pattern. Patterns are case sensitive and filename must have all to be selected. The default pattern is '%(default)s'."
+msgstr "समय पैटर्न से मेल खाने वाले पथ में खोजने के लिए एक या अधिक स्ट्रिंग पैटर्न परिभाषित करता है। पैटर्न केस-संवेदी हैं और चयन के लिए फ़ाइल नाम में सभी पैटर्न होने चाहिए। डिफ़ॉल्ट पैटर्न '%(default)s' है।"
+
+#, python-format
+msgid "Disable log generation. The default value is '%(default)s'."
+msgstr "लॉग जनरेशन अक्षम करें। डिफ़ॉल्ट मान '%(default)s' है।"
+
+#, python-format
+msgid "Remove mode. The default value is '%(default)s'."
+msgstr "हटाने का मोड। डिफ़ॉल्ट मान '%(default)s' है।"
+
+#, python-format
+msgid "Number of days to respect from today. The default value is '%(default)s'."
+msgstr "आज से सुरक्षित रखे जाने वाले दिनों की संख्या। डिफ़ॉल्ट मान '%(default)s' है।"
+
+#, python-format
+msgid "Maximum number of files to remain in directory. The default value is '%(default)s'."
+msgstr "निर्देशिका में शेष रहने वाली अधिकतम फ़ाइलों की संख्या। डिफ़ॉल्ट मान '%(default)s' है।"
+
+msgid "FILES TO PROCESS"
+msgstr "संसाधित करने के लिए फ़ाइलें"
+
+msgid "FILES IGNORED"
+msgstr "अनदेखी की गई फ़ाइलें"
+
+msgid "DIRECTORY"
+msgstr "निर्देशिका"
+
+msgid "FILE"
+msgstr "फ़ाइल"
+
+#, python-brace-format
+msgid "Time pattern found: ({0})"
+msgstr "समय पैटर्न मिला: ({0})"
