@@ -30,12 +30,14 @@ def test_create_json_config():
 
 
 def test_toomanyfiles_json_execution():
-    """Verify toomanyfiles_json processes multiple configuration entries in a directory."""
+    """Verify toomanyfiles_json processes 3 configuration entries in a directory."""
     with TemporaryDirectory() as tempdir:
         toomanyfiles.create_file(f"{tempdir}/20250101 Backup.xlsx")
         toomanyfiles.create_file(f"{tempdir}/20250102 Backup.xlsx")
         toomanyfiles.create_file(f"{tempdir}/20250201 Log.txt")
         toomanyfiles.create_file(f"{tempdir}/20250202 Log.txt")
+        toomanyfiles.create_file(f"{tempdir}/20250301 Report.pdf")
+        toomanyfiles.create_file(f"{tempdir}/20250302 Report.pdf")
 
         config = [
             {
@@ -47,6 +49,11 @@ def test_toomanyfiles_json_execution():
                 "time_pattern": "%Y%m%d",
                 "file_patterns": ["Log"],
                 "too_young_to_delete": 0
+            },
+            {
+                "time_pattern": "%Y%m%d",
+                "file_patterns": ["Report"],
+                "too_young_to_delete": 0
             }
         ]
         with open(path.join(tempdir, "toomanyfiles.json"), "w", encoding="utf-8") as f:
@@ -54,13 +61,14 @@ def test_toomanyfiles_json_execution():
 
         # Dry run (pretend)
         results = tmf_json.toomanyfiles_json(tempdir, remove=False)
-        assert len(results) == 2
+        assert len(results) == 3
         assert path.exists(f"{tempdir}/20250102 Backup.xlsx")
         assert path.exists(f"{tempdir}/20250202 Log.txt")
+        assert path.exists(f"{tempdir}/20250302 Report.pdf")
 
         # List mode
         list_results = tmf_json.toomanyfiles_json(tempdir, is_list=True)
-        assert len(list_results) == 2
+        assert len(list_results) == 3
 
         # Actual removal
         tmf_json.toomanyfiles_json(tempdir, remove=True)
@@ -68,6 +76,8 @@ def test_toomanyfiles_json_execution():
         assert not path.exists(f"{tempdir}/20250102 Backup.xlsx")
         assert path.exists(f"{tempdir}/20250201 Log.txt")
         assert not path.exists(f"{tempdir}/20250202 Log.txt")
+        assert path.exists(f"{tempdir}/20250301 Report.pdf")
+        assert not path.exists(f"{tempdir}/20250302 Report.pdf")
 
 
 def test_toomanyfiles_json_errors():
