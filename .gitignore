@@ -21,3 +21,4 @@ env/
 .env/
 *.e4p
 .coverage
+TooManyFiles.log

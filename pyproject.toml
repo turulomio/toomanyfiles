@@ -1,6 +1,6 @@
 [project]
 name = "toomanyfiles"
-version = "1.2.0"
+version = "1.2.1"
 description = "Remove files and directories with date and time patterns"
 authors = [
     {name = "y"}

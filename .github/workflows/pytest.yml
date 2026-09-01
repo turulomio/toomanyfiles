@@ -32,6 +32,6 @@ jobs:
         run: |
           poetry install
 
-      - name: Run poe pytest
+      - name: Run poe coverage
         run: |
-          poetry run poe pytest
+          poetry run poe coverage
