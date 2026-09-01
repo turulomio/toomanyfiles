@@ -6,6 +6,7 @@ while preserving specific retention policies (e.g., monthly backups, young files
 
 from toomanyfiles import toomanyfiles
 from toomanyfiles import json
+from toomanyfiles import tree
 
 from datetime import datetime
 __version__ = '1.2.1'

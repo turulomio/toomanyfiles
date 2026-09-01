@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: TooManyFiles\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-09-01 13:46+0200\n"
+"POT-Creation-Date: 2026-09-01 14:00+0200\n"
 "PO-Revision-Date: 2026-09-01 05:00+0200\n"
 "Last-Translator: Mariano Muñoz <turulomio@yahoo.es>\n"
 "Language-Team: Spanish <turulomio@yahoo.es>\n"
@@ -212,3 +212,27 @@ msgstr "FICHERO"
 #, python-brace-format
 msgid "Time pattern found: ({0})"
 msgstr "Patrón de tiempo encontrado: ({0})"
+
+msgid "No '{}' files found in directory tree under '{}'."
+msgstr "No se han encontrado archivos '{}' en el árbol de directorios bajo '{}'."
+
+msgid "Found {} configuration directory(ies) under '{}':"
+msgstr "Se encontraron {} directorio(s) de configuración bajo '{}':"
+
+msgid "Processing directories"
+msgstr "Procesando directorios"
+
+msgid "Processing directory: {}"
+msgstr "Procesando directorio: {}"
+
+msgid "Recursively search and execute all toomanyfiles.json configuration files in a directory tree"
+msgstr "Busca y ejecuta recursivamente todos los archivos de configuración toomanyfiles.json en un árbol de directorios"
+
+msgid "Removes files permanently according to all toomanyfiles.json found in tree"
+msgstr "Elimina archivos permanentemente según todos los toomanyfiles.json encontrados en el árbol"
+
+msgid "Makes a simulation and doesn't remove files according to all toomanyfiles.json found in tree"
+msgstr "Realiza una simulación y no elimina archivos según todos los toomanyfiles.json encontrados en el árbol"
+
+msgid "List files included and excluded for each toomanyfiles.json found in tree"
+msgstr "Lista los archivos incluidos y excluidos para cada toomanyfiles.json encontrado en el árbol"

@@ -13,9 +13,10 @@ Source code & Development: https://github.com/turulomio/toomanyfiles/
 If you use Gentoo you can find a ebuild in https://github.com/turulomio/myportage/tree/master/app-admin/toomanyfiles
 
 ## Description
-This package provides two commands:
+This package provides three commands:
 * `toomanyfiles`: Removes files and directories matching date and time patterns according to retention rules passed via CLI arguments.
 * `toomanyfiles_json`: Reads configuration from a `toomanyfiles.json` file in the current directory containing a list of configuration objects, and executes retention rules for each configuration in the current directory.
+* `toomanyfiles_tree`: Recursively finds and executes all `toomanyfiles.json` configuration files in a directory tree.
 
 ## Usage
 <img src="https://raw.githubusercontent.com/turulomio/toomanyfiles/master/doc/command.gif?raw=true" width="100%"></img>
@@ -63,6 +64,24 @@ toomanyfiles_json --list
 To execute file deletion:
 ```bash
 toomanyfiles_json --remove
+```
+
+### toomanyfiles_tree
+`toomanyfiles_tree` recursively discovers all `toomanyfiles.json` files within the current directory tree and executes them.
+
+To simulate (dry-run) across all found configuration files:
+```bash
+toomanyfiles_tree --pretend
+```
+
+To list files across all found configuration files:
+```bash
+toomanyfiles_tree --list
+```
+
+To execute deletion across all found configuration files:
+```bash
+toomanyfiles_tree --remove
 ```
 
 You can see this animated gif to learn how to use it:
