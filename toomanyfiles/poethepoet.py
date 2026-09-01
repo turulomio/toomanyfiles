@@ -55,6 +55,24 @@ def video():
     chdir("../..")
     remove_examples()
 
+    create_examples()
+    chdir("toomanyfiles_examples/files")
+    system(f"{vhs} ../../doc/json.tape")
+    move("json.gif", "../../doc/json.gif")
+    chdir("../..")
+    remove_examples()
+
+    create_examples()
+    with open("toomanyfiles_examples/files/toomanyfiles.json", "w") as f:
+        f.write('[{"time_pattern": "%Y%m%d %H%M", "too_young_to_delete": 30}]\n')
+    with open("toomanyfiles_examples/directories/toomanyfiles.json", "w") as f:
+        f.write('[{"time_pattern": "%Y%m%d %H%M", "too_young_to_delete": 30}]\n')
+    chdir("toomanyfiles_examples")
+    system(f"{vhs} ../doc/tree.tape")
+    move("tree.gif", "../doc/tree.gif")
+    chdir("..")
+    remove_examples()
+
 
 def translate():
     """Extract translatable strings, update PO catalogs, and compile MO binary files."""

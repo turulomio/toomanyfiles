@@ -10,7 +10,8 @@ readme = "README.md"
 requires-python = ">=3.14,<4"
 dependencies = [
     "colorama >=0.4.6",
-    "pydicts >=1.5.0"
+    "pydicts >=1.5.0",
+    "tqdm >=4.66.0"
 ]
 
 [tool.poetry]
@@ -27,6 +28,8 @@ build-backend = "poetry.core.masonry.api"
 
 [tool.poetry.scripts]
 toomanyfiles='toomanyfiles.toomanyfiles:main'
+toomanyfiles_json='toomanyfiles.json:main'
+toomanyfiles_tree='toomanyfiles.tree:main'
 
 [tool.poe.tasks]
 module_content = { script = "toomanyfiles.poethepoet:module_content" }

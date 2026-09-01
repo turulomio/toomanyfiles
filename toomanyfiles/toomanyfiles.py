@@ -17,7 +17,7 @@ from sys import exit
 from toomanyfiles import types
 
 try:
-    t = translation('toomanyfiles', files("toomanyfiles/") / 'locale')
+    t = translation('toomanyfiles', files("toomanyfiles") / 'locale', fallback=True)
     _ = t.gettext
 except:
     _ = str
@@ -383,4 +383,5 @@ def print_with_type(lod_):
             colors.red(o["reason"]) if "reason" in o else "",
             _('Time pattern found: ({0})').format(o["dt"]) if "dt" in o else ""
         )
+
 
