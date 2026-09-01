@@ -18,46 +18,46 @@ msgstr ""
 "Plural-Forms: nplurals=1; plural=0;\n"
 
 msgid "Configuration file '{}' already exists."
-msgstr ""
+msgstr "配置文件 '{}' 已存在。"
 
 msgid "Configuration file '{}' created successfully."
-msgstr ""
+msgstr "配置文件 '{}' 创建成功。"
 
 msgid "Configuration file '{}' not found. Use --create to create one."
-msgstr ""
+msgstr "未找到配置文件 '{}'。使用 --create 创建一个。"
 
 msgid "Error reading configuration file '{}': {}"
-msgstr ""
+msgstr "读取配置文件 '{}' 时出错：{}"
 
 msgid "Configuration file '{}' must contain a JSON array/list."
-msgstr ""
+msgstr "配置文件 '{}' 必须包含一个 JSON 数组/列表。"
 
 msgid "Configuration item #{} is not a JSON object/dict."
-msgstr ""
+msgstr "配置项 #{} 不是一个 JSON 对象/字典。"
 
 msgid "CONFIGURATION #{}: FILES TO PROCESS"
-msgstr ""
+msgstr "配置 #{}：待处理文件"
 
 msgid "CONFIGURATION #{}: FILES IGNORED"
-msgstr ""
+msgstr "配置 #{}：忽略的文件"
 
 msgid "Search date and time patterns to delete unnecessary files or directories using a JSON configuration file"
-msgstr ""
+msgstr "使用 JSON 配置文件搜索日期和时间模式以删除不必要的文件或目录"
 
 msgid "Developed by Mariano Muñoz 2018-{}"
 msgstr "由 Mariano Muñoz 开发 2018-{}"
 
 msgid "Creates a default toomanyfiles.json configuration file in current directory"
-msgstr ""
+msgstr "在当前目录中创建默认的 toomanyfiles.json 配置文件"
 
 msgid "Removes files permanently according to toomanyfiles.json"
-msgstr ""
+msgstr "根据 toomanyfiles.json 永久删除文件"
 
 msgid "Makes a simulation and doesn't remove files according to toomanyfiles.json"
-msgstr ""
+msgstr "进行模拟操作，不根据 toomanyfiles.json 删除文件"
 
 msgid "List files included and excluded for each configuration in toomanyfiles.json"
-msgstr ""
+msgstr "列出 toomanyfiles.json 中每个配置所包含和排除的文件"
 
 msgid "vhs tool is needed. Look at https://github.com/charmbracelet/vhs"
 msgstr "需要 vhs 工具。请参阅 https://github.com/charmbracelet/vhs"
@@ -214,25 +214,25 @@ msgid "Time pattern found: ({0})"
 msgstr "找到的时间模式：({0})"
 
 msgid "No '{}' files found in directory tree under '{}'."
-msgstr ""
+msgstr "在 '{}' 下的目录树中未找到 '{}' 文件。"
 
 msgid "Found {} configuration directory(ies) under '{}':"
-msgstr ""
+msgstr "在 '{}' 下找到 {} 个配置目录："
 
 msgid "Processing directories"
-msgstr ""
+msgstr "正在处理目录"
 
 msgid "Processing directory: {}"
-msgstr ""
+msgstr "正在处理目录：{}"
 
 msgid "Recursively search and execute all toomanyfiles.json configuration files in a directory tree"
-msgstr ""
+msgstr "在目录树中递归搜索并执行所有 toomanyfiles.json 配置文件"
 
 msgid "Removes files permanently according to all toomanyfiles.json found in tree"
-msgstr ""
+msgstr "根据树中找到的所有 toomanyfiles.json 永久删除文件"
 
 msgid "Makes a simulation and doesn't remove files according to all toomanyfiles.json found in tree"
-msgstr ""
+msgstr "进行模拟操作，不根据树中找到的所有 toomanyfiles.json 删除文件"
 
 msgid "List files included and excluded for each toomanyfiles.json found in tree"
-msgstr ""
+msgstr "列出树中找到的每个 toomanyfiles.json 所包含和排除的文件"

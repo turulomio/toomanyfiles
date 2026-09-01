@@ -18,46 +18,46 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 msgid "Configuration file '{}' already exists."
-msgstr ""
+msgstr "कॉन्फ़िगरेशन फ़ाइल '{}' पहले से मौजूद है।"
 
 msgid "Configuration file '{}' created successfully."
-msgstr ""
+msgstr "कॉन्फ़िगरेशन फ़ाइल '{}' सफलतापूर्वक बनाई गई।"
 
 msgid "Configuration file '{}' not found. Use --create to create one."
-msgstr ""
+msgstr "कॉन्फ़िगरेशन फ़ाइल '{}' नहीं मिली। एक बनाने के लिए --create का उपयोग करें।"
 
 msgid "Error reading configuration file '{}': {}"
-msgstr ""
+msgstr "कॉन्फ़िगरेशन फ़ाइल '{}' पढ़ने में त्रुटि: {}"
 
 msgid "Configuration file '{}' must contain a JSON array/list."
-msgstr ""
+msgstr "कॉन्फ़िगरेशन फ़ाइल '{}' में एक JSON ऐरे/सूची होनी चाहिए।"
 
 msgid "Configuration item #{} is not a JSON object/dict."
-msgstr ""
+msgstr "कॉन्फ़िगरेशन आइटम #{} एक JSON ऑब्जेक्ट/डिक्शनरी नहीं है।"
 
 msgid "CONFIGURATION #{}: FILES TO PROCESS"
-msgstr ""
+msgstr "कॉन्फ़िगरेशन #{}: संसाधित की जाने वाली फ़ाइलें"
 
 msgid "CONFIGURATION #{}: FILES IGNORED"
-msgstr ""
+msgstr "कॉन्फ़िगरेशन #{}: अनदेखी की गई फ़ाइलें"
 
 msgid "Search date and time patterns to delete unnecessary files or directories using a JSON configuration file"
-msgstr ""
+msgstr "JSON कॉन्फ़िगरेशन फ़ाइल का उपयोग करके अनावश्यक फ़ाइलों या डायरेक्ट्रीज को हटाने के लिए दिनांक और समय पैटर्न खोजें"
 
 msgid "Developed by Mariano Muñoz 2018-{}"
 msgstr "Mariano Muñoz द्वारा विकसित 2018-{}"
 
 msgid "Creates a default toomanyfiles.json configuration file in current directory"
-msgstr ""
+msgstr "वर्तमान डायरेक्ट्री में एक डिफ़ॉल्ट toomanyfiles.json कॉन्फ़िगरेशन फ़ाइल बनाता है"
 
 msgid "Removes files permanently according to toomanyfiles.json"
-msgstr ""
+msgstr "toomanyfiles.json के अनुसार फ़ाइलों को स्थायी रूप से हटाता है"
 
 msgid "Makes a simulation and doesn't remove files according to toomanyfiles.json"
-msgstr ""
+msgstr "सिमुलेशन करता है और toomanyfiles.json के अनुसार फ़ाइलों को नहीं हटाता है"
 
 msgid "List files included and excluded for each configuration in toomanyfiles.json"
-msgstr ""
+msgstr "toomanyfiles.json में प्रत्येक कॉन्फ़िगरेशन के लिए शामिल और बहिष्कृत फ़ाइलों की सूची बनाता है"
 
 msgid "vhs tool is needed. Look at https://github.com/charmbracelet/vhs"
 msgstr "vhs टूल की आवश्यकता है। https://github.com/charmbracelet/vhs देखें"
@@ -214,25 +214,25 @@ msgid "Time pattern found: ({0})"
 msgstr "समय पैटर्न मिला: ({0})"
 
 msgid "No '{}' files found in directory tree under '{}'."
-msgstr ""
+msgstr "'{}' के अंतर्गत डायरेक्ट्री ट्री में कोई '{}' फ़ाइल नहीं मिली।"
 
 msgid "Found {} configuration directory(ies) under '{}':"
-msgstr ""
+msgstr "'{}' के अंतर्गत {} कॉन्फ़िगरेशन डायरेक्ट्री(ज़) मिलीं:"
 
 msgid "Processing directories"
-msgstr ""
+msgstr "डायरेक्ट्रीज को संसाधित किया जा रहा है"
 
 msgid "Processing directory: {}"
-msgstr ""
+msgstr "डायरेक्ट्री को संसाधित किया जा रहा है: {}"
 
 msgid "Recursively search and execute all toomanyfiles.json configuration files in a directory tree"
-msgstr ""
+msgstr "डायरेक्ट्री ट्री में सभी toomanyfiles.json कॉन्फ़िगरेशन फ़ाइलों को पुनरावर्ती रूप से खोजें और निष्पादित करें"
 
 msgid "Removes files permanently according to all toomanyfiles.json found in tree"
-msgstr ""
+msgstr "ट्री में मिली सभी toomanyfiles.json के अनुसार फ़ाइलों को स्थायी रूप से हटाता है"
 
 msgid "Makes a simulation and doesn't remove files according to all toomanyfiles.json found in tree"
-msgstr ""
+msgstr "सिमुलेशन करता है और ट्री में मिली सभी toomanyfiles.json के अनुसार फ़ाइलों को नहीं हटाता है"
 
 msgid "List files included and excluded for each toomanyfiles.json found in tree"
-msgstr ""
+msgstr "ट्री में मिली प्रत्येक toomanyfiles.json के लिए शामिल और बहिष्कृत फ़ाइलों की सूची बनाता है"

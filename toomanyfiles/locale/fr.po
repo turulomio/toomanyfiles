@@ -18,46 +18,46 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
 msgid "Configuration file '{}' already exists."
-msgstr ""
+msgstr "Le fichier de configuration '{}' existe déjà."
 
 msgid "Configuration file '{}' created successfully."
-msgstr ""
+msgstr "Fichier de configuration '{}' créé avec succès."
 
 msgid "Configuration file '{}' not found. Use --create to create one."
-msgstr ""
+msgstr "Fichier de configuration '{}' introuvable. Utilisez --create pour en créer un."
 
 msgid "Error reading configuration file '{}': {}"
-msgstr ""
+msgstr "Erreur lors de la lecture du fichier de configuration '{}' : {}"
 
 msgid "Configuration file '{}' must contain a JSON array/list."
-msgstr ""
+msgstr "Le fichier de configuration '{}' doit contenir un tableau/liste JSON."
 
 msgid "Configuration item #{} is not a JSON object/dict."
-msgstr ""
+msgstr "L'élément de configuration #{} n'est pas un objet/dictionnaire JSON."
 
 msgid "CONFIGURATION #{}: FILES TO PROCESS"
-msgstr ""
+msgstr "CONFIGURATION #{} : FICHIERS À TRAITER"
 
 msgid "CONFIGURATION #{}: FILES IGNORED"
-msgstr ""
+msgstr "CONFIGURATION #{} : FICHIERS IGNORÉS"
 
 msgid "Search date and time patterns to delete unnecessary files or directories using a JSON configuration file"
-msgstr ""
+msgstr "Rechercher des motifs de date et d'heure pour supprimer les fichiers ou répertoires inutiles à l'aide d'un fichier de configuration JSON"
 
 msgid "Developed by Mariano Muñoz 2018-{}"
 msgstr "Développé par Mariano Muñoz 2018-{}"
 
 msgid "Creates a default toomanyfiles.json configuration file in current directory"
-msgstr ""
+msgstr "Crée un fichier de configuration toomanyfiles.json par défaut dans le répertoire actuel"
 
 msgid "Removes files permanently according to toomanyfiles.json"
-msgstr ""
+msgstr "Supprime définitivement les fichiers selon toomanyfiles.json"
 
 msgid "Makes a simulation and doesn't remove files according to toomanyfiles.json"
-msgstr ""
+msgstr "Effectue une simulation et ne supprime pas de fichiers selon toomanyfiles.json"
 
 msgid "List files included and excluded for each configuration in toomanyfiles.json"
-msgstr ""
+msgstr "Liste les fichiers inclus et exclus pour chaque configuration dans toomanyfiles.json"
 
 msgid "vhs tool is needed. Look at https://github.com/charmbracelet/vhs"
 msgstr "L'outil vhs est requis. Consultez https://github.com/charmbracelet/vhs"
@@ -214,25 +214,25 @@ msgid "Time pattern found: ({0})"
 msgstr "Motif temporel trouvé : ({0})"
 
 msgid "No '{}' files found in directory tree under '{}'."
-msgstr ""
+msgstr "Aucun fichier '{}' trouvé dans l'arborescence sous '{}'."
 
 msgid "Found {} configuration directory(ies) under '{}':"
-msgstr ""
+msgstr "{} répertoire(s) de configuration trouvé(s) sous '{}' :"
 
 msgid "Processing directories"
-msgstr ""
+msgstr "Traitement des répertoires"
 
 msgid "Processing directory: {}"
-msgstr ""
+msgstr "Traitement du répertoire : {}"
 
 msgid "Recursively search and execute all toomanyfiles.json configuration files in a directory tree"
-msgstr ""
+msgstr "Rechercher et exécuter récursivement tous les fichiers de configuration toomanyfiles.json dans une arborescence"
 
 msgid "Removes files permanently according to all toomanyfiles.json found in tree"
-msgstr ""
+msgstr "Supprime définitivement les fichiers selon tous les toomanyfiles.json trouvés dans l'arborescence"
 
 msgid "Makes a simulation and doesn't remove files according to all toomanyfiles.json found in tree"
-msgstr ""
+msgstr "Effectue une simulation et ne supprime pas de fichiers selon tous les toomanyfiles.json trouvés dans l'arborescence"
 
 msgid "List files included and excluded for each toomanyfiles.json found in tree"
-msgstr ""
+msgstr "Liste les fichiers inclus et exclus pour chaque toomanyfiles.json trouvé dans l'arborescence"
