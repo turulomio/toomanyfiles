@@ -17,7 +17,7 @@ from sys import exit
 from toomanyfiles import types
 
 try:
-    t = translation('toomanyfiles', files("toomanyfiles/") / 'locale')
+    t = translation('toomanyfiles', files("toomanyfiles") / 'locale', fallback=True)
     _ = t.gettext
 except:
     _ = str

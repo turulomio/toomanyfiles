@@ -14,7 +14,7 @@ from tqdm import tqdm
 from toomanyfiles import json as tmf_json
 
 try:
-    t = translation('toomanyfiles', files("toomanyfiles/") / 'locale')
+    t = translation('toomanyfiles', files("toomanyfiles") / 'locale', fallback=True)
     _ = t.gettext
 except:
     _ = str
