@@ -68,7 +68,7 @@ def console_output(lod_, directory,  remove,  time_pattern,  file_patterns, too_
     print(header_string(lod_, directory,  time_pattern, file_patterns,  color=True))
     if len(lod_)==0:
         return
-    print("   Parameters: Too yound to delete:",  too_young_to_delete,  "Max files to store",  max_files_to_store)
+    print(_("   Parameters: Too young to delete:"),  too_young_to_delete,  _("Max files to store:"),  max_files_to_store)
 
 
     print (one_line_status())
@@ -219,7 +219,7 @@ def toomanyfiles(directory,  remove, time_pattern="%Y%m%d %H%M", file_patterns=[
 def main(arguments=None):
     from .__init__ import __version__, __versiondate__
     
-    parser=ArgumentParser(prog='toomanyfiles', description=_('Search date and time patterns to delete innecesary files or directories'), epilog=_("Developed by Mariano Muñoz 2018-{}".format(__versiondate__.year)), formatter_class=RawTextHelpFormatter)
+    parser=ArgumentParser(prog='toomanyfiles', description=_('Search date and time patterns to delete innecesary files or directories'), epilog=_("Developed by Mariano Muñoz 2018-{}").format(__versiondate__.year), formatter_class=RawTextHelpFormatter)
     parser.add_argument('--version', action='version', version=__version__)
 
     group= parser.add_mutually_exclusive_group(required=True)

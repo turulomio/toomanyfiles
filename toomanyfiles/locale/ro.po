@@ -1,4 +1,4 @@
-# Spanish translations for TooManyFiles package.
+# Romanian translations for TooManyFiles package.
 # Copyright (C) 2018-2026 Mariano Muñoz <turulomio@yahoo.es>
 # This file is distributed under the same license as the TooManyFiles package.
 # Mariano Muñoz <turulomio@yahoo.es>, 2018-2026.
@@ -10,166 +10,166 @@ msgstr ""
 "POT-Creation-Date: 2026-09-01 05:00+0200\n"
 "PO-Revision-Date: 2026-09-01 05:00+0200\n"
 "Last-Translator: Mariano Muñoz <turulomio@yahoo.es>\n"
-"Language-Team: Spanish <turulomio@yahoo.es>\n"
-"Language: es\n"
+"Language-Team: Romanian\n"
+"Language: ro\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Plural-Forms: nplurals=3; plural=(n==1 ? 0 : (n==0 || (n%100 > 0 && n%100 < 20)) ? 1 : 2);\n"
 
 msgid "vhs tool is needed. Look at https://github.com/charmbracelet/vhs"
-msgstr "Se necesita la herramienta vhs. Visita https://github.com/charmbracelet/vhs"
+msgstr "Este necesar instrumentul vhs. Consultați https://github.com/charmbracelet/vhs"
 
 msgid "New Release:"
-msgstr "Nueva versión:"
+msgstr "Versiune nouă:"
 
 msgid "  * Change version and date in __init__.py"
-msgstr "  * Cambiar la versión y la fecha en __init__.py"
+msgstr "  * Schimbați versiunea și data în __init__.py"
 
 msgid "  * Change version in pyproject.toml"
-msgstr "  * Cambiar la versión en pyproject.toml"
+msgstr "  * Schimbați versiunea în pyproject.toml"
 
 msgid "  * Edit Changelog in README.md"
-msgstr "  * Editar el Changelog en README.md"
+msgstr "  * Editați Changelog în README.md"
 
 msgid "  * Make a new tag in github"
-msgstr "  * Crear una nueva etiqueta en github"
+msgstr "  * Creați o etichetă nouă pe GitHub"
 
 msgid "  * Create a new gentoo ebuild with the new version"
-msgstr "  * Crear un nuevo ebuild de gentoo con la nueva versión"
+msgstr "  * Creați un ebuild gentoo nou cu noua versiune"
 
 msgid "  * Upload to portage repository"
-msgstr "  * Subir al repositorio de portage"
+msgstr "  * Încărcați în depozitul portage"
 
 msgid "Different examples have been created in the directory 'toomanyfiles_examples'"
-msgstr "Se han creado diferentes ejemplos en el directorio 'toomanyfiles_examples'"
+msgstr "Au fost create diferite exemple în directorul 'toomanyfiles_examples'"
 
 msgid "'toomanyfiles_examples' directory removed"
-msgstr "Directorio 'toomanyfiles_examples' eliminado"
+msgstr "Directorul 'toomanyfiles_examples' a fost eliminat"
 
 msgid "I can't remove 'toomanyfiles_examples' directory"
-msgstr "No se puede eliminar el directorio 'toomanyfiles_examples'"
+msgstr "Nu se poate elimina directorul 'toomanyfiles_examples'"
 
 msgid "{} TooManyFiles in {} detected {} files with time pattern {} and filename patterns {}"
-msgstr "{} TooManyFiles en {} ha detectado {} ficheros con el patrón de tiempo {} y los patrones de nombre {}"
+msgstr "{} TooManyFiles în {} a detectat {} fișiere cu modelul de timp {} și modelele de nume {}"
 
 msgid "R"
 msgstr "P"
 
 msgid "D"
-msgstr "B"
+msgstr "Ș"
 
 msgid "Y"
-msgstr "J"
+msgstr "R"
 
 msgid "O"
-msgstr "S"
+msgstr "D"
 
 msgid "   Parameters: Too young to delete:"
-msgstr "   Parámetros: Demasiado recientes para borrar:"
+msgstr "   Parametri: Prea recente pentru ștergere:"
 
 msgid "Max files to store:"
-msgstr "Máx. ficheros a guardar:"
+msgstr "Nr. maxim de fișiere de stocat:"
 
 msgid "Files status pretending:"
-msgstr "Estado de los ficheros en la simulación:"
+msgstr "Starea fișierelor în simulare:"
 
 msgid "So, {} files will be deleted and {} will be kept when you use --remove parameter."
-msgstr "De esta manera, {} ficheros serán borrados y {} serán guardados cuando uses el parámetro --remove."
+msgstr "Astfel, {} fișiere vor fi șterse și {} vor fi păstrate la utilizarea parametrului --remove."
 
 msgid "File status removing:"
-msgstr "Estado de los ficheros para borrar:"
+msgstr "Starea fișierelor la ștergere:"
 
 msgid "So, {} files have been deleted and {} files have been kept."
-msgstr "De esta manera, {} ficheros se han borrado y {} ficheros se han guardado."
+msgstr "Astfel, {} fișiere au fost șterse și {} fișiere au fost păstrate."
 
 msgid "Remains"
-msgstr "Permanece"
+msgstr "Păstrat"
 
 msgid "Delete"
-msgstr "Borrado"
+msgstr "Ștergere"
 
 msgid "Too young to delete"
-msgstr "Muy joven para borrar"
+msgstr "Prea recent pentru ștergere"
 
 msgid "Over max files"
-msgstr "Supera el número de ficheros a guardar"
+msgstr "Peste numărul maxim de fișiere"
 
 msgid "Directory"
-msgstr "Directorio"
+msgstr "Director"
 
 msgid "File"
-msgstr "Fichero"
+msgstr "Fișier"
 
 msgid "File patterns weren't found"
-msgstr "No se encontraron los patrones de archivo"
+msgstr "Modelele de nume de fișier nu au fost găsite"
 
 msgid "Time pattern wasn't found"
-msgstr "No se encontró el patrón de tiempo"
+msgstr "Modelul de timp nu a fost găsit"
 
 msgid "The number of files too young to delete can't be bigger than the maximum number of files to store"
-msgstr "El número de ficheros demasiado recientes para ser borrados no puede ser mayor que el máximo número de ficheros a guardar"
+msgstr "Numărul de fișiere prea recente pentru ștergere nu poate fi mai mare decât numărul maxim de fișiere de stocat"
 
 msgid "Not developed yet"
-msgstr "No desarrollado todavía"
+msgstr "Nu este dezvoltat încă"
 
 msgid "Over max number of files"
-msgstr "Supera el número máximo de ficheros"
+msgstr "Depășește numărul maxim de fișiere"
 
 msgid "Search date and time patterns to delete innecesary files or directories"
-msgstr "Busca patrones de fecha y hora para borrar ficheros o directorios innecesarios"
+msgstr "Căutați modele de dată și oră pentru a șterge fișiere sau directoare inutile"
 
 msgid "Developed by Mariano Muñoz 2018-{}"
-msgstr "Desarrollado por Mariano Muñoz 2018-{}"
+msgstr "Dezvoltat de Mariano Muñoz 2018-{}"
 
 msgid "Removes files permanently"
-msgstr "Borra los ficheros permanentemente"
+msgstr "Șterge fișierele definitiv"
 
 msgid "Makes a simulation and doesn't remove files"
-msgstr "Realiza una simulación y no borra los ficheros"
+msgstr "Efectuează o simulare și nu șterge fișierele"
 
 msgid "List files included and excluded"
-msgstr "Listado de ficheros incluidos y excluidos"
+msgstr "Listează fișierele incluse și excluse"
 
 msgid "Modifiers to use with --remove and --pretend"
-msgstr "Modificadores a usar con --remove y --pretend"
+msgstr "Modificatori de utilizat cu --remove și --pretend"
 
 #, python-format
 msgid "Defines a python datetime pattern to search in current directory. The default pattern is '%(default)s'."
-msgstr "Define un patrón de fecha y hora de python a buscar en el directorio actual. El patrón por defecto es '%(default)s'."
+msgstr "Definește un model python datetime de căutat în directorul curent. Modelul implicit este '%(default)s'."
 
 #, python-format
 msgid "Defines one or several string patterns to search in path with matches time pattern. Patterns are case sensitive and filename must have all to be selected. The default pattern is '%(default)s'."
-msgstr "Define uno o varios patrones de texto a buscar en la ruta que coincida con el patrón de tiempo. Los patrones distinguen mayúsculas y minúsculas y el nombre del fichero debe tener todos para ser seleccionado. El patrón por defecto es '%(default)s'."
+msgstr "Definește unul sau mai multe modele de text de căutat în cale care corespund modelului de timp. Modelele sunt sensibile la majuscule/minuscule și numele fișierului trebuie să le conțină pe toate pentru a fi selectat. Modelul implicit este '%(default)s'."
 
 #, python-format
 msgid "Disable log generation. The default value is '%(default)s'."
-msgstr "Deshabilita la generación del registro. El valor por defecto es '%(default)s'."
+msgstr "Dezactivează generarea jurnalului. Valoarea implicită este '%(default)s'."
 
 #, python-format
 msgid "Remove mode. The default value is '%(default)s'."
-msgstr "Modo de borrado. El valor por defecto es '%(default)s'."
+msgstr "Mod de ștergere. Valoarea implicită este '%(default)s'."
 
 #, python-format
 msgid "Number of days to respect from today. The default value is '%(default)s'."
-msgstr "Número de días que se respetan desde hoy. El valor por defecto es '%(default)s'."
+msgstr "Numărul de zile de păstrat începând de astăzi. Valoarea implicită este '%(default)s'."
 
 #, python-format
 msgid "Maximum number of files to remain in directory. The default value is '%(default)s'."
-msgstr "Máximo número de ficheros que quedarán en el directorio. El valor por defecto es '%(default)s'."
+msgstr "Numărul maxim de fișiere care rămân în director. Valoarea implicită este '%(default)s'."
 
 msgid "FILES TO PROCESS"
-msgstr "FICHEROS A PROCESAR"
+msgstr "FIȘIERE DE PROCESAT"
 
 msgid "FILES IGNORED"
-msgstr "FICHEROS IGNORADOS"
+msgstr "FIȘIERE IGNORATE"
 
 msgid "DIRECTORY"
-msgstr "DIRECTORIO"
+msgstr "DIRECTOR"
 
 msgid "FILE"
-msgstr "FICHERO"
+msgstr "FIȘIER"
 
 #, python-brace-format
 msgid "Time pattern found: ({0})"
-msgstr "Patrón de tiempo encontrado: ({0})"
+msgstr "Model de timp găsit: ({0})"

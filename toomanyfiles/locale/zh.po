@@ -1,4 +1,4 @@
-# Spanish translations for TooManyFiles package.
+# Chinese translations for TooManyFiles package.
 # Copyright (C) 2018-2026 Mariano Muñoz <turulomio@yahoo.es>
 # This file is distributed under the same license as the TooManyFiles package.
 # Mariano Muñoz <turulomio@yahoo.es>, 2018-2026.
@@ -10,166 +10,166 @@ msgstr ""
 "POT-Creation-Date: 2026-09-01 05:00+0200\n"
 "PO-Revision-Date: 2026-09-01 05:00+0200\n"
 "Last-Translator: Mariano Muñoz <turulomio@yahoo.es>\n"
-"Language-Team: Spanish <turulomio@yahoo.es>\n"
-"Language: es\n"
+"Language-Team: Chinese\n"
+"Language: zh\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
 
 msgid "vhs tool is needed. Look at https://github.com/charmbracelet/vhs"
-msgstr "Se necesita la herramienta vhs. Visita https://github.com/charmbracelet/vhs"
+msgstr "需要 vhs 工具。请参阅 https://github.com/charmbracelet/vhs"
 
 msgid "New Release:"
-msgstr "Nueva versión:"
+msgstr "新版本发布："
 
 msgid "  * Change version and date in __init__.py"
-msgstr "  * Cambiar la versión y la fecha en __init__.py"
+msgstr "  * 在 __init__.py 中修改版本和日期"
 
 msgid "  * Change version in pyproject.toml"
-msgstr "  * Cambiar la versión en pyproject.toml"
+msgstr "  * 在 pyproject.toml 中修改版本"
 
 msgid "  * Edit Changelog in README.md"
-msgstr "  * Editar el Changelog en README.md"
+msgstr "  * 在 README.md 中编辑更新日志"
 
 msgid "  * Make a new tag in github"
-msgstr "  * Crear una nueva etiqueta en github"
+msgstr "  * 在 GitHub 上创建新标签"
 
 msgid "  * Create a new gentoo ebuild with the new version"
-msgstr "  * Crear un nuevo ebuild de gentoo con la nueva versión"
+msgstr "  * 使用新版本创建新的 gentoo ebuild"
 
 msgid "  * Upload to portage repository"
-msgstr "  * Subir al repositorio de portage"
+msgstr "  * 上传到 portage 仓库"
 
 msgid "Different examples have been created in the directory 'toomanyfiles_examples'"
-msgstr "Se han creado diferentes ejemplos en el directorio 'toomanyfiles_examples'"
+msgstr "已在目录 'toomanyfiles_examples' 中创建了不同的示例"
 
 msgid "'toomanyfiles_examples' directory removed"
-msgstr "Directorio 'toomanyfiles_examples' eliminado"
+msgstr "已删除 'toomanyfiles_examples' 目录"
 
 msgid "I can't remove 'toomanyfiles_examples' directory"
-msgstr "No se puede eliminar el directorio 'toomanyfiles_examples'"
+msgstr "无法删除 'toomanyfiles_examples' 目录"
 
 msgid "{} TooManyFiles in {} detected {} files with time pattern {} and filename patterns {}"
-msgstr "{} TooManyFiles en {} ha detectado {} ficheros con el patrón de tiempo {} y los patrones de nombre {}"
+msgstr "{} TooManyFiles 在 {} 中检测到 {} 个文件，时间模式为 {}，文件名模式为 {}"
 
 msgid "R"
-msgstr "P"
+msgstr "保"
 
 msgid "D"
-msgstr "B"
+msgstr "删"
 
 msgid "Y"
-msgstr "J"
+msgstr "新"
 
 msgid "O"
-msgstr "S"
+msgstr "超"
 
 msgid "   Parameters: Too young to delete:"
-msgstr "   Parámetros: Demasiado recientes para borrar:"
+msgstr "   参数：保留的最近天数文件："
 
 msgid "Max files to store:"
-msgstr "Máx. ficheros a guardar:"
+msgstr "最多保留文件数："
 
 msgid "Files status pretending:"
-msgstr "Estado de los ficheros en la simulación:"
+msgstr "模拟状态下的文件情况："
 
 msgid "So, {} files will be deleted and {} will be kept when you use --remove parameter."
-msgstr "De esta manera, {} ficheros serán borrados y {} serán guardados cuando uses el parámetro --remove."
+msgstr "因此，使用 --remove 参数时将删除 {} 个文件并保留 {} 个文件。"
 
 msgid "File status removing:"
-msgstr "Estado de los ficheros para borrar:"
+msgstr "执行删除时的文件情况："
 
 msgid "So, {} files have been deleted and {} files have been kept."
-msgstr "De esta manera, {} ficheros se han borrado y {} ficheros se han guardado."
+msgstr "因此，已删除 {} 个文件，保留了 {} 个文件。"
 
 msgid "Remains"
-msgstr "Permanece"
+msgstr "保留"
 
 msgid "Delete"
-msgstr "Borrado"
+msgstr "删除"
 
 msgid "Too young to delete"
-msgstr "Muy joven para borrar"
+msgstr "文件过新暂不删除"
 
 msgid "Over max files"
-msgstr "Supera el número de ficheros a guardar"
+msgstr "超过最大文件数"
 
 msgid "Directory"
-msgstr "Directorio"
+msgstr "目录"
 
 msgid "File"
-msgstr "Fichero"
+msgstr "文件"
 
 msgid "File patterns weren't found"
-msgstr "No se encontraron los patrones de archivo"
+msgstr "未找到匹配的文件名模式"
 
 msgid "Time pattern wasn't found"
-msgstr "No se encontró el patrón de tiempo"
+msgstr "未找到匹配的时间模式"
 
 msgid "The number of files too young to delete can't be bigger than the maximum number of files to store"
-msgstr "El número de ficheros demasiado recientes para ser borrados no puede ser mayor que el máximo número de ficheros a guardar"
+msgstr "过新保留的文件数不能大于最大存储文件数"
 
 msgid "Not developed yet"
-msgstr "No desarrollado todavía"
+msgstr "尚未开发"
 
 msgid "Over max number of files"
-msgstr "Supera el número máximo de ficheros"
+msgstr "超过最大文件数量"
 
 msgid "Search date and time patterns to delete innecesary files or directories"
-msgstr "Busca patrones de fecha y hora para borrar ficheros o directorios innecesarios"
+msgstr "搜索日期和时间模式以删除不必要的文件或目录"
 
 msgid "Developed by Mariano Muñoz 2018-{}"
-msgstr "Desarrollado por Mariano Muñoz 2018-{}"
+msgstr "由 Mariano Muñoz 开发 2018-{}"
 
 msgid "Removes files permanently"
-msgstr "Borra los ficheros permanentemente"
+msgstr "永久删除文件"
 
 msgid "Makes a simulation and doesn't remove files"
-msgstr "Realiza una simulación y no borra los ficheros"
+msgstr "进行模拟且不删除文件"
 
 msgid "List files included and excluded"
-msgstr "Listado de ficheros incluidos y excluidos"
+msgstr "列出包含和排除的文件"
 
 msgid "Modifiers to use with --remove and --pretend"
-msgstr "Modificadores a usar con --remove y --pretend"
+msgstr "与 --remove 和 --pretend 一起使用的修饰选项"
 
 #, python-format
 msgid "Defines a python datetime pattern to search in current directory. The default pattern is '%(default)s'."
-msgstr "Define un patrón de fecha y hora de python a buscar en el directorio actual. El patrón por defecto es '%(default)s'."
+msgstr "定义在当前目录中搜索的 Python 日期时间模式。默认模式为 '%(default)s'。"
 
 #, python-format
 msgid "Defines one or several string patterns to search in path with matches time pattern. Patterns are case sensitive and filename must have all to be selected. The default pattern is '%(default)s'."
-msgstr "Define uno o varios patrones de texto a buscar en la ruta que coincida con el patrón de tiempo. Los patrones distinguen mayúsculas y minúsculas y el nombre del fichero debe tener todos para ser seleccionado. El patrón por defecto es '%(default)s'."
+msgstr "定义在与时间模式匹配的路径中搜索的一个或多个字符串模式。模式区分大小写，文件名必须包含所有模式才会被选中。默认模式为 '%(default)s'。"
 
 #, python-format
 msgid "Disable log generation. The default value is '%(default)s'."
-msgstr "Deshabilita la generación del registro. El valor por defecto es '%(default)s'."
+msgstr "禁用日志生成。默认值为 '%(default)s'。"
 
 #, python-format
 msgid "Remove mode. The default value is '%(default)s'."
-msgstr "Modo de borrado. El valor por defecto es '%(default)s'."
+msgstr "删除模式。默认值为 '%(default)s'。"
 
 #, python-format
 msgid "Number of days to respect from today. The default value is '%(default)s'."
-msgstr "Número de días que se respetan desde hoy. El valor por defecto es '%(default)s'."
+msgstr "从今天起保留的天数。默认值为 '%(default)s'。"
 
 #, python-format
 msgid "Maximum number of files to remain in directory. The default value is '%(default)s'."
-msgstr "Máximo número de ficheros que quedarán en el directorio. El valor por defecto es '%(default)s'."
+msgstr "目录中保留的最大文件数。默认值为 '%(default)s'。"
 
 msgid "FILES TO PROCESS"
-msgstr "FICHEROS A PROCESAR"
+msgstr "待处理文件"
 
 msgid "FILES IGNORED"
-msgstr "FICHEROS IGNORADOS"
+msgstr "忽略的文件"
 
 msgid "DIRECTORY"
-msgstr "DIRECTORIO"
+msgstr "目录"
 
 msgid "FILE"
-msgstr "FICHERO"
+msgstr "文件"
 
 #, python-brace-format
 msgid "Time pattern found: ({0})"
-msgstr "Patrón de tiempo encontrado: ({0})"
+msgstr "找到的时间模式：({0})"
