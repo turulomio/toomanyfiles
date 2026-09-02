@@ -18,7 +18,7 @@ Set WindowBar Colorful
 # Espera un segundo para que la terminal aparezca
 Sleep 1s
 Type "# This is a video to show how to use 'toomanyfiles_tree' command" Sleep 1s Enter
-Type "# It recursively searches and executes all toomanyfiles.json configuration files in the directory tree" Sleep 1s Enter
+Type "# It recursively searches and executes all TooManyFiles.json configuration files in the directory tree" Sleep 1s Enter
 Type "# Let's simulate the cleanup across all found configuration files using --pretend" Sleep 1s Enter
 Type "toomanyfiles_tree --pretend" Sleep 2s Enter
 Type "# We can also list files to process and ignored for each configuration using --list" Sleep 1s Enter

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: TooManyFiles\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-09-02 04:09+0200\n"
+"POT-Creation-Date: 2026-09-02 04:25+0200\n"
 "PO-Revision-Date: 2026-09-01 05:00+0200\n"
 "Last-Translator: Mariano Muñoz <turulomio@yahoo.es>\n"
 "Language-Team: Romanian\n"
@@ -47,17 +47,17 @@ msgstr "Căutați tipare de dată și oră pentru a șterge fișiere sau directo
 msgid "Developed by Mariano Muñoz 2018-{}"
 msgstr "Dezvoltat de Mariano Muñoz 2018-{}"
 
-msgid "Creates a default toomanyfiles.json configuration file in current directory"
-msgstr "Creează un fișier de configurare toomanyfiles.json implicit în directorul curent"
+msgid "Creates a default TooManyFiles.json configuration file in current directory"
+msgstr "Creează un fișier de configurare TooManyFiles.json implicit în directorul curent"
 
-msgid "Removes files permanently according to toomanyfiles.json"
-msgstr "Șterge definitiv fișierele conform toomanyfiles.json"
+msgid "Removes files permanently according to TooManyFiles.json"
+msgstr "Șterge definitiv fișierele conform TooManyFiles.json"
 
-msgid "Makes a simulation and doesn't remove files according to toomanyfiles.json"
-msgstr "Efectuează o simulare și nu șterge fișierele conform toomanyfiles.json"
+msgid "Makes a simulation and doesn't remove files according to TooManyFiles.json"
+msgstr "Efectuează o simulare și nu șterge fișierele conform TooManyFiles.json"
 
-msgid "List files included and excluded for each configuration in toomanyfiles.json"
-msgstr "Listează fișierele incluse și excluse pentru fiecare configurație din toomanyfiles.json"
+msgid "List files included and excluded for each configuration in TooManyFiles.json"
+msgstr "Listează fișierele incluse și excluse pentru fiecare configurație din TooManyFiles.json"
 
 msgid "vhs tool is needed. Look at https://github.com/charmbracelet/vhs"
 msgstr "Este necesar instrumentul vhs. Consultați https://github.com/charmbracelet/vhs"
@@ -222,20 +222,44 @@ msgstr "S-au găsit {} director(oare) de configurare sub '{}':"
 msgid "Processing directory: {}"
 msgstr "Se procesează directorul: {}"
 
-msgid "Recursively search and execute all toomanyfiles.json configuration files in a directory tree"
-msgstr "Căutați și executați recursiv toate fișierele de configurare toomanyfiles.json dintr-un arbore de directoare"
+msgid "Recursively search and execute all TooManyFiles.json configuration files in a directory tree"
+msgstr "Căutați și executați recursiv toate fișierele de configurare TooManyFiles.json dintr-un arbore de directoare"
 
-msgid "Removes files permanently according to all toomanyfiles.json found in tree"
-msgstr "Șterge definitiv fișierele conform tuturor fișierelor toomanyfiles.json găsite în arbore"
+msgid "Removes files permanently according to all TooManyFiles.json found in tree"
+msgstr "Șterge definitiv fișierele conform tuturor fișierelor TooManyFiles.json găsite în arbore"
 
-msgid "Makes a simulation and doesn't remove files according to all toomanyfiles.json found in tree"
-msgstr "Efectuează o simulare și nu șterge fișierele conform tuturor fișierelor toomanyfiles.json găsite în arbore"
+msgid "Makes a simulation and doesn't remove files according to all TooManyFiles.json found in tree"
+msgstr "Efectuează o simulare și nu șterge fișierele conform tuturor fișierelor TooManyFiles.json găsite în arbore"
 
-msgid "List files included and excluded for each toomanyfiles.json found in tree"
-msgstr "Listează fișierele incluse și excluse pentru fiecare toomanyfiles.json găsit în arbore"
+msgid "List files included and excluded for each TooManyFiles.json found in tree"
+msgstr "Listează fișierele incluse și excluse pentru fiecare TooManyFiles.json găsit în arbore"
 
 msgid "Shows detailed output for each configuration"
 msgstr "Afișează ieșirea detaliată pentru fiecare configurație"
+
+#~ msgid "Creates a default toomanyfiles.json configuration file in current directory"
+#~ msgstr "Creează un fișier de configurare toomanyfiles.json implicit în directorul curent"
+
+#~ msgid "Removes files permanently according to toomanyfiles.json"
+#~ msgstr "Șterge definitiv fișierele conform toomanyfiles.json"
+
+#~ msgid "Makes a simulation and doesn't remove files according to toomanyfiles.json"
+#~ msgstr "Efectuează o simulare și nu șterge fișierele conform toomanyfiles.json"
+
+#~ msgid "List files included and excluded for each configuration in toomanyfiles.json"
+#~ msgstr "Listează fișierele incluse și excluse pentru fiecare configurație din toomanyfiles.json"
+
+#~ msgid "Recursively search and execute all toomanyfiles.json configuration files in a directory tree"
+#~ msgstr "Căutați și executați recursiv toate fișierele de configurare toomanyfiles.json dintr-un arbore de directoare"
+
+#~ msgid "Removes files permanently according to all toomanyfiles.json found in tree"
+#~ msgstr "Șterge definitiv fișierele conform tuturor fișierelor toomanyfiles.json găsite în arbore"
+
+#~ msgid "Makes a simulation and doesn't remove files according to all toomanyfiles.json found in tree"
+#~ msgstr "Efectuează o simulare și nu șterge fișierele conform tuturor fișierelor toomanyfiles.json găsite în arbore"
+
+#~ msgid "List files included and excluded for each toomanyfiles.json found in tree"
+#~ msgstr "Listează fișierele incluse și excluse pentru fiecare toomanyfiles.json găsit în arbore"
 
 #~ msgid "Processing directories"
 #~ msgstr "Se procesează directoarele"

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: TooManyFiles\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-09-02 04:09+0200\n"
+"POT-Creation-Date: 2026-09-02 04:25+0200\n"
 "PO-Revision-Date: 2026-09-01 05:00+0200\n"
 "Last-Translator: Mariano Muñoz <turulomio@yahoo.es>\n"
 "Language-Team: Russian\n"
@@ -47,17 +47,17 @@ msgstr "Поиск шаблонов даты и времени для удале
 msgid "Developed by Mariano Muñoz 2018-{}"
 msgstr "Разработано Mariano Muñoz 2018-{}"
 
-msgid "Creates a default toomanyfiles.json configuration file in current directory"
-msgstr "Создает файл конфигурации toomanyfiles.json по умолчанию в текущем каталоге"
+msgid "Creates a default TooManyFiles.json configuration file in current directory"
+msgstr "Создает файл конфигурации TooManyFiles.json по умолчанию в текущем каталоге"
 
-msgid "Removes files permanently according to toomanyfiles.json"
-msgstr "Окончательно удаляет файлы в соответствии с toomanyfiles.json"
+msgid "Removes files permanently according to TooManyFiles.json"
+msgstr "Окончательно удаляет файлы в соответствии с TooManyFiles.json"
 
-msgid "Makes a simulation and doesn't remove files according to toomanyfiles.json"
-msgstr "Выполняет симуляцию без удаления файлов в соответствии с toomanyfiles.json"
+msgid "Makes a simulation and doesn't remove files according to TooManyFiles.json"
+msgstr "Выполняет симуляцию без удаления файлов в соответствии с TooManyFiles.json"
 
-msgid "List files included and excluded for each configuration in toomanyfiles.json"
-msgstr "Выводит список включенных и исключенных файлов для каждой конфигурации в toomanyfiles.json"
+msgid "List files included and excluded for each configuration in TooManyFiles.json"
+msgstr "Выводит список включенных и исключенных файлов для каждой конфигурации в TooManyFiles.json"
 
 msgid "vhs tool is needed. Look at https://github.com/charmbracelet/vhs"
 msgstr "Требуется утилита vhs. См. https://github.com/charmbracelet/vhs"
@@ -222,20 +222,44 @@ msgstr "Найдено {} каталог(ов) конфигурации под '
 msgid "Processing directory: {}"
 msgstr "Обработка каталога: {}"
 
-msgid "Recursively search and execute all toomanyfiles.json configuration files in a directory tree"
-msgstr "Рекурсивный поиск и выполнение всех файлов конфигурации toomanyfiles.json в дереве каталогов"
+msgid "Recursively search and execute all TooManyFiles.json configuration files in a directory tree"
+msgstr "Рекурсивный поиск и выполнение всех файлов конфигурации TooManyFiles.json в дереве каталогов"
 
-msgid "Removes files permanently according to all toomanyfiles.json found in tree"
-msgstr "Окончательно удаляет файлы в соответствии со всеми toomanyfiles.json, найденными в дереве"
+msgid "Removes files permanently according to all TooManyFiles.json found in tree"
+msgstr "Окончательно удаляет файлы в соответствии со всеми TooManyFiles.json, найденными в дереве"
 
-msgid "Makes a simulation and doesn't remove files according to all toomanyfiles.json found in tree"
-msgstr "Выполняет симуляцию без удаления файлов в соответствии со всеми toomanyfiles.json, найденными в дереве"
+msgid "Makes a simulation and doesn't remove files according to all TooManyFiles.json found in tree"
+msgstr "Выполняет симуляцию без удаления файлов в соответствии со всеми TooManyFiles.json, найденными в дереве"
 
-msgid "List files included and excluded for each toomanyfiles.json found in tree"
-msgstr "Выводит список включенных и исключенных файлов для каждого toomanyfiles.json, найденного в дереве"
+msgid "List files included and excluded for each TooManyFiles.json found in tree"
+msgstr "Выводит список включенных и исключенных файлов для каждого TooManyFiles.json, найденного в дереве"
 
 msgid "Shows detailed output for each configuration"
 msgstr "Показывает подробный вывод для каждой конфигурации"
+
+#~ msgid "Creates a default toomanyfiles.json configuration file in current directory"
+#~ msgstr "Создает файл конфигурации toomanyfiles.json по умолчанию в текущем каталоге"
+
+#~ msgid "Removes files permanently according to toomanyfiles.json"
+#~ msgstr "Окончательно удаляет файлы в соответствии с toomanyfiles.json"
+
+#~ msgid "Makes a simulation and doesn't remove files according to toomanyfiles.json"
+#~ msgstr "Выполняет симуляцию без удаления файлов в соответствии с toomanyfiles.json"
+
+#~ msgid "List files included and excluded for each configuration in toomanyfiles.json"
+#~ msgstr "Выводит список включенных и исключенных файлов для каждой конфигурации в toomanyfiles.json"
+
+#~ msgid "Recursively search and execute all toomanyfiles.json configuration files in a directory tree"
+#~ msgstr "Рекурсивный поиск и выполнение всех файлов конфигурации toomanyfiles.json в дереве каталогов"
+
+#~ msgid "Removes files permanently according to all toomanyfiles.json found in tree"
+#~ msgstr "Окончательно удаляет файлы в соответствии со всеми toomanyfiles.json, найденными в дереве"
+
+#~ msgid "Makes a simulation and doesn't remove files according to all toomanyfiles.json found in tree"
+#~ msgstr "Выполняет симуляцию без удаления файлов в соответствии со всеми toomanyfiles.json, найденными в дереве"
+
+#~ msgid "List files included and excluded for each toomanyfiles.json found in tree"
+#~ msgstr "Выводит список включенных и исключенных файлов для каждого toomanyfiles.json, найденного в дереве"
 
 #~ msgid "Processing directories"
 #~ msgstr "Обработка каталогов"

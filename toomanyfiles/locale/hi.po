@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: TooManyFiles\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-09-02 04:09+0200\n"
+"POT-Creation-Date: 2026-09-02 04:25+0200\n"
 "PO-Revision-Date: 2026-09-01 05:00+0200\n"
 "Last-Translator: Mariano Muñoz <turulomio@yahoo.es>\n"
 "Language-Team: Hindi\n"
@@ -47,17 +47,17 @@ msgstr "JSON कॉन्फ़िगरेशन फ़ाइल का उप�
 msgid "Developed by Mariano Muñoz 2018-{}"
 msgstr "Mariano Muñoz द्वारा विकसित 2018-{}"
 
-msgid "Creates a default toomanyfiles.json configuration file in current directory"
-msgstr "वर्तमान डायरेक्ट्री में एक डिफ़ॉल्ट toomanyfiles.json कॉन्फ़िगरेशन फ़ाइल बनाता है"
+msgid "Creates a default TooManyFiles.json configuration file in current directory"
+msgstr "वर्तमान डायरेक्ट्री में एक डिफ़ॉल्ट TooManyFiles.json कॉन्फ़िगरेशन फ़ाइल बनाता है"
 
-msgid "Removes files permanently according to toomanyfiles.json"
-msgstr "toomanyfiles.json के अनुसार फ़ाइलों को स्थायी रूप से हटाता है"
+msgid "Removes files permanently according to TooManyFiles.json"
+msgstr "TooManyFiles.json के अनुसार फ़ाइलों को स्थायी रूप से हटाता है"
 
-msgid "Makes a simulation and doesn't remove files according to toomanyfiles.json"
-msgstr "सिमुलेशन करता है और toomanyfiles.json के अनुसार फ़ाइलों को नहीं हटाता है"
+msgid "Makes a simulation and doesn't remove files according to TooManyFiles.json"
+msgstr "सिमुलेशन करता है और TooManyFiles.json के अनुसार फ़ाइलों को नहीं हटाता है"
 
-msgid "List files included and excluded for each configuration in toomanyfiles.json"
-msgstr "toomanyfiles.json में प्रत्येक कॉन्फ़िगरेशन के लिए शामिल और बहिष्कृत फ़ाइलों की सूची बनाता है"
+msgid "List files included and excluded for each configuration in TooManyFiles.json"
+msgstr "TooManyFiles.json में प्रत्येक कॉन्फ़िगरेशन के लिए शामिल और बहिष्कृत फ़ाइलों की सूची बनाता है"
 
 msgid "vhs tool is needed. Look at https://github.com/charmbracelet/vhs"
 msgstr "vhs टूल की आवश्यकता है। https://github.com/charmbracelet/vhs देखें"
@@ -222,20 +222,44 @@ msgstr "'{}' के अंतर्गत {} कॉन्फ़िगरेश�
 msgid "Processing directory: {}"
 msgstr "डायरेक्ट्री को संसाधित किया जा रहा है: {}"
 
-msgid "Recursively search and execute all toomanyfiles.json configuration files in a directory tree"
-msgstr "डायरेक्ट्री ट्री में सभी toomanyfiles.json कॉन्फ़िगरेशन फ़ाइलों को पुनरावर्ती रूप से खोजें और निष्पादित करें"
+msgid "Recursively search and execute all TooManyFiles.json configuration files in a directory tree"
+msgstr "डायरेक्ट्री ट्री में सभी TooManyFiles.json कॉन्फ़िगरेशन फ़ाइलों को पुनरावर्ती रूप से खोजें और निष्पादित करें"
 
-msgid "Removes files permanently according to all toomanyfiles.json found in tree"
-msgstr "ट्री में मिली सभी toomanyfiles.json के अनुसार फ़ाइलों को स्थायी रूप से हटाता है"
+msgid "Removes files permanently according to all TooManyFiles.json found in tree"
+msgstr "ट्री में मिली सभी TooManyFiles.json के अनुसार फ़ाइलों को स्थायी रूप से हटाता है"
 
-msgid "Makes a simulation and doesn't remove files according to all toomanyfiles.json found in tree"
-msgstr "सिमुलेशन करता है और ट्री में मिली सभी toomanyfiles.json के अनुसार फ़ाइलों को नहीं हटाता है"
+msgid "Makes a simulation and doesn't remove files according to all TooManyFiles.json found in tree"
+msgstr "सिमुलेशन करता है और ट्री में मिली सभी TooManyFiles.json के अनुसार फ़ाइलों को नहीं हटाता है"
 
-msgid "List files included and excluded for each toomanyfiles.json found in tree"
-msgstr "ट्री में मिली प्रत्येक toomanyfiles.json के लिए शामिल और बहिष्कृत फ़ाइलों की सूची बनाता है"
+msgid "List files included and excluded for each TooManyFiles.json found in tree"
+msgstr "ट्री में मिली प्रत्येक TooManyFiles.json के लिए शामिल और बहिष्कृत फ़ाइलों की सूची बनाता है"
 
 msgid "Shows detailed output for each configuration"
 msgstr "प्रत्येक कॉन्फ़िगरेशन के लिए विस्तृत आउटपुट दिखाता है"
+
+#~ msgid "Creates a default toomanyfiles.json configuration file in current directory"
+#~ msgstr "वर्तमान डायरेक्ट्री में एक डिफ़ॉल्ट toomanyfiles.json कॉन्फ़िगरेशन फ़ाइल बनाता है"
+
+#~ msgid "Removes files permanently according to toomanyfiles.json"
+#~ msgstr "toomanyfiles.json के अनुसार फ़ाइलों को स्थायी रूप से हटाता है"
+
+#~ msgid "Makes a simulation and doesn't remove files according to toomanyfiles.json"
+#~ msgstr "सिमुलेशन करता है और toomanyfiles.json के अनुसार फ़ाइलों को नहीं हटाता है"
+
+#~ msgid "List files included and excluded for each configuration in toomanyfiles.json"
+#~ msgstr "toomanyfiles.json में प्रत्येक कॉन्फ़िगरेशन के लिए शामिल और बहिष्कृत फ़ाइलों की सूची बनाता है"
+
+#~ msgid "Recursively search and execute all toomanyfiles.json configuration files in a directory tree"
+#~ msgstr "डायरेक्ट्री ट्री में सभी toomanyfiles.json कॉन्फ़िगरेशन फ़ाइलों को पुनरावर्ती रूप से खोजें और निष्पादित करें"
+
+#~ msgid "Removes files permanently according to all toomanyfiles.json found in tree"
+#~ msgstr "ट्री में मिली सभी toomanyfiles.json के अनुसार फ़ाइलों को स्थायी रूप से हटाता है"
+
+#~ msgid "Makes a simulation and doesn't remove files according to all toomanyfiles.json found in tree"
+#~ msgstr "सिमुलेशन करता है और ट्री में मिली सभी toomanyfiles.json के अनुसार फ़ाइलों को नहीं हटाता है"
+
+#~ msgid "List files included and excluded for each toomanyfiles.json found in tree"
+#~ msgstr "ट्री में मिली प्रत्येक toomanyfiles.json के लिए शामिल और बहिष्कृत फ़ाइलों की सूची बनाता है"
 
 #~ msgid "Processing directories"
 #~ msgstr "डायरेक्ट्रीज को संसाधित किया जा रहा है"

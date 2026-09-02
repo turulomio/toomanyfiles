@@ -21,7 +21,7 @@ except:
     _ = str
 
 
-DEFAULT_CONFIG_FILENAME = "toomanyfiles.json"
+DEFAULT_CONFIG_FILENAME = "TooManyFiles.json"
 
 DEFAULT_JSON_CONFIG = [
     {
@@ -36,7 +36,7 @@ DEFAULT_JSON_CONFIG = [
 
 
 def create_json_config(directory=None):
-    """Create a default toomanyfiles.json configuration file in the specified directory.
+    """Create a default TooManyFiles.json configuration file in the specified directory.
 
     Args:
         directory (str, optional): Target directory. Defaults to current working directory.
@@ -60,7 +60,7 @@ def create_json_config(directory=None):
 
 
 def toomanyfiles_json(directory=None, remove=False, is_list=False, show_output=True):
-    """Run toomanyfiles operations according to configuration in toomanyfiles.json.
+    """Run toomanyfiles operations according to configuration in TooManyFiles.json.
 
     Args:
         directory (str, optional): Target directory. Defaults to current working directory.
@@ -136,7 +136,7 @@ def toomanyfiles_json(directory=None, remove=False, is_list=False, show_output=T
 def main(arguments=None):
     """CLI entry point for toomanyfiles_json.
 
-    Parses command-line arguments and executes toomanyfiles operations based on toomanyfiles.json.
+    Parses command-line arguments and executes toomanyfiles operations based on TooManyFiles.json.
 
     Args:
         arguments (list[str], optional): List of command-line arguments.
@@ -153,10 +153,10 @@ def main(arguments=None):
     parser.add_argument('--version', action='version', version=__version__)
 
     group = parser.add_mutually_exclusive_group(required=True)
-    group.add_argument('--create', help=_("Creates a default toomanyfiles.json configuration file in current directory"), action="store_true", default=False)
-    group.add_argument('--remove', help=_("Removes files permanently according to toomanyfiles.json"), action="store_true", default=False)
-    group.add_argument('--pretend', help=_("Makes a simulation and doesn't remove files according to toomanyfiles.json"), action="store_true", default=False)
-    group.add_argument('--list', help=_("List files included and excluded for each configuration in toomanyfiles.json"), action="store_true", default=False)
+    group.add_argument('--create', help=_("Creates a default TooManyFiles.json configuration file in current directory"), action="store_true", default=False)
+    group.add_argument('--remove', help=_("Removes files permanently according to TooManyFiles.json"), action="store_true", default=False)
+    group.add_argument('--pretend', help=_("Makes a simulation and doesn't remove files according to TooManyFiles.json"), action="store_true", default=False)
+    group.add_argument('--list', help=_("List files included and excluded for each configuration in TooManyFiles.json"), action="store_true", default=False)
 
     args = parser.parse_args(arguments)
 

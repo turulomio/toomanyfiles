@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-09-02 04:10+0200\n"
+"POT-Creation-Date: 2026-09-02 04:26+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -47,16 +47,16 @@ msgstr ""
 msgid "Developed by Mariano Muñoz 2018-{}"
 msgstr ""
 
-msgid "Creates a default toomanyfiles.json configuration file in current directory"
+msgid "Creates a default TooManyFiles.json configuration file in current directory"
 msgstr ""
 
-msgid "Removes files permanently according to toomanyfiles.json"
+msgid "Removes files permanently according to TooManyFiles.json"
 msgstr ""
 
-msgid "Makes a simulation and doesn't remove files according to toomanyfiles.json"
+msgid "Makes a simulation and doesn't remove files according to TooManyFiles.json"
 msgstr ""
 
-msgid "List files included and excluded for each configuration in toomanyfiles.json"
+msgid "List files included and excluded for each configuration in TooManyFiles.json"
 msgstr ""
 
 msgid "vhs tool is needed. Look at https://github.com/charmbracelet/vhs"
@@ -222,16 +222,16 @@ msgstr ""
 msgid "Processing directory: {}"
 msgstr ""
 
-msgid "Recursively search and execute all toomanyfiles.json configuration files in a directory tree"
+msgid "Recursively search and execute all TooManyFiles.json configuration files in a directory tree"
 msgstr ""
 
-msgid "Removes files permanently according to all toomanyfiles.json found in tree"
+msgid "Removes files permanently according to all TooManyFiles.json found in tree"
 msgstr ""
 
-msgid "Makes a simulation and doesn't remove files according to all toomanyfiles.json found in tree"
+msgid "Makes a simulation and doesn't remove files according to all TooManyFiles.json found in tree"
 msgstr ""
 
-msgid "List files included and excluded for each toomanyfiles.json found in tree"
+msgid "List files included and excluded for each TooManyFiles.json found in tree"
 msgstr ""
 
 msgid "Shows detailed output for each configuration"

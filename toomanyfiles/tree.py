@@ -1,6 +1,6 @@
 """Recursive tree execution of TooManyFiles JSON configurations.
 
-Recursively discovers and executes all `toomanyfiles.json` configuration files
+Recursively discovers and executes all `TooManyFiles.json` configuration files
 found in a directory tree.
 """
 
@@ -21,13 +21,13 @@ except:
 
 
 def find_json_configs(root_directory):
-    """Recursively find all directories containing a toomanyfiles.json file.
+    """Recursively find all directories containing a TooManyFiles.json file.
 
     Args:
         root_directory (str): Root directory path to start search.
 
     Returns:
-        list[str]: Sorted list of directory paths containing toomanyfiles.json.
+        list[str]: Sorted list of directory paths containing TooManyFiles.json.
     """
     config_dirs = []
     for dirpath, _, filenames in walk(root_directory):
@@ -38,7 +38,7 @@ def find_json_configs(root_directory):
 
 
 def toomanyfiles_tree(root_directory=None, remove=False, is_list=False, show_output=False):
-    """Recursively execute toomanyfiles_json in all directories with toomanyfiles.json.
+    """Recursively execute toomanyfiles_json in all directories with TooManyFiles.json.
 
     Args:
         root_directory (str, optional): Root directory to search. Defaults to current working directory.
@@ -79,7 +79,7 @@ def toomanyfiles_tree(root_directory=None, remove=False, is_list=False, show_out
 def main(arguments=None):
     """CLI entry point for toomanyfiles_tree.
 
-    Parses command-line arguments and executes toomanyfiles recursively for all toomanyfiles.json files found.
+    Parses command-line arguments and executes toomanyfiles recursively for all TooManyFiles.json files found.
 
     Args:
         arguments (list[str], optional): List of command-line arguments.
@@ -89,16 +89,16 @@ def main(arguments=None):
 
     parser = ArgumentParser(
         prog='toomanyfiles_tree',
-        description=_('Recursively search and execute all toomanyfiles.json configuration files in a directory tree'),
+        description=_('Recursively search and execute all TooManyFiles.json configuration files in a directory tree'),
         epilog=_("Developed by Mariano Muñoz 2018-{}").format(__versiondate__.year),
         formatter_class=RawTextHelpFormatter
     )
     parser.add_argument('--version', action='version', version=__version__)
 
     group = parser.add_mutually_exclusive_group(required=True)
-    group.add_argument('--remove', help=_("Removes files permanently according to all toomanyfiles.json found in tree"), action="store_true", default=False)
-    group.add_argument('--pretend', help=_("Makes a simulation and doesn't remove files according to all toomanyfiles.json found in tree"), action="store_true", default=False)
-    group.add_argument('--list', help=_("List files included and excluded for each toomanyfiles.json found in tree"), action="store_true", default=False)
+    group.add_argument('--remove', help=_("Removes files permanently according to all TooManyFiles.json found in tree"), action="store_true", default=False)
+    group.add_argument('--pretend', help=_("Makes a simulation and doesn't remove files according to all TooManyFiles.json found in tree"), action="store_true", default=False)
+    group.add_argument('--list', help=_("List files included and excluded for each TooManyFiles.json found in tree"), action="store_true", default=False)
 
     parser.add_argument('--show_output', help=_("Shows detailed output for each configuration"), action="store_true", default=False)
 

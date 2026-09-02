@@ -63,9 +63,9 @@ def video():
     remove_examples()
 
     create_examples()
-    with open("toomanyfiles_examples/files/toomanyfiles.json", "w") as f:
+    with open("toomanyfiles_examples/files/TooManyFiles.json", "w") as f:
         f.write('[{"time_pattern": "%Y%m%d %H%M", "too_young_to_delete": 30}]\n')
-    with open("toomanyfiles_examples/directories/toomanyfiles.json", "w") as f:
+    with open("toomanyfiles_examples/directories/TooManyFiles.json", "w") as f:
         f.write('[{"time_pattern": "%Y%m%d %H%M", "too_young_to_delete": 30}]\n')
     chdir("toomanyfiles_examples")
     system(f"{vhs} ../doc/tree.tape")

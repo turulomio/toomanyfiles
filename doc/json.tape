@@ -20,11 +20,11 @@ Sleep 1s
 Type "# This is a video to show how to use 'toomanyfiles_json' command" Sleep 1s Enter
 Type "# First, we can create a default configuration file in current directory with --create" Sleep 1s Enter
 Type "toomanyfiles_json --create" Sleep 1s Enter
-Type "cat toomanyfiles.json" Sleep 1s Enter
+Type "cat TooManyFiles.json" Sleep 1s Enter
 Type "# We can simulate the cleanup process without deleting files using --pretend" Sleep 1s Enter
 Type "toomanyfiles_json --pretend" Sleep 2s Enter
 Type "# We can also list files to process and ignored with --list" Sleep 1s Enter
 Type "toomanyfiles_json --list" Sleep 2s Enter
-Type "# Finally, execute file removal according to toomanyfiles.json with --remove" Sleep 1s Enter
+Type "# Finally, execute file removal according to TooManyFiles.json with --remove" Sleep 1s Enter
 Type "toomanyfiles_json --remove" Sleep 2s Enter
 Sleep 5s

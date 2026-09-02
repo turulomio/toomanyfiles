@@ -261,7 +261,7 @@ def lod_process_directory(lod_, remove_mode, too_young_to_delete, max_files_to_s
 
 
 def write_log(lod_, directory, time_pattern, file_patterns):
-    """Append the execution header and deleted file actions to TooManyFiles.log.
+    """Append the execution header and deleted file actions to TooManyFiles.log in target directory.
 
     Args:
         lod_ (list[dict]): Processed file dictionaries with assigned statuses.
@@ -275,7 +275,8 @@ def write_log(lod_, directory, time_pattern, file_patterns):
             s = s + "{} >>> {}\n".format(o["filename"], _("Delete"))
         elif o["status"] == types.FileStatus.OverMaxFiles:
             s = s + "{} >>> {}\n".format(o["filename"], _("Over max number of files"))
-    with open("TooManyFiles.log", "a") as f:
+    log_file = path.join(directory, "TooManyFiles.log")
+    with open(log_file, "a", encoding="utf-8") as f:
         f.write(s)
 
 
