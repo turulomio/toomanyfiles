@@ -19,10 +19,8 @@ Set WindowBar Colorful
 Sleep 1s
 Type "# This is a video to show how to use 'toomanyfiles_tree' command" Sleep 1s Enter
 Type "# It recursively searches and executes all TooManyFiles.json configuration files in the directory tree" Sleep 1s Enter
-Type "# Let's simulate the cleanup across all found configuration files using --pretend" Sleep 1s Enter
-Type "toomanyfiles_tree --pretend" Sleep 2s Enter
-Type "# We can also list files to process and ignored for each configuration using --list" Sleep 1s Enter
-Type "toomanyfiles_tree --list" Sleep 2s Enter
-Type "# Finally, execute file removal across the entire tree using --remove" Sleep 1s Enter
+Type "# By default, output is hidden and only a progress bar is shown" Sleep 1s Enter
 Type "toomanyfiles_tree --remove" Sleep 2s Enter
+Type "# We can use --show_output to display detailed output for each configuration" Sleep 1s Enter
+Type "toomanyfiles_tree --remove --show_output" Sleep 2s Enter
 Sleep 5s

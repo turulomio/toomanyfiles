@@ -36,42 +36,55 @@ def coverage():
     system("coverage run --omit='*/reusing/*,*uno.py' -m pytest && coverage report && coverage html")
 
 
-def video():
-    """Generate demonstration video recordings and GIFs using VHS."""
+def video(target="all"):
+    """Generate demonstration video recordings and GIFs using VHS.
+
+    Args:
+        target (str, optional): Which video to generate ('command', 'howto', 'json', 'tree', or 'all').
+            Defaults to 'all'.
+    """
     # Comprobaciones
     vhs = which("vhs")
     if vhs is None:
         print(_("vhs tool is needed. Look at https://github.com/charmbracelet/vhs"))
         exit(1)
 
-    chdir("doc")
-    system(f"{vhs} command.tape")
-    chdir("..")
+    if target not in ["all", "command", "howto", "json", "tree"]:
+        print(_("Invalid target '{}'. Choose from: command, howto, json, tree, all").format(target))
+        exit(1)
 
-    create_examples()
-    chdir("toomanyfiles_examples/files")
-    system(f"{vhs} ../../doc/howto.tape")
-    move("howto.gif", "../../doc/howto.gif")
-    chdir("../..")
-    remove_examples()
+    if target in ["all", "command"]:
+        chdir("doc")
+        system(f"{vhs} command.tape")
+        chdir("..")
 
-    create_examples()
-    chdir("toomanyfiles_examples/files")
-    system(f"{vhs} ../../doc/json.tape")
-    move("json.gif", "../../doc/json.gif")
-    chdir("../..")
-    remove_examples()
+    if target in ["all", "howto"]:
+        create_examples()
+        chdir("toomanyfiles_examples/files")
+        system(f"{vhs} ../../doc/howto.tape")
+        move("howto.gif", "../../doc/howto.gif")
+        chdir("../..")
+        remove_examples()
 
-    create_examples()
-    with open("toomanyfiles_examples/files/TooManyFiles.json", "w") as f:
-        f.write('[{"time_pattern": "%Y%m%d %H%M", "too_young_to_delete": 30}]\n')
-    with open("toomanyfiles_examples/directories/TooManyFiles.json", "w") as f:
-        f.write('[{"time_pattern": "%Y%m%d %H%M", "too_young_to_delete": 30}]\n')
-    chdir("toomanyfiles_examples")
-    system(f"{vhs} ../doc/tree.tape")
-    move("tree.gif", "../doc/tree.gif")
-    chdir("..")
-    remove_examples()
+    if target in ["all", "json"]:
+        create_examples()
+        chdir("toomanyfiles_examples/files")
+        system(f"{vhs} ../../doc/json.tape")
+        move("json.gif", "../../doc/json.gif")
+        chdir("../..")
+        remove_examples()
+
+    if target in ["all", "tree"]:
+        create_examples()
+        with open("toomanyfiles_examples/files/TooManyFiles.json", "w") as f:
+            f.write('[{"time_pattern": "%Y%m%d %H%M", "too_young_to_delete": 30}]\n')
+        with open("toomanyfiles_examples/directories/TooManyFiles.json", "w") as f:
+            f.write('[{"time_pattern": "%Y%m%d %H%M", "too_young_to_delete": 30}]\n')
+        chdir("toomanyfiles_examples")
+        system(f"{vhs} ../doc/tree.tape")
+        move("tree.gif", "../doc/tree.gif")
+        chdir("..")
+        remove_examples()
 
 
 def translate():

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-09-02 04:26+0200\n"
+"POT-Creation-Date: 2026-09-02 04:34+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -60,6 +60,9 @@ msgid "List files included and excluded for each configuration in TooManyFiles.j
 msgstr ""
 
 msgid "vhs tool is needed. Look at https://github.com/charmbracelet/vhs"
+msgstr ""
+
+msgid "Invalid target '{}'. Choose from: command, howto, json, tree, all"
 msgstr ""
 
 msgid "New Release:"

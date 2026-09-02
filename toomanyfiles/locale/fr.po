@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: TooManyFiles\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-09-02 04:25+0200\n"
+"POT-Creation-Date: 2026-09-02 04:34+0200\n"
 "PO-Revision-Date: 2026-09-01 05:00+0200\n"
 "Last-Translator: Mariano Muñoz <turulomio@yahoo.es>\n"
 "Language-Team: French\n"
@@ -61,6 +61,9 @@ msgstr "Liste les fichiers inclus et exclus pour chaque configuration dans TooMa
 
 msgid "vhs tool is needed. Look at https://github.com/charmbracelet/vhs"
 msgstr "L'outil vhs est requis. Consultez https://github.com/charmbracelet/vhs"
+
+msgid "Invalid target '{}'. Choose from: command, howto, json, tree, all"
+msgstr "Cible invalide '{}'. Choisissez parmi : command, howto, json, tree, all"
 
 msgid "New Release:"
 msgstr "Nouvelle version :"

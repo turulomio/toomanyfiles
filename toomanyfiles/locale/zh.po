@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: TooManyFiles\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-09-02 04:25+0200\n"
+"POT-Creation-Date: 2026-09-02 04:34+0200\n"
 "PO-Revision-Date: 2026-09-01 05:00+0200\n"
 "Last-Translator: Mariano Muñoz <turulomio@yahoo.es>\n"
 "Language-Team: Chinese\n"
@@ -61,6 +61,9 @@ msgstr "列出 TooManyFiles.json 中每个配置所包含和排除的文件"
 
 msgid "vhs tool is needed. Look at https://github.com/charmbracelet/vhs"
 msgstr "需要 vhs 工具。请参阅 https://github.com/charmbracelet/vhs"
+
+msgid "Invalid target '{}'. Choose from: command, howto, json, tree, all"
+msgstr "无效的目标 '{}'。请从以下选项中选择：command, howto, json, tree, all"
 
 msgid "New Release:"
 msgstr "新版本发布："
