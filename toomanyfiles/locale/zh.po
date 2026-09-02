@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: TooManyFiles\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-09-01 14:00+0200\n"
+"POT-Creation-Date: 2026-09-02 04:09+0200\n"
 "PO-Revision-Date: 2026-09-01 05:00+0200\n"
 "Last-Translator: Mariano Muñoz <turulomio@yahoo.es>\n"
 "Language-Team: Chinese\n"
@@ -219,9 +219,6 @@ msgstr "在 '{}' 下的目录树中未找到 '{}' 文件。"
 msgid "Found {} configuration directory(ies) under '{}':"
 msgstr "在 '{}' 下找到 {} 个配置目录："
 
-msgid "Processing directories"
-msgstr "正在处理目录"
-
 msgid "Processing directory: {}"
 msgstr "正在处理目录：{}"
 
@@ -236,3 +233,9 @@ msgstr "进行模拟操作，不根据树中找到的所有 toomanyfiles.json �
 
 msgid "List files included and excluded for each toomanyfiles.json found in tree"
 msgstr "列出树中找到的每个 toomanyfiles.json 所包含和排除的文件"
+
+msgid "Shows detailed output for each configuration"
+msgstr "显示每个配置的详细输出"
+
+#~ msgid "Processing directories"
+#~ msgstr "正在处理目录"

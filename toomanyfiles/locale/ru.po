@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: TooManyFiles\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-09-01 14:00+0200\n"
+"POT-Creation-Date: 2026-09-02 04:09+0200\n"
 "PO-Revision-Date: 2026-09-01 05:00+0200\n"
 "Last-Translator: Mariano Muñoz <turulomio@yahoo.es>\n"
 "Language-Team: Russian\n"
@@ -219,9 +219,6 @@ msgstr "Файлы '{}' не найдены в дереве каталогов �
 msgid "Found {} configuration directory(ies) under '{}':"
 msgstr "Найдено {} каталог(ов) конфигурации под '{}':"
 
-msgid "Processing directories"
-msgstr "Обработка каталогов"
-
 msgid "Processing directory: {}"
 msgstr "Обработка каталога: {}"
 
@@ -236,3 +233,9 @@ msgstr "Выполняет симуляцию без удаления файло
 
 msgid "List files included and excluded for each toomanyfiles.json found in tree"
 msgstr "Выводит список включенных и исключенных файлов для каждого toomanyfiles.json, найденного в дереве"
+
+msgid "Shows detailed output for each configuration"
+msgstr "Показывает подробный вывод для каждой конфигурации"
+
+#~ msgid "Processing directories"
+#~ msgstr "Обработка каталогов"

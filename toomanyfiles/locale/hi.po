@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: TooManyFiles\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-09-01 14:00+0200\n"
+"POT-Creation-Date: 2026-09-02 04:09+0200\n"
 "PO-Revision-Date: 2026-09-01 05:00+0200\n"
 "Last-Translator: Mariano Muñoz <turulomio@yahoo.es>\n"
 "Language-Team: Hindi\n"
@@ -219,9 +219,6 @@ msgstr "'{}' के अंतर्गत डायरेक्ट्री ट�
 msgid "Found {} configuration directory(ies) under '{}':"
 msgstr "'{}' के अंतर्गत {} कॉन्फ़िगरेशन डायरेक्ट्री(ज़) मिलीं:"
 
-msgid "Processing directories"
-msgstr "डायरेक्ट्रीज को संसाधित किया जा रहा है"
-
 msgid "Processing directory: {}"
 msgstr "डायरेक्ट्री को संसाधित किया जा रहा है: {}"
 
@@ -236,3 +233,9 @@ msgstr "सिमुलेशन करता है और ट्री मे�
 
 msgid "List files included and excluded for each toomanyfiles.json found in tree"
 msgstr "ट्री में मिली प्रत्येक toomanyfiles.json के लिए शामिल और बहिष्कृत फ़ाइलों की सूची बनाता है"
+
+msgid "Shows detailed output for each configuration"
+msgstr "प्रत्येक कॉन्फ़िगरेशन के लिए विस्तृत आउटपुट दिखाता है"
+
+#~ msgid "Processing directories"
+#~ msgstr "डायरेक्ट्रीज को संसाधित किया जा रहा है"

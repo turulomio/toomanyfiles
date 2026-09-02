@@ -59,13 +59,14 @@ def create_json_config(directory=None):
     return True
 
 
-def toomanyfiles_json(directory=None, remove=False, is_list=False):
+def toomanyfiles_json(directory=None, remove=False, is_list=False, show_output=True):
     """Run toomanyfiles operations according to configuration in toomanyfiles.json.
 
     Args:
         directory (str, optional): Target directory. Defaults to current working directory.
         remove (bool, optional): If True, deletes files; if False, simulates (dry-run). Defaults to False.
         is_list (bool, optional): If True, lists files matched and ignored. Defaults to False.
+        show_output (bool, optional): If True, displays console output. Defaults to True.
 
     Returns:
         list[tuple]: List of results for each configuration item.
@@ -109,11 +110,12 @@ def toomanyfiles_json(directory=None, remove=False, is_list=False):
             processed = lod.lod_order_by(processed, "filename")
             files_to_ignore = lod.lod_order_by(files_to_ignore, "filename")
 
-            print(colors.magenta("=== " + _("CONFIGURATION #{}: FILES TO PROCESS").format(index) + " ==="))
-            toomanyfiles.print_with_type(processed)
-            print()
-            print(colors.magenta("=== " + _("CONFIGURATION #{}: FILES IGNORED").format(index) + " ==="))
-            toomanyfiles.print_with_type(files_to_ignore)
+            if show_output:
+                print(colors.magenta("=== " + _("CONFIGURATION #{}: FILES TO PROCESS").format(index) + " ==="))
+                toomanyfiles.print_with_type(processed)
+                print()
+                print(colors.magenta("=== " + _("CONFIGURATION #{}: FILES IGNORED").format(index) + " ==="))
+                toomanyfiles.print_with_type(files_to_ignore)
             results.append((processed, files_to_ignore))
         else:
             res = toomanyfiles.toomanyfiles(
@@ -124,7 +126,8 @@ def toomanyfiles_json(directory=None, remove=False, is_list=False):
                 too_young_to_delete=too_young_to_delete,
                 max_files_to_store=max_files_to_store,
                 remove_mode=remove_mode,
-                disable_log=disable_log
+                disable_log=disable_log,
+                show_output=show_output
             )
             results.append(res)
     return results

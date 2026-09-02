@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: TooManyFiles\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-09-01 14:00+0200\n"
+"POT-Creation-Date: 2026-09-02 04:09+0200\n"
 "PO-Revision-Date: 2026-09-01 05:00+0200\n"
 "Last-Translator: Mariano Muñoz <turulomio@yahoo.es>\n"
 "Language-Team: Spanish <turulomio@yahoo.es>\n"
@@ -219,9 +219,6 @@ msgstr "No se han encontrado archivos '{}' en el árbol de directorios bajo '{}'
 msgid "Found {} configuration directory(ies) under '{}':"
 msgstr "Se encontraron {} directorio(s) de configuración bajo '{}':"
 
-msgid "Processing directories"
-msgstr "Procesando directorios"
-
 msgid "Processing directory: {}"
 msgstr "Procesando directorio: {}"
 
@@ -236,3 +233,9 @@ msgstr "Realiza una simulación y no elimina archivos según todos los toomanyfi
 
 msgid "List files included and excluded for each toomanyfiles.json found in tree"
 msgstr "Lista los archivos incluidos y excluidos para cada toomanyfiles.json encontrado en el árbol"
+
+msgid "Shows detailed output for each configuration"
+msgstr "Muestra información detallada para cada configuración"
+
+#~ msgid "Processing directories"
+#~ msgstr "Procesando directorios"

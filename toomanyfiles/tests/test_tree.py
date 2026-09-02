@@ -73,6 +73,10 @@ def test_toomanyfiles_tree_three_json_execution():
         assert path.exists(path.join(dir2, "20250202 App.log"))
         assert path.exists(path.join(dir3, "20250302 Report.pdf"))
 
+        # Dry run with show_output=True
+        results_verbose = tmf_tree.toomanyfiles_tree(tempdir, remove=False, show_output=True)
+        assert len(results_verbose) == 3
+
         # List mode
         list_results = tmf_tree.toomanyfiles_tree(tempdir, is_list=True)
         assert len(list_results) == 3
@@ -92,10 +96,12 @@ def test_toomanyfiles_tree_empty():
     with TemporaryDirectory() as tempdir:
         res = tmf_tree.toomanyfiles_tree(tempdir)
         assert res == {}
+        res_verbose = tmf_tree.toomanyfiles_tree(tempdir, show_output=True)
+        assert res_verbose == {}
 
 
 def test_main_tree():
-    """Verify main CLI invocations of tree module (--pretend, --list, --remove)."""
+    """Verify main CLI invocations of tree module (--pretend, --list, --remove, --show_output)."""
     old_cwd = getcwd()
     with TemporaryDirectory() as tempdir:
         try:
@@ -108,6 +114,7 @@ def test_main_tree():
                 std_json.dump([{"time_pattern": "%Y%m%d", "too_young_to_delete": 0}], f)
 
             tmf_tree.main(["--pretend"])
+            tmf_tree.main(["--pretend", "--show_output"])
             tmf_tree.main(["--list"])
             tmf_tree.main(["--remove"])
             assert path.exists(path.join(sub, "20250101 Backup.xlsx"))
