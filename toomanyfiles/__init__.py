@@ -10,7 +10,7 @@ from toomanyfiles import json
 from toomanyfiles import tree
 
 from datetime import datetime
-__version__ = '1.2.1'
-__versiondatetime__ = datetime(2026, 9, 1, 14, 25)
+__version__ = '1.3.0'
+__versiondatetime__ = datetime(2026, 9, 2, 4, 34)
 __versiondate__ = __versiondatetime__.date()
 

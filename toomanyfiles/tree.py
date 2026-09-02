@@ -1,6 +1,6 @@
 """Recursive tree execution of TooManyFiles JSON configurations.
 
-Recursively discovers and executes all `toomanyfiles.json` configuration files
+Recursively discovers and executes all `TooManyFiles.json` configuration files
 found in a directory tree.
 """
 
@@ -21,13 +21,13 @@ except:
 
 
 def find_json_configs(root_directory):
-    """Recursively find all directories containing a toomanyfiles.json file.
+    """Recursively find all directories containing a TooManyFiles.json file.
 
     Args:
         root_directory (str): Root directory path to start search.
 
     Returns:
-        list[str]: Sorted list of directory paths containing toomanyfiles.json.
+        list[str]: Sorted list of directory paths containing TooManyFiles.json.
     """
     config_dirs = []
     for dirpath, _, filenames in walk(root_directory):
@@ -37,13 +37,14 @@ def find_json_configs(root_directory):
     return config_dirs
 
 
-def toomanyfiles_tree(root_directory=None, remove=False, is_list=False):
-    """Recursively execute toomanyfiles_json in all directories with toomanyfiles.json.
+def toomanyfiles_tree(root_directory=None, remove=False, is_list=False, show_output=False):
+    """Recursively execute toomanyfiles_json in all directories with TooManyFiles.json.
 
     Args:
         root_directory (str, optional): Root directory to search. Defaults to current working directory.
         remove (bool, optional): If True, deletes files; if False, simulates. Defaults to False.
         is_list (bool, optional): If True, lists files matched and ignored. Defaults to False.
+        show_output (bool, optional): If True, displays detailed output for each directory. Defaults to False.
 
     Returns:
         dict[str, list]: Mapping of directory paths to their toomanyfiles_json execution results.
@@ -56,23 +57,29 @@ def toomanyfiles_tree(root_directory=None, remove=False, is_list=False):
         print(Fore.YELLOW + _("No '{}' files found in directory tree under '{}'.").format(tmf_json.DEFAULT_CONFIG_FILENAME, root_directory) + Style.RESET_ALL)
         return {}
 
-    print(colors.magenta(_("Found {} configuration directory(ies) under '{}':")).format(len(config_dirs), root_directory))
-    for d in config_dirs:
-        print(f"  * {d}")
-    print()
+    if show_output:
+        print(colors.magenta(_("Found {} configuration directory(ies) under '{}':")).format(len(config_dirs), root_directory))
+        for d in config_dirs:
+            print(f"  * {d}")
+        print()
 
     results = {}
-    for d in tqdm(config_dirs, desc=_("Processing directories")):
-        print(Style.BRIGHT + Fore.CYAN + ">>> " + _("Processing directory: {}").format(d) + Style.RESET_ALL)
-        results[d] = tmf_json.toomanyfiles_json(d, remove=remove, is_list=is_list)
-        print()
+    pbar = tqdm(config_dirs)
+    for d in pbar:
+        config_file = path.join(d, tmf_json.DEFAULT_CONFIG_FILENAME)
+        pbar.set_description(config_file)
+        if show_output:
+            print(Style.BRIGHT + Fore.CYAN + ">>> " + _("Processing directory: {}").format(d) + Style.RESET_ALL)
+        results[d] = tmf_json.toomanyfiles_json(d, remove=remove, is_list=is_list, show_output=show_output)
+        if show_output:
+            print()
     return results
 
 
 def main(arguments=None):
     """CLI entry point for toomanyfiles_tree.
 
-    Parses command-line arguments and executes toomanyfiles recursively for all toomanyfiles.json files found.
+    Parses command-line arguments and executes toomanyfiles recursively for all TooManyFiles.json files found.
 
     Args:
         arguments (list[str], optional): List of command-line arguments.
@@ -82,23 +89,25 @@ def main(arguments=None):
 
     parser = ArgumentParser(
         prog='toomanyfiles_tree',
-        description=_('Recursively search and execute all toomanyfiles.json configuration files in a directory tree'),
+        description=_('Recursively search and execute all TooManyFiles.json configuration files in a directory tree'),
         epilog=_("Developed by Mariano Muñoz 2018-{}").format(__versiondate__.year),
         formatter_class=RawTextHelpFormatter
     )
     parser.add_argument('--version', action='version', version=__version__)
 
     group = parser.add_mutually_exclusive_group(required=True)
-    group.add_argument('--remove', help=_("Removes files permanently according to all toomanyfiles.json found in tree"), action="store_true", default=False)
-    group.add_argument('--pretend', help=_("Makes a simulation and doesn't remove files according to all toomanyfiles.json found in tree"), action="store_true", default=False)
-    group.add_argument('--list', help=_("List files included and excluded for each toomanyfiles.json found in tree"), action="store_true", default=False)
+    group.add_argument('--remove', help=_("Removes files permanently according to all TooManyFiles.json found in tree"), action="store_true", default=False)
+    group.add_argument('--pretend', help=_("Makes a simulation and doesn't remove files according to all TooManyFiles.json found in tree"), action="store_true", default=False)
+    group.add_argument('--list', help=_("List files included and excluded for each TooManyFiles.json found in tree"), action="store_true", default=False)
+
+    parser.add_argument('--show_output', help=_("Shows detailed output for each configuration"), action="store_true", default=False)
 
     args = parser.parse_args(arguments)
 
     init(autoreset=True)
     if args.remove:
-        toomanyfiles_tree(getcwd(), remove=True)
+        toomanyfiles_tree(getcwd(), remove=True, show_output=args.show_output)
     elif args.pretend:
-        toomanyfiles_tree(getcwd(), remove=False)
+        toomanyfiles_tree(getcwd(), remove=False, show_output=args.show_output)
     elif args.list:
-        toomanyfiles_tree(getcwd(), is_list=True)
+        toomanyfiles_tree(getcwd(), is_list=True, show_output=args.show_output)

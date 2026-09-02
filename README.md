@@ -15,8 +15,8 @@ If you use Gentoo you can find a ebuild in https://github.com/turulomio/myportag
 ## Description
 This package provides three commands:
 * `toomanyfiles`: Removes files and directories matching date and time patterns according to retention rules passed via CLI arguments.
-* `toomanyfiles_json`: Reads configuration from a `toomanyfiles.json` file in the current directory containing a list of configuration objects, and executes retention rules for each configuration in the current directory.
-* `toomanyfiles_tree`: Recursively finds and executes all `toomanyfiles.json` configuration files in a directory tree.
+* `toomanyfiles_json`: Reads configuration from a `TooManyFiles.json` file in the current directory containing a list of configuration objects, and executes retention rules for each configuration in the current directory.
+* `toomanyfiles_tree`: Recursively finds and executes all `TooManyFiles.json` configuration files in a directory tree.
 
 ## Usage
 
@@ -28,14 +28,14 @@ You can see this animated gif to learn how to use `toomanyfiles`:
 <img src="https://raw.githubusercontent.com/turulomio/toomanyfiles/master/doc/howto.gif?raw=true" width="100%"></img>
 
 ### toomanyfiles_json
-`toomanyfiles_json` allows defining multiple `toomanyfiles` configurations in a single `toomanyfiles.json` file. When executed, each configuration in the list is processed sequentially in order in the current directory.
+`toomanyfiles_json` allows defining multiple `toomanyfiles` configurations in a single `TooManyFiles.json` file. When executed, each configuration in the list is processed sequentially in order in the current directory.
 
 You can initialize a default configuration file in the current directory:
 ```bash
 toomanyfiles_json --create
 ```
 
-This creates a `toomanyfiles.json` containing a list of configurations. You can add as many configurations as needed to execute multiple retention policies in order:
+This creates a `TooManyFiles.json` containing a list of configurations. You can add as many configurations as needed to execute multiple retention policies in order:
 ```json
 [
     {
@@ -77,7 +77,7 @@ You can see this animated gif to learn how to use `toomanyfiles_json`:
 <img src="https://raw.githubusercontent.com/turulomio/toomanyfiles/master/doc/json.gif?raw=true" width="100%"></img>
 
 ### toomanyfiles_tree
-`toomanyfiles_tree` recursively discovers all `toomanyfiles.json` files within the current directory tree and executes them.
+`toomanyfiles_tree` recursively discovers all `TooManyFiles.json` files within the current directory tree and executes them.
 
 To simulate (dry-run) across all found configuration files:
 ```bash
@@ -92,6 +92,11 @@ toomanyfiles_tree --list
 To execute deletion across all found configuration files:
 ```bash
 toomanyfiles_tree --remove
+```
+
+To display detailed output for each configuration instead of the progress bar:
+```bash
+toomanyfiles_tree --pretend --show_output
 ```
 
 You can see this animated gif to learn how to use `toomanyfiles_tree`:

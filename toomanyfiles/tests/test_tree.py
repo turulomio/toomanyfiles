@@ -7,7 +7,7 @@ from toomanyfiles import tree as tmf_tree, toomanyfiles
 
 
 def test_find_json_configs():
-    """Verify recursive search finds all directories containing toomanyfiles.json with 3 config files."""
+    """Verify recursive search finds all directories containing TooManyFiles.json with 3 config files."""
     with TemporaryDirectory() as tempdir:
         dir1 = path.join(tempdir, "subdir1")
         dir2 = path.join(tempdir, "subdir2", "nested")
@@ -18,11 +18,11 @@ def test_find_json_configs():
         makedirs(dir3, exist_ok=True)
         makedirs(dir_ignored, exist_ok=True)
 
-        with open(path.join(dir1, "toomanyfiles.json"), "w") as f:
+        with open(path.join(dir1, "TooManyFiles.json"), "w") as f:
             f.write("[]")
-        with open(path.join(dir2, "toomanyfiles.json"), "w") as f:
+        with open(path.join(dir2, "TooManyFiles.json"), "w") as f:
             f.write("[]")
-        with open(path.join(dir3, "toomanyfiles.json"), "w") as f:
+        with open(path.join(dir3, "TooManyFiles.json"), "w") as f:
             f.write("[]")
 
         found = tmf_tree.find_json_configs(tempdir)
@@ -34,7 +34,7 @@ def test_find_json_configs():
 
 
 def test_toomanyfiles_tree_three_json_execution():
-    """Verify recursive execution of toomanyfiles_tree with 3 toomanyfiles.json configuration files."""
+    """Verify recursive execution of toomanyfiles_tree with 3 TooManyFiles.json configuration files."""
     with TemporaryDirectory() as tempdir:
         dir1 = path.join(tempdir, "backups")
         dir2 = path.join(tempdir, "logs", "app")
@@ -59,11 +59,11 @@ def test_toomanyfiles_tree_three_json_execution():
         config2 = [{"time_pattern": "%Y%m%d", "too_young_to_delete": 0}]
         config3 = [{"time_pattern": "%Y%m%d", "too_young_to_delete": 0}]
 
-        with open(path.join(dir1, "toomanyfiles.json"), "w") as f:
+        with open(path.join(dir1, "TooManyFiles.json"), "w") as f:
             std_json.dump(config1, f)
-        with open(path.join(dir2, "toomanyfiles.json"), "w") as f:
+        with open(path.join(dir2, "TooManyFiles.json"), "w") as f:
             std_json.dump(config2, f)
-        with open(path.join(dir3, "toomanyfiles.json"), "w") as f:
+        with open(path.join(dir3, "TooManyFiles.json"), "w") as f:
             std_json.dump(config3, f)
 
         # Dry run (pretend)
@@ -72,6 +72,10 @@ def test_toomanyfiles_tree_three_json_execution():
         assert path.exists(path.join(dir1, "20250102 Backup.xlsx"))
         assert path.exists(path.join(dir2, "20250202 App.log"))
         assert path.exists(path.join(dir3, "20250302 Report.pdf"))
+
+        # Dry run with show_output=True
+        results_verbose = tmf_tree.toomanyfiles_tree(tempdir, remove=False, show_output=True)
+        assert len(results_verbose) == 3
 
         # List mode
         list_results = tmf_tree.toomanyfiles_tree(tempdir, is_list=True)
@@ -86,16 +90,24 @@ def test_toomanyfiles_tree_three_json_execution():
         assert path.exists(path.join(dir3, "20250301 Report.pdf"))
         assert not path.exists(path.join(dir3, "20250302 Report.pdf"))
 
+        # Log files created in each directory, not root
+        assert not path.exists(path.join(tempdir, "TooManyFiles.log"))
+        assert path.exists(path.join(dir1, "TooManyFiles.log"))
+        assert path.exists(path.join(dir2, "TooManyFiles.log"))
+        assert path.exists(path.join(dir3, "TooManyFiles.log"))
+
 
 def test_toomanyfiles_tree_empty():
     """Verify tree returns empty dict when no configuration files are found."""
     with TemporaryDirectory() as tempdir:
         res = tmf_tree.toomanyfiles_tree(tempdir)
         assert res == {}
+        res_verbose = tmf_tree.toomanyfiles_tree(tempdir, show_output=True)
+        assert res_verbose == {}
 
 
 def test_main_tree():
-    """Verify main CLI invocations of tree module (--pretend, --list, --remove)."""
+    """Verify main CLI invocations of tree module (--pretend, --list, --remove, --show_output)."""
     old_cwd = getcwd()
     with TemporaryDirectory() as tempdir:
         try:
@@ -104,10 +116,11 @@ def test_main_tree():
             makedirs(sub, exist_ok=True)
             toomanyfiles.create_file(path.join(sub, "20250101 Backup.xlsx"))
             toomanyfiles.create_file(path.join(sub, "20250102 Backup.xlsx"))
-            with open(path.join(sub, "toomanyfiles.json"), "w") as f:
+            with open(path.join(sub, "TooManyFiles.json"), "w") as f:
                 std_json.dump([{"time_pattern": "%Y%m%d", "too_young_to_delete": 0}], f)
 
             tmf_tree.main(["--pretend"])
+            tmf_tree.main(["--pretend", "--show_output"])
             tmf_tree.main(["--list"])
             tmf_tree.main(["--remove"])
             assert path.exists(path.join(sub, "20250101 Backup.xlsx"))

@@ -21,7 +21,7 @@ except:
     _ = str
 
 
-DEFAULT_CONFIG_FILENAME = "toomanyfiles.json"
+DEFAULT_CONFIG_FILENAME = "TooManyFiles.json"
 
 DEFAULT_JSON_CONFIG = [
     {
@@ -36,7 +36,7 @@ DEFAULT_JSON_CONFIG = [
 
 
 def create_json_config(directory=None):
-    """Create a default toomanyfiles.json configuration file in the specified directory.
+    """Create a default TooManyFiles.json configuration file in the specified directory.
 
     Args:
         directory (str, optional): Target directory. Defaults to current working directory.
@@ -59,13 +59,14 @@ def create_json_config(directory=None):
     return True
 
 
-def toomanyfiles_json(directory=None, remove=False, is_list=False):
-    """Run toomanyfiles operations according to configuration in toomanyfiles.json.
+def toomanyfiles_json(directory=None, remove=False, is_list=False, show_output=True):
+    """Run toomanyfiles operations according to configuration in TooManyFiles.json.
 
     Args:
         directory (str, optional): Target directory. Defaults to current working directory.
         remove (bool, optional): If True, deletes files; if False, simulates (dry-run). Defaults to False.
         is_list (bool, optional): If True, lists files matched and ignored. Defaults to False.
+        show_output (bool, optional): If True, displays console output. Defaults to True.
 
     Returns:
         list[tuple]: List of results for each configuration item.
@@ -109,11 +110,12 @@ def toomanyfiles_json(directory=None, remove=False, is_list=False):
             processed = lod.lod_order_by(processed, "filename")
             files_to_ignore = lod.lod_order_by(files_to_ignore, "filename")
 
-            print(colors.magenta("=== " + _("CONFIGURATION #{}: FILES TO PROCESS").format(index) + " ==="))
-            toomanyfiles.print_with_type(processed)
-            print()
-            print(colors.magenta("=== " + _("CONFIGURATION #{}: FILES IGNORED").format(index) + " ==="))
-            toomanyfiles.print_with_type(files_to_ignore)
+            if show_output:
+                print(colors.magenta("=== " + _("CONFIGURATION #{}: FILES TO PROCESS").format(index) + " ==="))
+                toomanyfiles.print_with_type(processed)
+                print()
+                print(colors.magenta("=== " + _("CONFIGURATION #{}: FILES IGNORED").format(index) + " ==="))
+                toomanyfiles.print_with_type(files_to_ignore)
             results.append((processed, files_to_ignore))
         else:
             res = toomanyfiles.toomanyfiles(
@@ -124,7 +126,8 @@ def toomanyfiles_json(directory=None, remove=False, is_list=False):
                 too_young_to_delete=too_young_to_delete,
                 max_files_to_store=max_files_to_store,
                 remove_mode=remove_mode,
-                disable_log=disable_log
+                disable_log=disable_log,
+                show_output=show_output
             )
             results.append(res)
     return results
@@ -133,7 +136,7 @@ def toomanyfiles_json(directory=None, remove=False, is_list=False):
 def main(arguments=None):
     """CLI entry point for toomanyfiles_json.
 
-    Parses command-line arguments and executes toomanyfiles operations based on toomanyfiles.json.
+    Parses command-line arguments and executes toomanyfiles operations based on TooManyFiles.json.
 
     Args:
         arguments (list[str], optional): List of command-line arguments.
@@ -150,10 +153,10 @@ def main(arguments=None):
     parser.add_argument('--version', action='version', version=__version__)
 
     group = parser.add_mutually_exclusive_group(required=True)
-    group.add_argument('--create', help=_("Creates a default toomanyfiles.json configuration file in current directory"), action="store_true", default=False)
-    group.add_argument('--remove', help=_("Removes files permanently according to toomanyfiles.json"), action="store_true", default=False)
-    group.add_argument('--pretend', help=_("Makes a simulation and doesn't remove files according to toomanyfiles.json"), action="store_true", default=False)
-    group.add_argument('--list', help=_("List files included and excluded for each configuration in toomanyfiles.json"), action="store_true", default=False)
+    group.add_argument('--create', help=_("Creates a default TooManyFiles.json configuration file in current directory"), action="store_true", default=False)
+    group.add_argument('--remove', help=_("Removes files permanently according to TooManyFiles.json"), action="store_true", default=False)
+    group.add_argument('--pretend', help=_("Makes a simulation and doesn't remove files according to TooManyFiles.json"), action="store_true", default=False)
+    group.add_argument('--list', help=_("List files included and excluded for each configuration in TooManyFiles.json"), action="store_true", default=False)
 
     args = parser.parse_args(arguments)
 

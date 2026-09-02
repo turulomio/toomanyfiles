@@ -11,7 +11,7 @@ from toomanyfiles import toomanyfiles
 def test_create_json_config():
     """Verify create_json_config creates a valid JSON configuration and handles duplicate creation."""
     with TemporaryDirectory() as tempdir:
-        config_path = path.join(tempdir, "toomanyfiles.json")
+        config_path = path.join(tempdir, "TooManyFiles.json")
         assert not path.exists(config_path)
 
         res = tmf_json.create_json_config(tempdir)
@@ -56,7 +56,7 @@ def test_toomanyfiles_json_execution():
                 "too_young_to_delete": 0
             }
         ]
-        with open(path.join(tempdir, "toomanyfiles.json"), "w", encoding="utf-8") as f:
+        with open(path.join(tempdir, "TooManyFiles.json"), "w", encoding="utf-8") as f:
             std_json.dump(config, f)
 
         # Dry run (pretend)
@@ -88,19 +88,19 @@ def test_toomanyfiles_json_errors():
             tmf_json.toomanyfiles_json(tempdir)
 
         # Invalid JSON syntax
-        with open(path.join(tempdir, "toomanyfiles.json"), "w") as f:
+        with open(path.join(tempdir, "TooManyFiles.json"), "w") as f:
             f.write("{ invalid json")
         with pytest.raises(SystemExit):
             tmf_json.toomanyfiles_json(tempdir)
 
         # Not a list
-        with open(path.join(tempdir, "toomanyfiles.json"), "w") as f:
+        with open(path.join(tempdir, "TooManyFiles.json"), "w") as f:
             f.write('{"key": "value"}')
         with pytest.raises(SystemExit):
             tmf_json.toomanyfiles_json(tempdir)
 
         # Item not a dict
-        with open(path.join(tempdir, "toomanyfiles.json"), "w") as f:
+        with open(path.join(tempdir, "TooManyFiles.json"), "w") as f:
             f.write('[123]')
         with pytest.raises(SystemExit):
             tmf_json.toomanyfiles_json(tempdir)
@@ -117,7 +117,7 @@ def test_main_json():
 
             # Create default config
             tmf_json.main(["--create"])
-            assert path.exists("toomanyfiles.json")
+            assert path.exists("TooManyFiles.json")
 
             # Pretend
             tmf_json.main(["--pretend"])

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: TooManyFiles\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-09-01 14:00+0200\n"
+"POT-Creation-Date: 2026-09-02 04:34+0200\n"
 "PO-Revision-Date: 2026-09-01 05:00+0200\n"
 "Last-Translator: Mariano Muñoz <turulomio@yahoo.es>\n"
 "Language-Team: Chinese\n"
@@ -47,20 +47,23 @@ msgstr "使用 JSON 配置文件搜索日期和时间模式以删除不必要的
 msgid "Developed by Mariano Muñoz 2018-{}"
 msgstr "由 Mariano Muñoz 开发 2018-{}"
 
-msgid "Creates a default toomanyfiles.json configuration file in current directory"
-msgstr "在当前目录中创建默认的 toomanyfiles.json 配置文件"
+msgid "Creates a default TooManyFiles.json configuration file in current directory"
+msgstr "在当前目录中创建默认的 TooManyFiles.json 配置文件"
 
-msgid "Removes files permanently according to toomanyfiles.json"
-msgstr "根据 toomanyfiles.json 永久删除文件"
+msgid "Removes files permanently according to TooManyFiles.json"
+msgstr "根据 TooManyFiles.json 永久删除文件"
 
-msgid "Makes a simulation and doesn't remove files according to toomanyfiles.json"
-msgstr "进行模拟操作，不根据 toomanyfiles.json 删除文件"
+msgid "Makes a simulation and doesn't remove files according to TooManyFiles.json"
+msgstr "进行模拟操作，不根据 TooManyFiles.json 删除文件"
 
-msgid "List files included and excluded for each configuration in toomanyfiles.json"
-msgstr "列出 toomanyfiles.json 中每个配置所包含和排除的文件"
+msgid "List files included and excluded for each configuration in TooManyFiles.json"
+msgstr "列出 TooManyFiles.json 中每个配置所包含和排除的文件"
 
 msgid "vhs tool is needed. Look at https://github.com/charmbracelet/vhs"
 msgstr "需要 vhs 工具。请参阅 https://github.com/charmbracelet/vhs"
+
+msgid "Invalid target '{}'. Choose from: command, howto, json, tree, all"
+msgstr "无效的目标 '{}'。请从以下选项中选择：command, howto, json, tree, all"
 
 msgid "New Release:"
 msgstr "新版本发布："
@@ -219,20 +222,47 @@ msgstr "在 '{}' 下的目录树中未找到 '{}' 文件。"
 msgid "Found {} configuration directory(ies) under '{}':"
 msgstr "在 '{}' 下找到 {} 个配置目录："
 
-msgid "Processing directories"
-msgstr "正在处理目录"
-
 msgid "Processing directory: {}"
 msgstr "正在处理目录：{}"
 
-msgid "Recursively search and execute all toomanyfiles.json configuration files in a directory tree"
-msgstr "在目录树中递归搜索并执行所有 toomanyfiles.json 配置文件"
+msgid "Recursively search and execute all TooManyFiles.json configuration files in a directory tree"
+msgstr "在目录树中递归搜索并执行所有 TooManyFiles.json 配置文件"
 
-msgid "Removes files permanently according to all toomanyfiles.json found in tree"
-msgstr "根据树中找到的所有 toomanyfiles.json 永久删除文件"
+msgid "Removes files permanently according to all TooManyFiles.json found in tree"
+msgstr "根据树中找到的所有 TooManyFiles.json 永久删除文件"
 
-msgid "Makes a simulation and doesn't remove files according to all toomanyfiles.json found in tree"
-msgstr "进行模拟操作，不根据树中找到的所有 toomanyfiles.json 删除文件"
+msgid "Makes a simulation and doesn't remove files according to all TooManyFiles.json found in tree"
+msgstr "进行模拟操作，不根据树中找到的所有 TooManyFiles.json 删除文件"
 
-msgid "List files included and excluded for each toomanyfiles.json found in tree"
-msgstr "列出树中找到的每个 toomanyfiles.json 所包含和排除的文件"
+msgid "List files included and excluded for each TooManyFiles.json found in tree"
+msgstr "列出树中找到的每个 TooManyFiles.json 所包含和排除的文件"
+
+msgid "Shows detailed output for each configuration"
+msgstr "显示每个配置的详细输出"
+
+#~ msgid "Creates a default toomanyfiles.json configuration file in current directory"
+#~ msgstr "在当前目录中创建默认的 toomanyfiles.json 配置文件"
+
+#~ msgid "Removes files permanently according to toomanyfiles.json"
+#~ msgstr "根据 toomanyfiles.json 永久删除文件"
+
+#~ msgid "Makes a simulation and doesn't remove files according to toomanyfiles.json"
+#~ msgstr "进行模拟操作，不根据 toomanyfiles.json 删除文件"
+
+#~ msgid "List files included and excluded for each configuration in toomanyfiles.json"
+#~ msgstr "列出 toomanyfiles.json 中每个配置所包含和排除的文件"
+
+#~ msgid "Recursively search and execute all toomanyfiles.json configuration files in a directory tree"
+#~ msgstr "在目录树中递归搜索并执行所有 toomanyfiles.json 配置文件"
+
+#~ msgid "Removes files permanently according to all toomanyfiles.json found in tree"
+#~ msgstr "根据树中找到的所有 toomanyfiles.json 永久删除文件"
+
+#~ msgid "Makes a simulation and doesn't remove files according to all toomanyfiles.json found in tree"
+#~ msgstr "进行模拟操作，不根据树中找到的所有 toomanyfiles.json 删除文件"
+
+#~ msgid "List files included and excluded for each toomanyfiles.json found in tree"
+#~ msgstr "列出树中找到的每个 toomanyfiles.json 所包含和排除的文件"
+
+#~ msgid "Processing directories"
+#~ msgstr "正在处理目录"

@@ -261,7 +261,7 @@ def lod_process_directory(lod_, remove_mode, too_young_to_delete, max_files_to_s
 
 
 def write_log(lod_, directory, time_pattern, file_patterns):
-    """Append the execution header and deleted file actions to TooManyFiles.log.
+    """Append the execution header and deleted file actions to TooManyFiles.log in target directory.
 
     Args:
         lod_ (list[dict]): Processed file dictionaries with assigned statuses.
@@ -275,11 +275,12 @@ def write_log(lod_, directory, time_pattern, file_patterns):
             s = s + "{} >>> {}\n".format(o["filename"], _("Delete"))
         elif o["status"] == types.FileStatus.OverMaxFiles:
             s = s + "{} >>> {}\n".format(o["filename"], _("Over max number of files"))
-    with open("TooManyFiles.log", "a") as f:
+    log_file = path.join(directory, "TooManyFiles.log")
+    with open(log_file, "a", encoding="utf-8") as f:
         f.write(s)
 
 
-def toomanyfiles(directory, remove, time_pattern="%Y%m%d %H%M", file_patterns=[], too_young_to_delete=30, max_files_to_store=100000000, remove_mode=types.RemoveMode.RemainFirstInMonth, disable_log=False):
+def toomanyfiles(directory, remove, time_pattern="%Y%m%d %H%M", file_patterns=[], too_young_to_delete=30, max_files_to_store=100000000, remove_mode=types.RemoveMode.RemainFirstInMonth, disable_log=False, show_output=True):
     """Programmatic entry point to analyze and optionally remove obsolete files or directories.
 
     Scans the specified directory for files matching date/time and name patterns,
@@ -295,13 +296,15 @@ def toomanyfiles(directory, remove, time_pattern="%Y%m%d %H%M", file_patterns=[]
         max_files_to_store (int, optional): Maximum number of files to keep. Defaults to 100000000.
         remove_mode (int, optional): Retention strategy from `types.RemoveMode`. Defaults to `RemainFirstInMonth`.
         disable_log (bool, optional): If True, suppresses appending to TooManyFiles.log. Defaults to False.
+        show_output (bool, optional): If True, displays console output. Defaults to True.
 
     Returns:
         tuple[list[dict], list[dict]]: A tuple containing (processed_files, ignored_files).
     """
     files_to_process, files_to_ignore = lod_read_directory(directory, time_pattern, file_patterns)
     processed = lod_process_directory(files_to_process, remove_mode, too_young_to_delete, max_files_to_store)
-    console_output(processed, directory, remove, time_pattern, file_patterns, too_young_to_delete, max_files_to_store)
+    if show_output:
+        console_output(processed, directory, remove, time_pattern, file_patterns, too_young_to_delete, max_files_to_store)
 
     if remove is True:
         if disable_log is False:

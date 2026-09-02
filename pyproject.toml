@@ -1,6 +1,6 @@
 [project]
 name = "toomanyfiles"
-version = "1.2.1"
+version = "1.3.0"
 description = "Remove files and directories with date and time patterns"
 authors = [
     {name = "y"}
@@ -34,7 +34,7 @@ toomanyfiles_tree='toomanyfiles.tree:main'
 [tool.poe.tasks]
 module_content = { script = "toomanyfiles.poethepoet:module_content" }
 coverage = { script = "toomanyfiles.poethepoet:coverage" }
-video = { script = "toomanyfiles.poethepoet:video" }
+video = { script = "toomanyfiles.poethepoet:video", args = [{ name = "target", positional = true, default = "all", help = "Target video to generate: command, howto, json, tree, or all" }] }
 pytest = { script = "toomanyfiles.poethepoet:pytest" }
 release = { script = "toomanyfiles.poethepoet:release" }
 translate = { script = "toomanyfiles.poethepoet:translate" }
